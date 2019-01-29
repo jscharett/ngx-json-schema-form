@@ -1,3 +1,6 @@
+[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
+[![Build Status](https://travis-ci.org/jscharett/ngx-json-schema-form.svg?branch=master)](https://travis-ci.org/jscharett/ngx-json-schema-form)
+
 # NgxJsonSchemaForm
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 7.2.3.
