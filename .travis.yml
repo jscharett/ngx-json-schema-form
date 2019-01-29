@@ -9,9 +9,14 @@ branches:
   only:
   - master
 
+addons:
+  chrome: stable
+  firefox: latest
+
 before_script:
   - npm install -g @angular/cli
 
 script:
   - ng lint
+  - npm run test-ci
   - ng build
