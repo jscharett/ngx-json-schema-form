@@ -1,5 +1,6 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
 [![Build Status](https://travis-ci.org/jscharett/ngx-json-schema-form.svg?branch=master)](https://travis-ci.org/jscharett/ngx-json-schema-form)
+[![codecov](https://codecov.io/gh/jscharett/ngx-json-schema-form/branch/master/graph/badge.svg)](https://codecov.io/gh/jscharett/ngx-json-schema-form)
 [![Dependencies](https://david-dm.org/jscharett/ngx-json-schema-form.svg)](https://david-dm.org/jscharett/ngx-json-schema-form)
 [![devDependencies](https://david-dm.org/jscharett/ngx-json-schema-form/dev-status.svg)](https://david-dm.org/jscharett/ngx-json-schema-form?type=dev)
 
