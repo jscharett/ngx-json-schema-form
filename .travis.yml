@@ -20,3 +20,8 @@ script:
   - ng lint
   - npm run test-ci
   - ng build
+
+before_install:
+  - pip install --user codecov
+after_success:
+  - codecov
