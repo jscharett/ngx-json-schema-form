@@ -3,8 +3,7 @@ import { NgxJsonSchemaFormComponent } from './ngx-json-schema-form.component';
 
 @NgModule({
   declarations: [NgxJsonSchemaFormComponent],
-  imports: [
-  ],
-  exports: [NgxJsonSchemaFormComponent]
+  exports: [NgxJsonSchemaFormComponent],
+  imports: []
 })
 export class NgxJsonSchemaFormModule { }

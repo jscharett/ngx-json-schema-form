@@ -18,8 +18,9 @@
  * BROWSER POLYFILLS
  */
 
-/** IE9, IE10, IE11, and Chrome <55 requires all of the following polyfills.
- *  This also includes Android Emulators with older versions of Chrome and Google Search/Googlebot
+/**
+ * IE9, IE10, IE11, and Chrome <55 requires all of the following polyfills.
+ * This also includes Android Emulators with older versions of Chrome and Google Search/Googlebot
  */
 
 // import 'core-js/es6/symbol';

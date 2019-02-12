@@ -27,6 +27,8 @@
         "lint": {
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
+            "format": "verbose",
+            "typeCheck": true,
             "tsConfig": [
               "projects/ngx-json-schema-form/tsconfig.lib.json",
               "projects/ngx-json-schema-form/tsconfig.spec.json"
@@ -126,6 +128,8 @@
         "lint": {
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
+            "format": "verbose",
+            "typeCheck": true,
             "tsConfig": [
               "projects/demo/tsconfig.app.json",
               "projects/demo/tsconfig.spec.json"
@@ -157,6 +161,8 @@
         "lint": {
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
+            "format": "verbose",
+            "typeCheck": true,
             "tsConfig": "projects/demo-e2e/tsconfig.e2e.json",
             "exclude": [
               "**/node_modules/**"

@@ -1,19 +1,12 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'jsf-ngx-json-schema-form',
+  styles: [],
   template: `
     <p>
       ngx-json-schema-form works!
     </p>
-  `,
-  styles: []
+  `
 })
-export class NgxJsonSchemaFormComponent implements OnInit {
-
-  constructor() { }
-
-  ngOnInit() {
-  }
-
-}
+export class NgxJsonSchemaFormComponent {}
