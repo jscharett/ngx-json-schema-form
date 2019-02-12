@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { NgxJsonSchemaFormComponent } from './ngx-json-schema-form.component';
+import { JsonSchemaFormComponent } from './json-schema-form.component';
 
-describe('NgxJsonSchemaFormComponent', () => {
-  let component: NgxJsonSchemaFormComponent;
-  let fixture: ComponentFixture<NgxJsonSchemaFormComponent>;
+describe('JsonSchemaFormComponent', () => {
+  let component: JsonSchemaFormComponent;
+  let fixture: ComponentFixture<JsonSchemaFormComponent>;
 
   beforeEach(async () => {
     return TestBed.configureTestingModule({
-      declarations: [ NgxJsonSchemaFormComponent ]
+      declarations: [ JsonSchemaFormComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(NgxJsonSchemaFormComponent);
+    fixture = TestBed.createComponent(JsonSchemaFormComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
