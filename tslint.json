@@ -1,4 +1,7 @@
 {
+  "extends": [
+    "tslint-plugin-jasmine"
+  ],
   "rulesDirectory": [
     "codelyzer"
   ],
@@ -278,6 +281,26 @@
     "prefer-inline-decorator": true,
     "use-host-property-decorator": true,
     "use-input-property-decorator": true,
-    "use-output-property-decorator": true
+    "use-output-property-decorator": true,
+    //JASMINE
+    "expect-matcher": true,
+    "expect-single-argument": true,
+    "missing-expect": true,
+    "named-spy": true,
+    "new-line-before-expect": true,
+    "new-line-between-declarations": true,
+    "no-assign-spyon": true,
+    "no-describe-variables": false,
+    "no-disabled-tests": true,
+    "no-expect-in-setup-teardown": true,
+    "no-focused-tests": true,
+    "no-global-setup": true,
+    "no-promise-without-done-fail": false,// Does not allow for returning promise
+    "no-spec-dupes": true,
+    "no-suite-callback-args": true,
+    "no-suite-dupes": true,
+    "no-unsafe-spy": true,
+    "prefer-jasmine-matcher": true,
+    "prefer-to-have-been-called-with": true
   }
 }

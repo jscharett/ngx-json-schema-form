@@ -8,6 +8,9 @@ exports.config = {
   specs: [
     './src/**/*.e2e-spec.ts'
   ],
+  plugins: [{
+    package: 'protractor-console-plugin',
+  }],
   capabilities: {
     'browserName': 'chrome'
   },

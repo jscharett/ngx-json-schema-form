@@ -46,10 +46,12 @@
     "karma-mocha-reporter": "^2.2.5",
     "ng-packagr": "^4.2.0",
     "protractor": "~5.4.0",
+    "protractor-console-plugin": "^0.1.1",
     "ts-node": "~8.0.2",
     "tsickle": ">=0.34.0",
     "tslib": "^1.9.0",
     "tslint": "~5.12.1",
+    "tslint-plugin-jasmine": "^1.0.3",
     "typescript": "~3.2.2"
   }
 }
