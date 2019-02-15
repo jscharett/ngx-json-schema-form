@@ -1,5 +1,5 @@
 import { Component, NO_ERRORS_SCHEMA } from '@angular/core';
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, inject, TestBed } from '@angular/core/testing';
 
 import { Widget } from '.';
 
@@ -18,10 +18,9 @@ class TestComponent extends Widget {
 describe('widgets', () => {
     let fixture: ComponentFixture<TestComponent>;
     let component: TestComponent;
-    let mockFormService: JsonSchemaFormService;
 
     beforeEach(async () => {
-        mockFormService = jasmine.createSpyObj('JsonSchemaFormService', {
+        const mockFormService: JsonSchemaFormService = jasmine.createSpyObj('JsonSchemaFormService', {
             initializeControl: true,
             updateValue: undefined
         });
@@ -50,5 +49,20 @@ describe('widgets', () => {
     it('should create', () => {
         expect(component).toBeTruthy();
     });
+
+    it('should initilize the control', inject([JsonSchemaFormService], (jsfService: JsonSchemaFormService) => {
+        expect(jsfService.initializeControl).toHaveBeenCalledWith(component);
+    }));
+
+    it('should call service to update data', inject([JsonSchemaFormService], (jsfService: JsonSchemaFormService) => {
+        const value = 5;
+        const evt: Event = new Event('change');
+
+        fixture.nativeElement.dispatchEvent(evt);
+        (<any>evt.target).value = value;
+        component.updateValue(evt);
+
+        expect(jsfService.updateValue).toHaveBeenCalledWith(component, value);
+    }));
 
 });
