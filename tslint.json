@@ -99,7 +99,7 @@
     "no-submodule-imports": false,
     "no-switch-case-fall-through": true,
     "no-this-assignment": true,
-    "no-unbound-method": true,
+    "no-unbound-method": false,// Currently a bug which doesn't allow for jasmine tests
     "no-unnecessary-class": [true, "allow-empty-class"],
     "no-unsafe-any": false,// Appears to be buggy
     "no-unsafe-finally": true,
