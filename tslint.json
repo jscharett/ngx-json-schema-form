@@ -90,7 +90,9 @@
     "no-invalid-this": true,
     "no-misused-new": true,
     "no-null-keyword": true,
+    "no-null-undefined-union": true,
     "no-object-literal-type-assertion": true,
+    "no-restricted-globals": true,
     "no-return-await": true,
     "no-shadowed-variable": true,
     "no-sparse-arrays": true,
@@ -98,6 +100,7 @@
     "no-string-throw": true,
     "no-submodule-imports": false,
     "no-switch-case-fall-through": true,
+    "no-tautology-expression": true,
     "no-this-assignment": true,
     "no-unbound-method": false,// Currently a bug which doesn't allow for jasmine tests
     "no-unnecessary-class": [true, "allow-empty-class"],
@@ -112,6 +115,7 @@
     "prefer-object-spread": true,
     "radix": true,
     "restrict-plus-operands": true,
+    "static-this": true,
     "strict-boolean-expressions": false,
     "strict-type-predicates": false,
     "switch-default": false,
@@ -226,6 +230,7 @@
     "switch-final-break": true,
     "type-literal-delimiter": true,
     "unnecessary-bind": true,
+    "unnecessary-else": true,
     "variable-name": false,
     "whitespace": [
       true,
