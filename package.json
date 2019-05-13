@@ -14,7 +14,7 @@
     "copy-files": "npm run copy-license && npm run copy-readme",
     "npm_pack": "cd dist/ngx-json-schema-form && npm pack",
     "package": "npm run build && npm run copy-files && npm run npm_pack",
-    "preversion": "npm run lint && npm test",
+    "preversion": "npm run lint && npm run test-ci",
     "version": "npm run build && git add -A dist",
     "postversion": "git push && git push --tags && rm -rf build/temp"
   },
