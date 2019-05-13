@@ -4,7 +4,11 @@ import { JsonSchemaFormService } from './json-schema-form.service';
 
 describe('JsonSchemaFormService', () => {
   beforeEach(() => {
-    TestBed.configureTestingModule({});
+    TestBed.configureTestingModule({
+        providers: [
+            JsonSchemaFormService
+        ]
+    });
   });
 
   it('should be created', () => {

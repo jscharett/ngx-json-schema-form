@@ -1,12 +1,48 @@
-import { Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input, OnChanges, OnInit } from '@angular/core';
+
+import { cloneDeep, isPlainObject } from 'lodash';
+
+import { JsonSchemaFormService } from './json-schema-form.service';
 
 @Component({
-  selector: 'jsf-json-schema-form',
-  styles: [],
-  template: `
-    <p>
-      json-schema-form works!
-    </p>
-  `
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    providers: [ JsonSchemaFormService ],
+    selector: 'jsf-json-schema-form',
+    styles: [],
+    template: `
+        <form></form>
+    `
 })
-export class JsonSchemaFormComponent {}
+export class JsonSchemaFormComponent implements OnChanges, OnInit {
+    @Input() schema: any;
+
+    private formInitialized = false;
+
+    constructor(private readonly jsf: JsonSchemaFormService) {}
+
+    ngOnInit() {
+        this.updateForm();
+    }
+
+    ngOnChanges() {
+        this.updateForm();
+    }
+
+    private updateForm() {
+        if (!this.formInitialized) {
+            this.initializeForm();
+        }
+    }
+
+    private initializeForm() {
+        this.initializeSchema();
+        this.formInitialized = true;
+    }
+
+    private initializeSchema() {
+        if (isPlainObject(this.schema)) {
+            this.jsf.schema = cloneDeep(this.schema);
+        }
+    }
+
+}

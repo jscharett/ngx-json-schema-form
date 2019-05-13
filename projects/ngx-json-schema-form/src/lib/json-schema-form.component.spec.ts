@@ -1,5 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
+import { JsonSchemaFormService } from '.';
+
 import { JsonSchemaFormComponent } from './json-schema-form.component';
 
 describe('JsonSchemaFormComponent', () => {
@@ -8,7 +10,11 @@ describe('JsonSchemaFormComponent', () => {
 
   beforeEach(async () => {
     return TestBed.configureTestingModule({
-      declarations: [ JsonSchemaFormComponent ]
+      declarations: [ JsonSchemaFormComponent ],
+      providers: [{
+          provide: JsonSchemaFormService,
+          useValue: {}
+      }]
     })
     .compileComponents();
   });
