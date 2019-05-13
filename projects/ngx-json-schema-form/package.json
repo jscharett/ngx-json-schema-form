@@ -1,6 +1,15 @@
 {
   "name": "ngx-json-schema-form",
   "version": "0.0.1",
+  "author": {
+    "name": "James Scharett",
+    "email": "jdscharett@gmail.com"
+  },
+  "description": "Angular JSON Schema Form builder",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jscharett/ngx-json-schema-form"
+  },
   "devDependencies": {
     "@angular/platform-browser-dynamic": "~7.2.0",
     "core-js": "^2.5.4",
