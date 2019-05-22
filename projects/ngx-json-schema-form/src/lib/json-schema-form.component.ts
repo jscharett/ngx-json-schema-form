@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, Input, OnChanges, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
 
 import { cloneDeep, isPlainObject } from 'lodash';
 
@@ -24,7 +24,10 @@ export class JsonSchemaFormComponent implements OnChanges, OnInit {
         this.updateForm();
     }
 
-    ngOnChanges() {
+    ngOnChanges(changes: SimpleChanges) {
+        if (changes.hasOwnProperty('schema')) {
+            this.formInitialized = false;
+        }
         this.updateForm();
     }
 

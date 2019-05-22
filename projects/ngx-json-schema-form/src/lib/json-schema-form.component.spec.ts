@@ -1,31 +1,60 @@
+import { SimpleChange } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+
+import basicJSONSchema from '../assests/example-schemas/jsf-schema-basic.json';
 
 import { JsonSchemaFormService } from '.';
 
 import { JsonSchemaFormComponent } from './json-schema-form.component';
 
 describe('JsonSchemaFormComponent', () => {
-  let component: JsonSchemaFormComponent;
-  let fixture: ComponentFixture<JsonSchemaFormComponent>;
+    let component: JsonSchemaFormComponent;
+    let fixture: ComponentFixture<JsonSchemaFormComponent>;
+    let schemaSpy: jasmine.Spy;
 
-  beforeEach(async () => {
-    return TestBed.configureTestingModule({
-      declarations: [ JsonSchemaFormComponent ],
-      providers: [{
-          provide: JsonSchemaFormService,
-          useValue: {}
-      }]
-    })
-    .compileComponents();
-  });
+    beforeEach(async () => {
+        const jsonSchemaFormService: JsonSchemaFormService = jasmine.createSpyObj('JsonSchemaFormService', {
+            initializeControl: undefined
+        });
 
-  beforeEach(() => {
-    fixture = TestBed.createComponent(JsonSchemaFormComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
-  });
+        return TestBed.configureTestingModule({
+            declarations: [ JsonSchemaFormComponent ]
+        }).overrideComponent(JsonSchemaFormComponent, {
+            set: {
+                providers: [
+                    { provide: JsonSchemaFormService, useValue: jsonSchemaFormService }
+                ]
+            }
+        })
+        .compileComponents();
+    });
 
-  it('should create', () => {
-    expect(component).toBeTruthy();
-  });
+    beforeEach(() => {
+        fixture = TestBed.createComponent(JsonSchemaFormComponent);
+        const jsonSchemaFormService: JsonSchemaFormService = fixture.debugElement.injector.get(JsonSchemaFormService);
+        schemaSpy = jasmine.createSpy('schemaSpy');
+        Object.defineProperty(jsonSchemaFormService, 'schema', {
+            set: schemaSpy
+        });
+        component = fixture.componentInstance;
+        fixture.detectChanges();
+    });
+
+    it('should create', () => {
+        expect(component).toBeTruthy();
+    });
+
+    it('should have no schema set', () => {
+        expect(component.schema).toBeUndefined();
+        expect(schemaSpy).not.toHaveBeenCalled();
+    });
+
+    it('should have schema set', () => {
+        component.schema = basicJSONSchema;
+        component[`ngOnChanges`]({schema: new SimpleChange(undefined, basicJSONSchema, true)});
+        fixture.detectChanges();
+
+        expect(component.schema).toBeDefined();
+        expect(schemaSpy).toHaveBeenCalledWith(basicJSONSchema);
+    });
 });
