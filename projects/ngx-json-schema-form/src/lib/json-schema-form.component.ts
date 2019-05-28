@@ -3,10 +3,14 @@ import { ChangeDetectionStrategy, Component, Input, OnChanges, OnInit, SimpleCha
 import { cloneDeep, isPlainObject } from 'lodash';
 
 import { JsonSchemaFormService } from './json-schema-form.service';
+import { SchemaService } from './schema.service';
 
 @Component({
     changeDetection: ChangeDetectionStrategy.OnPush,
-    providers: [ JsonSchemaFormService ],
+    providers: [
+        JsonSchemaFormService,
+        SchemaService
+    ],
     selector: 'jsf-json-schema-form',
     styles: [],
     template: `
@@ -18,7 +22,10 @@ export class JsonSchemaFormComponent implements OnChanges, OnInit {
 
     private formInitialized = false;
 
-    constructor(private readonly jsf: JsonSchemaFormService) {}
+    constructor(
+        // private readonly jsf: JsonSchemaFormService,
+        private readonly schemaService: SchemaService
+    ) {}
 
     ngOnInit() {
         this.updateForm();
@@ -44,7 +51,7 @@ export class JsonSchemaFormComponent implements OnChanges, OnInit {
 
     private initializeSchema() {
         if (isPlainObject(this.schema)) {
-            this.jsf.schema = cloneDeep(this.schema);
+            this.schemaService.schema = cloneDeep(this.schema);
         }
     }
 

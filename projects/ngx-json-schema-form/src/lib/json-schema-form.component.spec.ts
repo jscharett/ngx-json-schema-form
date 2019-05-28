@@ -3,7 +3,7 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import basicJSONSchema from '../assests/example-schemas/jsf-schema-basic.json';
 
-import { JsonSchemaFormService } from '.';
+import { JsonSchemaFormService, SchemaService } from '.';
 
 import { JsonSchemaFormComponent } from './json-schema-form.component';
 
@@ -16,13 +16,15 @@ describe('JsonSchemaFormComponent', () => {
         const jsonSchemaFormService: JsonSchemaFormService = jasmine.createSpyObj('JsonSchemaFormService', {
             initializeControl: undefined
         });
+        const schemaService: SchemaService = <any>{};
 
         return TestBed.configureTestingModule({
             declarations: [ JsonSchemaFormComponent ]
         }).overrideComponent(JsonSchemaFormComponent, {
             set: {
                 providers: [
-                    { provide: JsonSchemaFormService, useValue: jsonSchemaFormService }
+                    { provide: JsonSchemaFormService, useValue: jsonSchemaFormService },
+                    { provide: SchemaService, useValue: schemaService }
                 ]
             }
         })
@@ -31,9 +33,9 @@ describe('JsonSchemaFormComponent', () => {
 
     beforeEach(() => {
         fixture = TestBed.createComponent(JsonSchemaFormComponent);
-        const jsonSchemaFormService: JsonSchemaFormService = fixture.debugElement.injector.get(JsonSchemaFormService);
+        const schemaService: SchemaService = fixture.debugElement.injector.get(SchemaService);
         schemaSpy = jasmine.createSpy('schemaSpy');
-        Object.defineProperty(jsonSchemaFormService, 'schema', {
+        Object.defineProperty(schemaService, 'schema', {
             set: schemaSpy
         });
         component = fixture.componentInstance;

@@ -1,18 +1,18 @@
 import { TestBed } from '@angular/core/testing';
 
-import { JsonSchemaFormService } from './json-schema-form.service';
+import { SchemaService } from './schema.service';
 
-describe('JsonSchemaFormService', () => {
+describe('SchemaService', () => {
     beforeEach(() => {
         TestBed.configureTestingModule({
             providers: [
-                JsonSchemaFormService
+                SchemaService
             ]
         });
     });
 
     it('should be created', () => {
-        const service: JsonSchemaFormService = TestBed.get(JsonSchemaFormService);
+        const service: SchemaService = TestBed.get(SchemaService);
         expect(service).toBeTruthy();
     });
 });
