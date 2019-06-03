@@ -3,12 +3,14 @@ import { ChangeDetectionStrategy, Component, Input, OnChanges, OnInit, SimpleCha
 import { cloneDeep, isPlainObject } from 'lodash';
 
 import { JsonSchemaFormService } from './json-schema-form.service';
+import { LayoutService } from './layout.service';
 import { SchemaService } from './schema.service';
 
 @Component({
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [
         JsonSchemaFormService,
+        LayoutService,
         SchemaService
     ],
     selector: 'jsf-json-schema-form',
@@ -19,12 +21,14 @@ import { SchemaService } from './schema.service';
 })
 export class JsonSchemaFormComponent implements OnChanges, OnInit {
     @Input() schema: any;
+    @Input() layout: Array<any>;
 
     private formInitialized = false;
 
     constructor(
         // private readonly jsf: JsonSchemaFormService,
-        private readonly schemaService: SchemaService
+        private readonly schemaService: SchemaService,
+        private readonly layoutService: LayoutService
     ) {}
 
     ngOnInit() {
@@ -38,21 +42,26 @@ export class JsonSchemaFormComponent implements OnChanges, OnInit {
         this.updateForm();
     }
 
-    private updateForm() {
+    private updateForm(): void {
         if (!this.formInitialized) {
             this.initializeForm();
         }
     }
 
-    private initializeForm() {
+    private initializeForm(): void {
         this.initializeSchema();
+        this.initializeLayout();
         this.formInitialized = true;
     }
 
-    private initializeSchema() {
+    private initializeLayout() {
+        // TODO
+        return this;
+    }
+
+    private initializeSchema(): void {
         if (isPlainObject(this.schema)) {
             this.schemaService.schema = cloneDeep(this.schema);
         }
     }
-
 }

@@ -3,7 +3,7 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import basicJSONSchema from '../assests/example-schemas/jsf-schema-basic.json';
 
-import { JsonSchemaFormService, SchemaService } from '.';
+import { JsonSchemaFormService, LayoutService, SchemaService } from '.';
 
 import { JsonSchemaFormComponent } from './json-schema-form.component';
 
@@ -16,6 +16,7 @@ describe('JsonSchemaFormComponent', () => {
         const jsonSchemaFormService: JsonSchemaFormService = jasmine.createSpyObj('JsonSchemaFormService', {
             initializeControl: undefined
         });
+        const layoutService: LayoutService = <any>{};
         const schemaService: SchemaService = <any>{};
 
         return TestBed.configureTestingModule({
@@ -24,6 +25,7 @@ describe('JsonSchemaFormComponent', () => {
             set: {
                 providers: [
                     { provide: JsonSchemaFormService, useValue: jsonSchemaFormService },
+                    { provide: LayoutService, useValue: layoutService },
                     { provide: SchemaService, useValue: schemaService }
                 ]
             }
