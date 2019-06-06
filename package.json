@@ -1,6 +1,6 @@
 {
   "name": "ngx-json-schema-form",
-  "version": "0.1.1",
+  "version": "0.1.1-development",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
@@ -16,7 +16,8 @@
     "package": "npm run build && npm run copy-files && npm run npm_pack",
     "preversion": "npm run lint && npm run test-ci",
     "version": "npm run build && git add -A dist",
-    "postversion": "git push && git push --tags && rm -rf build/temp"
+    "postversion": "git push && git push --tags && rm -rf build/temp",
+    "semantic-release": "semantic-release"
   },
   "private": false,
   "dependencies": {
@@ -58,11 +59,19 @@
     "ng-packagr": "^4.2.0",
     "protractor": "~5.4.2",
     "protractor-console-plugin": "^0.1.1",
+    "semantic-release": "^15.13.12",
     "ts-node": "~8.2.0",
     "tsickle": ">=0.34.0",
     "tslib": "^1.9.0",
     "tslint": "~5.17.0",
     "tslint-plugin-jasmine": "^1.0.3",
     "typescript": "~3.2.2"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jscharett/ngx-json-schema-form.git"
+  },
+  "release": {
+    "pkgRoot": "dist/ngx-json-schema-form"
   }
 }

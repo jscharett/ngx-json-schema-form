@@ -14,15 +14,24 @@ addons:
   chrome: stable
   firefox: latest
 
-before_script:
-  - npm install -g @angular/cli
-
-script:
-  - ng lint
-  - npm run test-ci
-  - ng build
-
 before_install:
   - pip install --user codecov
-after_success:
-  - codecov
+
+jobs:
+  include:
+    - stage: build
+      script:
+        - npm run lint
+        - npm run test-ci
+        - npm run build
+      before_script:
+        - npm install -g @angular/cli
+      after_success:
+        - codecov
+    - stage: release
+      if: branch = master
+      deploy:
+        provider: script
+        skip_cleanup: true
+        script:
+          - npx semantic-release
