@@ -301,6 +301,7 @@
     "prefer-inline-decorator": true,
 
     "pipe-naming": false,
+    "use-injectable-provided-in": false,
     //JASMINE
     "expect-matcher": true,
     "expect-single-argument": true,
