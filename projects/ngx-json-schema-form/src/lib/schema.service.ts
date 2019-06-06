@@ -2,15 +2,18 @@ import { Injectable } from '@angular/core';
 
 import Ajv from 'ajv';
 
+import { JSONSchema7 } from 'json-schema';
+
+
 @Injectable()
 export class SchemaService {
     // TODO: Setter function to automatically upgrade schema version?
-    private _schema: any = {};
-    set schema(value: Object) {
+    private _schema: JSONSchema7 = {};
+    set schema(value: JSONSchema7) {
         this._schema = value;
         this.compileSchema();
     }
-    get schema(): Object {
+    get schema(): JSONSchema7 {
         return this._schema;
     }
 

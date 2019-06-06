@@ -2,7 +2,10 @@ import { ChangeDetectionStrategy, Component, Input, OnChanges, OnInit, SimpleCha
 
 import { cloneDeep, isPlainObject } from 'lodash';
 
+import { JSONSchema7 } from 'json-schema';
+
 import { JsonSchemaFormService } from './json-schema-form.service';
+import { LayoutItem } from './layout-item.data';
 import { LayoutService } from './layout.service';
 import { SchemaService } from './schema.service';
 
@@ -20,8 +23,8 @@ import { SchemaService } from './schema.service';
     `
 })
 export class JsonSchemaFormComponent implements OnChanges, OnInit {
-    @Input() schema: any;
-    @Input() layout: Array<any>;
+    @Input() schema: JSONSchema7;
+    @Input() layout: Array<LayoutItem>;
 
     private formInitialized = false;
 
@@ -54,7 +57,7 @@ export class JsonSchemaFormComponent implements OnChanges, OnInit {
         this.formInitialized = true;
     }
 
-    private initializeLayout() {
+    private initializeLayout(): void {
         this.layoutService.layout = cloneDeep(this.layout);
     }
 
