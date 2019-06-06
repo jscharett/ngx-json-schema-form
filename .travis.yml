@@ -29,9 +29,10 @@ jobs:
       after_success:
         - codecov
     - stage: release
-      if: branch = master
       deploy:
         provider: script
         skip_cleanup: true
         script:
           - npx semantic-release
+        on:
+          branch: master
