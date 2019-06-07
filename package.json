@@ -1,6 +1,6 @@
 {
   "name": "ngx-json-schema-form",
-  "version": "0.1.1",
+  "version": "0.1.0-development",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
@@ -16,7 +16,8 @@
     "package": "npm run build && npm run copy-files && npm run npm_pack",
     "preversion": "npm run lint && npm run test-ci",
     "version": "npm run build && git add -A dist",
-    "postversion": "git push && git push --tags && rm -rf build/temp"
+    "postversion": "git push && git push --tags && rm -rf build/temp",
+    "semantic-release": "semantic-release"
   },
   "private": false,
   "dependencies": {
@@ -28,12 +29,13 @@
     "@angular/platform-browser": "~7.2.0",
     "@angular/platform-browser-dynamic": "~7.2.0",
     "@angular/router": "~7.2.0",
+    "@types/json-schema": "^7.0.3",
     "ajv": "^6.10.0",
     "core-js": "^2.5.4",
     "lodash": "^4.17.11",
-    "rxjs": "~6.4.0",
+    "rxjs": "~6.5.2",
     "tslib": "^1.9.0",
-    "zone.js": "~0.8.26"
+    "zone.js": "~0.9.1"
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "~0.12.0",
@@ -44,7 +46,7 @@
     "@types/jasmine": "~3.3.12",
     "@types/jasminewd2": "~2.0.6",
     "@types/node": "~8.9.4",
-    "codelyzer": "~5.0.1",
+    "codelyzer": "~5.1.0",
     "jasmine-core": "~3.4.0",
     "jasmine-spec-reporter": "~4.2.1",
     "karma": "~4.1.0",
@@ -57,11 +59,19 @@
     "ng-packagr": "^4.2.0",
     "protractor": "~5.4.2",
     "protractor-console-plugin": "^0.1.1",
-    "ts-node": "~8.1.0",
+    "semantic-release": "^15.13.12",
+    "ts-node": "~8.2.0",
     "tsickle": ">=0.34.0",
     "tslib": "^1.9.0",
-    "tslint": "~5.16.0",
+    "tslint": "~5.17.0",
     "tslint-plugin-jasmine": "^1.0.3",
     "typescript": "~3.2.2"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jscharett/ngx-json-schema-form.git"
+  },
+  "release": {
+    "pkgRoot": "dist/ngx-json-schema-form"
   }
 }

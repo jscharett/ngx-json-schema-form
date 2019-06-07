@@ -8,20 +8,28 @@ sudo: required
 branches:
   only:
   - master
+  - development
 
 addons:
   chrome: stable
   firefox: latest
 
+before_install:
+  - pip install --user codecov
+
 before_script:
   - npm install -g @angular/cli
 
 script:
-  - ng lint
+  - npm run lint
   - npm run test-ci
-  - ng build
-
-before_install:
-  - pip install --user codecov
+  - npm run build
 after_success:
   - codecov
+deploy:
+  provider: script
+  skip_cleanup: true
+  script:
+    - npx semantic-release
+  on:
+    branch: master

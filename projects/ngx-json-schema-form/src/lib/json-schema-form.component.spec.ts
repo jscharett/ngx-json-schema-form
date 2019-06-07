@@ -1,6 +1,8 @@
 import { SimpleChange } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
+import { JSONSchema7 } from 'json-schema';
+
 import basicJSONSchema from '../assests/example-schemas/jsf-schema-basic.json';
 
 import { JsonSchemaFormService, LayoutService, SchemaService } from '.';
@@ -54,7 +56,7 @@ describe('JsonSchemaFormComponent', () => {
     });
 
     it('should have schema set', () => {
-        component.schema = basicJSONSchema;
+        component.schema = basicJSONSchema as JSONSchema7;
         component[`ngOnChanges`]({schema: new SimpleChange(undefined, basicJSONSchema, true)});
         fixture.detectChanges();
 
