@@ -17,22 +17,19 @@ addons:
 before_install:
   - pip install --user codecov
 
-jobs:
-  include:
-    - stage: build
-      script:
-        - npm run lint
-        - npm run test-ci
-        - npm run build
-      before_script:
-        - npm install -g @angular/cli
-      after_success:
-        - codecov
-    - stage: release
-      deploy:
-        provider: script
-        skip_cleanup: true
-        script:
-          - npx semantic-release
-        on:
-          branch: master
+before_script:
+  - npm install -g @angular/cli
+
+script:
+  - npm run lint
+  - npm run test-ci
+  - npm run build
+after_success:
+  - codecov
+deploy:
+  provider: script
+  skip_cleanup: true
+  script:
+    - npx semantic-release
+  on:
+    branch: master
