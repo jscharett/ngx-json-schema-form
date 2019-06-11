@@ -1,4 +1,4 @@
-import { SimpleChange } from '@angular/core';
+import { NO_ERRORS_SCHEMA, SimpleChange } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { JSONSchema7 } from 'json-schema';
@@ -22,7 +22,8 @@ describe('JsonSchemaFormComponent', () => {
         const schemaService: SchemaService = <any>{};
 
         return TestBed.configureTestingModule({
-            declarations: [ JsonSchemaFormComponent ]
+            declarations: [ JsonSchemaFormComponent ],
+            schemas: [ NO_ERRORS_SCHEMA ]
         }).overrideComponent(JsonSchemaFormComponent, {
             set: {
                 providers: [

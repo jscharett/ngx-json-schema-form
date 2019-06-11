@@ -18,9 +18,7 @@ import { SchemaService } from './schema.service';
     ],
     selector: 'jsf-json-schema-form',
     styles: [],
-    template: `
-        <form></form>
-    `
+    templateUrl: './json-schema-form.component.html'
 })
 export class JsonSchemaFormComponent implements OnChanges, OnInit {
     @Input() schema: JSONSchema7;
@@ -31,7 +29,7 @@ export class JsonSchemaFormComponent implements OnChanges, OnInit {
     constructor(
         // private readonly jsf: JsonSchemaFormService,
         private readonly schemaService: SchemaService,
-        private readonly layoutService: LayoutService
+        readonly layoutService: LayoutService
     ) {}
 
     ngOnInit() {
@@ -43,6 +41,15 @@ export class JsonSchemaFormComponent implements OnChanges, OnInit {
             this.formInitialized = false;
         }
         this.updateForm();
+    }
+
+    submitForm(): void {
+        // TODO
+        console.warn(this);
+    }
+
+    trackByFn(index) {
+        return index;
     }
 
     private updateForm(): void {
