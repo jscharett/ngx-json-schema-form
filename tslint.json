@@ -202,7 +202,7 @@
     ],
     "one-variable-per-declaration": [true, "ignore-for-loop"],
     "ordered-imports": true,
-    "prefer-function-over-method": true,
+    "prefer-function-over-method": [true, "allow-public"],
     "prefer-method-signature": true,
     "prefer-switch": [true, {"min-cases": 2}],
     "prefer-template": true,

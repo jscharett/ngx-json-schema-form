@@ -1,16 +1,33 @@
+import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
+import { FormsModule } from '@angular/forms';
+import {
+    MatButtonModule, MatCardModule, MatCheckboxModule, MatIconModule,
+    MatMenuModule, MatSelectModule, MatToolbarModule
+} from '@angular/material';
 import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { RouterModule } from '@angular/router';
+
+import { JsonSchemaFormModule } from '../../../ngx-json-schema-form/src/public-api';
 
 import { AppComponent } from './app.component';
+import { routes } from './app.routes';
+import { RootComponent } from './root.component';
 
 @NgModule({
-  bootstrap: [AppComponent],
-  declarations: [
-    AppComponent
-  ],
-  imports: [
-    BrowserModule
-  ],
-  providers: []
+    bootstrap: [ RootComponent ],
+    declarations: [
+        AppComponent,
+        RootComponent
+    ],
+    imports: [
+        BrowserModule, BrowserAnimationsModule, FormsModule, HttpClientModule,
+        MatButtonModule, MatCardModule, MatCheckboxModule,
+        MatIconModule, MatMenuModule, MatSelectModule, MatToolbarModule,
+        RouterModule.forRoot(routes),
+
+        JsonSchemaFormModule
+    ]
 })
 export class AppModule { }
