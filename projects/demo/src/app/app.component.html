@@ -125,7 +125,7 @@
             {{ visible.schema ? '▼' : '▶' }} Input JSON Schema and Form Layout
         </h4>
         <div *ngIf="visible.schema" [@expandSection]="true"
-            ace-editor
+            appAceEditor
             [text]="jsonFormSchema"
             [options]="aceEditorOptions"
             [readOnly]="false"
@@ -141,9 +141,9 @@
         </h4>
         <div *ngIf="visible.form" class="json-schema-form" [@expandSection]="true">
             <div *ngIf="!formActive">{{ jsonFormStatusMessage }}</div>
-            <json-schema-form
-                *ngIf="formActive"
-                loadExternalAssets="true"
+            <jsf-json-schema-form
+                *ngIf="formActive" ></jsf-json-schema-form>
+                <!-- loadExternalAssets="true"
                 [form]="jsonFormObject"
                 [options]="jsonFormOptions"
                 [framework]="selectedFramework"
@@ -151,7 +151,7 @@
                 (onChanges)="onChanges($event)"
                 (onSubmit)="onSubmit($event)"
                 (isValid)="isValid($event)"
-                (validationErrors)="validationErrors($event)"></json-schema-form>
+                (validationErrors)="validationErrors($event)" -->
         </div>
         <!-- <hr>
         <h4 class="default-cursor" (click)="toggleVisible('output')">
