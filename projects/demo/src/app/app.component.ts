@@ -29,7 +29,7 @@ const sets = {
     templateUrl: './app.component.html'
 })
 export class AppComponent implements OnInit {
-    examples: any;
+    examples: any = {ngx: {}};
     // languageList: any = ['en', 'fr'];
     // languages: any = {
     //     'en': 'English',
@@ -87,6 +87,9 @@ export class AppComponent implements OnInit {
     ) { }
 
     ngOnInit() {
+        this.selectedSet = 'ngx';
+        this.selectedExample = 'simple-array';
+        this.selectedExampleName = 'Simple Array';
         this.route.queryParams.subscribe((params: Params) => {
             if (params.set) {
                 this.selectedSet = params.set;
@@ -94,8 +97,8 @@ export class AppComponent implements OnInit {
             }
             if (params.example) {
                 this.selectedExample = params.example;
-                this.selectedExampleName = this.examples[this.selectedSet].schemas
-                    .find((schema: any) => schema.file === this.selectedExample).name;
+                this.selectedExampleName = this.examples[this.selectedSet].data
+                    .find((data: any) => data.file === this.selectedExample).name;
             }
             // if (params['framework']) {
             //     this.selectedFramework = params['framework'];
@@ -164,10 +167,10 @@ export class AppComponent implements OnInit {
         if (this.menuTrigger.menuOpen) { this.menuTrigger.closeMenu(); }
         if (selectedExample !== this.selectedExample) {
             this.formActive = false;
-            // this.selectedSet = selectedSet;
-            // this.selectedSetName = selectedSetName;
-            // this.selectedExample = selectedExample;
-            // this.selectedExampleName = selectedExampleName;
+            this.selectedSet = selectedSet;
+            this.selectedSetName = selectedSetName;
+            this.selectedExample = selectedExample;
+            this.selectedExampleName = selectedExampleName;
             this.router.navigateByUrl(`/\
                 ?set=${selectedSet}\
                 &example=${selectedExample}\

@@ -26,7 +26,7 @@
         </button>
         <mat-menu #exampleMenu="matMenu" class="example-menu">
             <button mat-menu-item class="mat-medium"
-                *ngFor="let example of examples['ngx'].data; trackBy: trackByFn"
+                *ngFor="let example of examples.ngx.data; trackBy: trackByFn"
                 (click)="loadSelectedExample('ngx', '', example.file, example.name)">
                 {{ example.name }}
             </button>
