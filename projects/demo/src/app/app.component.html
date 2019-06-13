@@ -25,11 +25,28 @@
             <mat-icon>menu</mat-icon> {{ selectedSetName }} {{ selectedExampleName }}
         </button>
         <mat-menu #exampleMenu="matMenu" class="example-menu">
-            <button mat-menu-item class="mat-medium"
-                *ngFor="let example of examples.ngx.data; trackBy: trackByFn"
-                (click)="loadSelectedExample('ngx', '', example.file, example.name)">
-                {{ example.name }}
-            </button>
+            <ng-container *ngFor="let group of examplesObservable | async; trackBy: trackByFn">
+                <ng-container *ngIf="group.set === 'ngx'; then flat; else nested"></ng-container>
+                <ng-template #flat>
+                    <button mat-menu-item class="mat-medium"
+                        *ngFor="let example of group.examples; trackBy: trackByFn"
+                        (click)="loadSelectedExample(group.set, '', example.file, example.name)">
+                        {{ example.name }}
+                    </button>
+                </ng-template>
+                <ng-template #nested>
+                    <button mat-menu-item class="mat-medium" [matMenuTriggerFor]="sub_menu">
+                        <span>{{ group.name }}</span>
+                    </button>
+                    <mat-menu #sub_menu="matMenu" class="example-menu">
+                        <button mat-menu-item class="mat-medium"
+                            *ngFor="let example of group.examples; trackBy: trackByFn"
+                            (click)="loadSelectedExample(group.set, group.label, example.file, example.name)">
+                            {{ example.name }}
+                        </button>
+                    </mat-menu>
+                </ng-template>
+            </ng-container>
             <!-- <button mat-menu-item class="mat-medium" [matMenuTriggerFor]="asfMenu">
                 <span>Angular Schema Form (AngularJS) examples</span>
             </button>

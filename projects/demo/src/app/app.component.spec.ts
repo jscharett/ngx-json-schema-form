@@ -1,4 +1,3 @@
-import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { NO_ERRORS_SCHEMA } from '@angular/core';
 import { TestBed } from '@angular/core/testing';
 import { MatMenuModule } from '@angular/material';
@@ -12,7 +11,7 @@ describe('AppComponent', () => {
             declarations: [
                 AppComponent
             ],
-            imports: [ MatMenuModule, HttpClientTestingModule, RouterTestingModule ],
+            imports: [ MatMenuModule, RouterTestingModule ],
             schemas: [ NO_ERRORS_SCHEMA]
         }).compileComponents();
     });

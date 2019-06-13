@@ -1,8 +1,11 @@
 import { animate, state, style, transition, trigger } from '@angular/animations';
-import { HttpClient } from '@angular/common/http';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatMenuTrigger } from '@angular/material';
 import { ActivatedRoute, Params, Router } from '@angular/router';
+
+import { Observable } from 'rxjs';
+
+import { JsonLoaderService } from './json-loader.service';
 
 const sets = {
     // asf: 'Angular Schema Form:',
@@ -29,7 +32,7 @@ const sets = {
     templateUrl: './app.component.html'
 })
 export class AppComponent implements OnInit {
-    examples: any = {ngx: {}};
+    // examples: any = {ngx: {}};
     // languageList: any = ['en', 'fr'];
     // languages: any = {
     //     'en': 'English',
@@ -80,13 +83,16 @@ export class AppComponent implements OnInit {
     };
     @ViewChild(MatMenuTrigger) menuTrigger: MatMenuTrigger;
 
+    private examplesObservable: Observable<Array<any>>;
+
     constructor(
-        private readonly http: HttpClient,
         private readonly route: ActivatedRoute,
-        private readonly router: Router
+        private readonly router: Router,
+        private readonly jsonLoader: JsonLoaderService
     ) { }
 
     ngOnInit() {
+        this.examplesObservable = this.jsonLoader.examples;
         this.selectedSet = 'ngx';
         this.selectedExample = 'simple-array';
         this.selectedExampleName = 'Simple Array';
@@ -97,8 +103,11 @@ export class AppComponent implements OnInit {
             }
             if (params.example) {
                 this.selectedExample = params.example;
-                this.selectedExampleName = this.examples[this.selectedSet].data
-                    .find((data: any) => data.file === this.selectedExample).name;
+                this.jsonLoader.examples.subscribe((examples: Array<any>) => {
+                    this.selectedExampleName = examples
+                        .find((data: any) => data.set === [this.selectedSet])
+                        .find((data: any) => data.file === this.selectedExample).name;
+                });
             }
             // if (params['framework']) {
             //     this.selectedFramework = params['framework'];
@@ -164,7 +173,7 @@ export class AppComponent implements OnInit {
         selectedExample: string = this.selectedExample,
         selectedExampleName: string = this.selectedExampleName
     ) {
-        if (this.menuTrigger.menuOpen) { this.menuTrigger.closeMenu(); }
+        if (this.menuTrigger && this.menuTrigger.menuOpen) { this.menuTrigger.closeMenu(); }
         if (selectedExample !== this.selectedExample) {
             this.formActive = false;
             this.selectedSet = selectedSet;
@@ -184,9 +193,7 @@ export class AppComponent implements OnInit {
             // this.formIsValid = null;
             // this.formValidationErrors = null;
         } else {
-            const exampleURL = `assets/examples/${this.selectedSet}/${this.selectedExample}.json`;
-            this.http
-                .get(exampleURL, { responseType: 'text' })
+            this.jsonLoader.getExample(this.selectedSet, this.selectedExample)
                 .subscribe((schema: string) => {
                     this.jsonFormSchema = schema;
                     this.generateForm(this.jsonFormSchema);
