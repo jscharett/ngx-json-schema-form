@@ -1,5 +1,6 @@
 import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
+import { FlexLayoutModule } from '@angular/flex-layout';
 import { FormsModule } from '@angular/forms';
 import {
     MatButtonModule, MatCardModule, MatCheckboxModule, MatIconModule,
@@ -24,7 +25,7 @@ import { RootComponent } from './root.component';
         RootComponent
     ],
     imports: [
-        BrowserModule, BrowserAnimationsModule, FormsModule, HttpClientModule,
+        BrowserModule, BrowserAnimationsModule, FormsModule, HttpClientModule, FlexLayoutModule,
         MatButtonModule, MatCardModule, MatCheckboxModule,
         MatIconModule, MatMenuModule, MatSelectModule, MatToolbarModule,
         RouterModule.forRoot(routes),
