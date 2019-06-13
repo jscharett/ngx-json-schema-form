@@ -83,7 +83,7 @@ export class AppComponent implements OnInit {
     };
     @ViewChild(MatMenuTrigger) menuTrigger: MatMenuTrigger;
 
-    private examplesObservable: Observable<Array<any>>;
+    public examplesObservable: Observable<Array<any>>;
 
     constructor(
         private readonly route: ActivatedRoute,
