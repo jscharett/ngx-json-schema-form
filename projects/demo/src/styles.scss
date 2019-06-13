@@ -60,8 +60,6 @@ body {
 
 .data-bad { background-color: #fcc; }
 
-.default-cursor:hover { cursor: default; }
-
 .check-row { margin-top: 8px; }
 
 .cdk-overlay-container .cdk-overlay-pane .mat-menu-panel { max-width: 560px; }
@@ -69,3 +67,10 @@ body {
 .debug { border: 1px solid red !important; }
 
 .mat-input-container.mat-form-field { width: 100%; }
+
+details {
+    summary {
+        font-weight: bold;
+        margin: 1.33em 0;
+    }
+}

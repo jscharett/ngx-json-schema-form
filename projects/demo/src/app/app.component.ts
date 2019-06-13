@@ -51,12 +51,6 @@ export class AppComponent implements OnInit {
     selectedExampleName = '';
     // selectedFramework = 'material-design';
     // selectedLanguage = 'en';
-    visible: { [item: string]: boolean } = {
-        form: true,
-        // options: true,
-        // output: true,
-        schema: true
-    };
 
     formActive = false;
     jsonFormSchema: string;
@@ -248,10 +242,6 @@ export class AppComponent implements OnInit {
         //     }
         // }
         this.formActive = true;
-    }
-
-    toggleVisible(item: string) {
-        this.visible[item] = !this.visible[item];
     }
 
     // toggleFormOption(option: string) {
