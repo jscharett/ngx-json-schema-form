@@ -80,9 +80,12 @@
         </mat-menu>
     </div>
 </div>
-<div fxLayout="row" fxLayoutAlign="space-around start"
-    fxLayout.lt-sm="column" fxLayoutAlign.lt-sm="flex-start center">
-    <mat-card fxFlex="0 0 calc(50% - 12px)">
+<div fxLayout="row"
+    fxLayoutAlign="space-around start"
+    fxLayout.lt-sm="column"
+    fxLayoutAlign.lt-sm="flex-start center">
+    <div fxFlex="0 0 calc(50% - 12px)">
+        <mat-card>
         <!-- <h4 class="default-cursor" (click)="toggleVisible('options')">
             {{visible.options ? '▼' : '▶'}} Selected Framework and Options
         </h4>
@@ -136,44 +139,49 @@
                 </mat-checkbox>
                 (default = false)
             </div>
-        </div> -->
+        </div>
+        <hr> -->
+            <details open>
+                <summary>Input JSON Schema and Form Layout</summary>
+                <ace-editor
+                    [mode]="'json'"
+                    [autoUpdateContent]="true"
+                    [options]="aceEditorOptions"
+                    [readOnly]="false"
+                    [text]="jsonFormSchema"
+                    (textChanged)="generateForm($event)">
+                    (loading form specification...)
+                </ace-editor>
+            </details>
+        </mat-card>
+    </div>
+    <div fxFlex="0 0 calc(50% - 12px)">
+        <mat-card>
+            <details open>
+                <summary>Generated Form</summary>
+                <div class="json-schema-form">
+                    <ng-container *ngIf="formActive; then showForm; else showMessage"></ng-container>
+                    <ng-template #showForm>
+                        <jsf-json-schema-form></jsf-json-schema-form>
+                            <!-- loadExternalAssets="true"
+                            [form]="jsonFormObject"
+                            [options]="jsonFormOptions"
+                            [framework]="selectedFramework"
+                            [language]="selectedLanguage"
+                            (onChanges)="onChanges($event)"
+                            (onSubmit)="onSubmit($event)"
+                            (isValid)="isValid($event)"
+                            (validationErrors)="validationErrors($event)" -->
+                    </ng-template>
+                    <ng-template #showMessage>
+                        <div>{{ jsonFormStatusMessage }}</div>
+                    </ng-template>
+                </div>
+            </details>
+        </mat-card>
+        <!--<br>
+        <mat-card>
         <hr>
-        <details open>
-            <summary>Input JSON Schema and Form Layout</summary>
-            <ace-editor
-                [mode]="'json'"
-                [autoUpdateContent]="true"
-                [options]="aceEditorOptions"
-                [readOnly]="false"
-                [text]="jsonFormSchema"
-                (textChanged)="generateForm($event)">
-                (loading form specification...)
-            </ace-editor>
-        </details>
-    </mat-card>
-    <mat-card fxFlex="0 0 calc(50% - 12px)">
-        <details open>
-            <summary>Generated Form</summary>
-            <div class="json-schema-form">
-                <ng-container *ngIf="formActive; then showForm; else showMessage"></ng-container>
-                <ng-template #showForm>
-                    <jsf-json-schema-form></jsf-json-schema-form>
-                        <!-- loadExternalAssets="true"
-                        [form]="jsonFormObject"
-                        [options]="jsonFormOptions"
-                        [framework]="selectedFramework"
-                        [language]="selectedLanguage"
-                        (onChanges)="onChanges($event)"
-                        (onSubmit)="onSubmit($event)"
-                        (isValid)="isValid($event)"
-                        (validationErrors)="validationErrors($event)" -->
-                </ng-template>
-                <ng-template #showMessage>
-                    <div>{{ jsonFormStatusMessage }}</div>
-                </ng-template>
-            </div>
-        </details>
-        <!-- <hr>
         <h4 class="default-cursor" (click)="toggleVisible('output')">
             {{visible.output ? '▼' : '▶'}} Form Output
         </h4>
@@ -201,6 +209,7 @@
                 Submitted data — from onSubmit():
                 <pre [class.data-good]="prettySubmittedFormData !== 'null'">{{prettySubmittedFormData}}</pre>
             </div>
-        </div> -->
-    </mat-card>
+        </div>
+        </mat-card> -->
+    </div>
 </div>
