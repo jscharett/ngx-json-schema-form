@@ -46,13 +46,11 @@ body {
 
 .ace_active-line { background: none !important; }
 
-[aappAceEditor], .data-good, .data-bad {
+.data-good, .data-bad {
   border-radius: 3px;
   padding: 6px;
   border: 1px solid #ccc !important;
 }
-
-[appAceEditor] { background-color: rgb(253, 253, 253) !important; }
 
 .avoidwrap { display:inline-block; }
 
