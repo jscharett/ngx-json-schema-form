@@ -3,15 +3,29 @@ import { TestBed } from '@angular/core/testing';
 import { MatMenuModule } from '@angular/material';
 import { RouterTestingModule } from '@angular/router/testing';
 
+import { cold } from 'jasmine-marbles';
+
 import { AppComponent } from './app.component';
+import { JsonLoaderService } from './json-loader.service';
 
 describe('AppComponent', () => {
     beforeEach(async () => {
+        const jsl: JsonLoaderService = jasmine.createSpyObj('JsonLoaderService', {
+            getExample: cold('-')
+        });
+        Object.defineProperty(jsl, 'examples', {
+            get: () => cold('-')
+        });
+
         return TestBed.configureTestingModule({
             declarations: [
                 AppComponent
             ],
             imports: [ MatMenuModule, RouterTestingModule ],
+            providers: [{
+                provide: JsonLoaderService,
+                useValue: jsl
+            }],
             schemas: [ NO_ERRORS_SCHEMA]
         }).compileComponents();
     });
