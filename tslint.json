@@ -136,7 +136,7 @@
       "spaces",
       4
     ],
-    "linebreak-style": [true, "LF"],
+    "linebreak-style": [false, "LF"],
     "max-classes-per-file": [true, 1],
     "max-file-line-count": [true, 400],
     "max-line-length": [
