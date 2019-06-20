@@ -140,16 +140,15 @@
         <hr>
         <details open>
             <summary>Input JSON Schema and Form Layout</summary>
-            <div
-                appAceEditor
-                [text]="jsonFormSchema"
+            <ace-editor
+                [mode]="'json'"
+                [autoUpdateContent]="true"
                 [options]="aceEditorOptions"
                 [readOnly]="false"
-                [autoUpdateContent]="true"
-                (textChanged)="generateForm($event)"
-                style="width:100%; overflow: auto; border: 1px solid black;">
+                [text]="jsonFormSchema"
+                (textChanged)="generateForm($event)">
                 (loading form specification...)
-            </div>
+            </ace-editor>
         </details>
     </mat-card>
     <mat-card fxFlex="0 0 calc(50% - 12px)">

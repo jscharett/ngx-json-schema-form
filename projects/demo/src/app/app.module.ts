@@ -10,9 +10,10 @@ import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RouterModule } from '@angular/router';
 
+import { AceEditorModule } from 'ng2-ace-editor';
+
 import { JsonSchemaFormModule } from '../../../ngx-json-schema-form/src/public-api';
 
-import { AceEditorDirective } from './ace-editor.directive';
 import { AppComponent } from './app.component';
 import { routes } from './app.routes';
 import { RootComponent } from './root.component';
@@ -20,7 +21,6 @@ import { RootComponent } from './root.component';
 @NgModule({
     bootstrap: [ RootComponent ],
     declarations: [
-        AceEditorDirective,
         AppComponent,
         RootComponent
     ],
@@ -29,6 +29,8 @@ import { RootComponent } from './root.component';
         MatButtonModule, MatCardModule, MatCheckboxModule,
         MatIconModule, MatMenuModule, MatSelectModule, MatToolbarModule,
         RouterModule.forRoot(routes),
+
+        AceEditorModule,
 
         JsonSchemaFormModule
     ]
