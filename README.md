@@ -15,6 +15,13 @@ A [JSON Schema](http://json-schema.org) Form builder for Angular 7+, similar to
 Note: This project attemtps to take over where its predecesor left off.
 It's based off of the above project, but rewritten from the ground up.
 
+Note: This project is not ready for consumption.  There is still a lot to do to
+bring parity with [Angular JSON Schema Form](https://github.com/angular2-json-schema-form)
+
+## Check out the live demo and play with the examples
+
+[Check out some examples here.](https://jscharett.github.io/ngx-json-schema-form/)
+
 ### To install from NPM
 
 ```shell
