@@ -4,9 +4,15 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
-    "build": "ng build",
+    "build": "npm run build:lib && npm run build:demo",
+    "build:lib": "ng build ngx-json-schema-form",
+    "build:demo": "ng build demo --prod --base-href=https://jscharett.github.io/ngx-json-schema-form/",
     "test": "ng test",
-    "test-ci": "ng test --code-coverage --watch=false",
+    "test:lib": "ng test ngx-json-schema",
+    "test:lib-ci": "ng test ngx-json-schema-form --code-coverage --watch=false",
+    "test:demo": "ng test demo",
+    "test:demo-ci": "ng test demo --code-coverage --watch=false",
+    "test-ci": "npm run test:lib-ci && npm run test:demo-ci",
     "lint": "ng lint",
     "e2e": "ng e2e",
     "copy-license": "copy .\\LICENSE .\\dist\\ngx-json-schema-form",
@@ -17,7 +23,8 @@
     "preversion": "npm run lint && npm run test-ci",
     "version": "npm run build && git add -A dist",
     "postversion": "git push && git push --tags && rm -rf build/temp",
-    "semantic-release": "semantic-release"
+    "semantic-release": "semantic-release",
+    "publish:demo": "npx angular-cli-ghpages --dir=./dist/demo"
   },
   "private": false,
   "dependencies": {
