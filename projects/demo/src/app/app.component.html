@@ -148,7 +148,7 @@
                     [autoUpdateContent]="true"
                     [options]="aceEditorOptions"
                     [readOnly]="false"
-                    [text]="jsonFormSchema"
+                    [text]="example"
                     (textChanged)="generateForm($event)">
                     (loading form specification...)
                 </ace-editor>
@@ -162,7 +162,9 @@
                 <div class="json-schema-form">
                     <ng-container *ngIf="formActive; then showForm; else showMessage"></ng-container>
                     <ng-template #showForm>
-                        <jsf-json-schema-form></jsf-json-schema-form>
+                        <jsf-json-schema-form
+                            [schema]="jsonFormSchema"
+                        ></jsf-json-schema-form>
                             <!-- loadExternalAssets="true"
                             [form]="jsonFormObject"
                             [options]="jsonFormOptions"

@@ -47,6 +47,7 @@ export class AppComponent implements OnInit {
     //     'bootstrap-4': 'Bootstrap 4',
     //     'no-framework': 'None (plain HTML)',
     // };
+    example: string;
     selectedSet = '';
     selectedSetName = '';
     selectedExample = '';
@@ -207,6 +208,7 @@ export class AppComponent implements OnInit {
     // (runs whenever the user changes the jsonform object in the ACE input field)
     generateForm(newFormString: string): void {
         if (!newFormString) { return; }
+        this.example = newFormString;
         this.jsonFormStatusMessage = 'Loading form...';
         this.formActive = false;
         // this.liveFormData = {};
