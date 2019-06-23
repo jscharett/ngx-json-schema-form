@@ -5,6 +5,8 @@ import { ActivatedRoute, Params, Router } from '@angular/router';
 
 import { Observable } from 'rxjs';
 
+import { JSONSchema7 } from 'json-schema';
+
 import { JsonLoaderService } from './json-loader.service';
 
 const sets = {
@@ -53,10 +55,10 @@ export class AppComponent implements OnInit {
     // selectedLanguage = 'en';
 
     formActive = false;
-    jsonFormSchema: string;
     jsonFormValid = false;
+    jsonFormSchema: JSONSchema7;
     jsonFormStatusMessage = 'Loading form...';
-    jsonFormObject: any;
+    // jsonFormObject: any;
     // jsonFormOptions: any = {
     //     addSubmit: true, // Add a submit button if layout does not have one
     //     debug: false, // Don't show inline debugging information
@@ -161,12 +163,12 @@ export class AppComponent implements OnInit {
     //     return errorArray.join('<br>');
     // }
 
-  loadSelectedExample(
+    loadSelectedExample(
         selectedSet: string = this.selectedSet,
         selectedSetName: string = this.selectedSetName,
         selectedExample: string = this.selectedExample,
         selectedExampleName: string = this.selectedExampleName
-    ) {
+    ): void {
         if (this.menuTrigger && this.menuTrigger.menuOpen) { this.menuTrigger.closeMenu(); }
         if (selectedExample !== this.selectedExample) {
             this.formActive = false;
@@ -174,10 +176,9 @@ export class AppComponent implements OnInit {
             this.selectedSetName = selectedSetName;
             this.selectedExample = selectedExample;
             this.selectedExampleName = selectedExampleName;
-            this.router.navigateByUrl(`/\
-                ?set=${selectedSet}\
-                &example=${selectedExample}\
-            `).catch((reason) => {
+            // https://github.com/declandewet/common-tags#stripindent
+            this.router.navigateByUrl(`/?set=${selectedSet}&example=${selectedExample}`)
+            .catch((reason) => {
                 console.warn(reason);
             });
                 // &framework=${this.selectedFramework}\
@@ -188,9 +189,8 @@ export class AppComponent implements OnInit {
             // this.formValidationErrors = null;
         } else {
             this.jsonLoader.getExample(this.selectedSet, this.selectedExample)
-                .subscribe((schema: string) => {
-                    this.jsonFormSchema = schema;
-                    this.generateForm(this.jsonFormSchema);
+                .subscribe((example: string) => {
+                    this.generateForm(example);
                 });
         }
     }
@@ -205,7 +205,7 @@ export class AppComponent implements OnInit {
 
     // Display the form entered by the user
     // (runs whenever the user changes the jsonform object in the ACE input field)
-    generateForm(newFormString: string) {
+    generateForm(newFormString: string): void {
         if (!newFormString) { return; }
         this.jsonFormStatusMessage = 'Loading form...';
         this.formActive = false;
@@ -215,11 +215,13 @@ export class AppComponent implements OnInit {
         // Most examples should be written in pure JSON,
         // but if an example schema includes a function,
         // it will be compiled it as Javascript instead
-        // try {
-        // // Parse entered content as JSON
-        // this.jsonFormObject = JSON.parse(newFormString);
-        // this.jsonFormValid = true;
-        // } catch (jsonError) {
+        try {
+            // Parse entered content as JSON
+            const jsonFormObject = JSON.parse(newFormString);
+            this.jsonFormSchema = jsonFormObject.schema;
+            this.jsonFormValid = true;
+            this.formActive = true;
+        } catch (jsonError) {
         //     try {
 
         //         // If entered content is not valid JSON,
@@ -234,14 +236,15 @@ export class AppComponent implements OnInit {
 
         //         // If entered content is not valid JSON or JavaScript, show error
         //         this.jsonFormValid = false;
-        //         this.jsonFormStatusMessage =
-        //         'Entered content is not currently a valid JSON Form object.\n' +
-        //         'As soon as it is, you will see your form here. So keep typing. :-)\n\n' +
-        //         'JavaScript parser returned:\n\n' + jsonError;
+            this.jsonFormStatusMessage = `Entered content is not currently a valid JSON Form object.
+                As soon as it is, you will see your form here. So keep typing. :-)
+
+                JavaScript parser returned:
+
+                ${jsonError}`;
         //         return;
         //     }
-        // }
-        this.formActive = true;
+        }
     }
 
     // toggleFormOption(option: string) {
