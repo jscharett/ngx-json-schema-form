@@ -82,6 +82,6 @@ describe('AppComponent', () => {
         router.initialNavigation();
         app.loadSelectedExample('ngx', 'b', 'c', 'd');
         tick();
-        expect(location.path()).toBe('/?set=a&example=c');
+        expect(location.path()).toBe('/?set=ngx&example=c');
     }));
 });
