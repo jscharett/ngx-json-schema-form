@@ -31,5 +31,6 @@ deploy:
   skip_cleanup: true
   script:
     - npx semantic-release
+    - npm run publish:demo
   on:
     branch: master
