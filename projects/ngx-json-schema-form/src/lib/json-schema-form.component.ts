@@ -65,7 +65,7 @@ export class JsonSchemaFormComponent implements OnChanges, OnInit {
     }
 
     private initializeLayout(): void {
-        this.layoutService.layout = cloneDeep(this.layout);
+        this.layoutService.layout = cloneDeep(this.layout || []);
     }
 
     private initializeSchema(): void {

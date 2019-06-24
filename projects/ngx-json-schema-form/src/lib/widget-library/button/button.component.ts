@@ -6,7 +6,7 @@ import { Widget } from '../widget';
 
 @Component({
     selector: 'jsf-button',
-    styleUrls: ['./button.component.css'],
+    styleUrls: ['./button.component.scss'],
     templateUrl: './button.component.html'
 })
 export class ButtonComponent extends Widget {

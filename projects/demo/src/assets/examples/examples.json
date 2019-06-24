@@ -1,0 +1,13 @@
+[
+    {
+        "set": "ngx",
+        "label": "NGX Angular JSON Schema Form:",
+        "name": "NGX Angular JSON Schema Form examples",
+        "examples": [
+            {
+                "name": "Simple Array",
+                "file": "simple-array"
+            }
+        ]
+    }
+]

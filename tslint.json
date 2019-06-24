@@ -25,7 +25,7 @@
     ],
     "no-any": false,
     "no-empty-interface": true,
-    "no-import-side-effect": [true, {"ignore-module": "(\\.html|\\.css)$|^(zone.js|core.js)"}],
+    "no-import-side-effect": [true, {"ignore-module": "(\\.html|\\.css)$|^(zone.js|core.js|brace)"}],
     "no-inferrable-types": true,
     "no-internal-module": true,
     "no-magic-numbers": true,
@@ -136,7 +136,7 @@
       "spaces",
       4
     ],
-    "linebreak-style": [true, "LF"],
+    "linebreak-style": [false, "LF"],
     "max-classes-per-file": [true, 1],
     "max-file-line-count": [true, 400],
     "max-line-length": [
