@@ -1,7 +1,7 @@
 import { NO_ERRORS_SCHEMA } from '@angular/core';
 import { ComponentFixture, inject, TestBed } from '@angular/core/testing';
 
-import { JsonSchemaFormService } from '../..';
+import { JsonSchemaFormService } from '../../..';
 
 import { ButtonComponent } from './button.component';
 
