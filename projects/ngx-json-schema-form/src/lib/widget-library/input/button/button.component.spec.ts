@@ -32,7 +32,7 @@ describe('ButtonComponent', () => {
     beforeEach(() => {
         fixture = TestBed.createComponent(ButtonComponent);
         component = fixture.componentInstance;
-        component.layoutNode = {};
+        component.layoutNode = {id: '0', options: {}};
         fixture.detectChanges();
     });
 
