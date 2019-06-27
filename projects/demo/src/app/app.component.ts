@@ -58,6 +58,7 @@ export class AppComponent implements OnInit {
     formActive = false;
     jsonFormValid = false;
     jsonFormSchema: JSONSchema7;
+    jsonFormLayout: Array<any>;
     jsonFormStatusMessage = 'Loading form...';
     // jsonFormObject: any;
     // jsonFormOptions: any = {
@@ -221,6 +222,7 @@ export class AppComponent implements OnInit {
             // Parse entered content as JSON
             const jsonFormObject = JSON.parse(newFormString);
             this.jsonFormSchema = jsonFormObject.schema;
+            this.jsonFormLayout = jsonFormObject.layout;
             this.jsonFormValid = true;
             this.formActive = true;
         } catch (jsonError) {
