@@ -2,6 +2,6 @@
     "disableLifeCycleHooks": true,
     "tsconfig": "./projects/ngx-json-schema-form/tsconfig.lib.json",
     "name": "NGX JSOLN Schema Form",
-    "output": "dist/docs",
+    "output": "dist/demo/documentation",
     "theme": "material"
 }
