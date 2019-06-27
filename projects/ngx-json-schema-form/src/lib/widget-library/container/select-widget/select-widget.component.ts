@@ -5,6 +5,10 @@ import {
 
 import { LayoutItem } from '../../../layout-item.data';
 
+/**
+ * SelectWidgetComponent
+ * Dynamically creates a component based on a layout node.
+ */
 @Component({
     selector: 'jsf-select-widget',
     styleUrls: ['./select-widget.component.css'],
