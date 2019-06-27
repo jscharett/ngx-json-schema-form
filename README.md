@@ -24,6 +24,6 @@ bring parity with [Angular JSON Schema Form](https://github.com/angular2-json-sc
 
 ### To install from NPM
 
-```shell
+```
 npm install ngx-json-schema-form
 ```
