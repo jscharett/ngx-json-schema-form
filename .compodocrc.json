@@ -1,5 +1,5 @@
 {
-    "disableCoverage": true,
+    "disableCoverage": false,
     "disableLifeCycleHooks": true,
     "disablePrivate": true,
     "hideGenerator": true,
