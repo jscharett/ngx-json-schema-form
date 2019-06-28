@@ -8,7 +8,7 @@ export interface LayoutItem {
     // dataType?;
     items?: Array<any>;
     key?: string;
-    // name?;
+    name?: string;
     // recursiveReference?;
     type?: string;
 }

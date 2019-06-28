@@ -17,6 +17,7 @@
     },
     "layout": [{
         "key": "items",
-        "type": "hidden"
+        "type": "hidden",
+        "name": "simpleItems"
     }]
 }
