@@ -41,9 +41,9 @@ export class SelectWidgetComponent extends Widget implements OnInit, OnChanges {
     }
 
     private createComponent() {
-        if (!this.newComponent && this.layoutNode && this.layoutNode.widget) {
+        if (!this.newComponent && this.layoutNode && this.layoutNode.type) {
             this.newComponent = this.widgetContainer.createComponent(
-                this.componentFactory.resolveComponentFactory(this.widgetLibraryService.getWidget(this.layoutNode.widget) as any)
+                this.componentFactory.resolveComponentFactory(this.widgetLibraryService.getWidget(this.layoutNode.type) as any)
             );
         }
     }

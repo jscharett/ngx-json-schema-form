@@ -11,5 +11,4 @@ export interface LayoutItem {
     // name?;
     // recursiveReference?;
     type?: string;
-    widget?: string;
 }
