@@ -20,7 +20,7 @@ export class LayoutService {
             const newNode: LayoutItem = {
                 id: uniqueId(),
                 options: {},
-                ...pick(layoutItem, ['key', 'type'])
+                ...pick(layoutItem, ['key', 'type', 'name'])
             };
             // Dropped code to push invalid props into options
             // Dropped code to convert widget to type

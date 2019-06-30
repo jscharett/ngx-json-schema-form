@@ -1,22 +1,27 @@
 import {
-    Component, ComponentFactoryResolver, ComponentRef, Input,
+    Component, ComponentFactoryResolver, ComponentRef,
     OnChanges, OnInit, ViewChild, ViewContainerRef
 } from '@angular/core';
 
-import { LayoutItem } from '../../../layout-item.data';
+import { JsonSchemaFormService } from '../../../json-schema-form.service';
+
+import { Widget } from '../../widget';
+import { WidgetLibraryService } from '../../widget-library.service';
 
 @Component({
     selector: 'jsf-select-widget',
     styleUrls: ['./select-widget.component.css'],
     templateUrl: './select-widget.component.html'
 })
-export class SelectWidgetComponent implements OnInit, OnChanges {
-    @Input() layoutNode: LayoutItem;
-
+export class SelectWidgetComponent extends Widget implements OnInit, OnChanges {
     private newComponent: ComponentRef<any>;
     @ViewChild('widgetContainer', { read: ViewContainerRef }) widgetContainer: ViewContainerRef;
 
-    constructor(private readonly componentFactory: ComponentFactoryResolver) { }
+    constructor(private readonly componentFactory: ComponentFactoryResolver,
+        private readonly widgetLibraryService: WidgetLibraryService,
+        jsf: JsonSchemaFormService) {
+            super(jsf);
+    }
 
     ngOnInit() {
         this.updateComponent();
@@ -36,9 +41,10 @@ export class SelectWidgetComponent implements OnInit, OnChanges {
     }
 
     private createComponent() {
-        if (!this.newComponent && this.layoutNode && this.layoutNode.widget) {
+        // TODO: What if layoutNode were to change?  The form would be incorrect.
+        if (!this.newComponent && this.layoutNode && this.layoutNode.type) {
             this.newComponent = this.widgetContainer.createComponent(
-                this.componentFactory.resolveComponentFactory(this.layoutNode.widget as any)
+                this.componentFactory.resolveComponentFactory(this.widgetLibraryService.getWidget(this.layoutNode.type) as any)
             );
         }
     }

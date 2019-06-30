@@ -1,5 +1,3 @@
-import { Widget } from './widget-library';
-
 export interface LayoutItem {
     id: string;
     options: any;
@@ -10,8 +8,7 @@ export interface LayoutItem {
     // dataType?;
     items?: Array<any>;
     key?: string;
-    // name?;
+    name?: string;
     // recursiveReference?;
     type?: string;
-    widget?: typeof Widget;
 }

@@ -2,16 +2,16 @@ import { Input, OnInit } from '@angular/core';
 import { AbstractControl } from '@angular/forms';
 
 import { JsonSchemaFormService } from '../json-schema-form.service';
+import { LayoutItem } from '../layout-item.data';
 
 export abstract class Widget implements OnInit {
-    boundControl = false;
     controlDisabled = false;
     controlName: string;
     controlValue: any;
     formControl: AbstractControl;
     options: any;
 
-    @Input() layoutNode: any;
+    @Input() layoutNode: LayoutItem;
     @Input() layoutIndex: Array<number>;
     @Input() dataIndex: Array<number>;
 

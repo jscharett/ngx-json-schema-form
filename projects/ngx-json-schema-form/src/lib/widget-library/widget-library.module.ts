@@ -1,5 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
+import { ReactiveFormsModule } from '@angular/forms';
 
 import { BASIC_WIDGETS } from '.';
 
@@ -7,6 +8,6 @@ import { BASIC_WIDGETS } from '.';
     declarations: [ ...BASIC_WIDGETS ],
     entryComponents: [ ...BASIC_WIDGETS ],
     exports: [ ...BASIC_WIDGETS ],
-    imports: [ CommonModule ]
+    imports: [ CommonModule, ReactiveFormsModule ]
 })
 export class WidgetLibraryModule { }
