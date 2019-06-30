@@ -42,7 +42,7 @@ describe('widgets', () => {
     beforeEach(() => {
         fixture = TestBed.createComponent(TestComponent);
         component = fixture.componentInstance;
-        component.layoutNode = {};
+        component.layoutNode = {id: '0', options: {}};
         fixture.detectChanges();
     });
 

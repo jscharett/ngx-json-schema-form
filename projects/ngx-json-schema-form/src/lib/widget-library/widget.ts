@@ -2,6 +2,7 @@ import { Input, OnInit } from '@angular/core';
 import { AbstractControl } from '@angular/forms';
 
 import { JsonSchemaFormService } from '../json-schema-form.service';
+import { LayoutItem } from '../layout-item.data';
 
 /** Widget */
 export abstract class Widget implements OnInit {
@@ -17,7 +18,7 @@ export abstract class Widget implements OnInit {
     options: any;
 
     /** Layout Node describing the control */
-    @Input() layoutNode: any;
+    @Input() layoutNode: LayoutItem;
     /** Index of the layout in the Layout array */
     @Input() layoutIndex: Array<number>;
     /** Index of the data in data array */
