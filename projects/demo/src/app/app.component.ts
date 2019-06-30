@@ -101,9 +101,10 @@ export class AppComponent implements OnInit {
             }
             if (params.example) {
                 this.selectedExample = params.example;
-                this.jsonLoader.examples.subscribe((examples: Array<any>) => {
+                this.jsonLoader.examples.subscribe((examples: Array<{set: string; examples: Array<{name: string}>}>) => {
                     this.selectedExampleName = examples
-                        .find((data: any) => data.set === [this.selectedSet])
+                        .find((data: any) => data.set === this.selectedSet)
+                        .examples
                         .find((data: any) => data.file === this.selectedExample).name;
                 });
             }
