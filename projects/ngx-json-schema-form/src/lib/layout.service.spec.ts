@@ -22,9 +22,8 @@ describe('LayoutService', () => {
         service.layout = basicJSONLayout;
         expect(service.layout).toEqual([{
             id: jasmine.any(String),
-            key: basicJSONLayout[0].key,
             options: {},
-            type: basicJSONLayout[0].type
+            ...basicJSONLayout[0]
         }]);
     }));
 

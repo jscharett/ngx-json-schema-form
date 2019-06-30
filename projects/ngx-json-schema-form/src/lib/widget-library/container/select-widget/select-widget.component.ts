@@ -41,6 +41,7 @@ export class SelectWidgetComponent extends Widget implements OnInit, OnChanges {
     }
 
     private createComponent() {
+        // TODO: What if layoutNode were to change?  The form would be incorrect.
         if (!this.newComponent && this.layoutNode && this.layoutNode.type) {
             this.newComponent = this.widgetContainer.createComponent(
                 this.componentFactory.resolveComponentFactory(this.widgetLibraryService.getWidget(this.layoutNode.type) as any)
