@@ -4,9 +4,13 @@ import { clone, pick, uniqueId } from 'lodash';
 
 import { LayoutItem } from './layout-item.data';
 
+/** Provides services for handling layouts */
 @Injectable()
 export class LayoutService {
     private _layout: Array<any> = [];
+    /**
+     * @param value - List of layout Items to be displayed in the UI
+     */
     set layout(value: Array<any>) {
         this._layout = LayoutService.buildLayout(value);
     }

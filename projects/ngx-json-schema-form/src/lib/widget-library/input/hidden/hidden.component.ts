@@ -4,6 +4,9 @@ import { JsonSchemaFormService } from '../../../json-schema-form.service';
 
 import { Widget } from '../../widget';
 
+/**
+ * Displays an input[type='hidden']
+ */
 @Component({
     selector: 'jsf-hidden',
     styleUrls: ['./hidden.component.scss'],

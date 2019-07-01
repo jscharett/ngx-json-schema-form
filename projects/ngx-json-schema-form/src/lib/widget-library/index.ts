@@ -3,6 +3,7 @@ import { HiddenComponent } from './input/hidden/hidden.component';
 
 import { SelectWidgetComponent } from './container/select-widget/select-widget.component';
 
+/** List of all Widget Components for ease of use. */
 export const BASIC_WIDGETS = [
     ButtonComponent, HiddenComponent,
     SelectWidgetComponent

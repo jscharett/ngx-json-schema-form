@@ -1,0 +1,9 @@
+{
+    "disableLifeCycleHooks": true,
+    "disablePrivate": true,
+    "hideGenerator": true,
+    "name": "NGX JSOLN Schema Form",
+    "output": "dist/demo/documentation",
+    "theme": "material",
+    "tsconfig": "./projects/ngx-json-schema-form/tsconfig.lib.json"
+}

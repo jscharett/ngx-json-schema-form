@@ -4,6 +4,7 @@ import { JsonSchemaFormService } from '../../../json-schema-form.service';
 
 import { Widget } from '../../widget';
 
+/** Displays a <button> control */
 @Component({
     selector: 'jsf-button',
     styleUrls: ['./button.component.scss'],
@@ -15,7 +16,10 @@ export class ButtonComponent extends Widget {
         super(jsf);
     }
 
-    updateValue(event: MouseEvent) {
+    /**
+     * Handle the mouse click event
+     */
+    updateValue(event: MouseEvent): void {
         if (typeof this.options.onClick === 'function') {
             this.options.onClick(event);
         } else {

@@ -4,6 +4,9 @@ import { ButtonComponent } from './input/button/button.component';
 import { HiddenComponent } from './input/hidden/hidden.component';
 import { Widget } from './widget';
 
+/**
+ * Provides services for mapping a widget component to a layoutNode type
+ */
 @Injectable({
     providedIn: 'root'
 })
@@ -15,6 +18,10 @@ export class WidgetLibraryService {
         hidden: HiddenComponent
     };
 
+    /**
+     * Gets a widget class from the type
+     * @param type - type of component
+     */
     getWidget(type: string): typeof Widget {
         return this.hasWidget(type)
             ? this.widgets[type]
