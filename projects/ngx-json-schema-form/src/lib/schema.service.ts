@@ -4,7 +4,7 @@ import Ajv from 'ajv';
 
 import { JSONSchema7 } from 'json-schema';
 
-/** Provides services for parsing JSON Schema and valdiating data */
+/** Provides services for parsing JSON Schema and validating data */
 @Injectable()
 export class SchemaService {
     // TODO: Setter function to automatically upgrade schema version?

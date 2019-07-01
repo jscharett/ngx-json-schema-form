@@ -77,7 +77,7 @@ export class JsonSchemaFormComponent implements OnChanges, OnInit {
         this.updateForm();
     }
 
-    /** Submitsd the form */
+    /** Submits the form */
     submitForm(): void {
         // TODO
         console.warn(this);
