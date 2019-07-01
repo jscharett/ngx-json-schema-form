@@ -9,6 +9,38 @@ import { LayoutItem } from './layout-item.data';
 import { LayoutService } from './layout.service';
 import { SchemaService } from './schema.service';
 
+// * This library also validates input data by the user, using both validators on
+// * individual controls to provide real-time feedback while the user is filling
+// * out the form, and then validating the entire input against the schema when
+// * the form is submitted to make sure the returned JSON data object is valid.
+// *
+// * This library is similar to, and mostly API compatible with:
+// *
+// * - JSON Schema Form's [Angular Schema Form]{@link http://schemaform.io} library for AngularJs
+// *   [(examples)]{@link http://schemaform.io/examples/bootstrap-example.html}
+// *
+// * - Mozilla's [react-jsonschema-form]{@link https://github.com/mozilla-services/react-jsonschema-form} library for React
+// *   [(examples)]{@link https://mozilla-services.github.io/react-jsonschema-form}
+// *
+// * - Joshfire's [JSON Form]{@link https://github.com/joshfire/jsonform} library for jQuery
+// *   [(examples)]{@link http://ulion.github.io/jsonform/playground}
+/**
+ * NGX JSON Schema Form
+ *
+ * Root module of the NGX JSON Schema Form client-side library,
+ * an Angular library which generates an HTML form from a JSON schema
+ * structured data model and/or a JSON Schema Form layout description.
+ *
+ * This library depends on:
+ *
+ * - [Angular]{@link https://angular.io} (obviously)
+ * - [lodash]{@link https://github.com/lodash/lodash}, JavaScript utility library
+ * - [ajv]{@link https://github.com/epoberezkin/ajv}, Another JSON Schema validator
+ *
+ * In addition, the Example Playground also depends on:
+ *
+ * - [brace]{@link http://thlorenz.github.io/brace}, Browserified Ace editor
+ */
 @Component({
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [
@@ -21,7 +53,9 @@ import { SchemaService } from './schema.service';
     templateUrl: './json-schema-form.component.html'
 })
 export class JsonSchemaFormComponent implements OnChanges, OnInit {
+    /** JSON Schema used to validate form data */
     @Input() schema: JSONSchema7;
+    /** Layout used to define how the form is rendered */
     @Input() layout: Array<LayoutItem>;
 
     private formInitialized = false;
@@ -43,6 +77,7 @@ export class JsonSchemaFormComponent implements OnChanges, OnInit {
         this.updateForm();
     }
 
+    /** Submitsd the form */
     submitForm(): void {
         // TODO
         console.warn(this);

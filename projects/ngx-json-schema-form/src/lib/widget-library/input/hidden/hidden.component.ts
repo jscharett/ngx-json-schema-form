@@ -5,7 +5,6 @@ import { JsonSchemaFormService } from '../../../json-schema-form.service';
 import { Widget } from '../../widget';
 
 /**
- * HiddenComponent
  * Displays an input[type='hidden']
  */
 @Component({

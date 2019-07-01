@@ -9,8 +9,8 @@ import { Widget } from '../../widget';
 import { WidgetLibraryService } from '../../widget-library.service';
 
 /**
- * SelectWidgetComponent
- * Dynamically creates a component based on a layout node.
+ * Dynamically creates a widget component based on a layout node.
+ * Changes in @Input attributes will be passed onto the created widget.
  */
 @Component({
     selector: 'jsf-select-widget',
@@ -19,6 +19,8 @@ import { WidgetLibraryService } from '../../widget-library.service';
 })
 export class SelectWidgetComponent extends Widget implements OnInit, OnChanges {
     private newComponent: ComponentRef<any>;
+
+    /** Placeholder for injecting widget */
     @ViewChild('widgetContainer', { read: ViewContainerRef }) widgetContainer: ViewContainerRef;
 
     constructor(private readonly componentFactory: ComponentFactoryResolver,
@@ -44,7 +46,7 @@ export class SelectWidgetComponent extends Widget implements OnInit, OnChanges {
         }
     }
 
-    private createComponent() {
+    private createComponent(): void {
         // TODO: What if layoutNode were to change?  The form would be incorrect.
         if (!this.newComponent && this.layoutNode && this.layoutNode.type) {
             this.newComponent = this.widgetContainer.createComponent(
