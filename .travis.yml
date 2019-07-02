@@ -29,15 +29,7 @@ after_success:
   - codecov
 deploy:
   skip_cleanup: true
-  # Lib Release
   provider: script
-  script:
-    - npx semantic-release
-  on:
-    branch: master
-  # Demo and Docs Release
-  provider: script
-  script:
-    - npm run publish:demo
+  script: bash scripts/deploy.sh
   on:
     branch: master
