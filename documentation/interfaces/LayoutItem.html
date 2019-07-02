@@ -95,15 +95,15 @@
                                         <a href="#key">key</a>
                                 </li>
                                 <li>
+                                            <span class="modifier">Optional</span>
+                                        <a href="#name">name</a>
+                                </li>
+                                <li>
                                         <a href="#options">options</a>
                                 </li>
                                 <li>
                                             <span class="modifier">Optional</span>
                                         <a href="#type">type</a>
-                                </li>
-                                <li>
-                                            <span class="modifier">Optional</span>
-                                        <a href="#widget">widget</a>
                                 </li>
                             </ul>
                         </td>
@@ -148,6 +148,12 @@
 
 
 
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-description"><p>TODO </p>
+</div>
+                                </td>
+                            </tr>
                         </tbody>
                     </table>
                     <table class="table table-sm table-bordered">
@@ -177,6 +183,12 @@
 
 
 
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-description"><p>Unique Identifier for the item </p>
+</div>
+                                </td>
+                            </tr>
                         </tbody>
                     </table>
                     <table class="table table-sm table-bordered">
@@ -211,6 +223,12 @@
 
 
 
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-description"><p>TODO </p>
+</div>
+                                </td>
+                            </tr>
                         </tbody>
                     </table>
                     <table class="table table-sm table-bordered">
@@ -245,6 +263,52 @@
 
 
 
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-description"><p>Data pointer to map this item to a data value </p>
+</div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <table class="table table-sm table-bordered">
+                        <tbody>
+                                <tr>
+                                    <td class="col-md-4">
+                                        <a name="name"></a>
+                                        <span class="name"><b>name</b><a href="#name"><span class="icon ion-ios-link"></span></a></span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="col-md-4">
+                                        <code>name:         <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+</code>
+                                    </td>
+                                </tr>
+
+
+                                    <tr>
+                                        <td class="col-md-4">
+                                            <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td class="col-md-4">
+                                            <i>Optional</i>
+                                        </td>
+                                    </tr>
+
+
+
+
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-description"><p>Name for the item.  Will be used as the input[name] </p>
+</div>
+                                </td>
+                            </tr>
                         </tbody>
                     </table>
                     <table class="table table-sm table-bordered">
@@ -274,6 +338,12 @@
 
 
 
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-description"><p>Options for </p>
+</div>
+                                </td>
+                            </tr>
                         </tbody>
                     </table>
                     <table class="table table-sm table-bordered">
@@ -308,34 +378,13 @@
 
 
 
-                        </tbody>
-                    </table>
-                    <table class="table table-sm table-bordered">
-                        <tbody>
-                                <tr>
-                                    <td class="col-md-4">
-                                        <a name="widget"></a>
-                                        <span class="name"><b>widget</b><a href="#widget"><span class="icon ion-ios-link"></span></a></span>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td class="col-md-4">
-                                        <code>widget:     <code></code>
-</code>
-                                    </td>
-                                </tr>
-
-
-
-                                    <tr>
-                                        <td class="col-md-4">
-                                            <i>Optional</i>
-                                        </td>
-                                    </tr>
-
-
-
-
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-description"><p>Specify what type of widget is used to represent the data.
+If not is specified, the JSON Schema will be used to determine the most appropriate widget</p>
+</div>
+                                </td>
+                            </tr>
                         </tbody>
                     </table>
             </section>
@@ -343,22 +392,29 @@
 
 
     <div class="tab-pane fade  tab-source-code" id="c-source">
-        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Widget } from &#x27;./widget-library&#x27;;
-
-export interface LayoutItem {
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">export interface LayoutItem {
+    /** Unique Identifier for the item */
     id: string;
+    /** Options for */
     options: any;
+    /** TODO */
     $ref?: any;
     // arrayItem?;
     // arrayItemType?;
     // dataPointer?;
     // dataType?;
+    /** TODO */
     items?: Array&lt;any&gt;;
+    /** Data pointer to map this item to a data value */
     key?: string;
-    // name?;
+    /** Name for the item.  Will be used as the input[name] */
+    name?: string;
     // recursiveReference?;
+    /**
+     * Specify what type of widget is used to represent the data.
+     * If not is specified, the JSON Schema will be used to determine the most appropriate widget
+     */
     type?: string;
-    widget?: typeof Widget;
 }
 </code></pre>
     </div>

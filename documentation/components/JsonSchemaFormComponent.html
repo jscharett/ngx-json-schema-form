@@ -62,6 +62,26 @@
     <code>projects/ngx-json-schema-form/src/lib/json-schema-form.component.ts</code>
 </p>
 
+    <p class="comment">
+        <h3>Description</h3>
+    </p>
+    <p class="comment">
+        <p>NGX JSON Schema Form</p>
+<p>Root module of the NGX JSON Schema Form client-side library,
+an Angular library which generates an HTML form from a JSON schema
+structured data model and/or a JSON Schema Form layout description.</p>
+<p>This library depends on:</p>
+<ul>
+<li><a href="https://angular.io">Angular</a> (obviously)</li>
+<li><a href="https://github.com/lodash/lodash">lodash</a>, JavaScript utility library</li>
+<li><a href="https://github.com/epoberezkin/ajv">ajv</a>, Another JSON Schema validator</li>
+</ul>
+<p>In addition, the Example Playground also depends on:</p>
+<ul>
+<li><a href="http://thlorenz.github.io/brace">brace</a>, Browserified Ace editor</li>
+</ul>
+
+    </p>
 
 
     <p class="comment">
@@ -128,21 +148,6 @@
     <h3 id="index">Index</h3>
     <table class="table table-sm table-bordered index-table">
         <tbody>
-                <tr>
-                    <td class="col-md-4">
-                        <h6><b>Properties</b></h6>
-                    </td>
-                </tr>
-                <tr>
-                    <td class="col-md-4">
-                        <ul class="index-list">
-                            <li>
-                                    <span class="modifier">Private</span>
-                                <a href="#formInitialized">formInitialized</a>
-                            </li>
-                        </ul>
-                    </td>
-                </tr>
 
                 <tr>
                     <td class="col-md-4">
@@ -153,26 +158,10 @@
                     <td class="col-md-4">
                         <ul class="index-list">
                             <li>
-                                    <span class="modifier">Private</span>
-                                <a href="#initializeForm">initializeForm</a>
-                            </li>
-                            <li>
-                                    <span class="modifier">Private</span>
-                                <a href="#initializeLayout">initializeLayout</a>
-                            </li>
-                            <li>
-                                    <span class="modifier">Private</span>
-                                <a href="#initializeSchema">initializeSchema</a>
-                            </li>
-                            <li>
                                 <a href="#submitForm">submitForm</a>
                             </li>
                             <li>
                                 <a href="#trackByFn">trackByFn</a>
-                            </li>
-                            <li>
-                                    <span class="modifier">Private</span>
-                                <a href="#updateForm">updateForm</a>
                             </li>
                         </ul>
                     </td>
@@ -214,7 +203,7 @@
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="27" class="link-to-prism">projects/ngx-json-schema-form/src/lib/json-schema-form.component.ts:27</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="61" class="link-to-prism">projects/ngx-json-schema-form/src/lib/json-schema-form.component.ts:61</a></div>
                             </td>
                         </tr>
 
@@ -282,9 +271,15 @@
                 </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="25" class="link-to-prism">projects/ngx-json-schema-form/src/lib/json-schema-form.component.ts:25</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="59" class="link-to-prism">projects/ngx-json-schema-form/src/lib/json-schema-form.component.ts:59</a></div>
                             </td>
                         </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <div class="io-description"><p>Layout used to define how the form is rendered </p>
+</div>
+                    </td>
+                </tr>
             </tbody>
         </table>
         <table class="table table-sm table-bordered">
@@ -303,9 +298,15 @@
                 </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="24" class="link-to-prism">projects/ngx-json-schema-form/src/lib/json-schema-form.component.ts:24</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="57" class="link-to-prism">projects/ngx-json-schema-form/src/lib/json-schema-form.component.ts:57</a></div>
                             </td>
                         </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <div class="io-description"><p>JSON Schema used to validate form data </p>
+</div>
+                    </td>
+                </tr>
             </tbody>
         </table>
 </section>
@@ -317,129 +318,6 @@
     <h3 id="methods">
         Methods
     </h3>
-    <table class="table table-sm table-bordered">
-        <tbody>
-            <tr>
-                <td class="col-md-4">
-                    <a name="initializeForm"></a>
-                    <span class="name">
-                        <b>
-                            <span class="modifier">Private</span>
-                            initializeForm
-                        </b>
-                        <a href="#initializeForm"><span class="icon ion-ios-link"></span></a>
-                    </span>
-                </td>
-            </tr>
-            <tr>
-                <td class="col-md-4">
-                    <span class="modifier-icon icon ion-ios-reset"></span>
-                    <code>initializeForm()</code>
-                </td>
-            </tr>
-
-
-            <tr>
-                <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="61"
-                            class="link-to-prism">projects/ngx-json-schema-form/src/lib/json-schema-form.component.ts:61</a></div>
-                </td>
-            </tr>
-
-
-            <tr>
-                <td class="col-md-4">
-
-                    <div class="io-description">
-                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
-
-                    </div>
-                </td>
-            </tr>
-        </tbody>
-    </table>
-    <table class="table table-sm table-bordered">
-        <tbody>
-            <tr>
-                <td class="col-md-4">
-                    <a name="initializeLayout"></a>
-                    <span class="name">
-                        <b>
-                            <span class="modifier">Private</span>
-                            initializeLayout
-                        </b>
-                        <a href="#initializeLayout"><span class="icon ion-ios-link"></span></a>
-                    </span>
-                </td>
-            </tr>
-            <tr>
-                <td class="col-md-4">
-                    <span class="modifier-icon icon ion-ios-reset"></span>
-                    <code>initializeLayout()</code>
-                </td>
-            </tr>
-
-
-            <tr>
-                <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="67"
-                            class="link-to-prism">projects/ngx-json-schema-form/src/lib/json-schema-form.component.ts:67</a></div>
-                </td>
-            </tr>
-
-
-            <tr>
-                <td class="col-md-4">
-
-                    <div class="io-description">
-                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
-
-                    </div>
-                </td>
-            </tr>
-        </tbody>
-    </table>
-    <table class="table table-sm table-bordered">
-        <tbody>
-            <tr>
-                <td class="col-md-4">
-                    <a name="initializeSchema"></a>
-                    <span class="name">
-                        <b>
-                            <span class="modifier">Private</span>
-                            initializeSchema
-                        </b>
-                        <a href="#initializeSchema"><span class="icon ion-ios-link"></span></a>
-                    </span>
-                </td>
-            </tr>
-            <tr>
-                <td class="col-md-4">
-                    <span class="modifier-icon icon ion-ios-reset"></span>
-                    <code>initializeSchema()</code>
-                </td>
-            </tr>
-
-
-            <tr>
-                <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="71"
-                            class="link-to-prism">projects/ngx-json-schema-form/src/lib/json-schema-form.component.ts:71</a></div>
-                </td>
-            </tr>
-
-
-            <tr>
-                <td class="col-md-4">
-
-                    <div class="io-description">
-                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
-
-                    </div>
-                </td>
-            </tr>
-        </tbody>
-    </table>
     <table class="table table-sm table-bordered">
         <tbody>
             <tr>
@@ -462,14 +340,16 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="46"
-                            class="link-to-prism">projects/ngx-json-schema-form/src/lib/json-schema-form.component.ts:46</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="81"
+                            class="link-to-prism">projects/ngx-json-schema-form/src/lib/json-schema-form.component.ts:81</a></div>
                 </td>
             </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                    <div class="io-description"><p>Submits the form </p>
+</div>
 
                     <div class="io-description">
                         <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
@@ -501,8 +381,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="51"
-                            class="link-to-prism">projects/ngx-json-schema-form/src/lib/json-schema-form.component.ts:51</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="86"
+                            class="link-to-prism">projects/ngx-json-schema-form/src/lib/json-schema-form.component.ts:86</a></div>
                 </td>
             </tr>
 
@@ -545,80 +425,6 @@
             </tr>
         </tbody>
     </table>
-    <table class="table table-sm table-bordered">
-        <tbody>
-            <tr>
-                <td class="col-md-4">
-                    <a name="updateForm"></a>
-                    <span class="name">
-                        <b>
-                            <span class="modifier">Private</span>
-                            updateForm
-                        </b>
-                        <a href="#updateForm"><span class="icon ion-ios-link"></span></a>
-                    </span>
-                </td>
-            </tr>
-            <tr>
-                <td class="col-md-4">
-                    <span class="modifier-icon icon ion-ios-reset"></span>
-                    <code>updateForm()</code>
-                </td>
-            </tr>
-
-
-            <tr>
-                <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="55"
-                            class="link-to-prism">projects/ngx-json-schema-form/src/lib/json-schema-form.component.ts:55</a></div>
-                </td>
-            </tr>
-
-
-            <tr>
-                <td class="col-md-4">
-
-                    <div class="io-description">
-                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
-
-                    </div>
-                </td>
-            </tr>
-        </tbody>
-    </table>
-</section>
-    <section>
-    
-        <h3 id="inputs">
-            Properties
-        </h3>
-        <table class="table table-sm table-bordered">
-            <tbody>
-                <tr>
-                    <td class="col-md-4">
-                        <a name="formInitialized"></a>
-                        <span class="name">
-                            <b>
-                                <span class="modifier">Private</span>
-                            formInitialized</b>
-                            <a href="#formInitialized"><span class="icon ion-ios-link"></span></a>
-                        </span>
-                    </td>
-                </tr>
-                    <tr>
-                        <td class="col-md-4">
-                            <i>Default value : </i><code>false</code>
-                        </td>
-                    </tr>
-                        <tr>
-                            <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="27" class="link-to-prism">projects/ngx-json-schema-form/src/lib/json-schema-form.component.ts:27</a></div>
-                            </td>
-                        </tr>
-
-
-            </tbody>
-        </table>
 </section>
 
 </div>
@@ -636,6 +442,38 @@ import { LayoutItem } from &#x27;./layout-item.data&#x27;;
 import { LayoutService } from &#x27;./layout.service&#x27;;
 import { SchemaService } from &#x27;./schema.service&#x27;;
 
+// * This library also validates input data by the user, using both validators on
+// * individual controls to provide real-time feedback while the user is filling
+// * out the form, and then validating the entire input against the schema when
+// * the form is submitted to make sure the returned JSON data object is valid.
+// *
+// * This library is similar to, and mostly API compatible with:
+// *
+// * - JSON Schema Form&#x27;s [Angular Schema Form]{@link http://schemaform.io} library for AngularJs
+// *   [(examples)]{@link http://schemaform.io/examples/bootstrap-example.html}
+// *
+// * - Mozilla&#x27;s [react-jsonschema-form]{@link https://github.com/mozilla-services/react-jsonschema-form} library for React
+// *   [(examples)]{@link https://mozilla-services.github.io/react-jsonschema-form}
+// *
+// * - Joshfire&#x27;s [JSON Form]{@link https://github.com/joshfire/jsonform} library for jQuery
+// *   [(examples)]{@link http://ulion.github.io/jsonform/playground}
+/**
+ * NGX JSON Schema Form
+ *
+ * Root module of the NGX JSON Schema Form client-side library,
+ * an Angular library which generates an HTML form from a JSON schema
+ * structured data model and/or a JSON Schema Form layout description.
+ *
+ * This library depends on:
+ *
+ * - [Angular]{@link https://angular.io} (obviously)
+ * - [lodash]{@link https://github.com/lodash/lodash}, JavaScript utility library
+ * - [ajv]{@link https://github.com/epoberezkin/ajv}, Another JSON Schema validator
+ *
+ * In addition, the Example Playground also depends on:
+ *
+ * - [brace]{@link http://thlorenz.github.io/brace}, Browserified Ace editor
+ */
 @Component({
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [
@@ -648,7 +486,9 @@ import { SchemaService } from &#x27;./schema.service&#x27;;
     templateUrl: &#x27;./json-schema-form.component.html&#x27;
 })
 export class JsonSchemaFormComponent implements OnChanges, OnInit {
+    /** JSON Schema used to validate form data */
     @Input() schema: JSONSchema7;
+    /** Layout used to define how the form is rendered */
     @Input() layout: Array&lt;LayoutItem&gt;;
 
     private formInitialized &#x3D; false;
@@ -670,6 +510,7 @@ export class JsonSchemaFormComponent implements OnChanges, OnInit {
         this.updateForm();
     }
 
+    /** Submits the form */
     submitForm(): void {
         // TODO
         console.warn(this);
@@ -707,7 +548,7 @@ export class JsonSchemaFormComponent implements OnChanges, OnInit {
     <div class="tab-pane fade " id="c-templateData">
         <pre class="line-numbers"><code class="language-html">&lt;form (ngSubmit)&#x3D;&quot;submitForm()&quot;&gt;
     &lt;div *ngFor&#x3D;&quot;let layoutItem of layoutService.layout; trackBy: trackByFn;&quot;&gt;
-        &lt;jsf-select-widget [layoutNode]&#x3D;layoutItem&gt;&lt;/jsf-select-widget&gt;
+        &lt;jsf-select-widget [layoutNode]&#x3D;&quot;layoutItem&quot;&gt;&lt;/jsf-select-widget&gt;
     &lt;/div&gt;
 &lt;/form&gt;
 </code></pre>
@@ -739,7 +580,7 @@ export class JsonSchemaFormComponent implements OnChanges, OnInit {
 <script src="../js/libs/htmlparser.js"></script>
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
-        var COMPONENT_TEMPLATE = '<div><form (ngSubmit)="submitForm()">    <div *ngFor="let layoutItem of layoutService.layout; trackBy: trackByFn;">        <jsf-select-widget [layoutNode]=layoutItem></jsf-select-widget>    </div></form></div>'
+        var COMPONENT_TEMPLATE = '<div><form (ngSubmit)="submitForm()">    <div *ngFor="let layoutItem of layoutService.layout; trackBy: trackByFn;">        <jsf-select-widget [layoutNode]="layoutItem"></jsf-select-widget>    </div></form></div>'
     var COMPONENTS = [{'name': 'ButtonComponent', 'selector': 'jsf-button'},{'name': 'HiddenComponent', 'selector': 'jsf-hidden'},{'name': 'JsonSchemaFormComponent', 'selector': 'jsf-json-schema-form'},{'name': 'SelectWidgetComponent', 'selector': 'jsf-select-widget'}];
     var DIRECTIVES = [];
     var ACTUAL_COMPONENT = {'name': 'JsonSchemaFormComponent'};

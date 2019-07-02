@@ -39,7 +39,7 @@
 
 <ol class="breadcrumb">
   <li>Injectables</li>
-  <li>JsonSchemaFormService</li>
+  <li>WidgetLibraryService</li>
 </ol>
 
 <ul class="nav nav-tabs" role="tablist">
@@ -57,14 +57,14 @@
             <h3>File</h3>
         </p>
         <p class="comment">
-            <code>projects/ngx-json-schema-form/src/lib/json-schema-form.service.ts</code>
+            <code>projects/ngx-json-schema-form/src/lib/widget-library/widget-library.service.ts</code>
         </p>
 
             <p class="comment">
                 <h3>Description</h3>
             </p>
             <p class="comment">
-                <p>TODO </p>
+                <p>Provides services for mapping a widget component to a layoutNode type</p>
 
             </p>
 
@@ -84,10 +84,7 @@
                     <td class="col-md-4">
                         <ul class="index-list">
                             <li>
-                                <a href="#initializeControl">initializeControl</a>
-                            </li>
-                            <li>
-                                <a href="#updateValue">updateValue</a>
+                                <a href="#getWidget">getWidget</a>
                             </li>
                         </ul>
                     </td>
@@ -111,33 +108,33 @@
         <tbody>
             <tr>
                 <td class="col-md-4">
-                    <a name="initializeControl"></a>
+                    <a name="getWidget"></a>
                     <span class="name">
                         <b>
-                            initializeControl
+                            getWidget
                         </b>
-                        <a href="#initializeControl"><span class="icon ion-ios-link"></span></a>
+                        <a href="#getWidget"><span class="icon ion-ios-link"></span></a>
                     </span>
                 </td>
             </tr>
             <tr>
                 <td class="col-md-4">
-<code>initializeControl(control: <a href="../classes/Widget.html">Widget</a>, bind)</code>
+<code>getWidget(type: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
                 </td>
             </tr>
 
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="10"
-                            class="link-to-prism">projects/ngx-json-schema-form/src/lib/json-schema-form.service.ts:10</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="25"
+                            class="link-to-prism">projects/ngx-json-schema-form/src/lib/widget-library/widget-library.service.ts:25</a></div>
                 </td>
             </tr>
 
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-description"><p>Sets a widgets properties upon Widget creation </p>
+                    <div class="io-description"><p>Gets a widget class from the type</p>
 </div>
 
                     <div class="io-description">
@@ -148,133 +145,32 @@
                                     <td>Name</td>
                                     <td>Type</td>
                                     <td>Optional</td>
-                                    <td>Default value</td>
+                                    <td>Description</td>
                                 </tr>
                             </thead>
                             <tbody>
                                 <tr>
-                                    <td>control</td>
+                                    <td>type</td>
                                     <td>
-                                                <code><a href="../classes/Widget.html" target="_self" >Widget</a></code>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
                                     </td>
 
                                     <td>
                                         No
                                     </td>
 
-                                    <td>
-                                    </td>
-
-                                </tr>
-                                <tr>
-                                    <td>bind</td>
-                                    <td>
-                                    </td>
 
                                     <td>
-                                        No
-                                    </td>
+                                        <ul>
+<li>type of component</li>
+</ul>
 
-                                    <td>
-                                        <code>true</code>
                                     </td>
-
                                 </tr>
                             </tbody>
                         </table>
                     </div>
                     <div>
-                    </div>
-                    <div class="io-description">
-                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
-
-                    </div>
-                    <div class="io-description">
-                        
-                    </div>
-                </td>
-            </tr>
-        </tbody>
-    </table>
-    <table class="table table-sm table-bordered">
-        <tbody>
-            <tr>
-                <td class="col-md-4">
-                    <a name="updateValue"></a>
-                    <span class="name">
-                        <b>
-                            updateValue
-                        </b>
-                        <a href="#updateValue"><span class="icon ion-ios-link"></span></a>
-                    </span>
-                </td>
-            </tr>
-            <tr>
-                <td class="col-md-4">
-<code>updateValue(ctx: <a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank">any</a>, value: <a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank">any</a>)</code>
-                </td>
-            </tr>
-
-
-            <tr>
-                <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="15"
-                            class="link-to-prism">projects/ngx-json-schema-form/src/lib/json-schema-form.service.ts:15</a></div>
-                </td>
-            </tr>
-
-
-            <tr>
-                <td class="col-md-4">
-                    <div class="io-description"><p>TODO </p>
-</div>
-
-                    <div class="io-description">
-                        <b>Parameters :</b>
-                        <table class="params">
-                            <thead>
-                                <tr>
-                                    <td>Name</td>
-                                    <td>Type</td>
-                                    <td>Optional</td>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>ctx</td>
-                                    <td>
-                                                <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
-                                    </td>
-
-                                    <td>
-                                        No
-                                    </td>
-
-
-                                </tr>
-                                <tr>
-                                    <td>value</td>
-                                    <td>
-                                                <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
-                                    </td>
-
-                                    <td>
-                                        No
-                                    </td>
-
-
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                    <div>
-                    </div>
-                    <div class="io-description">
-                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
-
-                    </div>
-                    <div class="io-description">
-                        
                     </div>
                 </td>
             </tr>
@@ -287,22 +183,37 @@
 
     <div class="tab-pane fade  tab-source-code" id="c-source">
         <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Injectable } from &#x27;@angular/core&#x27;;
-import { Widget } from &#x27;./widget-library&#x27;;
 
-/** TODO */
-@Injectable()
-export class JsonSchemaFormService {
-    private x &#x3D; false;
+import { ButtonComponent } from &#x27;./input/button/button.component&#x27;;
+import { HiddenComponent } from &#x27;./input/hidden/hidden.component&#x27;;
+import { Widget } from &#x27;./widget&#x27;;
 
-    /** Sets a widgets properties upon Widget creation */
-    initializeControl(control: Widget, bind &#x3D; true): void {
-        control.controlName &#x3D; control.layoutNode.name;
+/**
+ * Provides services for mapping a widget component to a layoutNode type
+ */
+@Injectable({
+    providedIn: &#x27;root&#x27;
+})
+export class WidgetLibraryService {
+    private readonly defaultWidget &#x3D; &#x27;hidden&#x27;;
+
+    private readonly widgets &#x3D; {
+        button: ButtonComponent,
+        hidden: HiddenComponent
+    };
+
+    /**
+     * Gets a widget class from the type
+     * @param type - type of component
+     */
+    getWidget(type: string): typeof Widget {
+        return this.hasWidget(type)
+            ? this.widgets[type]
+            : this.widgets[this.defaultWidget];
     }
 
-    /** TODO */
-    updateValue(ctx: any, value: any): void {
-        // TODO
-        this.x &#x3D; !this.x;
+    private hasWidget(type: string): boolean {
+        return !!this.widgets[type];
     }
 }
 </code></pre>
@@ -337,7 +248,7 @@ export class JsonSchemaFormService {
        <script>
             var COMPODOC_CURRENT_PAGE_DEPTH = 1;
             var COMPODOC_CURRENT_PAGE_CONTEXT = 'injectable';
-            var COMPODOC_CURRENT_PAGE_URL = 'JsonSchemaFormService.html';
+            var COMPODOC_CURRENT_PAGE_URL = 'WidgetLibraryService.html';
        </script>
 
        <script src="../js/libs/custom-elements.min.js"></script>
