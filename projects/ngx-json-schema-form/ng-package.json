@@ -5,7 +5,8 @@
     "entryFile": "src/public-api.ts",
     "umdModuleIds": {
         "lodash": "_",
-        "ajv": "Ajv"
+        "ajv": "Ajv",
+        "json-schema-traverse": "traverse"
     }
   }
 }

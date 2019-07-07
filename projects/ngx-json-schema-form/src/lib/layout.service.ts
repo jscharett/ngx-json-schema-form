@@ -1,36 +1,58 @@
 import { Injectable } from '@angular/core';
 
-import { clone, pick, uniqueId } from 'lodash';
+import { clone, difference, isPlainObject, isString, pick, uniqueId } from 'lodash';
 
-import { LayoutItem } from './layout-item.data';
+import { JSONSchema7, JSONSchema7Definition } from 'json-schema';
+
+import { LayoutItem, LayoutNode } from './layout-item.data';
+import { SchemaService } from './schema.service';
 
 /** Provides services for handling layouts */
 @Injectable()
 export class LayoutService {
-    private _layout: Array<any> = [];
+    private _layout: Array<LayoutNode> = [];
     /**
-     * @param value - List of layout Items to be displayed in the UI
+     * @param value - List of Layout Nodes to be displayed in the UI
      */
-    set layout(value: Array<any>) {
-        this._layout = LayoutService.buildLayout(value);
-    }
-    get layout(): Array<any> {
+    get layout(): Array<LayoutNode> {
         return this._layout;
     }
 
-    private static buildLayout(layout: Array<LayoutItem>): Array<LayoutItem> {
+    constructor(private readonly schemaService: SchemaService) {}
+
+    public setLayout(value: Array<LayoutItem | string>): void {
+        this._layout = this.buildLayout(value);
+    }
+
+    private buildLayout(layout: Array<LayoutItem | string>): Array<LayoutNode> {
         // let hasSubmitButton = !JsonPointer.get(jsf, '/formOptions/addSubmit');
-        const formLayout: Array<LayoutItem> = LayoutService.mapLayout(layout, (layoutItem, index, layoutPointer) => {
-            const newNode: LayoutItem = {
+        const formLayout: Array<LayoutNode> = this.mapLayout(layout, (layoutItem: LayoutItem | string): LayoutNode => {
+            const newNode: Partial<LayoutNode> = {
                 id: uniqueId(),
-                options: {},
-                ...pick(layoutItem, ['key', 'type', 'name'])
+                options: {}
             };
+            if (isPlainObject(layoutItem)) {
+                Object.assign(newNode, pick(layoutItem, ['type', 'name']));
+                if ((<LayoutItem>layoutItem).key) {
+                    newNode.dataPointer = (<LayoutItem>layoutItem).key.charAt(0) === '/'
+                    ? (<LayoutItem>layoutItem).key
+                    : `/${(<LayoutItem>layoutItem).key.replace(/\./g, '/')}`;
+                }
+            } else if (isString(layoutItem)) {
+                newNode.dataPointer = (<string>layoutItem).charAt(0) === '/'
+                    ? <string>layoutItem
+                    : `/${(<string>layoutItem).replace(/\./g, '/')}`;
+            } else {
+                console.error('buildLayout error: Form layout element not recognized:');
+                console.error(layoutItem);
+
+                return;
+            }
             // Dropped code to push invalid props into options
             // Dropped code to convert widget to type
             // Dropped code to convert options.legend to options.title
 
-            return newNode;
+            return <LayoutNode>newNode;
     // if (isObject(layoutItem)) {
 
     //   if (!hasOwn(newNode.options, 'validationMessages')) {
@@ -73,14 +95,6 @@ export class LayoutService {
     //       delete newNode.options.validationMessage;
     //     }
     //   }
-    // } else if (JsonPointer.isJsonPointer(layoutItem)) {
-    //   newNode.dataPointer = layoutItem;
-    // } else if (isString(layoutItem)) {
-    //   newNode.key = layoutItem;
-    // } else {
-    //   console.error('buildLayout error: Form layout element not recognized:');
-    //   console.error(layoutItem);
-    //   return null;
     // }
         });
 
@@ -108,28 +122,52 @@ export class LayoutService {
      * @param  rootLayout - the root layout, which conatins layout
      * @return the mapped layout
      */
-    private static mapLayout(layout: Array<LayoutItem>, fn: (v: any, i?: number, l?: any, p?: any) => LayoutItem,
-        layoutPointer: string|Array<string> = '', rootLayout: Array<LayoutItem> = layout): Array<LayoutItem> {
+    private mapLayout(layout: Array<LayoutItem | string>,
+        fn: (layoutItem: LayoutItem | string, index?: number, pointer?: string, p?: any) => LayoutNode,
+        layoutPointer: string|Array<string> = '', rootLayout: Array<LayoutItem | string> = layout): Array<LayoutNode> {
         const indexPad = 0;
+        const schemaPointers: Map<string, JSONSchema7Definition> = this.schemaService.dataPointerMap;
+        const mappedPointers: Set<string> = new Set<string>();
+        let starIndex = -1;
 
-        return layout.reduce((mappedLayout: Array<LayoutItem>, item: LayoutItem, index: number) => {
-            const realIndex: number = +index + indexPad;
-            const newLayoutPointer = `${layoutPointer}/${realIndex}`;
-            let newNode: LayoutItem = clone(item);
-            let newLayout: Array<LayoutItem> = mappedLayout;
-            // Note: removed logic to convert tabs to items and items to [items]
-            // if (item.items) {
-            //     newNode.items = LayoutService.mapLayout(item.items, fn, `${newLayoutPointer}/items`, rootLayout);
-            // }
-            newNode = fn(newNode, realIndex, newLayoutPointer, rootLayout);
+        const mappedLayout: Array<LayoutNode> = layout.reduce((currentLayout: Array<LayoutNode>, item: LayoutItem | string, i: number) => {
+            let newLayout: Array<LayoutNode> = currentLayout;
+            if (<string>item === '*') {
+                starIndex = i;
+            } else {
+                const realIndex: number = +i + indexPad;
+                const newLayoutPointer = `${layoutPointer}/${realIndex}`;
+                // Note: removed logic to convert tabs to items and items to [items]
+                // if (item.items) {
+                //     newNode.items = LayoutService.mapLayout(item.items, fn, `${newLayoutPointer}/items`, rootLayout);
+                // }
+                const newNode: LayoutNode = fn(clone(item), realIndex, newLayoutPointer, rootLayout);
+                if (newNode) {
+                    if (!newNode.type && isPlainObject(schemaPointers.get(newNode.dataPointer))) {
+                        // TODO: review getInputType() fn and handle missing functionality
+                        newNode.type = <string>(<JSONSchema7>schemaPointers.get(newNode.dataPointer)).type;
+                    }
+                    if (newNode.type) {
+                        mappedPointers.add(newNode.dataPointer);
+                        newLayout = currentLayout.concat(newNode);
+                    }
+                }
+            }
             // if (isNil(newNode)) {
             //     indexPad -= 1;
             // } else {
             //     if (Array.isArray(newNode)) { indexPad += newNode.length - 1; }
-                newLayout = mappedLayout.concat(newNode);
+                // newLayout = currentLayout.concat(newNode);
             // }
 
             return newLayout;
         }, []);
+
+        if (starIndex !== -1) {
+            const availablePointers: Array<string> = Array.from(schemaPointers.keys());
+            mappedLayout.splice(starIndex, 0, ...this.mapLayout(difference(availablePointers, Array.from(mappedPointers)), fn));
+        }
+
+        return mappedLayout;
     }
 }

@@ -1,8 +1,10 @@
 import { Injectable } from '@angular/core';
 
+import traverse from 'json-schema-traverse';
+
 import Ajv from 'ajv';
 
-import { JSONSchema7 } from 'json-schema';
+import { JSONSchema7, JSONSchema7Definition } from 'json-schema';
 
 /** Provides services for parsing JSON Schema and validating data */
 @Injectable()
@@ -18,6 +20,23 @@ export class SchemaService {
     }
     get schema(): JSONSchema7 {
         return this._schema;
+    }
+
+    /**
+     * Gets a map of all the relevant json data pointers
+     * and their related schema definitions.  This allows for
+     * easy lookup of a schema reference from a json pointer.
+     */
+    get dataPointerMap(): Map<string, JSONSchema7Definition> {
+        const pointers: Map<string, JSONSchema7Definition> = new Map<string, JSONSchema7Definition>();
+        traverse(this.schema, {cb: (...args) => {
+            const [schema, pointer, , , , parentSchema] = args;
+            if (pointer && parentSchema && parentSchema.type !== 'array') {
+                pointers.set(pointer.replace(/\/properties/g, ''), schema);
+            }
+        }});
+
+        return pointers;
     }
 
     private readonly ajv: Ajv.Ajv = new Ajv({ allErrors: true, jsonPointers: true, unknownFormats: 'ignore' });

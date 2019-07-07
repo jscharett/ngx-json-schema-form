@@ -32,7 +32,7 @@ describe('HiddenComponent', () => {
     beforeEach(() => {
         fixture = TestBed.createComponent(HiddenComponent);
         component = fixture.componentInstance;
-        component.layoutNode = {id: '0', options: {}};
+        component.layoutNode = {id: '0', options: {}, type: 'hidden'};
         fixture.detectChanges();
     });
 

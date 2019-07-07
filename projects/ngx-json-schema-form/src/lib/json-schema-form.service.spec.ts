@@ -22,7 +22,7 @@ describe('JsonSchemaFormService', () => {
     it('should set controlName on widget', () => {
         const service: JsonSchemaFormService = TestBed.get(JsonSchemaFormService);
         const widget: TestWidget = new TestWidget(service);
-        widget.layoutNode = {name: 'widget', id: '1', key: 'key', options: {}};
+        widget.layoutNode = {name: 'widget', id: '1', dataPointer: '/key', options: {}};
         service.initializeControl(widget);
         expect(widget.controlName).toBe('widget');
     });
