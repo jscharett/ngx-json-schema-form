@@ -72,46 +72,6 @@ describe('LayoutService', () => {
         }]);
     }));
 
-    describe('object path only layouts', () => {
-        it('should handle object.path layouts', inject([LayoutService], (service: LayoutService) => {
-            service.setLayout(['attributes.comment']);
-            expect(service.layout).toEqual([{
-                dataPointer: '/attributes/comment',
-                id: <any>jasmine.any(String),
-                options: <any>jasmine.any(Object),
-                type: <any>jasmine.any(String)
-            }]);
-        }));
-
-        it('should handle json/pointer layouts', inject([LayoutService], (service: LayoutService) => {
-            service.setLayout(['/attributes/comment']);
-            expect(service.layout).toEqual([{
-                dataPointer: '/attributes/comment',
-                id: <any>jasmine.any(String),
-                options: <any>jasmine.any(Object),
-                type: <any>jasmine.any(String)
-            }]);
-        }));
-
-        it('should drop unknown layout and display console error', inject([LayoutService], (service: LayoutService) => {
-            spyOn(console, 'error');
-            service.setLayout(['a.b', <any>['a.c'], 'a.d']);
-            expect(service.layout).toEqual(getExpectedLayout(['a/b', 'a/d']));
-            expect(console.error).toHaveBeenCalledTimes(1 + 1);
-            expect(console.error).toHaveBeenCalledWith(['a.c']);
-        }));
-
-        it('should be able to build layout from schema', inject([LayoutService, SchemaService],
-            (service: LayoutService, schemaService: SchemaService) => {
-            (<jasmine.Spy>Object.getOwnPropertyDescriptor(schemaService, 'dataPointerMap').get).and.returnValue(new Map<string, any>([
-                ['/a', {type: 'string'}],
-                ['/b', {type: 'boolean'}]
-            ]));
-            service.setLayout(['*']);
-            expect(service.layout).toEqual(getExpectedLayout(['a', 'b']));
-        }));
-    });
-
     describe('should be able to build partial layout from schema', () => {
         beforeEach(inject([SchemaService], (service: SchemaService) => {
             (<jasmine.Spy>Object.getOwnPropertyDescriptor(service, 'dataPointerMap').get).and.returnValue(new Map<string, any>([
@@ -137,6 +97,56 @@ describe('LayoutService', () => {
             service.setLayout(['d', '*', 'b']);
             expect(service.layout).toEqual(getExpectedLayout(['d', 'a', 'c', 'e', 'b']));
         }));
+    });
+
+    describe('layout.dataPointer', () => {
+        describe('object path layouts', () => {
+            it('should handle object.path only layouts', inject([LayoutService], (service: LayoutService) => {
+                service.setLayout(['attributes.comment']);
+                expect(<any>service.layout).toEqual([jasmine.objectContaining({
+                    dataPointer: '/attributes/comment'
+                })]);
+            }));
+
+            it('should handle json/pointer only layouts', inject([LayoutService], (service: LayoutService) => {
+                service.setLayout(['/attributes/comment']);
+                expect(<any>service.layout).toEqual([jasmine.objectContaining({
+                    dataPointer: '/attributes/comment'
+                })]);
+            }));
+
+            it('should handle object.path layouts', inject([LayoutService], (service: LayoutService) => {
+                service.setLayout([{key: 'attributes.comment'}]);
+                expect(<any>service.layout).toEqual([jasmine.objectContaining({
+                    dataPointer: '/attributes/comment'
+                })]);
+            }));
+
+            it('should handle json/pointer layouts', inject([LayoutService], (service: LayoutService) => {
+                service.setLayout([{key: '/attributes/comment'}]);
+                expect(<any>service.layout).toEqual([jasmine.objectContaining({
+                    dataPointer: '/attributes/comment'
+                })]);
+            }));
+
+            it('should drop unknown layout and display console error', inject([LayoutService], (service: LayoutService) => {
+                spyOn(console, 'error');
+                service.setLayout(['a.b', <any>['a.c'], 'a.d']);
+                expect(service.layout).toEqual(getExpectedLayout(['a/b', 'a/d']));
+                expect(console.error).toHaveBeenCalledTimes(1 + 1);
+                expect(console.error).toHaveBeenCalledWith(['a.c']);
+            }));
+
+            it('should be able to build layout from schema', inject([LayoutService, SchemaService],
+                (service: LayoutService, schemaService: SchemaService) => {
+                (<jasmine.Spy>Object.getOwnPropertyDescriptor(schemaService, 'dataPointerMap').get).and.returnValue(new Map<string, any>([
+                    ['/a', {type: 'string'}],
+                    ['/b', {type: 'boolean'}]
+                ]));
+                service.setLayout(['*']);
+                expect(service.layout).toEqual(getExpectedLayout(['a', 'b']));
+            }));
+        });
     });
 
     describe('layout.type', () => {
@@ -170,5 +180,4 @@ describe('LayoutService', () => {
             })]);
         }));
     });
-
 });
