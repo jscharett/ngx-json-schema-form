@@ -36,6 +36,7 @@ import { SchemaService } from './schema.service';
  * - [Angular]{@link https://angular.io} (obviously)
  * - [lodash]{@link https://github.com/lodash/lodash}, JavaScript utility library
  * - [ajv]{@link https://github.com/epoberezkin/ajv}, Another JSON Schema validator
+ * - [json-schema-traverse]{@link https://github.com/epoberezkin/json-schema-traverse}, JSON Schema Traverse
  *
  * In addition, the Example Playground also depends on:
  *
@@ -100,7 +101,7 @@ export class JsonSchemaFormComponent implements OnChanges, OnInit {
     }
 
     private initializeLayout(): void {
-        this.layoutService.setLayout(cloneDeep(this.layout || []));
+        this.layoutService.setLayout(cloneDeep(this.layout || ['*']));
     }
 
     private initializeSchema(): void {
