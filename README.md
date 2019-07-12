@@ -22,8 +22,43 @@ bring parity with [Angular JSON Schema Form](https://github.com/angular2-json-sc
 
 [Check out some examples here.](https://jscharett.github.io/ngx-json-schema-form/)
 
-### To install from NPM
+## Using Angular JSON Schema Form
+
+### Basic use
+
+Begin by installing the library in your project
 
 ```
-npm install ngx-json-schema-form
+npm install ngx-json-schema-form --save
 ```
+
+Then import JsonSchemaFormModule in your main application module:
+
+```typescript
+import { BrowserModule } from '@angular/platform-browser';
+import { NgModule } from '@angular/core';
+
+import { JsonSchemaFormModule } from 'ngx-json-schema-form';
+
+import { AppComponent } from './app.component';
+
+@NgModule({
+    declarations: [ AppComponent ],
+    imports: [
+        BrowserModule,
+        JsonSchemaFormModule
+    ],
+    bootstrap: [ AppComponent ]
+})
+export class AppModule { }
+```
+
+To display a form in your Angular component, simply add the following to your component's template:
+
+```html
+<json-schema-form
+    [schema]="schema"
+></json-schema-form>
+```
+
+Where `schema` is a valid JSON schema object. If you don't already have your own schemas, you can find a bunch of samples to test with in the `src/demo/assets/example-schemas` folder.

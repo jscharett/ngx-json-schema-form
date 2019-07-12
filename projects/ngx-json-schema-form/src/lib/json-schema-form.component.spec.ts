@@ -18,7 +18,7 @@ describe('JsonSchemaFormComponent', () => {
         const jsonSchemaFormService: JsonSchemaFormService = jasmine.createSpyObj('JsonSchemaFormService', {
             initializeControl: undefined
         });
-        const layoutService: LayoutService = <any>{};
+        const layoutService: LayoutService = <any>{setLayout: jasmine.createSpy('setLayout')};
         const schemaService: SchemaService = <any>{};
 
         return TestBed.configureTestingModule({

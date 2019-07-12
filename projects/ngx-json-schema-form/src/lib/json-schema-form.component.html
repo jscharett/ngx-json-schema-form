@@ -1,5 +1,5 @@
 <form (ngSubmit)="submitForm()">
-    <div *ngFor="let layoutItem of layoutService.layout; trackBy: trackByFn;">
-        <jsf-select-widget [layoutNode]="layoutItem"></jsf-select-widget>
+    <div *ngFor="let layoutNode of layoutService.layout; trackBy: trackByFn;">
+        <jsf-select-widget [layoutNode]="layoutNode"></jsf-select-widget>
     </div>
 </form>
