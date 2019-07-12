@@ -31,7 +31,7 @@ export class SchemaService {
         const pointers: Map<string, JSONSchema7Definition> = new Map<string, JSONSchema7Definition>();
         traverse(this.schema, {cb: (...args) => {
             const [schema, pointer, , , , parentSchema] = args;
-            if (pointer && parentSchema && parentSchema.type !== 'array') {
+            if (pointer && parentSchema && parentSchema.type !== 'array' && schema.type !== 'object') {
                 pointers.set(pointer.replace(/\/properties/g, ''), schema);
             }
         }});
