@@ -2,6 +2,7 @@ import { NO_ERRORS_SCHEMA } from '@angular/core';
 import { ComponentFixture, inject, TestBed } from '@angular/core/testing';
 
 import { JsonSchemaFormService } from '../../..';
+import { LayoutNode } from '../../../layout-node';
 
 import { ButtonComponent } from './button.component';
 
@@ -32,7 +33,7 @@ describe('ButtonComponent', () => {
     beforeEach(() => {
         fixture = TestBed.createComponent(ButtonComponent);
         component = fixture.componentInstance;
-        component.layoutNode = {id: '0', options: {}, type: 'button'};
+        component.layoutNode = {id: '0', options: {}, type: 'button'} as any as LayoutNode;
         fixture.detectChanges();
     });
 

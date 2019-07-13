@@ -316,7 +316,7 @@
     "no-focused-tests": true,
     "no-global-setup": true,
     "no-promise-without-done-fail": false,// Does not allow for returning promise
-    "no-spec-dupes": true,
+    "no-spec-dupes": [true, "branch"],
     "no-suite-callback-args": true,
     "no-suite-dupes": true,
     "no-unsafe-spy": true,

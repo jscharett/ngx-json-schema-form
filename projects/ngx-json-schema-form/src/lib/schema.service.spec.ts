@@ -12,7 +12,7 @@ describe('SchemaService', () => {
     let schema: JSONSchema7;
 
     beforeEach(() => {
-        schema = cloneDeep(basicJSONSchema);
+        schema = cloneDeep(basicJSONSchema as JSONSchema7);
         TestBed.configureTestingModule({
             providers: [
                 SchemaService

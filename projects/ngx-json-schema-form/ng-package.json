@@ -1,12 +1,13 @@
 {
-  "$schema": "../../node_modules/ng-packagr/ng-package.schema.json",
-  "dest": "../../dist/ngx-json-schema-form",
-  "lib": {
-    "entryFile": "src/public-api.ts",
-    "umdModuleIds": {
-        "lodash": "_",
-        "ajv": "Ajv",
-        "json-schema-traverse": "traverse"
+    "$schema": "../../node_modules/ng-packagr/ng-package.schema.json",
+    "dest": "../../dist/ngx-json-schema-form",
+    "lib": {
+        "entryFile": "src/public-api.ts",
+        "umdModuleIds": {
+            "ajv": "Ajv",
+            "json-schema-traverse": "traverse",
+            "lodash": "_",
+            "lodash-decorators": "lodashDecorators"
+        }
     }
-  }
 }
