@@ -1,8 +1,9 @@
 import { JSONSchema7 } from 'json-schema';
-import { defaultTo, isString, omit, uniqueId } from 'lodash';
+import { defaultTo, isString, mapKeys, omit, pick, uniqueId } from 'lodash';
 import { Memoize } from 'lodash-decorators';
 
 import { LayoutItem } from './layout-item.data';
+import { LayoutOptions } from './layout-options.data';
 import { SchemaService } from './schema.service';
 
 export class LayoutNode {
@@ -49,9 +50,14 @@ export class LayoutNode {
         // TODO: handle array of types
         return this.layoutItem.type || <string>defaultTo(this.schema, <any>{}).type;
     }
-    /** Options for */
-    @Memoize() get options(): {[others: string]: any} {
-        return omit(this.layoutItem, ['key, type', 'name']);
+    /** Options for the widget */
+    @Memoize() get options(): LayoutOptions {
+        return {
+            ...pick(this.schema, ['title', 'description']),
+            ...mapKeys(pick(this.schema, ['readOnly']), () => 'readonly'),
+            ...omit(this.layoutItem, ['key', 'type', 'name', 'options']),
+            ...defaultTo(this.layoutItem.options, {})
+        };
     }
 
     // $ref?: any;

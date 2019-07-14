@@ -61,9 +61,53 @@ describe('LayoutNode', () => {
 
     describe('options', () => {
         it('should move unknown props to options', () => {
-            expect((new LayoutNode({type: 'section', cat: 1}).options)).toEqual(jasmine.objectContaining({
+            expect((new LayoutNode({type: 'section', cat: 1})).options).toEqual({
                 cat: 1
-            }));
+            });
+        });
+
+        it('should not move known props to options', () => {
+            // 'key, type', 'name', 'options'
+            expect((new LayoutNode({type: 'a', name: 'b', key: 'c', options: {}})).options).toEqual({});
+        });
+
+        it('should preserve existing options', () => {
+            expect((new LayoutNode({type: 'section', options: {title: 'hi'}})).options).toEqual({
+                title: 'hi'
+            });
+        });
+
+        it('should favor existing options over unknown props', () => {
+            expect((new LayoutNode({type: 'section', options: {title: 'hi'}, title: 'bye'})).options).toEqual({
+                title: 'hi'
+            });
+        });
+
+        it('should set props from schema', () => {
+            expect((new LayoutNode({type: 'section'}, {
+                description: 'hi',
+                readOnly: true,
+                title: 'bye'
+            })).options).toEqual({
+                description: 'hi',
+                readonly: true,
+                title: 'bye'
+            });
+        });
+
+        it('should favor layout over schema', () => {
+            expect((new LayoutNode({
+                options: {description: 'hi', readonly: false, title: 'hi'},
+                type: 'section'
+            }, {
+                description: 'bye',
+                readOnly: true,
+                title: 'bye'
+            })).options).toEqual({
+                description: 'hi',
+                readonly: false,
+                title: 'hi'
+            });
         });
     });
 
