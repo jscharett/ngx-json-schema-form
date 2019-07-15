@@ -59,6 +59,12 @@ export class JsonSchemaFormComponent implements OnChanges, OnInit {
     /** Layout used to define how the form is rendered */
     @Input() layout: Array<LayoutItem>;
 
+    @Input() action: string | null;
+    @Input() autocomplete: 'on' | 'off' | null;
+    @Input() enctype: 'application/x-www-form-urlencoded' | 'multipart/form-data' | 'text/plain' | null;
+    @Input() method: 'get' | 'post' | 'dialog' | null;
+    @Input() target: '_self' | '_blank' | '_parent' | '_top' | string | null;
+
     private formInitialized = false;
 
     constructor(

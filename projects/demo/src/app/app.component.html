@@ -88,6 +88,59 @@
     fxLayoutAlign.lt-sm="flex-start center">
     <div fxFlex="0 0 calc(50% - 12px)">
         <mat-card>
+            <details>
+                <summary>Options</summary>
+                <div style="display: flex; flex-direction: column;">
+                    <mat-form-field>
+                        <input matInput placeholder="Action" [(ngModel)]="options.action">
+                    </mat-form-field>
+                    <mat-form-field>
+                        <mat-select
+                            [(ngModel)]="options.autocomplete"
+                            name="autocomplete"
+                            placeholder="AutoComplete">
+                            <mat-option [value]="undefined"></mat-option>
+                            <mat-option [value]="'on'">On</mat-option>
+                            <mat-option [value]="'off'">Off</mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                    <mat-form-field>
+                        <mat-select
+                            [(ngModel)]="options.enctype"
+                            name="enctype"
+                            placeholder="Enctype">
+                            <mat-option [value]="undefined"></mat-option>
+                            <mat-option [value]="'application/x-www-form-urlencoded'">Application</mat-option>
+                            <mat-option [value]="'multipart/form-data'">Multipart form data</mat-option>
+                            <mat-option [value]="'text/plain'">Text plain</mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                    <mat-form-field>
+                        <mat-select
+                            [(ngModel)]="options.method"
+                            name="method"
+                            placeholder="Method">
+                            <mat-option [value]="undefined"></mat-option>
+                            <mat-option [value]="'get'">Get</mat-option>
+                            <mat-option [value]="'post'">Post</mat-option>
+                            <mat-option [value]="'dialog'">Dialog</mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                    <mat-form-field>
+                        <mat-select
+                            [(ngModel)]="options.target"
+                            name="target"
+                            placeholder="Target">
+                            <mat-option [value]="undefined"></mat-option>
+                            <mat-option [value]="'_self'">Self</mat-option>
+                            <mat-option [value]="'_blank'">Blank</mat-option>
+                            <mat-option [value]="'_parent'">Parent</mat-option>
+                            <mat-option [value]="'_top'">Top</mat-option>
+                            <!-- <mat-option [value]="'iframename'">Iframe</mat-option> -->
+                        </mat-select>
+                    </mat-form-field>
+                </div>
+            </details>
         <!-- <h4 class="default-cursor" (click)="toggleVisible('options')">
             {{visible.options ? '▼' : '▶'}} Selected Framework and Options
         </h4>
@@ -167,6 +220,11 @@
                         <jsf-json-schema-form
                             [schema]="jsonFormSchema"
                             [layout]="jsonFormLayout"
+                            [action]="options.action"
+                            [autocomplete]="options.autocomplete"
+                            [enctype]="options.enctype"
+                            [method]="options.method"
+                            [target]="options.target"
                         ></jsf-json-schema-form>
                             <!-- loadExternalAssets="true"
                             [form]="jsonFormObject"

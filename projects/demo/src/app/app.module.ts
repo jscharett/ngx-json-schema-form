@@ -4,7 +4,7 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import { FormsModule } from '@angular/forms';
 import {
     MatButtonModule, MatCardModule, MatCheckboxModule, MatIconModule,
-    MatMenuModule, MatSelectModule, MatToolbarModule
+    MatInputModule, MatMenuModule, MatSelectModule, MatToolbarModule
 } from '@angular/material';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -26,8 +26,8 @@ import { RootComponent } from './root.component';
     ],
     imports: [
         BrowserModule, BrowserAnimationsModule, FormsModule, HttpClientModule, FlexLayoutModule,
-        MatButtonModule, MatCardModule, MatCheckboxModule,
-        MatIconModule, MatMenuModule, MatSelectModule, MatToolbarModule,
+        MatButtonModule, MatCardModule, MatCheckboxModule, MatIconModule,
+        MatInputModule, MatMenuModule, MatSelectModule, MatToolbarModule,
         RouterModule.forRoot(routes),
 
         AceEditorModule,
