@@ -8,6 +8,7 @@ export class JsonSchemaFormService {
 
     /** Sets a widgets properties upon Widget creation */
     initializeControl(control: Widget, bind = true): void {
+        // Do we even need to do this?  seems silly
         control.controlName = control.layoutNode.name;
     }
 

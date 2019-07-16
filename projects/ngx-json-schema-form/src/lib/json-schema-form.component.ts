@@ -58,11 +58,30 @@ export class JsonSchemaFormComponent implements OnChanges, OnInit {
     @Input() schema: JSONSchema7;
     /** Layout used to define how the form is rendered */
     @Input() layout: Array<LayoutItem>;
-
+    /**
+     * Sets the action attribute of the internal form
+     * See {@link https://developer.mozilla.org/en-US/docs/Web/HTML/Element/form#Attributes}
+     */
     @Input() action: string | null;
+    /**
+     * Sets the autocomplete attribute of the internal form
+     * See {@link https://developer.mozilla.org/en-US/docs/Web/HTML/Element/form#Attributes}
+     */
     @Input() autocomplete: 'on' | 'off' | null;
+    /**
+     * Sets the enctype attribute of the internal form
+     * See {@link https://developer.mozilla.org/en-US/docs/Web/HTML/Element/form#Attributes}
+     */
     @Input() enctype: 'application/x-www-form-urlencoded' | 'multipart/form-data' | 'text/plain' | null;
+    /**
+     * Sets the method attribute of the internal form
+     * See {@link https://developer.mozilla.org/en-US/docs/Web/HTML/Element/form#Attributes}
+     */
     @Input() method: 'get' | 'post' | 'dialog' | null;
+    /**
+     * Sets the target attribute of the internal form
+     * See {@link https://developer.mozilla.org/en-US/docs/Web/HTML/Element/form#Attributes}
+     */
     @Input() target: '_self' | '_blank' | '_parent' | '_top' | string | null;
 
     private formInitialized = false;

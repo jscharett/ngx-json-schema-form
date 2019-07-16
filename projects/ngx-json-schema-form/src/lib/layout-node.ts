@@ -6,13 +6,24 @@ import { LayoutItem } from './layout-item.data';
 import { LayoutOptions } from './layout-options.data';
 import { SchemaService } from './schema.service';
 
+/**
+ * The LayoutNode contains the logic to parse a LayoutItem along with its Schema.
+ * A LayoutNode acts, to some degree, as a proxy of the LayoutItem, augmenting data
+ * as needed. This gives the system a specific api to work with while allowing the
+ * user to pass in variable data, so a degree.
+ */
 export class LayoutNode {
+    /** Reference to the user defined layout item */
     private readonly layoutItem: LayoutItem;
+    /** Reference to the schema that pertains the layout */
     private readonly schema: JSONSchema7;
 
     /** Unique Identifier for the item */
     public readonly id: string = uniqueId('control');
 
+    /**
+     * @throws Will throw an error if there is no layout.type or schema.type
+     */
     constructor(layoutItem: LayoutItem, schema?: JSONSchema7) {
         if (!layoutItem.type && !(schema && schema.type)) {
             throw new Error('Missing "type"....');
@@ -21,6 +32,11 @@ export class LayoutNode {
         this.schema = schema;
     }
 
+    /**
+     * Creates a LayoutNode
+     * @param layoutItem - A LayoutItem presented by the user.  If a string is given, it is converted into a LayoutItem
+     * @param schemaService - Service for looking up related Schema definition
+     */
     public static create(layoutItem: LayoutItem | string, schemaService: SchemaService): LayoutNode {
         const item: LayoutItem = isString(layoutItem)
             ? {key: layoutItem}
@@ -30,6 +46,7 @@ export class LayoutNode {
         return new LayoutNode(item, schema);
     }
 
+    /** Normalizes a key(object.path or json/path) to json path */
     private static getPointer(key: string): string {
         const pointer = defaultTo(key, '');
 
