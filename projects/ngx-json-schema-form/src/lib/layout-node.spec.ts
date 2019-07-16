@@ -1,23 +1,41 @@
 import { LayoutNode } from './layout-node';
+import { SchemaService } from './schema.service';
 
 describe('LayoutNode', () => {
-    it('should create an instance', () => {
-        expect(new LayoutNode({type: 'section'})).toBeTruthy();
-        // expect(LayoutNode.create()).toBeTruthy();
-    });
+    describe('creation', () => {
+        let service: SchemaService;
 
-    it('should throw error', () => {
-        expect(() => new LayoutNode({key: 'a'})).toThrowError();
-        // expect(LayoutNode.create()).toThrowError();
-    });
+        beforeEach(() => {
+            service = Object.create({}, {
+                dataPointerMap: {
+                    enumerable: true,
+                    get: jasmine.createSpy('get').and.returnValue(new Map<string, any>([
+                        ['/a', {type: 'object'}]
+                    ]))
+                }
+            });
+        });
 
-    it('should have an uniquie id', () => {
-        const node1 = new LayoutNode({type: 'section'});
-        const node2 = new LayoutNode({type: 'section'});
+        it('should create an instance', () => {
+            expect(new LayoutNode({type: 'section'})).toBeTruthy();
+            expect(LayoutNode.create({type: 'section'}, service)).toBeTruthy();
+            expect(LayoutNode.create('a', service)).toBeTruthy();
+        });
 
-        expect(node1.id).toBeDefined();
-        expect(node2.id).toBeDefined();
-        expect(node1.id).not.toEqual(node2.id);
+        it('should throw error', () => {
+            expect(() => new LayoutNode({key: 'a'})).toThrowError();
+            expect(() => LayoutNode.create({key: 'b'}, service)).toThrowError();
+            expect(() => LayoutNode.create('b', service)).toThrowError();
+        });
+
+        it('should have an uniquie id', () => {
+            const node1 = new LayoutNode({type: 'section'});
+            const node2 = new LayoutNode({type: 'section'});
+
+            expect(node1.id).toBeDefined();
+            expect(node2.id).toBeDefined();
+            expect(node1.id).not.toEqual(node2.id);
+        });
     });
 
     describe('type', () => {
