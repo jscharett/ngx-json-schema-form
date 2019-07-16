@@ -3,6 +3,7 @@ import { Component, ComponentRef, NgModule } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { JsonSchemaFormService } from '../../../json-schema-form.service';
+import { LayoutNode } from '../../../layout-node';
 
 import { WidgetLibraryService } from '../../widget-library.service';
 
@@ -51,7 +52,7 @@ describe('SelectWidgetComponent', () => {
     beforeEach(() => {
         fixture = TestBed.createComponent(SelectWidgetComponent);
         component = fixture.componentInstance;
-        component.layoutNode = {id: '0', options: {}, type: 'hidden'};
+        component.layoutNode = {id: '0', options: {}, type: 'hidden'} as any as LayoutNode;
         const original = component.widgetContainer.createComponent;
         spyOn(component.widgetContainer, 'createComponent').and.callFake((...args) => {
             newComponent = original.apply(component.widgetContainer, args);

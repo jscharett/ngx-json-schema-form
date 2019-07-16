@@ -1,4 +1,10 @@
-<form (ngSubmit)="submitForm()">
+<form
+    [attr.action]="action"
+    [attr.autocomplete]="autocomplete"
+    [attr.enctype]="enctype"
+    [attr.method]="method"
+    [attr.target]="target"
+    (ngSubmit)="submitForm()">
     <div *ngFor="let layoutNode of layoutService.layout; trackBy: trackByFn;">
         <jsf-select-widget [layoutNode]="layoutNode"></jsf-select-widget>
     </div>

@@ -1,8 +1,9 @@
 <button
     [attr.readonly]="options?.readonly ? 'readonly' : null"
-    [attr.aria-describedby]="'control' + layoutNode.id + 'Status'"
+    [attr.aria-describedby]="layoutNode.id + 'Status'"
     [class]="options?.htmlClass || ''"
     [disabled]="controlDisabled"
+    [id]="layoutNode.id"
     [name]="controlName"
     [type]="layoutNode?.type"
     [value]="controlValue"

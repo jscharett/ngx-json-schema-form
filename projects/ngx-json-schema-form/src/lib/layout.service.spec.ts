@@ -2,19 +2,19 @@ import { inject, TestBed } from '@angular/core/testing';
 
 import basicJSONLayout from '../assests/example-layouts/jsf-layout-basic.json';
 
-import { LayoutNode } from './layout-item.data';
+import { LayoutNode } from './layout-node';
 import { LayoutService } from './layout.service';
 import { SchemaService } from './schema.service';
 
 describe('LayoutService', () => {
     const getExpectedLayout = (props: Array<string>): Array<LayoutNode> => {
         return props.reduce((layout: Array<LayoutNode>, prop: string) => {
-            return layout.concat({
+            return layout.concat(<any>jasmine.objectContaining({
                 dataPointer: `/${prop}`,
                 id: <any>jasmine.any(String),
                 options: <any>jasmine.any(Object),
                 type: <any>jasmine.any(String)
-            });
+            }));
         }, []);
     };
 
@@ -54,22 +54,10 @@ describe('LayoutService', () => {
 
     it('should augment layout with derived props', inject([LayoutService], (service: LayoutService) => {
         service.setLayout(basicJSONLayout);
-        expect(service.layout).toEqual([{
-            dataPointer: `/${basicJSONLayout[0].key}`,
-            id: <any>jasmine.any(String),
-            name: basicJSONLayout[0].name,
-            options: <any>jasmine.any(Object),
-            type: basicJSONLayout[0].type
-        }]);
-    }));
-
-    it('should remove unknown props from layout', inject([LayoutService], (service: LayoutService) => {
-        service.setLayout([<any>{cat: 1, type: 'div'}]);
-        expect(service.layout).toEqual([{
-            id: <any>jasmine.any(String),
-            options: <any>jasmine.any(Object),
-            type: <any>jasmine.any(String)
-        }]);
+        const layoutNode: LayoutNode = service.layout[0];
+        expect(layoutNode.dataPointer).toEqual(`/${basicJSONLayout[0].key}`);
+        expect(layoutNode.type).toEqual(basicJSONLayout[0].type);
+        expect(layoutNode.name).toEqual(basicJSONLayout[0].name);
     }));
 
     describe('should be able to build partial layout from schema', () => {
@@ -174,6 +162,7 @@ describe('LayoutService', () => {
         }));
 
         it('should remove layouts with no type', inject([LayoutService], (service: LayoutService) => {
+            spyOn(console, 'error');
             service.setLayout([{name: 'remove'}, {key: 'b', type: 'checkbox'}]);
             expect(<any>service.layout).toEqual([jasmine.objectContaining({
                 type: 'checkbox'

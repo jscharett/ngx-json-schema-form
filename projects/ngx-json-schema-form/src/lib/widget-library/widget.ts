@@ -2,7 +2,7 @@ import { Input, OnInit } from '@angular/core';
 import { AbstractControl } from '@angular/forms';
 
 import { JsonSchemaFormService } from '../json-schema-form.service';
-import { LayoutNode } from '../layout-item.data';
+import { LayoutNode } from '../layout-node';
 
 /** Widget */
 export abstract class Widget implements OnInit {

@@ -79,6 +79,14 @@ export class AppComponent implements OnInit {
         maxLines: 1000,
         printMargin: false
     };
+
+    options = {
+        action: undefined,
+        autocomplete: undefined,
+        enctype: undefined,
+        method: undefined,
+        target: undefined
+    };
     @ViewChild(MatMenuTrigger) menuTrigger: MatMenuTrigger;
 
     public examplesObservable: Observable<Array<any>>;

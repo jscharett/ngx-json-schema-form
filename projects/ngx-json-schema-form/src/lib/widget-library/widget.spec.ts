@@ -1,9 +1,10 @@
 import { Component, NO_ERRORS_SCHEMA } from '@angular/core';
 import { ComponentFixture, inject, TestBed } from '@angular/core/testing';
 
-import { Widget } from '.';
-
 import { JsonSchemaFormService } from '..';
+import { LayoutNode } from '../layout-node';
+
+import { Widget } from '.';
 
 @Component({
     selector: 'jsf-test-component',
@@ -42,7 +43,7 @@ describe('widgets', () => {
     beforeEach(() => {
         fixture = TestBed.createComponent(TestComponent);
         component = fixture.componentInstance;
-        component.layoutNode = {id: '0', options: {}, type: ''};
+        component.layoutNode = {id: '0', options: {}, type: ''} as any as LayoutNode;
         fixture.detectChanges();
     });
 
