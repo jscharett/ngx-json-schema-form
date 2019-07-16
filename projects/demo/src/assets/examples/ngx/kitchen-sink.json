@@ -8,7 +8,8 @@
             "apikey": {
                 "title": "API key",
                 "type": "string",
-                "default": "supercalifragilisticexpialidocious"
+                "default": "supercalifragilisticexpialidocious",
+                "readOnly": true
             },
             "firstName": {
                 "title": "First Name",
@@ -37,7 +38,8 @@
                         "type": "string"
                     },
                     "postalCode": {
-                        "type": "string"
+                        "type": "string",
+                        "readOnly": false
                     }
                 }
             }
@@ -49,11 +51,23 @@
         "address.line1",
         "/address/line2",
         {
-            "key": "address.city"
+            "key": "address.city",
+            "title": "City",
+            "options": {
+                "accesskey": "c",
+                "tabindex": 1,
+                "style": "color: red;"
+            }
         },
         {
             "key": "/address/postalCode",
-            "name": "zipCode"
+            "name": "zipCode",
+            "readonly": true,
+            "options": {
+                "disabled": true,
+                "dirname": true
+            },
+            "htmlClass": "zipCode"
         }
     ]
 }
