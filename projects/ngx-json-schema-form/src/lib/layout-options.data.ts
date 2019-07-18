@@ -19,5 +19,12 @@ export interface LayoutOptions {
     /** See {@link https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input#readonly} */
     readonly?: boolean;
 
+    icon?: {
+        alt?: string;
+        height?: number;
+        src: string;
+        width?: number;
+    };
+
     [others: string]: any;
 }

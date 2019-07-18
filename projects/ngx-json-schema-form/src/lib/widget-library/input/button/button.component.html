@@ -1,13 +1,17 @@
-<button
-    [attr.readonly]="options?.readonly ? 'readonly' : null"
-    [attr.aria-describedby]="layoutNode.id + 'Status'"
-    [class]="options?.htmlClass || ''"
-    [disabled]="controlDisabled"
+<input
+    [attr.readonly]="options.readonly ? 'readonly' : null"
+    [attr.accesskey]="options.accesskey"
+    [attr.class]="options.htmlClass"
+    [attr.dirname]="options.dirname ? layoutNode.name + '.dir' : null"
+    [attr.style]="options.style"
+    [attr.tabindex]="options.tabindex"
+    [attr.title]="options.description"
+    [attr.alt]="options.icon?.alt"
+    [attr.height]="options.icon?.height"
+    [attr.src]="options.icon?.src"
+    [attr.width]="options.icon?.width"
     [id]="layoutNode.id"
-    [name]="controlName"
-    [type]="layoutNode?.type"
-    [value]="controlValue"
+    [name]="layoutNode.name"
+    [type]="layoutNode.type"
+    [value]="options.title"
     (click)="updateValue($event)">
-    <span *ngIf="options?.icon || options?.title"
-        [class]="options?.icon">{{ options?.title }}</span>
-</button>

@@ -1,0 +1,54 @@
+{
+    "schema": {
+        "type": "object",
+        "properties": {
+            "items": {
+                "type": "array",
+                "items": {
+                    "type": "string",
+                    "title": "Item",
+                    "default": "New Item"
+                }
+            }
+        }
+    },
+    "layout": [{
+        "type": "button",
+        "name": "Button",
+        "title": "Button",
+        "description": "This in an input[type='button']",
+        "tabindex": 1,
+        "accesskey": "b",
+        "htmlClass": "btn"
+    }, {
+        "type": "reset",
+        "name": "Reset",
+        "title": "Reset",
+        "description": "This in an input[type='reset']",
+        "tabindex": 0,
+        "accesskey": "r",
+        "htmlClass": "btn"
+    }, {
+        "type": "submit",
+        "name": "Submit",
+        "title": "Submit",
+        "description": "This in an input[type='submit']",
+        "tabindex": 3,
+        "accesskey": "s",
+        "htmlClass": "btn"
+    }, {
+        "type": "image",
+        "name": "Image",
+        "title": "Image",
+        "description": "This in an input[type='image']",
+        "tabindex": 2,
+        "accesskey": "i",
+        "icon": {
+            "alt": "Some Alt text",
+            "src": "https://raw.githubusercontent.com/mdn/learning-area/master/html/forms/image-type-example/login.png",
+            "width": 100,
+            "height": 30
+        },
+        "htmlClass": "btn"
+    }]
+}

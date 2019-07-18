@@ -11,6 +11,10 @@
             {
                 "name": "Kitchen Sink",
                 "file": "kitchen-sink"
+            },
+            {
+                "name": "Buttons",
+                "file": "buttons"
             }
         ]
     }

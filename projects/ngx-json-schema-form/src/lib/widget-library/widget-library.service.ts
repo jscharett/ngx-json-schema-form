@@ -15,7 +15,10 @@ export class WidgetLibraryService {
 
     private readonly widgets = {
         button: ButtonComponent,
-        hidden: HiddenComponent
+        hidden: HiddenComponent,
+        image: ButtonComponent,
+        reset: ButtonComponent,
+        submit: ButtonComponent
     };
 
     /**
