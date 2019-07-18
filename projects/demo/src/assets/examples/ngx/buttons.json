@@ -50,5 +50,29 @@
             "height": 30
         },
         "htmlClass": "btn"
+    }, {
+        "type": "submit",
+        "name": "Submit2",
+        "title": "Submit",
+        "content": "<span class='icon'>{{ options.title }}</span>",
+        "description": "This in an button[type='submit']",
+        "accesskey": "x",
+        "htmlClass": "btn"
+    }, {
+        "type": "reset",
+        "name": "Reset2",
+        "title": "Reset",
+        "content": "<span class='icon'>{{ options.title }}</span>",
+        "description": "This in an button[type='reset']",
+        "accesskey": "y",
+        "htmlClass": "btn"
+    }, {
+        "type": "button",
+        "name": "Button2",
+        "title": "Button",
+        "content": "<span class='icon'>{{ options.title }}</span>",
+        "description": "This in an button[type='button']",
+        "accesskey": "z",
+        "htmlClass": "btn"
     }]
 }

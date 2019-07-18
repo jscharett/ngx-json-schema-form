@@ -67,12 +67,16 @@ export class LayoutNode {
         // TODO: handle array of types
         return this.layoutItem.type || <string>defaultTo(this.schema, <any>{}).type;
     }
+    /** */
+    @Memoize() get content(): string {
+        return isString(this.layoutItem.content) ? this.layoutItem.content : undefined;
+    }
     /** Options for the widget */
     @Memoize() get options(): LayoutOptions {
         return {
             ...pick(this.schema, ['title', 'description']),
             ...mapKeys(pick(this.schema, ['readOnly']), () => 'readonly'),
-            ...omit(this.layoutItem, ['key', 'type', 'name', 'options']),
+            ...omit(this.layoutItem, ['key', 'type', 'name', 'content', 'options']),
             ...defaultTo(this.layoutItem.options, {})
         };
     }

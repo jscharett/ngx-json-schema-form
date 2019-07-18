@@ -50,9 +50,19 @@ export class SelectWidgetComponent extends Widget implements OnInit, OnChanges {
         // TODO: What if layoutNode were to change?  The form would be incorrect.
         if (!this.newComponent && this.layoutNode && this.layoutNode.type) {
             this.newComponent = this.widgetContainer.createComponent(
-                this.componentFactory.resolveComponentFactory(this.widgetLibraryService.getWidget(this.layoutNode.type) as any)
+                this.componentFactory.resolveComponentFactory(
+                    this.widgetLibraryService.getWidget(this.layoutNode.type) as any
+                ),
+                undefined,
+                undefined,
+                this.generateNgContent()
             );
         }
     }
 
+    private generateNgContent(): Array<Array<any>> {
+        if (this.layoutNode.content) {
+            return [ [ this.jsf.compileTemplate(this.layoutNode.content, this.layoutNode.options) ] ];
+        }
+    }
 }

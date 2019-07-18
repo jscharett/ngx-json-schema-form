@@ -1,4 +1,4 @@
-<input
+<input *ngIf="!layoutNode.content"
     [attr.readonly]="options.readonly ? 'readonly' : null"
     [attr.accesskey]="options.accesskey"
     [attr.class]="options.htmlClass"
@@ -15,3 +15,17 @@
     [type]="layoutNode.type"
     [value]="options.title"
     (click)="updateValue($event)">
+<button *ngIf="layoutNode.content"
+    [attr.readonly]="options.readonly ? 'readonly' : null"
+    [attr.accesskey]="options.accesskey"
+    [attr.class]="options.htmlClass"
+    [attr.dirname]="options.dirname ? layoutNode.name + '.dir' : null"
+    [attr.style]="options.style"
+    [attr.tabindex]="options.tabindex"
+    [attr.title]="options.description"
+    [id]="layoutNode.id"
+    [name]="layoutNode.name"
+    [type]="layoutNode.type"
+    (click)="updateValue($event)">
+    <ng-content></ng-content>
+</button>
