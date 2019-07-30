@@ -67,7 +67,7 @@ export class LayoutNode {
         // TODO: handle array of types
         return this.layoutItem.type || <string>defaultTo(this.schema, <any>{}).type;
     }
-    /** */
+    /** HTML content to be rendered inside the widget */
     @Memoize() get content(): string {
         return isString(this.layoutItem.content) ? this.layoutItem.content : undefined;
     }

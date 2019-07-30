@@ -19,10 +19,15 @@ export interface LayoutOptions {
     /** See {@link https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input#readonly} */
     readonly?: boolean;
 
+    /* Attribute for setting a icon */
     icon?: {
+        /** See {@link https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/image#alt} */
         alt?: string;
+        /** See {@link https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/image#height} */
         height?: number;
+        /** See {@link https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/image#src} */
         src: string;
+        /** See {@link https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/image#width} */
         width?: number;
     };
 
