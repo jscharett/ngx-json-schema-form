@@ -26,4 +26,13 @@ describe('JsonSchemaFormService', () => {
         service.initializeControl(widget);
         expect(widget.controlName).toBe('widget');
     });
+
+    it('should create a runtime component', () => {
+        const service: JsonSchemaFormService = TestBed.get(JsonSchemaFormService);
+        const fragment: DocumentFragment = service.compileTemplate('<span>{{ options.title }}</span>', {title: 'hi'});
+        const div = document.createElement('div');
+        div.appendChild(fragment.cloneNode(true));
+
+        expect(div.innerHTML).toBe('<span>hi</span>');
+    });
 });
