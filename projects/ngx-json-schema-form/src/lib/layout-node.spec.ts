@@ -63,6 +63,24 @@ describe('LayoutNode', () => {
         });
     });
 
+    describe('content', () => {
+        it('should be undefined when not set', () => {
+            expect((new LayoutNode({type: 'section'})).content).toBeUndefined();
+        });
+
+        it('should be defined when set', () => {
+            expect((new LayoutNode({type: 'section', content: '<span>hi</span>'})).content).toBe('<span>hi</span>');
+        });
+
+        it('should be undefined if not a string', () => {
+            expect((new LayoutNode({type: 'section', content: true})).content).toBeUndefined();
+            expect((new LayoutNode({type: 'section', content: 1})).content).toBeUndefined();
+            expect((new LayoutNode({type: 'section', content: ['hi']})).content).toBeUndefined();
+            expect((new LayoutNode({type: 'section', content: {}})).content).toBeUndefined();
+            expect((new LayoutNode({type: 'section', content: undefined})).content).toBeUndefined();
+        });
+    });
+
     describe('dataPointer', () => {
         it('should be set from layout.key object path', () => {
             expect((new LayoutNode({key: 'a.b.c'}, {type: 'string'})).dataPointer).toBe('/a/b/c');
