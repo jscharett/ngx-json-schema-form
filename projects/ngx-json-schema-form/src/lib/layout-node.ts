@@ -1,5 +1,5 @@
 import { JSONSchema7 } from 'json-schema';
-import { defaultTo, isString, mapKeys, omit, pick, uniqueId } from 'lodash';
+import { cloneDeep, defaultTo, isString, mapKeys, omit, pick, uniqueId } from 'lodash';
 import { Memoize } from 'lodash-decorators';
 
 import { LayoutItem } from './layout-item.data';
@@ -53,6 +53,10 @@ export class LayoutNode {
         return pointer.charAt(0) === '/'
             ? pointer
             : `/${pointer.replace(/\./g, '/')}`;
+    }
+    /** Copy of the original layoutItem */
+    @Memoize() get layoutDefinition(): LayoutItem {
+        return cloneDeep(this.layoutItem);
     }
     /** Name for the item.  Will be used as the input[name] */
     @Memoize() get name(): string {

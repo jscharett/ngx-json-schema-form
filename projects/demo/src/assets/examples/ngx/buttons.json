@@ -74,5 +74,13 @@
         "description": "This in an button[type='button']",
         "accesskey": "z",
         "htmlClass": "btn"
+    }, {
+        "type": "button",
+        "name": "Button3",
+        "title": "Click me",
+        "description": "This in an button[type='button'] with click handling",
+        "accesskey": "w",
+        "htmlClass": "btn",
+        "onClick": "alert('clicked button' + event.target);"
     }]
 }

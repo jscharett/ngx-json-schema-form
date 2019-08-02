@@ -27,6 +27,20 @@ describe('JsonSchemaFormService', () => {
         expect(widget.controlName).toBe('widget');
     });
 
+    it('should trigger the event observable', (done) => {
+        const service: JsonSchemaFormService = TestBed.get(JsonSchemaFormService);
+        const event = <any>{type: 'click'};
+        const node = <any>{
+            layoutDefinition: {type: 'string'}
+        };
+        const onEvent = jasmine.createSpy('onEvent').and.callFake(() => {
+            expect(onEvent).toHaveBeenCalledWith({event, layout: node.layoutDefinition});
+            done();
+        });
+        service.eventFired$.subscribe(onEvent);
+        service.fireEvent(event, node);
+    });
+
     it('should create a runtime component', () => {
         const service: JsonSchemaFormService = TestBed.get(JsonSchemaFormService);
         const fragment: DocumentFragment = service.compileTemplate('<span>{{ options.title }}</span>', {title: 'hi'});

@@ -14,7 +14,7 @@
     [name]="layoutNode.name"
     [type]="layoutNode.type"
     [value]="options.title"
-    (click)="updateValue($event)">
+    (click)="onClick($event)">
 <button *ngIf="layoutNode.content"
     [attr.readonly]="options.readonly ? 'readonly' : null"
     [attr.accesskey]="options.accesskey"
@@ -26,6 +26,6 @@
     [id]="layoutNode.id"
     [name]="layoutNode.name"
     [type]="layoutNode.type"
-    (click)="updateValue($event)">
+    (click)="onClick($event)">
     <ng-content></ng-content>
 </button>

@@ -19,12 +19,11 @@ export class ButtonComponent extends Widget {
     /**
      * Handle the mouse click event
      */
-    updateValue(event: MouseEvent): void {
-        if (typeof this.options.onClick === 'function') {
-            this.options.onClick(event);
-        } else {
-            super.updateValue(event);
-        }
+    onClick(event: MouseEvent): void {
+        this.jsf.fireEvent(event, this.layoutNode);
     }
 
+
+    // TODO- pulled from submit
+    // this.jsf.formOptions.disableInvalidSubmit
 }

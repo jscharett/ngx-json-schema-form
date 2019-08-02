@@ -1,4 +1,10 @@
-import { ChangeDetectionStrategy, Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
+import {
+    ChangeDetectionStrategy, Component, EventEmitter, Input,
+    OnChanges, OnDestroy, OnInit, Output, SimpleChanges
+} from '@angular/core';
+
+import { Subject } from 'rxjs';
+import { takeUntil } from 'rxjs/operators';
 
 import { cloneDeep, isPlainObject } from 'lodash';
 
@@ -53,7 +59,7 @@ import { SchemaService } from './schema.service';
     styles: [],
     templateUrl: './json-schema-form.component.html'
 })
-export class JsonSchemaFormComponent implements OnChanges, OnInit {
+export class JsonSchemaFormComponent implements OnChanges, OnDestroy, OnInit {
     /** JSON Schema used to validate form data */
     @Input() schema: JSONSchema7;
     /** Layout used to define how the form is rendered */
@@ -84,10 +90,13 @@ export class JsonSchemaFormComponent implements OnChanges, OnInit {
      */
     @Input() target: '_self' | '_blank' | '_parent' | '_top' | string | null;
 
+    @Output() readonly event: EventEmitter<any> = new EventEmitter<any>();
+
     private formInitialized = false;
+    private readonly destroyed$: Subject<void> = new Subject();
 
     constructor(
-        // private readonly jsf: JsonSchemaFormService,
+        private readonly jsf: JsonSchemaFormService,
         private readonly schemaService: SchemaService,
         readonly layoutService: LayoutService
     ) {}
@@ -101,6 +110,11 @@ export class JsonSchemaFormComponent implements OnChanges, OnInit {
             this.formInitialized = false;
         }
         this.updateForm();
+    }
+
+    ngOnDestroy() {
+        this.destroyed$.next();
+        this.destroyed$.complete();
     }
 
     /** Submits the form */
@@ -122,6 +136,9 @@ export class JsonSchemaFormComponent implements OnChanges, OnInit {
     private initializeForm(): void {
         this.initializeSchema();
         this.initializeLayout();
+        this.jsf.eventFired$.pipe(takeUntil(this.destroyed$)).subscribe((event) => {
+            this.event.emit(event);
+        });
         this.formInitialized = true;
     }
 

@@ -1,3 +1,4 @@
+import { LayoutItem } from './layout-item.data';
 import { LayoutNode } from './layout-node';
 import { SchemaService } from './schema.service';
 
@@ -35,6 +36,16 @@ describe('LayoutNode', () => {
             expect(node1.id).toBeDefined();
             expect(node2.id).toBeDefined();
             expect(node1.id).not.toEqual(node2.id);
+        });
+    });
+
+    describe('layoutDefinition', () => {
+        it('should return copy of layoutitem from creation', () => {
+            const item: LayoutItem = {type: 'string'};
+            const node: LayoutNode = new LayoutNode(item);
+
+            expect(node.layoutDefinition).toEqual(item);
+            expect(node.layoutDefinition).not.toBe(item);
         });
     });
 
