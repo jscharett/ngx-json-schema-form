@@ -84,4 +84,10 @@ describe('AppComponent', () => {
         tick();
         expect(location.path()).toBe('/?set=ngx&example=c');
     }));
+
+    it('should run onClick function', () => {
+        spyOn(window, 'alert');
+        app.onEvent({event: <any>{}, layout: {onClick: 'alert("Cats");'}});
+        expect(window.alert).toHaveBeenCalledWith('Cats');
+    });
 });
