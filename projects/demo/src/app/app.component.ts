@@ -7,6 +7,8 @@ import { Observable } from 'rxjs';
 
 import { JSONSchema7 } from 'json-schema';
 
+import { LayoutItem } from '../../../ngx-json-schema-form/src/lib/layout-item.data';
+
 import { JsonLoaderService } from './json-loader.service';
 
 const sets = {
@@ -87,6 +89,7 @@ export class AppComponent implements OnInit {
         method: undefined,
         target: undefined
     };
+
     @ViewChild(MatMenuTrigger) menuTrigger: MatMenuTrigger;
 
     public examplesObservable: Observable<Array<any>>;
@@ -128,6 +131,16 @@ export class AppComponent implements OnInit {
 
     trackByFn(index) {
         return index;
+    }
+
+    /** Handle click events from form inputs */
+    onClick(data: LayoutItem | Event): void {
+        console.warn(data);
+        if (data.hasOwnProperty('onClick')) {
+            const layout = data as LayoutItem;
+            const fn = new Function('layout', layout.onClick);
+            fn(layout);
+        }
     }
 
     // onSubmit(data: any) {

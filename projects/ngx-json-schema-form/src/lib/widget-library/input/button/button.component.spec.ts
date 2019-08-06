@@ -1,5 +1,5 @@
 import { NO_ERRORS_SCHEMA } from '@angular/core';
-import { ComponentFixture, inject, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { JsonSchemaFormService } from '../../..';
 import { LayoutNode } from '../../../layout-node';
@@ -12,8 +12,7 @@ describe('ButtonComponent', () => {
 
     beforeEach(async () => {
         const mockFormService: JsonSchemaFormService = jasmine.createSpyObj('JsonSchemaFormService', {
-            initializeControl: true,
-            updateValue: undefined
+            initializeControl: true
         });
         (<jasmine.Spy>mockFormService.initializeControl).and.callFake((comp) => {
             comp.options = comp.layoutNode.options;
@@ -40,20 +39,4 @@ describe('ButtonComponent', () => {
     it('should create', () => {
         expect(component).toBeTruthy();
     });
-
-    it('should use the default update method when no click handler', inject(
-        [JsonSchemaFormService], (jsfService: JsonSchemaFormService) => {
-        const value = 'X';
-        component.updateValue(<any>{target: {value}});
-        expect(jsfService.updateValue).toHaveBeenCalledWith(component, value);
-    }));
-
-    it('should use click handler from options', inject(
-        [JsonSchemaFormService], (jsfService: JsonSchemaFormService) => {
-        const value = 'Y';
-        component.options.onClick = jasmine.createSpy('onClick');
-        component.updateValue(<any>{target: {value}});
-        expect(jsfService.updateValue).not.toHaveBeenCalled();
-        expect(component.options.onClick).toHaveBeenCalledWith({target: {value}});
-    }));
 });

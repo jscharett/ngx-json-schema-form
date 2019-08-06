@@ -1,18 +1,19 @@
-import { Component, NO_ERRORS_SCHEMA } from '@angular/core';
+import { Component, NO_ERRORS_SCHEMA, SimpleChange } from '@angular/core';
 import { ComponentFixture, inject, TestBed } from '@angular/core/testing';
 
 import { JsonSchemaFormService } from '..';
+import { ElementDataStorageService } from '../element-data-storage.service';
 import { LayoutNode } from '../layout-node';
 
 import { Widget } from '.';
 
 @Component({
     selector: 'jsf-test-component',
-    template: '<div>Hello World</div>'
+    template: '<div #control>Hello World</div>'
 })
 class TestComponent extends Widget {
-    constructor(jsf: JsonSchemaFormService) {
-        super(jsf);
+    constructor(jsf: JsonSchemaFormService, eds: ElementDataStorageService) {
+        super(jsf, eds);
     }
 }
 
@@ -28,12 +29,18 @@ describe('widgets', () => {
         (<jasmine.Spy>mockFormService.initializeControl).and.callFake((comp) => {
             comp.options = comp.layoutNode.options;
         });
+        const edsService: ElementDataStorageService = jasmine.createSpyObj('edsService', {
+            set: undefined
+        });
 
         return TestBed.configureTestingModule({
             declarations: [ TestComponent ],
             providers: [{
                 provide: JsonSchemaFormService,
                 useValue: mockFormService
+            }, {
+                provide: ElementDataStorageService,
+                useValue: edsService
             }],
             schemas: [ NO_ERRORS_SCHEMA ]
         })
@@ -43,7 +50,12 @@ describe('widgets', () => {
     beforeEach(() => {
         fixture = TestBed.createComponent(TestComponent);
         component = fixture.componentInstance;
-        component.layoutNode = {id: '0', options: {}, type: ''} as any as LayoutNode;
+        component.layoutNode = {
+            id: '0',
+            layoutDefinition: {key: 'a'},
+            options: {},
+            type: ''
+        } as any as LayoutNode;
         fixture.detectChanges();
     });
 
@@ -65,5 +77,25 @@ describe('widgets', () => {
 
         expect(jsfService.updateValue).toHaveBeenCalledWith(component, value);
     }));
+
+    it('should call eds service to set inital data', () => {
+        const edsService: ElementDataStorageService = TestBed.get(ElementDataStorageService);
+        expect(edsService.set).toHaveBeenCalledWith(jasmine.any(HTMLElement), 'layout', component.layoutNode.layoutDefinition);
+    });
+
+    it('should propagate layoutNode changes to edsService', () => {
+        const edsService: ElementDataStorageService = TestBed.get(ElementDataStorageService);
+        (<jasmine.Spy>edsService.set).calls.reset();
+        const newLayoutNode = {
+            id: '2',
+            layoutDefinition: {key: 'b'},
+            options: {},
+            type: ''
+        } as any as LayoutNode;
+        const change = new SimpleChange(component.layoutNode, newLayoutNode, true);
+        component.layoutNode = newLayoutNode;
+        component[`ngOnChanges`]({layoutNode: change});
+        expect(edsService.set).toHaveBeenCalledWith(jasmine.any(HTMLElement), 'layout', newLayoutNode.layoutDefinition);
+    });
 
 });

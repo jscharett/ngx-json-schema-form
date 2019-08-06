@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 
+import { ElementDataStorageService } from '../../../element-data-storage.service';
 import { JsonSchemaFormService } from '../../../json-schema-form.service';
 
 import { Widget } from '../../widget';
@@ -11,20 +12,11 @@ import { Widget } from '../../widget';
     templateUrl: './button.component.html'
 })
 export class ButtonComponent extends Widget {
-
-    constructor(jsf: JsonSchemaFormService) {
-        super(jsf);
+    constructor(jsf: JsonSchemaFormService, elementDataStorage: ElementDataStorageService) {
+        super(jsf, elementDataStorage);
     }
 
-    /**
-     * Handle the mouse click event
-     */
-    updateValue(event: MouseEvent): void {
-        if (typeof this.options.onClick === 'function') {
-            this.options.onClick(event);
-        } else {
-            super.updateValue(event);
-        }
-    }
 
+    // TODO- pulled from submit
+    // this.jsf.formOptions.disableInvalidSubmit
 }

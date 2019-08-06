@@ -84,4 +84,22 @@ describe('AppComponent', () => {
         tick();
         expect(location.path()).toBe('/?set=ngx&example=c');
     }));
+
+    it('should run onClick function', () => {
+        const layout = {onClick: 'alert("Cats");'};
+        spyOn(console, 'warn');
+        spyOn(window, 'alert');
+        app.onClick(layout);
+        expect(console.warn).toHaveBeenCalledWith(layout);
+        expect(window.alert).toHaveBeenCalledWith('Cats');
+    });
+
+    it('should not run onClick function', () => {
+        const event = {};
+        spyOn(console, 'warn');
+        spyOn(window, 'alert');
+        app.onClick(event);
+        expect(console.warn).toHaveBeenCalledWith(event);
+        expect(window.alert).not.toHaveBeenCalled();
+    });
 });

@@ -1,3 +1,4 @@
+import { LayoutItem } from './layout-item.data';
 import { LayoutNode } from './layout-node';
 import { SchemaService } from './schema.service';
 
@@ -38,6 +39,16 @@ describe('LayoutNode', () => {
         });
     });
 
+    describe('layoutDefinition', () => {
+        it('should return copy of layoutitem from creation', () => {
+            const item: LayoutItem = {type: 'string'};
+            const node: LayoutNode = new LayoutNode(item);
+
+            expect(node.layoutDefinition).toEqual(item);
+            expect(node.layoutDefinition).not.toBe(item);
+        });
+    });
+
     describe('type', () => {
         it('should be set from layout', () => {
             expect((new LayoutNode({type: 'text'}, {type: 'string'})).type).toBe('text');
@@ -60,6 +71,24 @@ describe('LayoutNode', () => {
 
         it('should be empty', () => {
             expect((new LayoutNode({type: 'section'})).name).toBe('');
+        });
+    });
+
+    describe('content', () => {
+        it('should be undefined when not set', () => {
+            expect((new LayoutNode({type: 'section'})).content).toBeUndefined();
+        });
+
+        it('should be defined when set', () => {
+            expect((new LayoutNode({type: 'section', content: '<span>hi</span>'})).content).toBe('<span>hi</span>');
+        });
+
+        it('should be undefined if not a string', () => {
+            expect((new LayoutNode({type: 'section', content: true})).content).toBeUndefined();
+            expect((new LayoutNode({type: 'section', content: 1})).content).toBeUndefined();
+            expect((new LayoutNode({type: 'section', content: ['hi']})).content).toBeUndefined();
+            expect((new LayoutNode({type: 'section', content: {}})).content).toBeUndefined();
+            expect((new LayoutNode({type: 'section', content: undefined})).content).toBeUndefined();
         });
     });
 

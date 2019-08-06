@@ -1,5 +1,5 @@
 import { JSONSchema7 } from 'json-schema';
-import { defaultTo, isString, mapKeys, omit, pick, uniqueId } from 'lodash';
+import { cloneDeep, defaultTo, isString, mapKeys, omit, pick, uniqueId } from 'lodash';
 import { Memoize } from 'lodash-decorators';
 
 import { LayoutItem } from './layout-item.data';
@@ -54,6 +54,10 @@ export class LayoutNode {
             ? pointer
             : `/${pointer.replace(/\./g, '/')}`;
     }
+    /** Copy of the original layoutItem */
+    @Memoize() get layoutDefinition(): LayoutItem {
+        return cloneDeep(this.layoutItem);
+    }
     /** Name for the item.  Will be used as the input[name] */
     @Memoize() get name(): string {
         return this.layoutItem.name || this.dataPointer.split('/').pop();
@@ -67,12 +71,16 @@ export class LayoutNode {
         // TODO: handle array of types
         return this.layoutItem.type || <string>defaultTo(this.schema, <any>{}).type;
     }
+    /** HTML content to be rendered inside the widget */
+    @Memoize() get content(): string {
+        return isString(this.layoutItem.content) ? this.layoutItem.content : undefined;
+    }
     /** Options for the widget */
     @Memoize() get options(): LayoutOptions {
         return {
             ...pick(this.schema, ['title', 'description']),
             ...mapKeys(pick(this.schema, ['readOnly']), () => 'readonly'),
-            ...omit(this.layoutItem, ['key', 'type', 'name', 'options']),
+            ...omit(this.layoutItem, ['key', 'type', 'name', 'content', 'options']),
             ...defaultTo(this.layoutItem.options, {})
         };
     }

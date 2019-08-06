@@ -1,4 +1,9 @@
-import { ChangeDetectionStrategy, Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
+import {
+    ChangeDetectionStrategy, Component, Input,
+    OnChanges, OnDestroy, OnInit, SimpleChanges
+} from '@angular/core';
+
+import { Subject } from 'rxjs';
 
 import { cloneDeep, isPlainObject } from 'lodash';
 
@@ -53,7 +58,7 @@ import { SchemaService } from './schema.service';
     styles: [],
     templateUrl: './json-schema-form.component.html'
 })
-export class JsonSchemaFormComponent implements OnChanges, OnInit {
+export class JsonSchemaFormComponent implements OnChanges, OnDestroy, OnInit {
     /** JSON Schema used to validate form data */
     @Input() schema: JSONSchema7;
     /** Layout used to define how the form is rendered */
@@ -85,6 +90,8 @@ export class JsonSchemaFormComponent implements OnChanges, OnInit {
     @Input() target: '_self' | '_blank' | '_parent' | '_top' | string | null;
 
     private formInitialized = false;
+    /** Observable to used to unsubscribe listners upon ngDestroy */
+    private readonly destroyed$: Subject<void> = new Subject();
 
     constructor(
         // private readonly jsf: JsonSchemaFormService,
@@ -101,6 +108,11 @@ export class JsonSchemaFormComponent implements OnChanges, OnInit {
             this.formInitialized = false;
         }
         this.updateForm();
+    }
+
+    ngOnDestroy() {
+        this.destroyed$.next();
+        this.destroyed$.complete();
     }
 
     /** Submits the form */
