@@ -3,8 +3,6 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { JSONSchema7 } from 'json-schema';
 
-import { Subject } from 'rxjs';
-
 import basicJSONSchema from '../assests/example-schemas/jsf-schema-basic.json';
 
 import { JsonSchemaFormService, LayoutService, SchemaService } from '.';
@@ -15,16 +13,10 @@ describe('JsonSchemaFormComponent', () => {
     let component: JsonSchemaFormComponent;
     let fixture: ComponentFixture<JsonSchemaFormComponent>;
     let schemaSpy: jasmine.Spy;
-    let eventSource: Subject<any>;
 
     beforeEach(async () => {
         const jsonSchemaFormService: JsonSchemaFormService = jasmine.createSpyObj('JsonSchemaFormService', {
             initializeControl: undefined
-        });
-        eventSource = new Subject();
-        Object.defineProperty(jsonSchemaFormService, 'eventFired$', {
-            enumerable: true,
-            value: eventSource.asObservable()
         });
         const layoutService: LayoutService = <any>{setLayout: jasmine.createSpy('setLayout')};
         const schemaService: SchemaService = <any>{};
