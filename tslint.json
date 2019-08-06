@@ -63,6 +63,7 @@
     ],
     "label-position": true,
     "no-arg": true,
+    "no-async-without-await": true,
     "no-bitwise": true,
     "no-conditional-assignment": true,
     "no-console": [
@@ -117,6 +118,7 @@
     "restrict-plus-operands": true,
     "static-this": true,
     "strict-boolean-expressions": false,
+    "strict-comparisons": false,
     "strict-type-predicates": false,
     "switch-default": false,
     "triple-equals": [
