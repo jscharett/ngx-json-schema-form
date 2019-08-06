@@ -1,10 +1,9 @@
 import {
-    ChangeDetectionStrategy, Component, EventEmitter, Input,
-    OnChanges, OnDestroy, OnInit, Output, SimpleChanges
+    ChangeDetectionStrategy, Component, Input,
+    OnChanges, OnDestroy, OnInit, SimpleChanges
 } from '@angular/core';
 
 import { Subject } from 'rxjs';
-import { takeUntil } from 'rxjs/operators';
 
 import { cloneDeep, isPlainObject } from 'lodash';
 
@@ -90,13 +89,12 @@ export class JsonSchemaFormComponent implements OnChanges, OnDestroy, OnInit {
      */
     @Input() target: '_self' | '_blank' | '_parent' | '_top' | string | null;
 
-    @Output() readonly event: EventEmitter<any> = new EventEmitter<any>();
-
     private formInitialized = false;
+    /** Observable to used to unsubscribe listners upon ngDestroy */
     private readonly destroyed$: Subject<void> = new Subject();
 
     constructor(
-        private readonly jsf: JsonSchemaFormService,
+        // private readonly jsf: JsonSchemaFormService,
         private readonly schemaService: SchemaService,
         readonly layoutService: LayoutService
     ) {}
@@ -136,9 +134,6 @@ export class JsonSchemaFormComponent implements OnChanges, OnDestroy, OnInit {
     private initializeForm(): void {
         this.initializeSchema();
         this.initializeLayout();
-        this.jsf.eventFired$.pipe(takeUntil(this.destroyed$)).subscribe((event) => {
-            this.event.emit(event);
-        });
         this.formInitialized = true;
     }
 

@@ -133,11 +133,13 @@ export class AppComponent implements OnInit {
         return index;
     }
 
-    onEvent(event: {event: Event; layout: LayoutItem}) {
-        console.warn(event.event, event.layout);
-        if (event.layout.onClick) {
-            const fn = new Function('event', 'layout', event.layout.onClick);
-            fn(event.event, event.layout);
+    /** Handle click events from form inputs */
+    onClick(data: LayoutItem | Event): void {
+        console.warn(data);
+        if (data.hasOwnProperty('onClick')) {
+            const layout = data as LayoutItem;
+            const fn = new Function('layout', layout.onClick);
+            fn(layout);
         }
     }
 

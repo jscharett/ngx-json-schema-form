@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 
+import { ElementDataStorageService } from '../../../element-data-storage.service';
 import { JsonSchemaFormService } from '../../../json-schema-form.service';
 
 import { Widget } from '../../widget';
@@ -13,7 +14,7 @@ import { Widget } from '../../widget';
     templateUrl: './hidden.component.html'
 })
 export class HiddenComponent extends Widget {
-    constructor(jsf: JsonSchemaFormService) {
-        super(jsf);
+    constructor(jsf: JsonSchemaFormService, elementDataStorage: ElementDataStorageService) {
+        super(jsf, elementDataStorage);
     }
 }

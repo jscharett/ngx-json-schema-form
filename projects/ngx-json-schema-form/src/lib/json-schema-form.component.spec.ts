@@ -72,13 +72,4 @@ describe('JsonSchemaFormComponent', () => {
         expect(component.schema).toBeDefined();
         expect(schemaSpy).toHaveBeenCalledWith(basicJSONSchema);
     });
-
-    it('should emit event when service triggers', (done) => {
-        const event = {event: {type: 'click'}, layout: {type: 'string'}};
-        component.event.subscribe((data) => {
-            expect(event).toEqual(data);
-            done();
-        });
-        eventSource.next(event);
-    });
 });

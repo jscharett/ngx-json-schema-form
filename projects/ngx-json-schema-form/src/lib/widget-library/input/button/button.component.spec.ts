@@ -1,5 +1,5 @@
 import { NO_ERRORS_SCHEMA } from '@angular/core';
-import { ComponentFixture, inject, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { JsonSchemaFormService } from '../../..';
 import { LayoutNode } from '../../../layout-node';
@@ -12,7 +12,6 @@ describe('ButtonComponent', () => {
 
     beforeEach(async () => {
         const mockFormService: JsonSchemaFormService = jasmine.createSpyObj('JsonSchemaFormService', {
-            fireEvent: undefined,
             initializeControl: true
         });
         (<jasmine.Spy>mockFormService.initializeControl).and.callFake((comp) => {
@@ -40,10 +39,4 @@ describe('ButtonComponent', () => {
     it('should create', () => {
         expect(component).toBeTruthy();
     });
-
-    it('should relay click event to jsf service', inject([JsonSchemaFormService], (jsfService: JsonSchemaFormService) => {
-        const event = {target: {value: 'Y'}};
-        component.onClick(<any>event);
-        expect(jsfService.fireEvent).toHaveBeenCalledWith(event, component.layoutNode);
-    }));
 });

@@ -1,4 +1,4 @@
-<input *ngIf="!layoutNode.content"
+<input #control *ngIf="!layoutNode.content"
     [attr.readonly]="options.readonly ? 'readonly' : null"
     [attr.accesskey]="options.accesskey"
     [attr.class]="options.htmlClass"
@@ -13,9 +13,8 @@
     [id]="layoutNode.id"
     [name]="layoutNode.name"
     [type]="layoutNode.type"
-    [value]="options.title"
-    (click)="onClick($event)">
-<button *ngIf="layoutNode.content"
+    [value]="options.title">
+<button #control *ngIf="layoutNode.content"
     [attr.readonly]="options.readonly ? 'readonly' : null"
     [attr.accesskey]="options.accesskey"
     [attr.class]="options.htmlClass"
@@ -25,7 +24,6 @@
     [attr.title]="options.description"
     [id]="layoutNode.id"
     [name]="layoutNode.name"
-    [type]="layoutNode.type"
-    (click)="onClick($event)">
+    [type]="layoutNode.type">
     <ng-content></ng-content>
 </button>

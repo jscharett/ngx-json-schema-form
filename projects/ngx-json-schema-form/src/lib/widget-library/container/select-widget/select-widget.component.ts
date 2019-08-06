@@ -3,6 +3,7 @@ import {
     OnChanges, OnInit, ViewChild, ViewContainerRef
 } from '@angular/core';
 
+import { ElementDataStorageService } from '../../../element-data-storage.service';
 import { JsonSchemaFormService } from '../../../json-schema-form.service';
 
 import { Widget } from '../../widget';
@@ -25,8 +26,9 @@ export class SelectWidgetComponent extends Widget implements OnInit, OnChanges {
 
     constructor(private readonly componentFactory: ComponentFactoryResolver,
         private readonly widgetLibraryService: WidgetLibraryService,
-        jsf: JsonSchemaFormService) {
-            super(jsf);
+        jsf: JsonSchemaFormService,
+        elementDataStorage: ElementDataStorageService) {
+            super(jsf, elementDataStorage);
     }
 
     ngOnInit() {

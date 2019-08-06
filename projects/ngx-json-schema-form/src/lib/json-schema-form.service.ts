@@ -4,10 +4,6 @@ import {
     ModuleWithComponentFactories, NgModule, NgModuleRef
 } from '@angular/core';
 
-import { Subject } from 'rxjs';
-
-import { LayoutItem } from './layout-item.data';
-import { LayoutNode } from './layout-node';
 import { Widget } from './widget-library';
 
 /* tslint:disable: max-classes-per-file */
@@ -15,11 +11,6 @@ import { Widget } from './widget-library';
 @Injectable()
 export class JsonSchemaFormService {
     private x = false;
-
-    private readonly eventFiredSource: Subject<{event: Event; layout: LayoutItem}> = new Subject<{event: Event; layout: LayoutItem}>();
-
-    /** Observable triggered when an input event is fired */
-    readonly eventFired$ = this.eventFiredSource.asObservable();
 
     /** Creates a component with passed in template and associated context */
     private static createComponent(template: string, context: {[key: string]: any}): any {
@@ -59,14 +50,6 @@ export class JsonSchemaFormService {
     updateValue(ctx: any, value: any): void {
         // TODO
         this.x = !this.x;
-    }
-
-    /** Fires the event observable */
-    fireEvent(event: Event, layoutNode: LayoutNode): void {
-        this.eventFiredSource.next({
-            event,
-            layout: layoutNode.layoutDefinition
-        });
     }
 
     /**

@@ -225,7 +225,8 @@
                             [enctype]="options.enctype"
                             [method]="options.method"
                             [target]="options.target"
-                            (event)="onEvent($event)"
+                            (click.data.layout)="onClick($event)"
+                            (click.data.layout)="onClick($event.data)"
                         ></jsf-json-schema-form>
                             <!-- loadExternalAssets="true"
                             [form]="jsonFormObject"

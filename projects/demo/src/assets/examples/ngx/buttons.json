@@ -81,6 +81,6 @@
         "description": "This in an button[type='button'] with click handling",
         "accesskey": "w",
         "htmlClass": "btn",
-        "onClick": "alert('clicked button' + event.target);"
+        "onClick": "alert(`clicked button with layout: \n\r${JSON.stringify(layout, null, 4)}`);"
     }]
 }
