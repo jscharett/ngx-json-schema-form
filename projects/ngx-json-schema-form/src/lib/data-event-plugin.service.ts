@@ -6,6 +6,7 @@ import { ElementDataStorageService } from './element-data-storage.service';
 export interface Data {
     data: any;
 }
+/** Event wrapper for piggybacking data on an event */
 export type DataEvent<T> = Data & T;
 
 /**

@@ -61,4 +61,4 @@ To display a form in your Angular component, simply add the following to your co
 ></json-schema-form>
 ```
 
-Where `schema` is a valid JSON schema object. If you don't already have your own schemas, you can find a bunch of samples to test with in the `src/demo/assets/example-schemas` folder.
+Where `schema` is a valid JSON schema object. If you don't already have your own schemas, you can find a bunch of samples to test with in the `projects/demo/src/assets/examples` folder.
