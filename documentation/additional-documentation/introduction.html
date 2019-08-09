@@ -1,0 +1,346 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>NGX JSOLN Schema Form</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+	      <link rel="stylesheet" href="../styles/style.css">
+        <link rel="stylesheet" href="../styles/material.css">
+    </head>
+    <body>
+
+        <div class="navbar navbar-default navbar-fixed-top visible-xs">
+            <a href="../" class="navbar-brand">NGX JSOLN Schema Form</a>
+            <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="hidden-xs menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content additional-page">
+                   <div class="content-data">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                   
+
+
+
+
+<div class="row">
+<div class="col-md-10">
+
+<h2 id="json-schema">Json Schema</h2>
+<p>The only requirement to using the component is to supply a valid JSON Schema.  The component will parse the schema and display all properties in the order they
+are presented within the schema.</p>
+<div class="panel panel-primary docs">
+<div class="panel-heading panel-title">schema.json</div>
+
+<div><pre class="line-numbers"><code class="language-json">{
+    &quot;$id&quot;: &quot;https://example.com/person.schema.json&quot;,
+    &quot;$schema&quot;: &quot;http://json-schema.org/draft-07/schema#&quot;,
+    &quot;title&quot;: &quot;Person&quot;,
+    &quot;type&quot;: &quot;object&quot;,
+    &quot;properties&quot;: {
+        &quot;firstName&quot;: {
+            &quot;type&quot;: &quot;string&quot;,
+            &quot;description&quot;: &quot;The person&#39;s first name.&quot;
+        },
+        &quot;lastName&quot;: {
+            &quot;type&quot;: &quot;string&quot;,
+            &quot;description&quot;: &quot;The person&#39;s last name.&quot;
+        },
+        &quot;age&quot;: {
+            &quot;description&quot;: &quot;Age in years which must be equal to or greater than zero.&quot;,
+            &quot;type&quot;: &quot;integer&quot;,
+            &quot;minimum&quot;: 0
+        }
+    }
+}</code></pre></div></div>
+
+<p>In this example, the form will display 3 fields; <code>firstName</code>, <code>lastName</code> and <code>age</code>.  The order is determined by the order of the fields in the schema.  Once you have your schema set, all you need to do is pass it to the component</p>
+<div class="panel panel-primary docs">
+<div class="panel-heading panel-title">basic.component.ts</div>
+
+<div><pre class="line-numbers"><code class="language-typescript">import { JSONSchema7 } from &#39;json-schema&#39;;
+import schema from &#39;./schema.json&#39;;
+
+&#64;Component({
+    template: `&lt;jsf-json-schema-form
+    [schema]=&quot;schema&quot;
+&gt;&lt;/jsf-json-schema-form&gt;`,
+    ...
+})
+export class BasicComponent {
+    schema: JSONSchema7 = schema as JSONSchema7;
+    ...
+}</code></pre></div></div>
+
+<p>Here we import the schema json and set it as a property on our component.  Then you wire up the schema in the template and</p>
+<h2 id="layout">Layout</h2>
+<p>The deault layout is simply <code>[&#39;*&#39;]</code>.  This translates to display everything in the the schema.  The <code>*</code> key is a special command that tells the component to display everything that has not specifically been laid out.  This can become useful when you only care about a few fields and their location.  For example:</p>
+<div class="panel panel-primary docs">
+<div class="panel-heading panel-title">schema.json</div>
+
+<div><pre class="line-numbers"><code class="language-json">{
+    &quot;$id&quot;: &quot;https://example.com/person.schema.json&quot;,
+    &quot;$schema&quot;: &quot;http://json-schema.org/draft-07/schema#&quot;,
+    &quot;title&quot;: &quot;Person&quot;,
+    &quot;type&quot;: &quot;object&quot;,
+    &quot;properties&quot;: {
+        &quot;question1&quot;: {
+            &quot;type&quot;: &quot;boolean&quot;
+        },
+        &quot;age&quot;: {
+            &quot;description&quot;: &quot;Are you 18 or older?&quot;,
+            &quot;type&quot;: &quot;boolean&quot;
+        },
+        &quot;question2&quot;: {
+            &quot;type&quot;: &quot;boolean&quot;
+        }
+    }
+}</code></pre></div></div>
+<div class="panel panel-primary docs">
+<div class="panel-heading panel-title">layout.json</div>
+
+<div><pre class="line-numbers"><code class="language-json">[
+    &quot;age&quot;,
+    &#39;*&#39;
+]</code></pre></div></div>
+<div class="panel panel-primary docs">
+<div class="panel-heading panel-title">layout.component.ts</div>
+
+<div><pre class="line-numbers"><code class="language-typescript">import { JSONSchema7 } from &#39;json-schema&#39;;
+import schema from &#39;./schema.json&#39;;
+import layout from &#39;./layout.json&#39;;
+
+&#64;Component({
+    template: `&lt;jsf-json-schema-form
+    [schema]=&quot;schema&quot;
+    [layout]=&quot;layout&quot;
+&gt;&lt;/jsf-json-schema-form&gt;`,
+    ...
+})
+export class LayoutComponent {
+    schema: JSONSchema7 = schema as JSONSchema7;
+    layout: Array&lt;any&gt; = layout;
+    ...
+}</code></pre></div></div>
+
+<p>As you can see, we only care that <code>age</code> is presented first.  All the other properties in the schema are shown after <code>age</code>.</p>
+<h2 id="form-options">Form Options</h2>
+<p>Just like a native form, you can set the standard form attributes (<code>action</code>, <code>autocomplete</code>, <code>enctype</code>, <code>method</code>, <code>target</code>) on the jsf component.  Most of the time you will not need to set these, but there may be instances in which you need your form to do an actual submit and need these set. For more info on these see <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/form#Attributes">Form Attributes</a>.</p>
+<div class="panel panel-primary docs">
+<div class="panel-heading panel-title">login.component.html</div>
+
+<div><pre class="line-numbers"><code class="language-html">&lt;jsf-json-schema-form
+    &quot;action&quot;=&quot;/login.asp&quot;
+    &quot;autocomplete&quot;=&quot;on&quot;
+    &quot;enctype&quot;=&quot;text/plain&quot;
+    &quot;method&quot;=&quot;post&quot;
+    &quot;target&quot;=&quot;_blank&quot;
+    ...
+&gt;&lt;/jsf-json-schema-form&gt;</code></pre></div></div>
+
+<h2 id="widgets">Widgets</h2>
+<h3 id="options">Options</h3>
+<p>There are numerous attributes that can be set on a widget which are set via the layout.  The following are currently supported</p>
+<ul>
+<li><code>accesskey</code></li>
+<li><code>dirname</code></li>
+<li><code>disabled</code></li>
+<li><code>htmlClass</code></li>
+<li><code>name</code></li>
+<li><code>readonly</code></li>
+<li><code>style</code></li>
+<li><code>tabindex</code></li>
+<li><code>title</code></li>
+</ul>
+<div class="panel panel-primary docs">
+<div class="panel-heading panel-title">layout.json</div>
+
+<div><pre class="line-numbers"><code class="language-json">[{
+    &quot;type&quot;: &quot;text&quot;,
+    &quot;accesskey&quot;: &quot;n&quot;,
+    &quot;dirname&quot;: true,
+    &quot;disabled&quot;: false,
+    &quot;htmlClass&quot;: &quot;input-sm&quot;,
+    &quot;name&quot;: &quot;name&quot;,
+    &quot;readonly&quot;: true,
+    &quot;style&quot;: &quot;color: #333;&quot;,
+    &quot;tabindex&quot;: 2,
+    &quot;title&quot;: &quot;Name&quot;
+}]</code></pre></div></div>
+
+<h3 id="button">Button</h3>
+<p>There are 4 types of buttons that jsf supports, <code>button</code>, <code>image</code>, <code>reset</code> and <code>submit</code>.  By default, these will all use the <code>&lt;input&gt;</code> tag for display.  However, with the exception of <code>image</code>, you can specify custom html via the <code>content</code> option.  This will result in the <code>&lt;button&gt;</code> being used for display and the content being inserted.  Content can contain simple angular bindings so that you can bind to various properties of the layout.  For example:</p>
+<div class="panel panel-primary docs">
+<div class="panel-heading panel-title">button-layout.json</div>
+
+<div><pre class="line-numbers"><code class="language-json">[{
+    &quot;type&quot;: &quot;submit&quot;,
+    &quot;title&quot;: &quot;Submit&quot;,
+    &quot;content&quot;: &quot;&lt;img src=&#39;{{ options.icon.src }}&#39; width=&#39;{{ options.icon.width }}&#39; height=&#39;{{ options.icon.height }}&#39; alt=&#39;{{ options.icon.alt }}&#39;/&gt;&lt;span class=&#39;small&#39;&gt;{{ options.title }}&lt;/span&gt;&quot;,
+    &quot;icon&quot;: {
+        &quot;src&quot;: &quot;/assets/submit.png&quot;,
+        &quot;width&quot;: 30,
+        &quot;height&quot;: 30,
+        &quot;alt&quot;: &quot;Checkmark&quot;
+    }
+}]</code></pre></div></div>
+
+<p>will result in</p>
+<div class="panel panel-primary docs">
+<div class="panel-heading panel-title">button.html</div>
+
+<div><pre class="line-numbers"><code class="language-html">&lt;button type=&quot;submit&quot;&gt;
+    &lt;img src=&quot;/assets/submit.png&quot; width=&quot;30&quot; height=&quot;30&quot; alt=&quot;Checkmark&quot;/&gt;
+    &lt;span class=&quot;small&quot;&gt;Submit&lt;/span&gt;
+&lt;/button&gt;</code></pre></div></div>
+
+<p>Here you can see we are specifying that the button should contain an image via the <code>content</code> options.  The template binds to the properties of the <code>icon</code> option which results in an image tag being rendered.  The <code>icon</code> option is also used when redering a simple button of type <code>image</code>.</p>
+<p>We can also respond to events such as a <code>click</code>.  To do this, we must first bind an event handler to the jsf component</p>
+<div class="panel panel-primary docs">
+<div class="panel-heading panel-title">form.component.html</div>
+
+<div><pre class="line-numbers"><code class="language-html">&lt;jsf-json-schema-form
+    [layout]=&quot;layout&quot;
+    (click.data.layout)=&quot;onClick($event)&quot;
+    ...
+&gt;&lt;/jsf-json-schema-form&gt;</code></pre></div></div>
+
+<p>Then we add a layout with a couple of buttons.  The first button will run an internal command where as the second will run a command specified by layout.onClick.</p>
+<div class="panel panel-primary docs">
+<div class="panel-heading panel-title">buttons-layout.json</div>
+
+<div><pre class="line-numbers"><code class="language-json">[{
+    &quot;type&quot;: &quot;button&quot;,
+    &quot;id&quot;: &quot;button1&quot;,
+    &quot;title&quot;: &quot;Open dialog&quot;
+}, {
+    &quot;type&quot;: &quot;button&quot;,
+    &quot;id&quot;: &quot;button2&quot;,
+    &quot;title&quot;: &quot;Open Google&quot;,
+    &quot;onClick&quot;: &quot;window.open(&#39;http://www.google.com/&#39;);&quot;
+}]</code></pre></div></div>
+
+<p>Lastly, we specify our onClick handler in our component.</p>
+<div class="panel panel-primary docs">
+<div class="panel-heading panel-title">form.component.ts</div>
+
+<div><pre class="line-numbers"><code class="language-typescript">import layout from &#39;./buttons-layout.json&#39;;
+import { DataEvent } from &#39;ngx-json-schema-form&#39;;
+
+&#64;Component({
+    templateUrl: &#39;./form.component.html&#39;,
+    ...
+})
+export class LayoutComponent {
+    layout: Array&lt;any&gt; = layout;
+
+    onClick(event: DataEvent&lt;MouseEvent&gt;): void {
+        if (event.data.id === &#39;button1&#39;) {
+            openDialog(event);
+        } else if (event.data.id === &#39;button2&#39;) {
+            // Run some external code
+            const fn = new Function(&#39;event&#39;, event.data.onClick);
+            fn(event);
+        }
+    }
+    ...
+}</code></pre></div></div>
+
+<p>When a button is clicked, the event will bubble up to the jsf form component to which we bound our onClick handler.  Using event metadata (<code>click.data.layout</code>), we can specify that only events in which a target that has an associated data property of <code>layout</code> will trigger the event.  This association is handled internally when a widget is created and acts similarly to jQuery&#39;s $.data.  When the event handler is triggered, the layout is passed down with the event via <code>event.data</code> , allowing us to inspect which layout item triggered the event and act accordingly.  In the case of &quot;button1&quot;, we run and internal method <code>openDialog</code> in order to open an angular dialog component.  With &quot;button2&quot; however, we run the external javascript passed in via the <code>onClick</code> property in the layout in order to open a popup dialog to Google.</p>
+<p>Note: running external javascript is usually not a good choice, therefore the jsf library does not internally run the onClick handler.  You will need to handle the conversion from text to javascript yourself and run the code.</p>
+<h3 id="hidden">Hidden</h3>
+<p>Hidden widgets are as you expect, then render an <code>&lt;input type=&quot;hidden&quot;&gt;</code>.  This is the default for any layout item that can&#39;t be propley matched.  For the most part, hidden widgets wont be needed as you simply don&#39;t need to render them, their data never changes.  However, in the event that you need to do an actual form submittal, hidden inputs may be necessary and are therfore included.</p>
+</div>
+<div class="col-md-2">
+<div class="links">
+
+<ul>
+<li><a href="#json-schema" title="JSON Schema">JSON Schema</a></li>
+<li><a href="#layout" title="Layout">Layout</a></li>
+<li><a href="#form-options" title="Form Options">Form Options</a></li>
+<li><a href="#widgets" title="Widgets">Widgets</a><ul>
+<li><a href="#options">Options</a></li>
+<li><a href="#button">Button</a></li>
+<li><a href="#hidden">Hidden</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+</div>
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> result-matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 1;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'additional-page';
+            var COMPODOC_CURRENT_PAGE_URL = 'introduction.html';
+       </script>
+
+       <script src="../js/libs/custom-elements.min.js"></script>
+       <script src="../js/libs/lit-html.js"></script>
+       <!-- Required to polyfill modern browsers as code is ES5 for IE... -->
+       <script src="../js/libs/custom-elements-es5-adapter.js" charset="utf-8" defer></script>
+       <script src="../js/menu-wc.js" defer></script>
+
+       <script src="../js/libs/bootstrap-native.js"></script>
+
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+       <script src="../js/libs/zepto.min.js"></script>
+
+       <script src="../js/compodoc.js"></script>
+
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/clipboard.min.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+          <script src="../js/search/search.js"></script>
+          <script src="../js/search/lunr.min.js"></script>
+          <script src="../js/search/search-lunr.js"></script>
+          <script src="../js/search/search_index.js"></script>
+       <script src="../js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>

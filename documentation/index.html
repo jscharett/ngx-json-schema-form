@@ -49,8 +49,29 @@ It&#39;s based off of the above project, but rewritten from the ground up.</p>
 bring parity with <a href="https://github.com/angular2-json-schema-form">Angular JSON Schema Form</a></p>
 <h2 id="check-out-the-live-demo-and-play-with-the-examples">Check out the live demo and play with the examples</h2>
 <p><a href="https://jscharett.github.io/ngx-json-schema-form/">Check out some examples here.</a></p>
-<h3 id="to-install-from-npm">To install from NPM</h3>
-<p><code>npm install ngx-json-schema-form</code></p>
+<h2 id="using-angular-json-schema-form">Using Angular JSON Schema Form</h2>
+<h3 id="basic-use">Basic use</h3>
+<p>Begin by installing the library in your project</p>
+<div><pre class="line-numbers"><code class="language-none">npm install ngx-json-schema-form --save</code></pre></div><p>Then import JsonSchemaFormModule in your main application module:</p>
+<div><pre class="line-numbers"><code class="language-typescript">import { BrowserModule } from &#39;&#64;angular/platform-browser&#39;;
+import { NgModule } from &#39;&#64;angular/core&#39;;
+
+import { JsonSchemaFormModule } from &#39;ngx-json-schema-form&#39;;
+
+import { AppComponent } from &#39;./app.component&#39;;
+
+&#64;NgModule({
+    declarations: [ AppComponent ],
+    imports: [
+        BrowserModule,
+        JsonSchemaFormModule
+    ],
+    bootstrap: [ AppComponent ]
+})
+export class AppModule { }</code></pre></div><p>To display a form in your Angular component, simply add the following to your component&#39;s template:</p>
+<div><pre class="line-numbers"><code class="language-html">&lt;json-schema-form
+    [schema]=&quot;schema&quot;
+&gt;&lt;/json-schema-form&gt;</code></pre></div><p>Where <code>schema</code> is a valid JSON schema object. If you don&#39;t already have your own schemas, you can find a bunch of samples to test with in the <code>projects/demo/src/assets/examples</code> folder.</p>
 
 
 
@@ -65,6 +86,7 @@ bring parity with <a href="https://github.com/angular2-json-schema-form">Angular
 
 
 
+                   
 
 
 

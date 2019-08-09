@@ -39,13 +39,26 @@ customElements.define('compodoc-menu', class extends HTMLElement {
                                 <span class="icon ion-ios-paper"></span>LICENSE
                             </a>
                         </li>
-                        <li class="link">
-                            <a href="dependencies.html" data-type="chapter-link">
-                                <span class="icon ion-ios-list"></span>Dependencies
-                            </a>
-                        </li>
+                                <li class="link">
+                                    <a href="dependencies.html" data-type="chapter-link">
+                                        <span class="icon ion-ios-list"></span>Dependencies
+                                    </a>
+                                </li>
                     </ul>
                 </li>
+                    <li class="chapter additional">
+                        <div class="simple menu-toggler" data-toggle="collapse" ${ isNormalMode ? 'data-target="#additional-pages"'
+                            : 'data-target="#xs-additional-pages"' }>
+                            <span class="icon ion-ios-book"></span>
+                            <span>Additional documentation</span>
+                            <span class="icon ion-ios-arrow-down"></span>
+                        </div>
+                        <ul class="links collapse " ${ isNormalMode ? 'id="additional-pages"' : 'id="xs-additional-pages"' }>
+                                    <li class="link ">
+                                        <a href="additional-documentation/introduction.html" data-type="entity-link" data-context-id="additional">Introduction</a>
+                                    </li>
+                        </ul>
+                    </li>
                     <li class="chapter modules">
                         <a data-type="chapter-link" href="modules.html">
                             <div class="menu-toggler linked" data-toggle="collapse" ${ isNormalMode ?
@@ -55,18 +68,18 @@ customElements.define('compodoc-menu', class extends HTMLElement {
                                 <span class="icon ion-ios-arrow-down"></span>
                             </div>
                         </a>
-                        <ul class="links collapse" ${ isNormalMode ? 'id="modules-links"' : 'id="xs-modules-links"' }>
+                        <ul class="links collapse " ${ isNormalMode ? 'id="modules-links"' : 'id="xs-modules-links"' }>
                             <li class="link">
                                 <a href="modules/JsonSchemaFormModule.html" data-type="entity-link">JsonSchemaFormModule</a>
                                     <li class="chapter inner">
                                         <div class="simple menu-toggler" data-toggle="collapse" ${ isNormalMode ?
-                                            'data-target="#components-links-module-JsonSchemaFormModule-5f2bf46c2f87d78ca9737e239f2f0ae8"' : 'data-target="#xs-components-links-module-JsonSchemaFormModule-5f2bf46c2f87d78ca9737e239f2f0ae8"' }>
+                                            'data-target="#components-links-module-JsonSchemaFormModule-6c2cf2bd2b48bcbe77e8338e50e528c5"' : 'data-target="#xs-components-links-module-JsonSchemaFormModule-6c2cf2bd2b48bcbe77e8338e50e528c5"' }>
                                             <span class="icon ion-md-cog"></span>
                                             <span>Components</span>
                                             <span class="icon ion-ios-arrow-down"></span>
                                         </div>
-                                        <ul class="links collapse" ${ isNormalMode ? 'id="components-links-module-JsonSchemaFormModule-5f2bf46c2f87d78ca9737e239f2f0ae8"' :
-                                            'id="xs-components-links-module-JsonSchemaFormModule-5f2bf46c2f87d78ca9737e239f2f0ae8"' }>
+                                        <ul class="links collapse" ${ isNormalMode ? 'id="components-links-module-JsonSchemaFormModule-6c2cf2bd2b48bcbe77e8338e50e528c5"' :
+                                            'id="xs-components-links-module-JsonSchemaFormModule-6c2cf2bd2b48bcbe77e8338e50e528c5"' }>
                                             <li class="link">
                                                 <a href="components/JsonSchemaFormComponent.html"
                                                     data-type="entity-link" data-context="sub-entity" data-context-id="modules">JsonSchemaFormComponent</a>
@@ -109,7 +122,10 @@ customElements.define('compodoc-menu', class extends HTMLElement {
                             <span>Classes</span>
                             <span class="icon ion-ios-arrow-down"></span>
                         </div>
-                        <ul class="links collapse" ${ isNormalMode ? 'id="classes-links"' : 'id="xs-classes-links"' }>
+                        <ul class="links collapse " ${ isNormalMode ? 'id="classes-links"' : 'id="xs-classes-links"' }>
+                            <li class="link">
+                                <a href="classes/LayoutNode.html" data-type="entity-link">LayoutNode</a>
+                            </li>
                             <li class="link">
                                 <a href="classes/Widget.html" data-type="entity-link">Widget</a>
                             </li>
@@ -122,7 +138,13 @@ customElements.define('compodoc-menu', class extends HTMLElement {
                                 <span>Injectables</span>
                                 <span class="icon ion-ios-arrow-down"></span>
                             </div>
-                            <ul class="links collapse" ${ isNormalMode ? 'id="injectables-links"' : 'id="xs-injectables-links"' }>
+                            <ul class="links collapse " ${ isNormalMode ? 'id="injectables-links"' : 'id="xs-injectables-links"' }>
+                                <li class="link">
+                                    <a href="injectables/DataEventPluginService.html" data-type="entity-link">DataEventPluginService</a>
+                                </li>
+                                <li class="link">
+                                    <a href="injectables/ElementDataStorageService.html" data-type="entity-link">ElementDataStorageService</a>
+                                </li>
                                 <li class="link">
                                     <a href="injectables/JsonSchemaFormService.html" data-type="entity-link">JsonSchemaFormService</a>
                                 </li>
@@ -144,9 +166,15 @@ customElements.define('compodoc-menu', class extends HTMLElement {
                             <span>Interfaces</span>
                             <span class="icon ion-ios-arrow-down"></span>
                         </div>
-                        <ul class="links collapse" ${ isNormalMode ? ' id="interfaces-links"' : 'id="xs-interfaces-links"' }>
+                        <ul class="links collapse " ${ isNormalMode ? ' id="interfaces-links"' : 'id="xs-interfaces-links"' }>
+                            <li class="link">
+                                <a href="interfaces/Data.html" data-type="entity-link">Data</a>
+                            </li>
                             <li class="link">
                                 <a href="interfaces/LayoutItem.html" data-type="entity-link">LayoutItem</a>
+                            </li>
+                            <li class="link">
+                                <a href="interfaces/LayoutOptions.html" data-type="entity-link">LayoutOptions</a>
                             </li>
                         </ul>
                     </li>
@@ -157,7 +185,10 @@ customElements.define('compodoc-menu', class extends HTMLElement {
                             <span>Miscellaneous</span>
                             <span class="icon ion-ios-arrow-down"></span>
                         </div>
-                        <ul class="links collapse" ${ isNormalMode ? 'id="miscellaneous-links"' : 'id="xs-miscellaneous-links"' }>
+                        <ul class="links collapse " ${ isNormalMode ? 'id="miscellaneous-links"' : 'id="xs-miscellaneous-links"' }>
+                            <li class="link">
+                                <a href="miscellaneous/typealiases.html" data-type="entity-link">Type aliases</a>
+                            </li>
                             <li class="link">
                                 <a href="miscellaneous/variables.html" data-type="entity-link">Variables</a>
                             </li>

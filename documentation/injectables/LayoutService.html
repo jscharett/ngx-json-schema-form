@@ -75,6 +75,21 @@
     <table class="table table-sm table-bordered index-table">
         <tbody>
 
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Methods</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#setLayout">setLayout</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
 
 
 
@@ -98,8 +113,133 @@
     </table>
 </section>
 
+            <section>
+    <h3 id="constructor">Constructor</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+<code>constructor(schemaService: <a href="../injectables/SchemaService.html">SchemaService</a>)</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="20" class="link-to-prism">projects/ngx-json-schema-form/src/lib/layout.service.ts:20</a></div>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                            <div>
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                    <td>Type</td>
+                                                <td>Optional</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>schemaService</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/SchemaService.html" target="_self" >SchemaService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+</section>
+
+            <section>
+    
+    <h3 id="methods">
+        Methods
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="setLayout"></a>
+                    <span class="name">
+                        <b>
+                            <span class="modifier">Public</span>
+                            setLayout
+                        </b>
+                        <a href="#setLayout"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>setLayout(value: <a href="../interfaces/LayoutItem.html">Array<LayoutItem | string></a>)</code>
+                </td>
+            </tr>
 
 
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="24"
+                            class="link-to-prism">projects/ngx-json-schema-form/src/lib/layout.service.ts:24</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>value</td>
+                                    <td>
+                                                <code><a href="../interfaces/LayoutItem.html" target="_self" >Array&lt;LayoutItem | string&gt;</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>
 
             <section>
     <h3 id="accessors">
@@ -121,18 +261,7 @@
                 </tr>
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="17" class="link-to-prism">projects/ngx-json-schema-form/src/lib/layout.service.ts:17</a></div>
-                                </td>
-                            </tr>
-
-                <tr>
-                    <td class="col-md-4">
-                        <span class="accessor"><b>set</b><code>layout(value)</code></span>
-                    </td>
-                </tr>
-                            <tr>
-                                <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="14" class="link-to-prism">projects/ngx-json-schema-form/src/lib/layout.service.ts:14</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="18" class="link-to-prism">projects/ngx-json-schema-form/src/lib/layout.service.ts:18</a></div>
                                 </td>
                             </tr>
                     <tr>
@@ -151,15 +280,15 @@
                                             <tbody>
                                                     <tr>
                                                             <td>value</td>
-                                                    
-                                                    
+                                                        
+
                                                         <td>
                                                                 No
                                                         </td>
                                                         
                                                             <td>
                                                                     <code><ul>
-<li>List of layout Items to be displayed in the UI</li>
+<li>List of Layout Nodes to be displayed in the UI</li>
 </ul>
 </code>
                                                             </td>
@@ -170,11 +299,12 @@
                                 <div>
                                 </div>
                                 <div class="io-description">
-                                    <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+                                    <b>Returns : </b>        <code><a href="../classes/LayoutNode.html" target="_self" >Array&lt;LayoutNode&gt;</a></code>
 
                                 </div>
                         </td>
                     </tr>
+
             </tbody>
         </table>
 </section>
@@ -184,137 +314,62 @@
     <div class="tab-pane fade  tab-source-code" id="c-source">
         <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Injectable } from &#x27;@angular/core&#x27;;
 
-import { clone, pick, uniqueId } from &#x27;lodash&#x27;;
+import { difference } from &#x27;lodash&#x27;;
+
+import { JSONSchema7Definition } from &#x27;json-schema&#x27;;
 
 import { LayoutItem } from &#x27;./layout-item.data&#x27;;
+import { LayoutNode } from &#x27;./layout-node&#x27;;
+import { SchemaService } from &#x27;./schema.service&#x27;;
 
 /** Provides services for handling layouts */
 @Injectable()
 export class LayoutService {
-    private _layout: Array&lt;any&gt; &#x3D; [];
+    private _layout: Array&lt;LayoutNode&gt; &#x3D; [];
     /**
-     * @param value - List of layout Items to be displayed in the UI
+     * @param value - List of Layout Nodes to be displayed in the UI
      */
-    set layout(value: Array&lt;any&gt;) {
-        this._layout &#x3D; LayoutService.buildLayout(value);
-    }
-    get layout(): Array&lt;any&gt; {
+    get layout(): Array&lt;LayoutNode&gt; {
         return this._layout;
     }
 
-    private static buildLayout(layout: Array&lt;LayoutItem&gt;): Array&lt;LayoutItem&gt; {
-        // let hasSubmitButton &#x3D; !JsonPointer.get(jsf, &#x27;/formOptions/addSubmit&#x27;);
-        const formLayout: Array&lt;LayoutItem&gt; &#x3D; LayoutService.mapLayout(layout, (layoutItem, index, layoutPointer) &#x3D;&gt; {
-            const newNode: LayoutItem &#x3D; {
-                id: uniqueId(),
-                options: {},
-                ...pick(layoutItem, [&#x27;key&#x27;, &#x27;type&#x27;, &#x27;name&#x27;])
-            };
-            // Dropped code to push invalid props into options
-            // Dropped code to convert widget to type
-            // Dropped code to convert options.legend to options.title
+    constructor(private readonly schemaService: SchemaService) {}
 
-            return newNode;
-    // if (isObject(layoutItem)) {
-
-    //   if (!hasOwn(newNode.options, &#x27;validationMessages&#x27;)) {
-    //     if (hasOwn(newNode.options, &#x27;errorMessages&#x27;)) {
-    //       newNode.options.validationMessages &#x3D; newNode.options.errorMessages;
-    //       delete newNode.options.errorMessages;
-
-    //     // Convert Angular Schema Form (AngularJS) &#x27;validationMessage&#x27; to
-    //     // Angular JSON Schema Form &#x27;validationMessages&#x27;
-    //     // TV4 codes from https://github.com/geraintluff/tv4/blob/master/source/api.js
-    //     } else if (hasOwn(newNode.options, &#x27;validationMessage&#x27;)) {
-    //       if (typeof newNode.options.validationMessage &#x3D;&#x3D;&#x3D; &#x27;string&#x27;) {
-    //         newNode.options.validationMessages &#x3D; newNode.options.validationMessage;
-    //       } else {
-    //         newNode.options.validationMessages &#x3D; {};
-    //         Object.keys(newNode.options.validationMessage).forEach(key &#x3D;&gt; {
-    //           const code &#x3D; key + &#x27;&#x27;;
-    //           const newKey &#x3D;
-    //             code &#x3D;&#x3D;&#x3D;  &#x27;0&#x27;  ? &#x27;type&#x27; :
-    //             code &#x3D;&#x3D;&#x3D;  &#x27;1&#x27;  ? &#x27;enum&#x27; :
-    //             code &#x3D;&#x3D;&#x3D; &#x27;100&#x27; ? &#x27;multipleOf&#x27; :
-    //             code &#x3D;&#x3D;&#x3D; &#x27;101&#x27; ? &#x27;minimum&#x27; :
-    //             code &#x3D;&#x3D;&#x3D; &#x27;102&#x27; ? &#x27;exclusiveMinimum&#x27; :
-    //             code &#x3D;&#x3D;&#x3D; &#x27;103&#x27; ? &#x27;maximum&#x27; :
-    //             code &#x3D;&#x3D;&#x3D; &#x27;104&#x27; ? &#x27;exclusiveMaximum&#x27; :
-    //             code &#x3D;&#x3D;&#x3D; &#x27;200&#x27; ? &#x27;minLength&#x27; :
-    //             code &#x3D;&#x3D;&#x3D; &#x27;201&#x27; ? &#x27;maxLength&#x27; :
-    //             code &#x3D;&#x3D;&#x3D; &#x27;202&#x27; ? &#x27;pattern&#x27; :
-    //             code &#x3D;&#x3D;&#x3D; &#x27;300&#x27; ? &#x27;minProperties&#x27; :
-    //             code &#x3D;&#x3D;&#x3D; &#x27;301&#x27; ? &#x27;maxProperties&#x27; :
-    //             code &#x3D;&#x3D;&#x3D; &#x27;302&#x27; ? &#x27;required&#x27; :
-    //             code &#x3D;&#x3D;&#x3D; &#x27;304&#x27; ? &#x27;dependencies&#x27; :
-    //             code &#x3D;&#x3D;&#x3D; &#x27;400&#x27; ? &#x27;minItems&#x27; :
-    //             code &#x3D;&#x3D;&#x3D; &#x27;401&#x27; ? &#x27;maxItems&#x27; :
-    //             code &#x3D;&#x3D;&#x3D; &#x27;402&#x27; ? &#x27;uniqueItems&#x27; :
-    //             code &#x3D;&#x3D;&#x3D; &#x27;500&#x27; ? &#x27;format&#x27; : code + &#x27;&#x27;;
-    //           newNode.options.validationMessages[newKey] &#x3D; newNode.options.validationMessage[key];
-    //         });
-    //       }
-    //       delete newNode.options.validationMessage;
-    //     }
-    //   }
-    // } else if (JsonPointer.isJsonPointer(layoutItem)) {
-    //   newNode.dataPointer &#x3D; layoutItem;
-    // } else if (isString(layoutItem)) {
-    //   newNode.key &#x3D; layoutItem;
-    // } else {
-    //   console.error(&#x27;buildLayout error: Form layout element not recognized:&#x27;);
-    //   console.error(layoutItem);
-    //   return null;
-    // }
-        });
-
-        return formLayout;
+    public setLayout(value: Array&lt;LayoutItem | string&gt;): void {
+        this._layout &#x3D; this.buildLayout(value);
     }
 
-    /**
-     * &#x27;mapLayout&#x27; function
-     *
-     * Creates a new layout by running each element in an existing layout through
-     * an iteratee. Recursively maps within array elements &#x27;items&#x27; and &#x27;tabs&#x27;.
-     * The iteratee is invoked with four arguments: (value, index, layout, path)
-     *
-     * The returned layout may be longer (or shorter) then the source layout.
-     *
-     * If an item from the source layout returns multiple items (as &#x27;*&#x27; usually will),
-     * this function will keep all returned items in-line with the surrounding items.
-     *
-     * If an item from the source layout causes an error and returns null, it is
-     * skipped without error, and the function will still return all non-null items.
-     *
-     * @param  layout - the layout to map
-     * @param  function - the funciton to invoke on each element
-     * @param  layoutPointer - the layoutPointer to layout, inside rootLayout
-     * @param  rootLayout - the root layout, which conatins layout
-     * @return the mapped layout
-     */
-    private static mapLayout(layout: Array&lt;LayoutItem&gt;, fn: (v: any, i?: number, l?: any, p?: any) &#x3D;&gt; LayoutItem,
-        layoutPointer: string|Array&lt;string&gt; &#x3D; &#x27;&#x27;, rootLayout: Array&lt;LayoutItem&gt; &#x3D; layout): Array&lt;LayoutItem&gt; {
-        const indexPad &#x3D; 0;
+    private buildLayout(layout: Array&lt;LayoutItem | string&gt;): Array&lt;LayoutNode&gt; {
+        const schemaPointers: Map&lt;string, JSONSchema7Definition&gt; &#x3D; this.schemaService.dataPointerMap;
+        const mappedPointers: Set&lt;string&gt; &#x3D; new Set&lt;string&gt;();
+        let starIndex &#x3D; -1;
 
-        return layout.reduce((mappedLayout: Array&lt;LayoutItem&gt;, item: LayoutItem, index: number) &#x3D;&gt; {
-            const realIndex: number &#x3D; +index + indexPad;
-            const newLayoutPointer &#x3D; &#x60;${layoutPointer}/${realIndex}&#x60;;
-            let newNode: LayoutItem &#x3D; clone(item);
-            let newLayout: Array&lt;LayoutItem&gt; &#x3D; mappedLayout;
-            // Note: removed logic to convert tabs to items and items to [items]
-            // if (item.items) {
-            //     newNode.items &#x3D; LayoutService.mapLayout(item.items, fn, &#x60;${newLayoutPointer}/items&#x60;, rootLayout);
-            // }
-            newNode &#x3D; fn(newNode, realIndex, newLayoutPointer, rootLayout);
-            // if (isNil(newNode)) {
-            //     indexPad -&#x3D; 1;
-            // } else {
-            //     if (Array.isArray(newNode)) { indexPad +&#x3D; newNode.length - 1; }
-                newLayout &#x3D; mappedLayout.concat(newNode);
-            // }
+        const mappedLayout: Array&lt;LayoutNode&gt; &#x3D;
+            layout.reduce((currentLayout: Array&lt;LayoutNode&gt;, layoutItem: LayoutItem | string, i: number): Array&lt;LayoutNode&gt; &#x3D;&gt; {
+            let newLayout: Array&lt;LayoutNode&gt; &#x3D; currentLayout;
+
+            if (&lt;string&gt;layoutItem &#x3D;&#x3D;&#x3D; &#x27;*&#x27;) {
+                starIndex &#x3D; i;
+            } else {
+                try {
+                    const layoutNode: LayoutNode &#x3D; LayoutNode.create(layoutItem, this.schemaService);
+                    mappedPointers.add(layoutNode.dataPointer);
+                    newLayout &#x3D; newLayout.concat(layoutNode);
+                } catch (err) {
+                    console.error(&#x27;buildLayout error: Form layout element not recognized:&#x27;);
+                    console.error(layoutItem);
+                }
+            }
 
             return newLayout;
         }, []);
+
+        if (starIndex !&#x3D;&#x3D; -1) {
+            const availablePointers: Array&lt;string&gt; &#x3D; Array.from(schemaPointers.keys());
+            mappedLayout.splice(starIndex, 0, ...this.buildLayout(difference(availablePointers, Array.from(mappedPointers))));
+        }
+
+        return mappedLayout;
     }
 }
 </code></pre>
@@ -328,6 +383,7 @@ export class LayoutService {
 
 
 
+                   
 
 
 

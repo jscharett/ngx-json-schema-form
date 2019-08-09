@@ -105,6 +105,9 @@
                                 <li>
                                     <a href="#schema">schema</a>
                                 </li>
+                                <li>
+                                    <a href="#dataPointerMap">dataPointerMap</a>
+                                </li>
                             </ul>
                         </td>
                     </tr>
@@ -140,8 +143,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="30"
-                            class="link-to-prism">projects/ngx-json-schema-form/src/lib/schema.service.ts:30</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="49"
+                            class="link-to-prism">projects/ngx-json-schema-form/src/lib/schema.service.ts:49</a></div>
                 </td>
             </tr>
 
@@ -219,7 +222,7 @@
                 </tr>
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="19" class="link-to-prism">projects/ngx-json-schema-form/src/lib/schema.service.ts:19</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="21" class="link-to-prism">projects/ngx-json-schema-form/src/lib/schema.service.ts:21</a></div>
                                 </td>
                             </tr>
 
@@ -230,7 +233,7 @@
                 </tr>
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="15" class="link-to-prism">projects/ngx-json-schema-form/src/lib/schema.service.ts:15</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="17" class="link-to-prism">projects/ngx-json-schema-form/src/lib/schema.service.ts:17</a></div>
                                 </td>
                             </tr>
                     <tr>
@@ -275,6 +278,41 @@
                     </tr>
             </tbody>
         </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="dataPointerMap"></a>
+                        <span class="name"><b>dataPointerMap</b><a href="#dataPointerMap"><span class="icon ion-ios-link"></span></a></span>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <span class="accessor"><b>get</b><code>dataPointerMap()</code></span>
+                    </td>
+                </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="30" class="link-to-prism">projects/ngx-json-schema-form/src/lib/schema.service.ts:30</a></div>
+                                </td>
+                            </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-description"><p>Gets a map of all the relevant json data pointers
+and their related schema definitions.  This allows for
+easy lookup of a schema reference from a json pointer.</p>
+</div>
+
+                                <div class="io-description">
+                                    <b>Returns : </b>    <code>Map&lt;string, JSONSchema7Definition&gt;</code>
+
+                                </div>
+                        </td>
+                    </tr>
+
+            </tbody>
+        </table>
 </section>
     </div>
 
@@ -282,9 +320,11 @@
     <div class="tab-pane fade  tab-source-code" id="c-source">
         <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Injectable } from &#x27;@angular/core&#x27;;
 
+import traverse from &#x27;json-schema-traverse&#x27;;
+
 import Ajv from &#x27;ajv&#x27;;
 
-import { JSONSchema7 } from &#x27;json-schema&#x27;;
+import { JSONSchema7, JSONSchema7Definition } from &#x27;json-schema&#x27;;
 
 /** Provides services for parsing JSON Schema and validating data */
 @Injectable()
@@ -300,6 +340,23 @@ export class SchemaService {
     }
     get schema(): JSONSchema7 {
         return this._schema;
+    }
+
+    /**
+     * Gets a map of all the relevant json data pointers
+     * and their related schema definitions.  This allows for
+     * easy lookup of a schema reference from a json pointer.
+     */
+    get dataPointerMap(): Map&lt;string, JSONSchema7Definition&gt; {
+        const pointers: Map&lt;string, JSONSchema7Definition&gt; &#x3D; new Map&lt;string, JSONSchema7Definition&gt;();
+        traverse(this.schema, {cb: (...args) &#x3D;&gt; {
+            const [schema, pointer, , , , parentSchema] &#x3D; args;
+            if (pointer &amp;&amp; parentSchema &amp;&amp; parentSchema.type !&#x3D;&#x3D; &#x27;array&#x27; &amp;&amp; schema.type !&#x3D;&#x3D; &#x27;object&#x27;) {
+                pointers.set(pointer.replace(/\/properties/g, &#x27;&#x27;), schema);
+            }
+        }});
+
+        return pointers;
     }
 
     private readonly ajv: Ajv.Ajv &#x3D; new Ajv({ allErrors: true, jsonPointers: true, unknownFormats: &#x27;ignore&#x27; });
@@ -329,6 +386,7 @@ export class SchemaService {
 
 
 
+                   
 
 
 

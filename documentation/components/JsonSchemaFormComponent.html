@@ -75,6 +75,7 @@ structured data model and/or a JSON Schema Form layout description.</p>
 <li><a href="https://angular.io">Angular</a> (obviously)</li>
 <li><a href="https://github.com/lodash/lodash">lodash</a>, JavaScript utility library</li>
 <li><a href="https://github.com/epoberezkin/ajv">ajv</a>, Another JSON Schema validator</li>
+<li><a href="https://github.com/epoberezkin/json-schema-traverse">json-schema-traverse</a>, JSON Schema Traverse</li>
 </ul>
 <p>In addition, the Example Playground also depends on:</p>
 <ul>
@@ -89,6 +90,7 @@ structured data model and/or a JSON Schema Form layout description.</p>
     </p>
     <p class="comment">
                     <code><a href="https://angular.io/api/core/OnChanges" target="_blank" >OnChanges</a></code>
+                    <code><a href="https://angular.io/api/core/OnDestroy" target="_blank" >OnDestroy</a></code>
                     <code><a href="https://angular.io/api/core/OnInit" target="_blank" >OnInit</a></code>
     </p>
 
@@ -176,10 +178,25 @@ structured data model and/or a JSON Schema Form layout description.</p>
                     <td class="col-md-4">
                         <ul class="index-list">
                             <li>
+                                <a href="#action">action</a>
+                            </li>
+                            <li>
+                                <a href="#autocomplete">autocomplete</a>
+                            </li>
+                            <li>
+                                <a href="#enctype">enctype</a>
+                            </li>
+                            <li>
                                 <a href="#layout">layout</a>
                             </li>
                             <li>
+                                <a href="#method">method</a>
+                            </li>
+                            <li>
                                 <a href="#schema">schema</a>
+                            </li>
+                            <li>
+                                <a href="#target">target</a>
                             </li>
                         </ul>
                     </td>
@@ -203,7 +220,7 @@ structured data model and/or a JSON Schema Form layout description.</p>
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="61" class="link-to-prism">projects/ngx-json-schema-form/src/lib/json-schema-form.component.ts:61</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="94" class="link-to-prism">projects/ngx-json-schema-form/src/lib/json-schema-form.component.ts:94</a></div>
                             </td>
                         </tr>
 
@@ -259,6 +276,90 @@ structured data model and/or a JSON Schema Form layout description.</p>
             <tbody>
                 <tr>
                     <td class="col-md-4">
+                        <a name="action"></a>
+                        <b>action</b>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>string | null</code>
+
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in <a href="" data-line="70" class="link-to-prism">projects/ngx-json-schema-form/src/lib/json-schema-form.component.ts:70</a></div>
+                            </td>
+                        </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <div class="io-description"><p>Sets the action attribute of the internal form
+See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/form#Attributes">https://developer.mozilla.org/en-US/docs/Web/HTML/Element/form#Attributes</a></p>
+</div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="autocomplete"></a>
+                        <b>autocomplete</b>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>&quot;on&quot; | &quot;off&quot; | null</code>
+
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in <a href="" data-line="75" class="link-to-prism">projects/ngx-json-schema-form/src/lib/json-schema-form.component.ts:75</a></div>
+                            </td>
+                        </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <div class="io-description"><p>Sets the autocomplete attribute of the internal form
+See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/form#Attributes">https://developer.mozilla.org/en-US/docs/Web/HTML/Element/form#Attributes</a></p>
+</div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="enctype"></a>
+                        <b>enctype</b>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>&quot;application/x-www-form-urlencoded&quot; | &quot;multipart/form-data&quot; | &quot;text/plain&quot; | null</code>
+
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in <a href="" data-line="80" class="link-to-prism">projects/ngx-json-schema-form/src/lib/json-schema-form.component.ts:80</a></div>
+                            </td>
+                        </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <div class="io-description"><p>Sets the enctype attribute of the internal form
+See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/form#Attributes">https://developer.mozilla.org/en-US/docs/Web/HTML/Element/form#Attributes</a></p>
+</div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
                         <a name="layout"></a>
                         <b>layout</b>
                     </td>
@@ -271,12 +372,40 @@ structured data model and/or a JSON Schema Form layout description.</p>
                 </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="59" class="link-to-prism">projects/ngx-json-schema-form/src/lib/json-schema-form.component.ts:59</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="65" class="link-to-prism">projects/ngx-json-schema-form/src/lib/json-schema-form.component.ts:65</a></div>
                             </td>
                         </tr>
                 <tr>
                     <td class="col-md-4">
                         <div class="io-description"><p>Layout used to define how the form is rendered </p>
+</div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="method"></a>
+                        <b>method</b>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>&quot;get&quot; | &quot;post&quot; | &quot;dialog&quot; | null</code>
+
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in <a href="" data-line="85" class="link-to-prism">projects/ngx-json-schema-form/src/lib/json-schema-form.component.ts:85</a></div>
+                            </td>
+                        </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <div class="io-description"><p>Sets the method attribute of the internal form
+See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/form#Attributes">https://developer.mozilla.org/en-US/docs/Web/HTML/Element/form#Attributes</a></p>
 </div>
                     </td>
                 </tr>
@@ -298,12 +427,40 @@ structured data model and/or a JSON Schema Form layout description.</p>
                 </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="57" class="link-to-prism">projects/ngx-json-schema-form/src/lib/json-schema-form.component.ts:57</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="63" class="link-to-prism">projects/ngx-json-schema-form/src/lib/json-schema-form.component.ts:63</a></div>
                             </td>
                         </tr>
                 <tr>
                     <td class="col-md-4">
                         <div class="io-description"><p>JSON Schema used to validate form data </p>
+</div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="target"></a>
+                        <b>target</b>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>&quot;_self&quot; | &quot;_blank&quot; | &quot;_parent&quot; | &quot;_top&quot; | string | null</code>
+
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in <a href="" data-line="90" class="link-to-prism">projects/ngx-json-schema-form/src/lib/json-schema-form.component.ts:90</a></div>
+                            </td>
+                        </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <div class="io-description"><p>Sets the target attribute of the internal form
+See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/form#Attributes">https://developer.mozilla.org/en-US/docs/Web/HTML/Element/form#Attributes</a></p>
 </div>
                     </td>
                 </tr>
@@ -340,8 +497,8 @@ structured data model and/or a JSON Schema Form layout description.</p>
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="81"
-                            class="link-to-prism">projects/ngx-json-schema-form/src/lib/json-schema-form.component.ts:81</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="119"
+                            class="link-to-prism">projects/ngx-json-schema-form/src/lib/json-schema-form.component.ts:119</a></div>
                 </td>
             </tr>
 
@@ -381,8 +538,8 @@ structured data model and/or a JSON Schema Form layout description.</p>
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="86"
-                            class="link-to-prism">projects/ngx-json-schema-form/src/lib/json-schema-form.component.ts:86</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="124"
+                            class="link-to-prism">projects/ngx-json-schema-form/src/lib/json-schema-form.component.ts:124</a></div>
                 </td>
             </tr>
 
@@ -431,7 +588,12 @@ structured data model and/or a JSON Schema Form layout description.</p>
 
 
     <div class="tab-pane fade  tab-source-code" id="c-source">
-        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { ChangeDetectionStrategy, Component, Input, OnChanges, OnInit, SimpleChanges } from &#x27;@angular/core&#x27;;
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import {
+    ChangeDetectionStrategy, Component, Input,
+    OnChanges, OnDestroy, OnInit, SimpleChanges
+} from &#x27;@angular/core&#x27;;
+
+import { Subject } from &#x27;rxjs&#x27;;
 
 import { cloneDeep, isPlainObject } from &#x27;lodash&#x27;;
 
@@ -469,6 +631,7 @@ import { SchemaService } from &#x27;./schema.service&#x27;;
  * - [Angular]{@link https://angular.io} (obviously)
  * - [lodash]{@link https://github.com/lodash/lodash}, JavaScript utility library
  * - [ajv]{@link https://github.com/epoberezkin/ajv}, Another JSON Schema validator
+ * - [json-schema-traverse]{@link https://github.com/epoberezkin/json-schema-traverse}, JSON Schema Traverse
  *
  * In addition, the Example Playground also depends on:
  *
@@ -485,13 +648,40 @@ import { SchemaService } from &#x27;./schema.service&#x27;;
     styles: [],
     templateUrl: &#x27;./json-schema-form.component.html&#x27;
 })
-export class JsonSchemaFormComponent implements OnChanges, OnInit {
+export class JsonSchemaFormComponent implements OnChanges, OnDestroy, OnInit {
     /** JSON Schema used to validate form data */
     @Input() schema: JSONSchema7;
     /** Layout used to define how the form is rendered */
     @Input() layout: Array&lt;LayoutItem&gt;;
+    /**
+     * Sets the action attribute of the internal form
+     * See {@link https://developer.mozilla.org/en-US/docs/Web/HTML/Element/form#Attributes}
+     */
+    @Input() action: string | null;
+    /**
+     * Sets the autocomplete attribute of the internal form
+     * See {@link https://developer.mozilla.org/en-US/docs/Web/HTML/Element/form#Attributes}
+     */
+    @Input() autocomplete: &#x27;on&#x27; | &#x27;off&#x27; | null;
+    /**
+     * Sets the enctype attribute of the internal form
+     * See {@link https://developer.mozilla.org/en-US/docs/Web/HTML/Element/form#Attributes}
+     */
+    @Input() enctype: &#x27;application/x-www-form-urlencoded&#x27; | &#x27;multipart/form-data&#x27; | &#x27;text/plain&#x27; | null;
+    /**
+     * Sets the method attribute of the internal form
+     * See {@link https://developer.mozilla.org/en-US/docs/Web/HTML/Element/form#Attributes}
+     */
+    @Input() method: &#x27;get&#x27; | &#x27;post&#x27; | &#x27;dialog&#x27; | null;
+    /**
+     * Sets the target attribute of the internal form
+     * See {@link https://developer.mozilla.org/en-US/docs/Web/HTML/Element/form#Attributes}
+     */
+    @Input() target: &#x27;_self&#x27; | &#x27;_blank&#x27; | &#x27;_parent&#x27; | &#x27;_top&#x27; | string | null;
 
     private formInitialized &#x3D; false;
+    /** Observable to used to unsubscribe listners upon ngDestroy */
+    private readonly destroyed$: Subject&lt;void&gt; &#x3D; new Subject();
 
     constructor(
         // private readonly jsf: JsonSchemaFormService,
@@ -508,6 +698,11 @@ export class JsonSchemaFormComponent implements OnChanges, OnInit {
             this.formInitialized &#x3D; false;
         }
         this.updateForm();
+    }
+
+    ngOnDestroy() {
+        this.destroyed$.next();
+        this.destroyed$.complete();
     }
 
     /** Submits the form */
@@ -533,7 +728,7 @@ export class JsonSchemaFormComponent implements OnChanges, OnInit {
     }
 
     private initializeLayout(): void {
-        this.layoutService.layout &#x3D; cloneDeep(this.layout || []);
+        this.layoutService.setLayout(cloneDeep(this.layout || [&#x27;*&#x27;]));
     }
 
     private initializeSchema(): void {
@@ -546,10 +741,16 @@ export class JsonSchemaFormComponent implements OnChanges, OnInit {
     </div>
 
     <div class="tab-pane fade " id="c-templateData">
-        <pre class="line-numbers"><code class="language-html">&lt;form (ngSubmit)&#x3D;&quot;submitForm()&quot;&gt;
-    &lt;div *ngFor&#x3D;&quot;let layoutItem of layoutService.layout; trackBy: trackByFn;&quot;&gt;
-        &lt;jsf-select-widget [layoutNode]&#x3D;&quot;layoutItem&quot;&gt;&lt;/jsf-select-widget&gt;
-    &lt;/div&gt;
+        <pre class="line-numbers"><code class="language-html">&lt;form
+    [attr.action]&#x3D;&quot;action&quot;
+    [attr.autocomplete]&#x3D;&quot;autocomplete&quot;
+    [attr.enctype]&#x3D;&quot;enctype&quot;
+    [attr.method]&#x3D;&quot;method&quot;
+    [attr.target]&#x3D;&quot;target&quot;
+    (ngSubmit)&#x3D;&quot;submitForm()&quot;&gt;
+    &lt;jsf-select-widget
+        *ngFor&#x3D;&quot;let layoutNode of layoutService.layout; trackBy: trackByFn;&quot;
+        [layoutNode]&#x3D;&quot;layoutNode&quot;&gt;&lt;/jsf-select-widget&gt;
 &lt;/form&gt;
 </code></pre>
     </div>
@@ -580,7 +781,7 @@ export class JsonSchemaFormComponent implements OnChanges, OnInit {
 <script src="../js/libs/htmlparser.js"></script>
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
-        var COMPONENT_TEMPLATE = '<div><form (ngSubmit)="submitForm()">    <div *ngFor="let layoutItem of layoutService.layout; trackBy: trackByFn;">        <jsf-select-widget [layoutNode]="layoutItem"></jsf-select-widget>    </div></form></div>'
+        var COMPONENT_TEMPLATE = '<div><form    [attr.action]="action"    [attr.autocomplete]="autocomplete"    [attr.enctype]="enctype"    [attr.method]="method"    [attr.target]="target"    (ngSubmit)="submitForm()">    <jsf-select-widget        *ngFor="let layoutNode of layoutService.layout; trackBy: trackByFn;"        [layoutNode]="layoutNode"></jsf-select-widget></form></div>'
     var COMPONENTS = [{'name': 'ButtonComponent', 'selector': 'jsf-button'},{'name': 'HiddenComponent', 'selector': 'jsf-hidden'},{'name': 'JsonSchemaFormComponent', 'selector': 'jsf-json-schema-form'},{'name': 'SelectWidgetComponent', 'selector': 'jsf-select-widget'}];
     var DIRECTIVES = [];
     var ACTUAL_COMPONENT = {'name': 'JsonSchemaFormComponent'};
@@ -596,6 +797,7 @@ export class JsonSchemaFormComponent implements OnChanges, OnInit {
 
 
 
+                   
 
 
 

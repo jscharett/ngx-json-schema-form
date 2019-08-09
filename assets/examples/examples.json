@@ -7,6 +7,14 @@
             {
                 "name": "Simple Array",
                 "file": "simple-array"
+            },
+            {
+                "name": "Kitchen Sink",
+                "file": "kitchen-sink"
+            },
+            {
+                "name": "Buttons",
+                "file": "buttons"
             }
         ]
     }

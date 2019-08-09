@@ -250,15 +250,22 @@
     <div class="tab-pane fade  tab-source-code" id="c-source">
         <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { CommonModule } from &#x27;@angular/common&#x27;;
 import { NgModule } from &#x27;@angular/core&#x27;;
+import { EVENT_MANAGER_PLUGINS } from &#x27;@angular/platform-browser&#x27;;
 
 import { WidgetLibraryModule } from &#x27;./widget-library/widget-library.module&#x27;;
 
+import { DataEventPluginService } from &#x27;./data-event-plugin.service&#x27;;
 import { JsonSchemaFormComponent } from &#x27;./json-schema-form.component&#x27;;
 
 @NgModule({
     declarations: [ JsonSchemaFormComponent ],
     exports: [ JsonSchemaFormComponent, WidgetLibraryModule ],
-    imports: [ CommonModule, WidgetLibraryModule ]
+    imports: [ CommonModule, WidgetLibraryModule ],
+    providers: [{
+        multi: true,
+        provide: EVENT_MANAGER_PLUGINS,
+        useClass: DataEventPluginService
+    }]
 })
 export class JsonSchemaFormModule { }
 </code></pre>
@@ -274,6 +281,7 @@ export class JsonSchemaFormModule { }
 
 
 
+                   
 
 
 
