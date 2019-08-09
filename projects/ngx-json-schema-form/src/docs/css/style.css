@@ -13,7 +13,13 @@
 .panel.docs {
     margin: 20px 0;
 }
-.container-fluid.jsf {
-    overflow-y: visible;
-    overflow-x: visible;
+.content-data div.links {
+    position: fixed;
+}
+.content-data div.links li {
+    padding-bottom: 8px;
+}
+.content-data div.links a {
+    text-decoration: none;
+    color: #333;
 }
