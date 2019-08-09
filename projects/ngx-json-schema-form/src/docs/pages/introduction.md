@@ -1,12 +1,6 @@
-<style>
-   .panel pre[class*="language-"] {
-        margin: 0;
-        border-radius: 0;
-    }
-    .panel.docs {
-        margin: 20px 0;
-    }
-</style>
+<div class="container-fluid jsf">
+<div class="row">
+<div class="col-md-10">
 
 # Examples
 
@@ -134,3 +128,13 @@ export class LayoutComponent {
 </div>
 
 As you can see, we only care that `age` is presented first.  All the other properties in the schema are shown after `age`.
+
+</div>
+<div class="col-md-2">
+
+* [JSON Schema](#json-schema "JSON Schema")
+* [Layout](#layout "Layout")
+
+</div>
+</div>
+</div>

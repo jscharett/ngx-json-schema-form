@@ -1,7 +1,9 @@
 {
     "disableLifeCycleHooks": true,
     "disablePrivate": true,
+    "extTheme": "projects/ngx-json-schema-form/src/docs/css",
     "hideGenerator": true,
+    "includes": "projects/ngx-json-schema-form/src/docs/pages",
     "name": "NGX JSOLN Schema Form",
     "output": "dist/demo/documentation",
     "theme": "material",

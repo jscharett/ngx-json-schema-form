@@ -1,0 +1,19 @@
+@import "./reset.css";
+@import "./bootstrap.min.css";
+@import "./bootstrap-card.css";
+@import "./prism.css";
+@import "./ionicons.min.css";
+@import "./compodoc.css";
+@import "./tablesort.css";
+
+.panel pre[class*="language-"] {
+    margin: 0;
+    border-radius: 0;
+}
+.panel.docs {
+    margin: 20px 0;
+}
+.container-fluid.jsf {
+    overflow-y: visible;
+    overflow-x: visible;
+}
