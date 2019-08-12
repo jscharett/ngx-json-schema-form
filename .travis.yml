@@ -19,11 +19,12 @@ before_install:
 
 before_script:
   - npm install -g @angular/cli
+  - npm install -g copyfiles
 
 script:
   - npm run lint
   - npm run test-ci
-  - npm run build
+  - npm run package
   - npm run compodoc -- --disableCoverage
 after_success:
   - codecov
