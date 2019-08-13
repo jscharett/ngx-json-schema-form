@@ -195,7 +195,7 @@ export class LayoutComponent {
 }]</code></pre></div></div>
 
 <h3 id="button">Button</h3>
-<p>There are 4 types of buttons that jsf supports, <code>button</code>, <code>image</code>, <code>reset</code> and <code>submit</code>.  By default, these will all use the <code>&lt;input&gt;</code> tag for display.  However, with the exception of <code>image</code>, you can specify custom html via the <code>content</code> option.  This will result in the <code>&lt;button&gt;</code> being used for display and the content being inserted.  Content can contain simple angular bindings so that you can bind to various properties of the layout.  For example:</p>
+<p>There are 4 types of buttons that jsf supports, <code>button</code>, <code>image</code>, <code>reset</code> and <code>submit</code>.  By default, these will all use the <code>&lt;input&gt;</code> tag for display.  However, with the exception of <code>image</code>, you can specify custom html via the <code>content</code> option.  This will result in the <code>&lt;button&gt;</code> being used for display and the content being inserted.  Content can contain simple bindings so that you can bind to various properties of the layout.  For example:</p>
 <div class="panel panel-primary docs">
 <div class="panel-heading panel-title">button-layout.json</div>
 
@@ -221,6 +221,10 @@ export class LayoutComponent {
 &lt;/button&gt;</code></pre></div></div>
 
 <p>Here you can see we are specifying that the button should contain an image via the <code>content</code> options.  The template binds to the properties of the <code>icon</code> option which results in an image tag being rendered.  The <code>icon</code> option is also used when redering a simple button of type <code>image</code>.</p>
+<div class="alert alert-warning">
+Note: due to current limitation of Angular AOT compilation, use of the angular compile to transpile content strings into HTML DOM is not possible.  Recent Angular changes have restricted the inclusion of the compiler in favor of reducing the file size and load time when in AOT mode.  Therefore, Handlebars is currently being imported to handle the compilation of content string to HTML DOM.
+</div>
+
 <p>We can also respond to events such as a <code>click</code>.  To do this, we must first bind an event handler to the jsf component</p>
 <div class="panel panel-primary docs">
 <div class="panel-heading panel-title">form.component.html</div>

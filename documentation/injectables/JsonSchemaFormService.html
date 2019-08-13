@@ -104,78 +104,6 @@
     </table>
 </section>
 
-            <section>
-    <h3 id="constructor">Constructor</h3>
-        <table class="table table-sm table-bordered">
-            <tbody>
-                <tr>
-                    <td class="col-md-4">
-<code>constructor(compiler: <a href="https://angular.io/api/core/Compiler" target="_blank">Compiler</a>, injector: <a href="https://angular.io/api/core/Injector" target="_blank">Injector</a>, moduleRef: NgModuleRef<any>)</code>
-                    </td>
-                </tr>
-                        <tr>
-                            <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="39" class="link-to-prism">projects/ngx-json-schema-form/src/lib/json-schema-form.service.ts:39</a></div>
-                            </td>
-                        </tr>
-
-                <tr>
-                    <td class="col-md-4">
-                            <div>
-                                    <b>Parameters :</b>
-                                    <table class="params">
-                                        <thead>
-                                            <tr>
-                                                <td>Name</td>
-                                                    <td>Type</td>
-                                                <td>Optional</td>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                                <tr>
-                                                        <td>compiler</td>
-                                                  
-                                                        <td>
-                                                                        <code><a href="https://angular.io/api/core/Compiler" target="_blank" >Compiler</a></code>
-                                                        </td>
-                                                  
-                                                    <td>
-                                                            No
-                                                    </td>
-                                                    
-                                                </tr>
-                                                <tr>
-                                                        <td>injector</td>
-                                                  
-                                                        <td>
-                                                                        <code><a href="https://angular.io/api/core/Injector" target="_blank" >Injector</a></code>
-                                                        </td>
-                                                  
-                                                    <td>
-                                                            No
-                                                    </td>
-                                                    
-                                                </tr>
-                                                <tr>
-                                                        <td>moduleRef</td>
-                                                  
-                                                        <td>
-                                                                    <code>NgModuleRef&lt;any&gt;</code>
-                                                        </td>
-                                                  
-                                                    <td>
-                                                            No
-                                                    </td>
-                                                    
-                                                </tr>
-                                        </tbody>
-                                    </table>
-                            </div>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
-</section>
 
             <section>
     
@@ -204,8 +132,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="60"
-                            class="link-to-prism">projects/ngx-json-schema-form/src/lib/json-schema-form.service.ts:60</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="63"
+                            class="link-to-prism">projects/ngx-json-schema-form/src/lib/json-schema-form.service.ts:63</a></div>
                 </td>
             </tr>
 
@@ -307,15 +235,15 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="44"
-                            class="link-to-prism">projects/ngx-json-schema-form/src/lib/json-schema-form.service.ts:44</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="47"
+                            class="link-to-prism">projects/ngx-json-schema-form/src/lib/json-schema-form.service.ts:47</a></div>
                 </td>
             </tr>
 
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-description"><p>Sets a widgets properties upon Widget creation </p>
+                    <div class="io-description"><p>Creates a component with passed in template and associated context </p>
 </div>
 
                     <div class="io-description">
@@ -396,8 +324,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="50"
-                            class="link-to-prism">projects/ngx-json-schema-form/src/lib/json-schema-form.service.ts:50</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="53"
+                            class="link-to-prism">projects/ngx-json-schema-form/src/lib/json-schema-form.service.ts:53</a></div>
                 </td>
             </tr>
 
@@ -464,11 +392,13 @@
 
 
     <div class="tab-pane fade  tab-source-code" id="c-source">
-        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { CommonModule } from &#x27;@angular/common&#x27;;
-import {
-    Compiler, Component, ComponentRef, Injectable, Injector,
-    ModuleWithComponentFactories, NgModule, NgModuleRef
-} from &#x27;@angular/core&#x27;;
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Injectable } from &#x27;@angular/core&#x27;;
+// import {
+//     Compiler, Component, ComponentRef, Injectable, Injector,
+//     ModuleWithComponentFactories, NgModule, NgModuleRef
+// } from &#x27;@angular/core&#x27;;
+
+import Handlebars from &#x27;handlebars/dist/cjs/handlebars&#x27;;
 
 import { Widget } from &#x27;./widget-library&#x27;;
 
@@ -479,32 +409,32 @@ export class JsonSchemaFormService {
     private x &#x3D; false;
 
     /** Creates a component with passed in template and associated context */
-    private static createComponent(template: string, context: {[key: string]: any}): any {
-        return Component({
-            selector: &#x60;runtime-component-sample&#x60;,
-            template
-        })(class RuntimeComponent {
-            options: any &#x3D; context;
-        });
-    }
+    // private static createComponent(template: string, context: {[key: string]: any}): any {
+    //     return Component({
+    //         selector: &#x60;runtime-component-sample&#x60;,
+    //         template
+    //     })(class RuntimeComponent {
+    //         options: any &#x3D; context;
+    //     });
+    // }
 
     /** Create a module for use with the RuntimeComponent */
-    private static createModule(component: any, compiler: Compiler): ModuleWithComponentFactories&lt;any&gt; {
-        @NgModule({ imports: [CommonModule], declarations: [component] })
-        class RuntimeComponentModule { }
+    // private static createModule(component: any, compiler: Compiler): ModuleWithComponentFactories&lt;any&gt; {
+    //     @NgModule({ imports: [CommonModule], declarations: [component] })
+    //     class RuntimeComponentModule { }
 
-        return compiler.compileModuleAndAllComponentsSync(RuntimeComponentModule);
-    }
+    //     return compiler.compileModuleAndAllComponentsSync(RuntimeComponentModule);
+    // }
 
     /** Get a components innerHTML as a document Fragment */
-    private static getDocumentFragment(componentRef: ComponentRef&lt;any&gt;): DocumentFragment {
-        const template &#x3D; document.createElement(&#x27;template&#x27;);
-        template.innerHTML &#x3D; (&lt;HTMLElement&gt;componentRef.location.nativeElement).innerHTML;
+    // private static getDocumentFragment(componentRef: ComponentRef&lt;any&gt;): DocumentFragment {
+    //     const template &#x3D; document.createElement(&#x27;template&#x27;);
+    //     template.innerHTML &#x3D; (&lt;HTMLElement&gt;componentRef.location.nativeElement).innerHTML;
 
-        return template.content;
-    }
+    //     return template.content;
+    // }
 
-    constructor(private readonly compiler: Compiler, private readonly injector: Injector, private readonly moduleRef: NgModuleRef&lt;any&gt;) {}
+    // constructor(private readonly compiler: Compiler,private readonly injector: Injector, private readonly moduleRef: NgModuleRef&lt;any&gt;) {}
 
     /** Sets a widgets properties upon Widget creation */
     initializeControl(control: Widget, bind &#x3D; true): void {
@@ -524,17 +454,29 @@ export class JsonSchemaFormService {
      * @param context - options to use when rendering the template
      */
     compileTemplate(template: string, context: {[key: string]: any} &#x3D; {}): DocumentFragment {
-        const component: any &#x3D; JsonSchemaFormService.createComponent(template, context);
-        const module &#x3D; JsonSchemaFormService.createModule(component, this.compiler);
-        const factory &#x3D; module.componentFactories.find((f) &#x3D;&gt; f.componentType &#x3D;&#x3D;&#x3D; component);
-        const componentRef: ComponentRef&lt;any&gt; &#x3D; factory.create(this.injector, undefined, undefined, this.moduleRef);
+        const templateTag &#x3D; document.createElement(&#x27;template&#x27;);
+        templateTag.innerHTML &#x3D; Handlebars.compile(template)({options: context});
 
-        componentRef.hostView.detectChanges();
-        const fragment &#x3D; JsonSchemaFormService.getDocumentFragment(componentRef);
-        componentRef.destroy();
-
-        return fragment;
+        return templateTag.content;
     }
+
+    // /**
+    //  * Compiles an HTML tempalte and data into a document fragment
+    //  * @param template - HTML template to render
+    //  * @param context - options to use when rendering the template
+    //  */
+    // compileTemplate(template: string, context: {[key: string]: any} &#x3D; {}): DocumentFragment {
+    //     const component: any &#x3D; JsonSchemaFormService.createComponent(template, context);
+    //     const module &#x3D; JsonSchemaFormService.createModule(component, this.compiler);
+    //     const factory &#x3D; module.componentFactories.find((f) &#x3D;&gt; f.componentType &#x3D;&#x3D;&#x3D; component);
+    //     const componentRef: ComponentRef&lt;any&gt; &#x3D; factory.create(this.injector, undefined, undefined, this.moduleRef);
+
+    //     componentRef.hostView.detectChanges();
+    //     const fragment &#x3D; JsonSchemaFormService.getDocumentFragment(componentRef);
+    //     componentRef.destroy();
+
+    //     return fragment;
+    // }
 }
 </code></pre>
     </div>
