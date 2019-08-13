@@ -31,7 +31,7 @@ describe('JsonSchemaFormService', () => {
         expect(widget.controlName).toBe('widget');
     });
 
-    it('should create a runtime component', () => {
+    it('should convert template to DOM', () => {
         const service: JsonSchemaFormService = TestBed.get(JsonSchemaFormService);
         const fragment: DocumentFragment = service.compileTemplate('<span>{{ options.title }}</span>', {title: 'hi'});
         const div = document.createElement('div');
