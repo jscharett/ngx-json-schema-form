@@ -46,7 +46,7 @@ import { AppComponent } from './app.component';
     declarations: [ AppComponent ],
     imports: [
         BrowserModule,
-        JsonSchemaFormModule
+        JsonSchemaFormModule.forRoot()
     ],
     bootstrap: [ AppComponent ]
 })
