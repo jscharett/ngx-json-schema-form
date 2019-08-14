@@ -5,6 +5,7 @@
 [![codecov](https://codecov.io/gh/jscharett/ngx-json-schema-form/branch/master/graph/badge.svg)](https://codecov.io/gh/jscharett/ngx-json-schema-form)
 [![Dependencies](https://david-dm.org/jscharett/ngx-json-schema-form.svg)](https://david-dm.org/jscharett/ngx-json-schema-form)
 [![devDependencies](https://david-dm.org/jscharett/ngx-json-schema-form/dev-status.svg)](https://david-dm.org/jscharett/ngx-json-schema-form?type=dev)
+[![Contributor Covenant](https://img.shields.io/badge/Contributor%20Covenant-v1.4%20adopted-ff69b4.svg)](code-of-conduct.md)
 
 # NgxJsonSchemaForm
 
