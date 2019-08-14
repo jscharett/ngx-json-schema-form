@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { NgModule } from '@angular/core';
+import { ModuleWithProviders, NgModule } from '@angular/core';
 import { EVENT_MANAGER_PLUGINS } from '@angular/platform-browser';
 
 import { WidgetLibraryModule } from './widget-library/widget-library.module';
@@ -10,11 +10,17 @@ import { JsonSchemaFormComponent } from './json-schema-form.component';
 @NgModule({
     declarations: [ JsonSchemaFormComponent ],
     exports: [ JsonSchemaFormComponent, WidgetLibraryModule ],
-    imports: [ CommonModule, WidgetLibraryModule ],
-    providers: [{
-        multi: true,
-        provide: EVENT_MANAGER_PLUGINS,
-        useClass: DataEventPluginService
-    }]
+    imports: [ CommonModule, WidgetLibraryModule ]
 })
-export class JsonSchemaFormModule { }
+export class JsonSchemaFormModule {
+    static forRoot(): ModuleWithProviders {
+        return {
+            ngModule: JsonSchemaFormModule,
+            providers: [{
+                multi: true,
+                provide: EVENT_MANAGER_PLUGINS,
+                useClass: DataEventPluginService
+            }]
+        };
+    }
+}

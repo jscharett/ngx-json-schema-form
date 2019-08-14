@@ -7,9 +7,9 @@ import { Observable } from 'rxjs';
 
 import { JSONSchema7 } from 'json-schema';
 
-import { LayoutItem } from '../../../ngx-json-schema-form/src/lib/layout-item.data';
+import { LayoutItem } from '../../../../ngx-json-schema-form/src/lib/layout-item.data';
 
-import { JsonLoaderService } from './json-loader.service';
+import { JsonLoaderService } from '../json-loader.service';
 
 const sets = {
     // asf: 'Angular Schema Form:',
@@ -32,10 +32,10 @@ const sets = {
         ])
     ],
     selector: 'app-demo',
-    styleUrls: ['./app.component.scss'],
-    templateUrl: './app.component.html'
+    styleUrls: ['./demo.component.scss'],
+    templateUrl: './demo.component.html'
 })
-export class AppComponent implements OnInit {
+export class DemoComponent implements OnInit {
     // examples: any = {ngx: {}};
     // languageList: any = ['en', 'fr'];
     // languages: any = {
