@@ -115,9 +115,11 @@ export class JsonSchemaFormComponent implements OnChanges, OnDestroy, OnInit {
         this.destroyed$.complete();
     }
 
-    /** Submits the form */
+    /**
+     * @todo Implement submitForm method
+     * Submits the form
+     */
     submitForm(): void {
-        // TODO
         console.warn(this);
     }
 

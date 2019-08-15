@@ -9,10 +9,10 @@ import { JSONSchema7, JSONSchema7Definition } from 'json-schema';
 /** Provides services for parsing JSON Schema and validating data */
 @Injectable()
 export class SchemaService {
-    // TODO: Setter function to automatically upgrade schema version?
     private _schema: JSONSchema7 = {};
     /**
      * @param value - JSON Schema to be used for validation
+     * @todo implement schema migration?
      */
     set schema(value: JSONSchema7) {
         this._schema = value;

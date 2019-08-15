@@ -66,9 +66,11 @@ export class LayoutNode {
     @Memoize() get dataPointer(): string {
         return LayoutNode.getPointer(this.layoutItem.key);
     }
-    /** Type of widget is used to represent the data */
+    /**
+     * @todo Handle array of types from schema
+     * Type of widget is used to represent the data
+     */
     @Memoize() get type(): string {
-        // TODO: handle array of types
         return this.layoutItem.type || <string>defaultTo(this.schema, <any>{}).type;
     }
     /** HTML content to be rendered inside the widget */

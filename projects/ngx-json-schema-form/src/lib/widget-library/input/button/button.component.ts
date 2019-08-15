@@ -5,7 +5,10 @@ import { JsonSchemaFormService } from '../../../json-schema-form.service';
 
 import { Widget } from '../../widget';
 
-/** Displays a <button> control */
+/**
+ * Displays a <button> control
+ * @todo implement this.jsf.formOptions.disableInvalidSubmit
+ */
 @Component({
     selector: 'jsf-button',
     styleUrls: ['./button.component.scss'],
@@ -15,8 +18,4 @@ export class ButtonComponent extends Widget {
     constructor(jsf: JsonSchemaFormService, elementDataStorage: ElementDataStorageService) {
         super(jsf, elementDataStorage);
     }
-
-
-    // TODO- pulled from submit
-    // this.jsf.formOptions.disableInvalidSubmit
 }
