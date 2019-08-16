@@ -10,7 +10,7 @@ import Handlebars from 'handlebars/dist/cjs/handlebars';
 import { Widget } from './widget-library';
 
 /* tslint:disable: max-classes-per-file */
-/** TODO */
+/** Helper service */
 @Injectable()
 export class JsonSchemaFormService {
     private x = false;
@@ -49,9 +49,11 @@ export class JsonSchemaFormService {
         control.controlName = control.layoutNode.name;
     }
 
-    /** TODO */
+    /**
+     * @todo Implement updateValue or remove if unnecessary
+     * Manually update value
+     */
     updateValue(ctx: any, value: any): void {
-        // TODO
         this.x = !this.x;
     }
 
