@@ -4,6 +4,7 @@ import { EventManager } from '@angular/platform-browser';
 import { ElementDataStorageService } from './element-data-storage.service';
 
 export interface Data {
+    /** Data associated with an HTML Element */
     data: any;
 }
 /** Event wrapper for piggybacking data on an event */
@@ -14,9 +15,7 @@ export type DataEvent<T> = Data & T;
  * "associated" with an element by means of the ElementDataStorageService.  If no data is
  * present, then the event handler will not be fired.
  */
-@Injectable({
-    providedIn: 'root'
-})
+@Injectable()
 export class DataEventPluginService {
     /** Event manager used to get the ngZone */
     manager: EventManager;

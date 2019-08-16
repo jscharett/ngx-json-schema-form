@@ -7,16 +7,18 @@ import { RouterTestingModule } from '@angular/router/testing';
 
 import { cold, getTestScheduler } from 'jasmine-marbles';
 
-import examples from '../assets/examples/examples.json';
-import example from '../assets/examples/ngx/simple-array.json';
+import examples from '../../assets/examples/examples.json';
+import example from '../../assets/examples/ngx/simple-array.json';
 
-import { AppComponent } from './app.component';
-import { routes } from './app.routes';
-import { JsonLoaderService } from './json-loader.service';
+import { JsonLoaderService } from '../json-loader.service';
 
-describe('AppComponent', () => {
-    let fixture: ComponentFixture<AppComponent>;
-    let app: AppComponent;
+import { DemoComponent } from './demo.component';
+import { routes } from './demo.routes';
+
+
+describe('DemoComponent', () => {
+    let fixture: ComponentFixture<DemoComponent>;
+    let component: DemoComponent;
 
     beforeEach(async () => {
         const jsl: JsonLoaderService = jasmine.createSpyObj('JsonLoaderService', {
@@ -29,7 +31,7 @@ describe('AppComponent', () => {
 
         return TestBed.configureTestingModule({
             declarations: [
-                AppComponent
+                DemoComponent
             ],
             imports: [ MatMenuModule, RouterTestingModule.withRoutes(routes) ],
             providers: [{
@@ -41,46 +43,46 @@ describe('AppComponent', () => {
     });
 
     beforeEach(() => {
-        fixture = TestBed.createComponent(AppComponent);
-        app = fixture.debugElement.componentInstance;
+        fixture = TestBed.createComponent(DemoComponent);
+        component = fixture.debugElement.componentInstance;
         fixture.detectChanges();
     });
 
-    it('should create the app', () => {
-        expect(app).toBeTruthy();
+    it('should create the component', () => {
+        expect(component).toBeTruthy();
     });
 
     it(`should not activate form when empty string`, () => {
-        expect(app.formActive).toBeFalsy();
-        app.generateForm('');
-        expect(app.formActive).toBeFalsy();
+        expect(component.formActive).toBeFalsy();
+        component.generateForm('');
+        expect(component.formActive).toBeFalsy();
     });
 
     it(`should activate form`, () => {
-        expect(app.formActive).toBeFalsy();
-        app.generateForm('{}');
-        expect(app.formActive).toBeTruthy();
+        expect(component.formActive).toBeFalsy();
+        component.generateForm('{}');
+        expect(component.formActive).toBeTruthy();
     });
 
     it(`should not activate form when bad json`, () => {
-        expect(app.formActive).toBeFalsy();
-        app.generateForm('{a:}');
-        expect(app.formActive).toBeFalsy();
-        expect(app.jsonFormStatusMessage).toContain('JavaScript parser returned');
+        expect(component.formActive).toBeFalsy();
+        component.generateForm('{a:}');
+        expect(component.formActive).toBeFalsy();
+        expect(component.jsonFormStatusMessage).toContain('JavaScript parser returned');
     });
 
     it('should fetch example and generate form', () => {
-        spyOn(app, 'generateForm');
-        app.loadSelectedExample();
+        spyOn(component, 'generateForm');
+        component.loadSelectedExample();
         getTestScheduler().flush();
-        expect(app.generateForm).toHaveBeenCalledWith(JSON.stringify(example));
+        expect(component.generateForm).toHaveBeenCalledWith(JSON.stringify(example));
     });
 
     it('should navigate to the loaded example', fakeAsync(() => {
         const router: Router = TestBed.get(Router);
         const location: Location = TestBed.get(Location);
         router.initialNavigation();
-        app.loadSelectedExample('ngx', 'b', 'c', 'd');
+        component.loadSelectedExample('ngx', 'b', 'c', 'd');
         tick();
         expect(location.path()).toBe('/?set=ngx&example=c');
     }));
@@ -89,7 +91,7 @@ describe('AppComponent', () => {
         const layout = {onClick: 'alert("Cats");'};
         spyOn(console, 'warn');
         spyOn(window, 'alert');
-        app.onClick(layout);
+        component.onClick(layout);
         expect(console.warn).toHaveBeenCalledWith(layout);
         expect(window.alert).toHaveBeenCalledWith('Cats');
     });
@@ -98,7 +100,7 @@ describe('AppComponent', () => {
         const event = {};
         spyOn(console, 'warn');
         spyOn(window, 'alert');
-        app.onClick(event);
+        component.onClick(event);
         expect(console.warn).toHaveBeenCalledWith(event);
         expect(window.alert).not.toHaveBeenCalled();
     });
