@@ -1,4 +1,4 @@
-import { LayoutItem } from './layout-item.data';
+import { LayoutItem } from './core/interfaces/layout-item.data';
 import { LayoutNode } from './layout-node';
 import { SchemaService } from './schema.service';
 

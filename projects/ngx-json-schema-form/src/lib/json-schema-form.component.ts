@@ -10,7 +10,7 @@ import { cloneDeep, isPlainObject } from 'lodash';
 import { JSONSchema7 } from 'json-schema';
 
 import { JsonSchemaFormService } from './json-schema-form.service';
-import { LayoutItem } from './layout-item.data';
+import { LayoutItem } from './core/interfaces/layout-item.data';
 import { LayoutService } from './layout.service';
 import { SchemaService } from './schema.service';
 

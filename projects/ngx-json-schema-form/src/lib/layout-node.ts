@@ -2,8 +2,8 @@ import { JSONSchema7 } from 'json-schema';
 import { cloneDeep, defaultTo, isString, mapKeys, omit, pick, uniqueId } from 'lodash';
 import { Memoize } from 'lodash-decorators';
 
-import { LayoutItem } from './layout-item.data';
-import { LayoutOptions } from './layout-options.data';
+import { LayoutItem } from './core/interfaces/layout-item.data';
+import { LayoutOptions } from './core/interfaces/layout-options.data';
 import { SchemaService } from './schema.service';
 
 /**

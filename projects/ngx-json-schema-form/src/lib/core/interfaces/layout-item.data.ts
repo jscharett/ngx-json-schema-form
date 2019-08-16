@@ -1,3 +1,5 @@
+import { LayoutOptions } from './layout-options.data';
+
 /**  */
 export interface LayoutItem {
     /** Object path to map this item to a data value */
@@ -8,7 +10,7 @@ export interface LayoutItem {
      * Container for options to set on widgets.
      * NOTE: this is optional as any undeclared property will automatically be put into an options contianer
      */
-    options?: {[others: string]: any};
+    options?: LayoutOptions;
     /**
      * Specify what type of widget is used to represent the data.
      * If not is specified, the JSON Schema will be used to determine the most appropriate widget
