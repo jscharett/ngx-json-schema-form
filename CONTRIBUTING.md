@@ -14,7 +14,7 @@ Please note we have a code of conduct, please follow it in all your interactions
 
 ## <a name="coc"></a> Code of Conduct
 
-This project and everyone participating in it is governed by the [Code of Conduct](code-of-conduct). By participating, you are expected to uphold this code. Please report unacceptable behavior to [ngx-json-schema-form@outlook.com](mailto:ngx-json-schema-form@outlook.com).
+This project and everyone participating in it is governed by the [Code of Conduct][code-of-conduct]. By participating, you are expected to uphold this code. Please report unacceptable behavior to [ngx-json-schema-form@outlook.com](mailto:ngx-json-schema-form@outlook.com).
 
 ## <a name="issue"></a> Found a Bug?
 If you find a bug in the source code, you can help us by [submitting an issue][new-issue] to our [GitHub Repository][github]. Even better, you can [submit a Pull Request][pull-requests] with a fix.
