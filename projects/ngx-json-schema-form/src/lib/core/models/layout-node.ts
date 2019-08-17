@@ -2,9 +2,10 @@ import { JSONSchema7 } from 'json-schema';
 import { cloneDeep, defaultTo, isString, mapKeys, omit, pick, uniqueId } from 'lodash';
 import { Memoize } from 'lodash-decorators';
 
-import { LayoutItem } from './core/interfaces/layout-item.data';
-import { LayoutOptions } from './core/interfaces/layout-options.data';
-import { SchemaService } from './schema.service';
+import { SchemaService } from '../../schema.service';
+
+import { LayoutItem } from '../interfaces/layout-item.data';
+import { LayoutOptions } from '../interfaces/layout-options.data';
 
 /**
  * The LayoutNode contains the logic to parse a LayoutItem along with its Schema.

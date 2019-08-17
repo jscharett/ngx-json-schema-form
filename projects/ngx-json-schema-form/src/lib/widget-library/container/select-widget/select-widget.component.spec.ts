@@ -2,8 +2,8 @@ import { CommonModule } from '@angular/common';
 import { Component, ComponentRef, NgModule } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
+import { LayoutNode } from '../../../core/models/layout-node';
 import { JsonSchemaFormService } from '../../../json-schema-form.service';
-import { LayoutNode } from '../../../layout-node';
 
 import { WidgetLibraryService } from '../../widget-library.service';
 

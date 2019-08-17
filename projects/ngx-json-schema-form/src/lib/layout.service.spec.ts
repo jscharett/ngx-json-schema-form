@@ -2,7 +2,8 @@ import { inject, TestBed } from '@angular/core/testing';
 
 import basicJSONLayout from '../assests/example-layouts/jsf-layout-basic.json';
 
-import { LayoutNode } from './layout-node';
+import { LayoutNode } from './core/models/layout-node';
+
 import { LayoutService } from './layout.service';
 import { SchemaService } from './schema.service';
 

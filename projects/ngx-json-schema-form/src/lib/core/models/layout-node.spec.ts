@@ -1,10 +1,11 @@
-import { LayoutItem } from './core/interfaces/layout-item.data';
+import { DataPointer } from '../interfaces/data-pointer.data';
+import { LayoutItem } from '../interfaces/layout-item.data';
+
 import { LayoutNode } from './layout-node';
-import { SchemaService } from './schema.service';
 
 describe('LayoutNode', () => {
     describe('creation', () => {
-        let service: SchemaService;
+        let service: DataPointer;
 
         beforeEach(() => {
             service = Object.create({}, {
