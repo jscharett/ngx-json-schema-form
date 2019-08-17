@@ -1,7 +1,7 @@
 import { AfterViewInit, ElementRef, Input, OnChanges, OnInit, SimpleChanges, ViewChild } from '@angular/core';
 import { AbstractControl } from '@angular/forms';
 
-import { ElementDataStorageService } from '../element-data-storage.service';
+import { ElementDataStorageService } from '../core/services/element-data-storage.service';
 import { JsonSchemaFormService } from '../json-schema-form.service';
 import { LayoutNode } from '../layout-node';
 

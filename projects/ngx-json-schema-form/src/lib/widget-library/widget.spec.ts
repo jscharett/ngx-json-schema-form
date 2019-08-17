@@ -2,7 +2,7 @@ import { Component, NO_ERRORS_SCHEMA, SimpleChange } from '@angular/core';
 import { ComponentFixture, inject, TestBed } from '@angular/core/testing';
 
 import { JsonSchemaFormService } from '..';
-import { ElementDataStorageService } from '../element-data-storage.service';
+import { ElementDataStorageService } from '../core/services/element-data-storage.service';
 import { LayoutNode } from '../layout-node';
 
 import { Widget } from '.';

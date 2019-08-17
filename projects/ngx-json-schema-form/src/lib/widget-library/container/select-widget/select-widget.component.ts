@@ -3,7 +3,7 @@ import {
     OnChanges, OnInit, ViewChild, ViewContainerRef
 } from '@angular/core';
 
-import { ElementDataStorageService } from '../../../element-data-storage.service';
+import { ElementDataStorageService } from '../../../core/services/element-data-storage.service';
 import { JsonSchemaFormService } from '../../../json-schema-form.service';
 
 import { Widget } from '../../widget';

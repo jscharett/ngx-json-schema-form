@@ -2,7 +2,7 @@ import { TestBed } from '@angular/core/testing';
 
 import { DataEventPluginService } from './data-event-plugin.service';
 import { ElementDataStorageService } from './element-data-storage.service';
-import { LayoutItem } from './layout-item.data';
+import { LayoutItem } from '../interfaces/layout-item.data';
 
 describe('DataEventPluginService', () => {
     beforeEach(() => {
