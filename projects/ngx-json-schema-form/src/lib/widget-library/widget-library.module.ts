@@ -2,7 +2,16 @@ import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
 
-import { BASIC_WIDGETS } from '.';
+import { ButtonComponent } from './input/button/button.component';
+import { HiddenComponent } from './input/hidden/hidden.component';
+
+import { SelectWidgetComponent } from './container/select-widget/select-widget.component';
+
+/** List of all Widget Components for ease of use. */
+export const BASIC_WIDGETS = [
+    ButtonComponent, HiddenComponent,
+    SelectWidgetComponent
+];
 
 @NgModule({
     declarations: [ ...BASIC_WIDGETS ],
