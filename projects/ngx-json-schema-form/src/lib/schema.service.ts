@@ -1,14 +1,16 @@
 import { Injectable } from '@angular/core';
 
+import { JSONSchema7, JSONSchema7Definition } from 'json-schema';
+
 import traverse from 'json-schema-traverse';
 
 import Ajv from 'ajv';
 
-import { JSONSchema7, JSONSchema7Definition } from 'json-schema';
+import { SchemaAnalyzer } from './core/interfaces/schema-analyzer.data';
 
 /** Provides services for parsing JSON Schema and validating data */
 @Injectable()
-export class SchemaService {
+export class SchemaService implements SchemaAnalyzer {
     private _schema: JSONSchema7 = {};
     /**
      * @param value - JSON Schema to be used for validation

@@ -2,10 +2,9 @@ import { JSONSchema7 } from 'json-schema';
 import { cloneDeep, defaultTo, isString, mapKeys, omit, pick, uniqueId } from 'lodash';
 import { Memoize } from 'lodash-decorators';
 
-import { SchemaService } from '../../schema.service';
-
 import { LayoutItem } from '../interfaces/layout-item.data';
 import { LayoutOptions } from '../interfaces/layout-options.data';
+import { SchemaAnalyzer } from '../interfaces/schema-analyzer.data';
 
 /**
  * The LayoutNode contains the logic to parse a LayoutItem along with its Schema.
@@ -38,11 +37,11 @@ export class LayoutNode {
      * @param layoutItem - A LayoutItem presented by the user.  If a string is given, it is converted into a LayoutItem
      * @param schemaService - Service for looking up related Schema definition
      */
-    public static create(layoutItem: LayoutItem | string, schemaService: SchemaService): LayoutNode {
+    public static create(layoutItem: LayoutItem | string, schemaAnalyzer: SchemaAnalyzer): LayoutNode {
         const item: LayoutItem = isString(layoutItem)
             ? {key: layoutItem}
             : layoutItem;
-        const schema: JSONSchema7 = <JSONSchema7>schemaService.dataPointerMap.get(LayoutNode.getPointer(item.key));
+        const schema: JSONSchema7 = <JSONSchema7>schemaAnalyzer.dataPointerMap.get(LayoutNode.getPointer(item.key));
 
         return new LayoutNode(item, schema);
     }
