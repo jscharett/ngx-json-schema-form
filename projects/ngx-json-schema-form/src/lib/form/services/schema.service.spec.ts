@@ -4,7 +4,7 @@ import { JSONSchema7, JSONSchema7Definition } from 'json-schema';
 
 import { cloneDeep } from 'lodash';
 
-import basicJSONSchema from '../assests/example-schemas/jsf-schema-basic.json';
+import basicJSONSchema from '../../../assests/example-schemas/jsf-schema-basic.json';
 
 import { SchemaService } from './schema.service';
 

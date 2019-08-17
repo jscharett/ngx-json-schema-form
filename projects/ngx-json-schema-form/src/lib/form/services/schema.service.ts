@@ -6,7 +6,7 @@ import traverse from 'json-schema-traverse';
 
 import Ajv from 'ajv';
 
-import { SchemaAnalyzer } from './core/interfaces/schema-analyzer.data';
+import { SchemaAnalyzer } from '../../core/interfaces/schema-analyzer.data';
 
 /** Provides services for parsing JSON Schema and validating data */
 @Injectable()

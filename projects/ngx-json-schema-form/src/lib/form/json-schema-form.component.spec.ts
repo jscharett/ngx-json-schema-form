@@ -3,9 +3,9 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { JSONSchema7 } from 'json-schema';
 
-import basicJSONSchema from '../assests/example-schemas/jsf-schema-basic.json';
+import basicJSONSchema from '../../assests/example-schemas/jsf-schema-basic.json';
 
-import { JsonSchemaFormService, LayoutService, SchemaService } from '.';
+import { JsonSchemaFormService, LayoutService, SchemaService } from '..';
 
 import { JsonSchemaFormComponent } from './json-schema-form.component';
 

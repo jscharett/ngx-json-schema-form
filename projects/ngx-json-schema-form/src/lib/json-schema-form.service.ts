@@ -7,7 +7,7 @@ import { Injectable } from '@angular/core';
 
 import Handlebars from 'handlebars/dist/cjs/handlebars';
 
-import { Widget } from './widget-library';
+import { Widget } from './widget-library/widget';
 
 /* tslint:disable: max-classes-per-file */
 /** Helper service */

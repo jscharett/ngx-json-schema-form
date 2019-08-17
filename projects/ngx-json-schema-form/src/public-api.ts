@@ -3,6 +3,6 @@
  */
 
 export * from './lib/json-schema-form.service';
-export * from './lib/json-schema-form.component';
+export * from './lib/form/json-schema-form.component';
 export * from './lib/json-schema-form.module';
 export * from './lib/widget-library';

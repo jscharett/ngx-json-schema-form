@@ -9,11 +9,12 @@ import { cloneDeep, isPlainObject } from 'lodash';
 
 import { JSONSchema7 } from 'json-schema';
 
-import { LayoutItem } from './core/interfaces/layout-item.data';
+import { LayoutItem } from '../core/interfaces/layout-item.data';
 
-import { JsonSchemaFormService } from './json-schema-form.service';
-import { LayoutService } from './layout.service';
-import { SchemaService } from './schema.service';
+import { JsonSchemaFormService } from '../json-schema-form.service';
+
+import { LayoutService } from './services/layout.service';
+import { SchemaService } from './services/schema.service';
 
 // * This library also validates input data by the user, using both validators on
 // * individual controls to provide real-time feedback while the user is filling
