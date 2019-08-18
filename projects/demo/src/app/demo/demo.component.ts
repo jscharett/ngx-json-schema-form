@@ -7,7 +7,7 @@ import { Observable } from 'rxjs';
 
 import { JSONSchema7 } from 'json-schema';
 
-import { LayoutItem } from '../../../../ngx-json-schema-form/src/lib/core/interfaces/layout-item.data';
+import { LayoutItem } from 'ngx-json-schema-form';
 
 import { JsonLoaderService } from '../json-loader.service';
 

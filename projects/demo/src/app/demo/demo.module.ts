@@ -9,7 +9,7 @@ import {
 
 import { AceEditorModule } from 'ng2-ace-editor';
 
-import { JsonSchemaFormModule } from '../../../../ngx-json-schema-form/src/public-api';
+import { JsonSchemaFormModule } from 'ngx-json-schema-form';
 
 import { DemoRoutingModule } from './demo-routing.module';
 import { DemoComponent } from './demo.component';
