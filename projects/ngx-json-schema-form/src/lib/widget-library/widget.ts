@@ -42,7 +42,7 @@ export abstract class Widget implements OnChanges, OnInit, AfterViewInit {
      */
     ngOnInit() {
         this.jsf.initializeControl(this);
-        this.options = this.layoutNode.options || {};
+        this.options = this.layoutNode.options;
     }
 
     /** Set the initial layout in the ElementDataStorage */

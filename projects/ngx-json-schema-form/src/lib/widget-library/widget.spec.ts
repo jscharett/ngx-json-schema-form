@@ -98,4 +98,20 @@ describe('widgets', () => {
         expect(edsService.set).toHaveBeenCalledWith(jasmine.any(HTMLElement), 'layout', newLayoutNode.layoutDefinition);
     });
 
+    it('should not propagate other Inputs to edsService', () => {
+        const edsService: ElementDataStorageService = TestBed.get(ElementDataStorageService);
+        (<jasmine.Spy>edsService.set).calls.reset();
+        const newLayoutIndex = [1];
+        const newDataIndex = [1];
+        const change1 = new SimpleChange(component.layoutIndex, newLayoutIndex, true);
+        const change2 = new SimpleChange(component.dataIndex, newDataIndex, true);
+        component.layoutIndex = newLayoutIndex;
+        component.dataIndex = newDataIndex;
+        component[`ngOnChanges`]({
+            dataIndex: change2,
+            layoutIndex: change1
+        });
+        expect(edsService.set).not.toHaveBeenCalled();
+    });
+
 });

@@ -54,4 +54,17 @@ describe('ElementDataStorageService', () => {
         expect(service.has(element, 'layout')).toBeFalsy();
         expect(service.get(element, 'layout')).toBeUndefined();
     });
+
+    it('should return flag when deleteing data', () => {
+        const service: ElementDataStorageService = TestBed.get(ElementDataStorageService);
+        const layout = {};
+
+        service.set(element, 'layout', layout);
+        service.set(element, 'layout2', layout);
+
+        expect(service.delete(element, 'layout')).toBeTruthy();
+        expect(service.delete(element, 'layout')).toBeFalsy();
+        expect(service.delete(element, 'layout2')).toBeTruthy();
+        expect(service.delete(element, 'layout2')).toBeFalsy();
+    });
 });
