@@ -22,9 +22,11 @@ before_script:
   - npm install -g copyfiles
 
 script:
+  - set -e
   - npm run lint
   - npm run test-ci
   - npm run package
+  - node node_modules/protractor/bin/webdriver-manager update
   - npm run e2e
   - npm run compodoc -- --disableCoverage
 after_success:
