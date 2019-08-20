@@ -9,9 +9,10 @@ describe('hidden example', () => {
     });
 
     it('should have 1 control', async () => {
-        const form: Form = await page.selectExample('Hidden') as Form;
-        expect(await form.getControlCount()).toEqual(1);
-        expect(await form.getControlType('apikey')).toEqual('hidden');
+        const form: Form = await page.selectExample('Hidden');
+        await expect(form.getControlCount()).toEqual(1);
+
+        return expect(await form.getControlType('apikey')).toEqual('hidden');
         // expect(await form.getControlValue('apikey')).toEqual('supercalifragilisticexpialidocious');
     });
 });
