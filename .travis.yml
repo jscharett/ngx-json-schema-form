@@ -25,6 +25,7 @@ script:
   - npm run lint
   - npm run test-ci
   - npm run package
+  - npm run e2e
   - npm run compodoc -- --disableCoverage
 after_success:
   - codecov
