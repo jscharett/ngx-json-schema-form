@@ -25,6 +25,12 @@
       ],
       "ngx-json-schema-form/*": [
         "dist/ngx-json-schema-form/*"
+      ],
+      "@demo-e2e": [
+        "projects/demo-e2e/src"
+      ],
+      "@demo-e2e/*": [
+          "projects/demo-e2e/src/*"
       ]
     }
   }

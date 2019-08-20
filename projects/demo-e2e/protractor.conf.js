@@ -3,6 +3,9 @@
 
 const { SpecReporter } = require('jasmine-spec-reporter');
 
+require('ts-node/register');
+require('tsconfig-paths/register');
+
 exports.config = {
     allScriptsTimeout: 11000,
     specs: [
@@ -10,7 +13,10 @@ exports.config = {
     ],
     capabilities: {
         'browserName': 'firefox',
-        'marionette': true
+        'marionette': true,
+        'moz:firefoxOptions': {
+            args: [ "--headless" ]
+        }
     },
     directConnect: true,
     baseUrl: 'http://localhost:4200/',
