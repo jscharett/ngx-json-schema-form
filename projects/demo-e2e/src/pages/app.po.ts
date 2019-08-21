@@ -1,5 +1,6 @@
 import { browser, by, element, until } from 'protractor';
-import { Form } from './pages/form.po';
+import { ButtonsForm } from './examples/buttons-form.po';
+import { Form } from './form.po';
 
 export class AppPage {
     private readonly root = '/';
@@ -7,6 +8,11 @@ export class AppPage {
     private readonly menuButtonSelector = by.css('.header-content > button');
     private readonly menuSelector = by.css('.mat-menu-content');
     private readonly form = by.css('jsf-json-schema-form');
+
+    private readonly forms: Map<string, typeof Form> = new Map<string, typeof Form>([
+        ['Hidden', Form],
+        ['Buttons', ButtonsForm]
+    ]);
 
     async navigateTo(): Promise<any> {
         return browser.get(this.root);
@@ -21,7 +27,7 @@ export class AppPage {
         await element(this.menuSelector).element(by.partialButtonText(example)).click();
 
         return browser.wait(until.elementLocated(this.form)).then(() => {
-            return new Form();
+            return new (this.forms.get(example))();
         });
     }
 }
