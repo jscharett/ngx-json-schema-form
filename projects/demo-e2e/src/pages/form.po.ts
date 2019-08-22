@@ -1,4 +1,4 @@
-import { by, element } from 'protractor';
+import { by, element, ElementFinder } from 'protractor';
 
 export class Form {
     private readonly formSelector = by.css('jsf-json-schema-form');
@@ -14,7 +14,7 @@ export class Form {
     }
 
     async getControlAttribute(controlName: string, attribute: string): Promise<string> {
-        return element(this.formSelector).element(by.name(controlName)).getAttribute(attribute);
+        return this.getControl(controlName).getAttribute(attribute);
     }
 
     async getControlValue(controlName: string): Promise<any> {
@@ -23,5 +23,21 @@ export class Form {
 
     async getControlType(controlName: string): Promise<string> {
         return this.getControlAttribute(controlName, 'type');
+    }
+
+    async getControlClasses(controlName: string): Promise<Array<string>> {
+        return (await this.getControlAttribute(controlName, 'class')).split(' ');
+    }
+
+    async clickControl(controlName: string): Promise<void> {
+        return this.getControl(controlName).click();
+    }
+
+    async getControlText(controlName: string): Promise<string> {
+        return this.getControl(controlName).getText();
+    }
+
+    private getControl(controlName: string): ElementFinder {
+        return element(this.formSelector).element(by.name(controlName));
     }
 }

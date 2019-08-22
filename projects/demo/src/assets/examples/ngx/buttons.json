@@ -16,7 +16,7 @@
         "type": "button",
         "name": "Button",
         "title": "Button",
-        "description": "This in an input[type='button']",
+        "description": "This is an input[type='button']",
         "tabindex": 1,
         "accesskey": "b",
         "htmlClass": "btn"
@@ -24,7 +24,7 @@
         "type": "reset",
         "name": "Reset",
         "title": "Reset",
-        "description": "This in an input[type='reset']",
+        "description": "This is an input[type='reset']",
         "tabindex": 0,
         "accesskey": "r",
         "htmlClass": "btn"
@@ -32,7 +32,7 @@
         "type": "submit",
         "name": "Submit",
         "title": "Submit",
-        "description": "This in an input[type='submit']",
+        "description": "This is an input[type='submit']",
         "tabindex": 3,
         "accesskey": "s",
         "htmlClass": "btn"
@@ -40,7 +40,7 @@
         "type": "image",
         "name": "Image",
         "title": "Image",
-        "description": "This in an input[type='image']",
+        "description": "This is an input[type='image']",
         "tabindex": 2,
         "accesskey": "i",
         "icon": {
@@ -55,7 +55,7 @@
         "name": "Submit2",
         "title": "Submit",
         "content": "<span class='icon'>{{ options.title }}</span>",
-        "description": "This in an button[type='submit']",
+        "description": "This is an button[type='submit']",
         "accesskey": "x",
         "htmlClass": "btn"
     }, {
@@ -63,7 +63,7 @@
         "name": "Reset2",
         "title": "Reset",
         "content": "<span class='icon'>{{ options.title }}</span>",
-        "description": "This in an button[type='reset']",
+        "description": "This is an button[type='reset']",
         "accesskey": "y",
         "htmlClass": "btn"
     }, {
@@ -71,14 +71,14 @@
         "name": "Button2",
         "title": "Button",
         "content": "<span class='icon'>{{ options.title }}</span>",
-        "description": "This in an button[type='button']",
+        "description": "This is an button[type='button']",
         "accesskey": "z",
         "htmlClass": "btn"
     }, {
         "type": "button",
         "name": "Button3",
         "title": "Click me",
-        "description": "This in an button[type='button'] with click handling",
+        "description": "This is an button[type='button'] with click handling",
         "accesskey": "w",
         "htmlClass": "btn",
         "onClick": "alert(`clicked button with layout: \n\r${JSON.stringify(layout, null, 4)}`);"
