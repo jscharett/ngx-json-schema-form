@@ -2,9 +2,9 @@
 // https://github.com/angular/protractor/blob/master/lib/config.ts
 
 const { SpecReporter } = require('jasmine-spec-reporter');
-
-require('ts-node/register');
-require('tsconfig-paths/register');
+const e2eTsConfigPath = require('path').join(__dirname, './tsconfig.e2e.json');
+const mainTsConfigPath = require('path').join(__dirname, '../../tsconfig.json')
+const tsConfig = require(mainTsConfigPath);
 
 exports.config = {
     allScriptsTimeout: 11000,
@@ -28,8 +28,13 @@ exports.config = {
     },
     onPrepare() {
         require('ts-node').register({
-            project: require('path').join(__dirname, './tsconfig.e2e.json')
+            project: e2eTsConfigPath
         });
+        require("tsconfig-paths").register({
+            project: e2eTsConfigPath,
+            baseUrl: './',
+            paths: tsConfig.compilerOptions.paths
+          });
         jasmine.getEnv().addReporter(new SpecReporter({ spec: { displayStacktrace: true } }));
     }
 };
