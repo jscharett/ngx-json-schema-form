@@ -1,25 +1,49 @@
 import { AppPage, ButtonsForm } from '@demo-e2e';
 
+import buttonsJSON from '@demo/assets/examples/ngx/buttons.json';
+
 describe('buttons example', () => {
     let page: AppPage;
     let form: ButtonsForm;
+    const buttonLayouts: Array<any> = Object.create(buttonsJSON).layout;
+    const [btn1, btn2, btn3, btn4, btn5, btn6, btn7, btn8] = buttonLayouts;
 
-    const verifyButton = (name: string, type: string, title: string, tabindex: string, accesskey: string,
-        clazz: string, additionalTests: Function): () => any => {
+    const verifyButton = (buttonLayout: {
+        name: string;
+        type: string;
+        description: string;
+        htmlClass: string;
+        accesskey: string;
+        tabindex: number;
+    }, additionalTests: Function): () => any => {
         return async (): Promise<void> => {
-            const tabIndex = await form.getControlAttribute(name, 'tabindex');
-            if (tabindex === undefined) {
+            const tabIndex = await form.getControlAttribute(buttonLayout.name, 'tabindex');
+            if (buttonLayout.tabindex === undefined) {
                 expect(tabIndex).toBeNull();
             } else {
-                expect(tabIndex).toEqual(tabindex);
+                expect(tabIndex).toEqual(buttonLayout.tabindex.toString());
             }
-            expect(await form.getControlAttribute(name, 'type')).toEqual(type);
-            expect(await form.getControlAttribute(name, 'title')).toEqual(title);
-            expect(await form.getControlAttribute(name, 'accesskey')).toEqual(accesskey);
-            expect(await form.getControlClasses(name)).toContain(clazz);
+            expect(await form.getControlAttribute(buttonLayout.name, 'type')).toEqual(buttonLayout.type);
+            expect(await form.getControlAttribute(buttonLayout.name, 'title')).toEqual(buttonLayout.description);
+            expect(await form.getControlAttribute(buttonLayout.name, 'accesskey')).toEqual(buttonLayout.accesskey);
+            expect(await form.getControlClasses(buttonLayout.name)).toContain(buttonLayout.htmlClass);
 
-            return additionalTests();
+            return additionalTests(buttonLayout);
         };
+    };
+
+    const verifyButtonClick = async (buttonLayout) => {
+        await form.clickControl(buttonLayout.name);
+        const logs: Array<any> = await page.getLogs();
+        const logCount = 2;
+
+        expect(logs.length).toBe(logCount);
+        expect(logs).toContain(jasmine.objectContaining({
+            data: jasmine.objectContaining(buttonLayout),
+            isTrusted: true
+        }));
+
+        expect(logs).toContain(jasmine.objectContaining(buttonLayout));
     };
 
     beforeEach(async () => {
@@ -29,81 +53,63 @@ describe('buttons example', () => {
     });
 
     it('should have 8 buttons', async () => {
-        const buttonCount = 8;
-        await expect(form.getControlCount()).toEqual(buttonCount);
+        await expect(form.getControlCount()).toEqual(buttonLayouts.length);
     });
 
-    it('should have button input', verifyButton('Button', 'button', `This is an input[type='button']`, '1', 'b', 'btn', async () => {
-        expect(await form.getControlValue('Button')).toEqual('Button');
-        expect(await form.getControlText('Button')).toEqual('');
+    it('should have button input', verifyButton(btn1, async (buttonLayout) => {
+        expect(await form.getControlValue(buttonLayout.name)).toEqual(buttonLayout.title);
+        expect(await form.getControlText(buttonLayout.name)).toEqual('');
 
-        // form.clickControl('Button');
-
-        // console.log(await page.getLogs());
+        await verifyButtonClick(buttonLayout);
     }));
 
-    it('should have reset input', verifyButton('Reset', 'reset', `This is an input[type='reset']`, '0', 'r', 'btn', async () => {
-        expect(await form.getControlValue('Reset')).toEqual('Reset');
-        expect(await form.getControlText('Reset')).toEqual('');
+    it('should have reset input', verifyButton(btn2, async (buttonLayout) => {
+        expect(await form.getControlValue(buttonLayout.name)).toEqual(buttonLayout.title);
+        expect(await form.getControlText(buttonLayout.name)).toEqual('');
 
-        // form.clickControl('Reset');
-
-        // console.log(await page.getLogs());
+        await verifyButtonClick(buttonLayout);
     }));
 
-    it('should have submit input', verifyButton('Submit', 'submit', `This is an input[type='submit']`, '3', 's', 'btn', async () => {
-        expect(await form.getControlValue('Submit')).toEqual('Submit');
-        expect(await form.getControlText('Submit')).toEqual('');
-        // no click test
-        // form.clickControl('Submit');
-
-        // console.log(await page.getLogs());
+    it('should have submit input', verifyButton(btn3, async (buttonLayout) => {
+        expect(await form.getControlValue(buttonLayout.name)).toEqual(buttonLayout.title);
+        expect(await form.getControlText(buttonLayout.name)).toEqual('');
+        // no click test - submit reloads page
+        // await verifyButtonClick(buttonLayout);
     }));
 
-    it('should have image input', verifyButton('Image', 'image', `This is an input[type='image']`, '2', 'i', 'btn', async () => {
-        expect(await form.getControlValue('Image')).toEqual('Image');
-        expect(await form.getControlText('Image')).toEqual('');
+    it('should have image input', verifyButton(btn4, async (buttonLayout) => {
+        expect(await form.getControlValue(buttonLayout.name)).toEqual(buttonLayout.title);
+        expect(await form.getControlText(buttonLayout.name)).toEqual('');
         // verify icon
-        // no click test
-        // form.clickControl('Image');
-
-        // console.log(await page.getLogs());
+        // no click test - submit reloads page
+        // await verifyButtonClick(buttonLayout);
     }));
 
-    it('should have submit btn', verifyButton('Submit2', 'submit', `This is an button[type='submit']`, undefined, 'x', 'btn', async () => {
-        expect(await form.getControlValue('Submit2')).toEqual('');
-        expect(await form.getControlText('Submit2')).toEqual(`Submit`);
-        // no click test
-        // form.clickControl('Submit2');
-
-        // console.log(await page.getLogs());
+    it('should have submit btn', verifyButton(btn5, async (buttonLayout) => {
+        expect(await form.getControlValue(buttonLayout.name)).toEqual('');
+        expect(await form.getControlText(buttonLayout.name)).toEqual(buttonLayout.title);
+        // no click test - submit reloads page
+        // await verifyButtonClick(buttonLayout);
     }));
 
-    it('should have reset btn', verifyButton('Reset2', 'reset', `This is an button[type='reset']`, undefined, 'y', 'btn', async () => {
-        expect(await form.getControlValue('Reset2')).toEqual('');
-        expect(await form.getControlText('Reset2')).toEqual(`Reset`);
-
-        // form.clickControl('Reset2');
-
-        // console.log(await page.getLogs());
+    it('should have reset btn', verifyButton(btn6, async (buttonLayout) => {
+        expect(await form.getControlValue(buttonLayout.name)).toEqual('');
+        expect(await form.getControlText(buttonLayout.name)).toEqual(buttonLayout.title);
+        // no click test - bug with clicking children
+        // await verifyButtonClick(buttonLayout);
     }));
 
-    it('should have button btn', verifyButton('Button2', 'button', `This is an button[type='button']`, undefined, 'z', 'btn', async () => {
-        expect(await form.getControlValue('Button2')).toEqual('');
-        expect(await form.getControlText('Button2')).toEqual(`Button`);
-
-        // form.clickControl('Button2');
-
-        // console.log(await page.getLogs());
+    it('should have button btn', verifyButton(btn7, async (buttonLayout) => {
+        expect(await form.getControlValue(buttonLayout.name)).toEqual('');
+        expect(await form.getControlText(buttonLayout.name)).toEqual(buttonLayout.title);
+        // no click test - bug with clicking children
+        // await verifyButtonClick(buttonLayout);
     }));
 
-    it('should have button btn with special click handler',
-    verifyButton('Button3', 'button', `This is an button[type='button'] with click handling`, undefined, 'w', 'btn', async () => {
-        expect(await form.getControlValue('Button3')).toEqual(`Click me`);
-        expect(await form.getControlText('Button3')).toEqual('');
-
-        // form.clickControl('Button');
-
-        // console.log(await page.getLogs());
+    it('should have button btn with special click handler', verifyButton(btn8, async (buttonLayout) => {
+        expect(await form.getControlValue(buttonLayout.name)).toEqual(buttonLayout.title);
+        expect(await form.getControlText(buttonLayout.name)).toEqual('');
+        // no click test - bug with clicking children / must handle alert
+        // await verifyButtonClick(buttonLayout);
     }));
 });
