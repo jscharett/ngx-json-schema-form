@@ -5,6 +5,8 @@ import { Form } from './form.po';
 export class AppPage {
     private readonly root = '/';
     private readonly titleSelector = by.css('.demo-page-header > mat-toolbar span');
+    private readonly docLinkSelector = by.css('.demo-page-header > mat-toolbar a');
+    private readonly selectedExampleSelector = by.css('.demo-page-header > .header-content > button > span > span');
     private readonly menuButtonSelector = by.css('.header-content > button');
     private readonly menuSelector = by.css('.mat-menu-content');
     private readonly form = by.css('jsf-json-schema-form');
@@ -44,6 +46,14 @@ export class AppPage {
 
     async getTitleText(): Promise<string> {
         return element(this.titleSelector).getText();
+    }
+
+    async clickDocumentationLink(): Promise<void> {
+        return element(this.docLinkSelector).click();
+    }
+
+    async getSelectedExampleText(): Promise<string> {
+        return element(this.selectedExampleSelector).getText();
     }
 
     async selectExample(example: string): Promise<Form> {

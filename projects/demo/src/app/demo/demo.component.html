@@ -24,7 +24,7 @@
         Choose an example, or create your own, and check out the generated form.<br><br>
         <span class="menu-label">Current example:</span>
         <button mat-raised-button color="primary" [matMenuTriggerFor]="exampleMenu">
-            <mat-icon>menu</mat-icon> {{ selectedSetName }} {{ selectedExampleName }}
+            <mat-icon>menu</mat-icon> <span>{{ selectedSetName }} {{ selectedExampleName }}</span>
         </button>
         <mat-menu #exampleMenu="matMenu" class="example-menu">
             <ng-container *ngFor="let group of examplesObservable | async; trackBy: trackByFn">
