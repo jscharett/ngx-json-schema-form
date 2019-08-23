@@ -14,8 +14,32 @@ export class AppPage {
         ['Buttons', ButtonsForm]
     ]);
 
+    private static async insertConsoleTracing(): Promise<void> {
+        return browser.executeScriptWithDescription(`
+            window.warnings = window.warnings || [];
+            window.console.warn = function(...rest) {
+                window.warnings.push(rest.map((item) => {
+                    return JSON.stringify(item);
+                }));
+            };
+        `, 'Override console.warn for testing purposes');
+    }
+
     async navigateTo(): Promise<any> {
-        return browser.get(this.root);
+        await browser.get(this.root);
+
+        return AppPage.insertConsoleTracing();
+    }
+
+    async getLogs(): Promise<any> {
+        // return browser.manage().logs().get('browser');
+        return browser.executeScriptWithDescription(`
+            return window.warnings;
+        `, 'Fetch logs').then((logs: Array<string>) => {
+            return logs.map((log) => {
+                return JSON.parse(log);
+            });
+        });
     }
 
     async getTitleText(): Promise<string> {
