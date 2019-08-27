@@ -26,7 +26,7 @@
     "build:lib": "ng build ngx-json-schema-form",
     "build:demo": "ng build demo --prod --base-href=https://jscharett.github.io/ngx-json-schema-form/",
     "test": "ng test",
-    "test:lib": "ng test ngx-json-schema",
+    "test:lib": "ng test ngx-json-schema-form",
     "test:lib-ci": "ng test ngx-json-schema-form --code-coverage --watch=false",
     "test:demo": "ng test demo",
     "test:demo-ci": "ng test demo --code-coverage --watch=false",
