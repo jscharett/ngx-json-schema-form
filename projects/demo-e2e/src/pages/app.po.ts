@@ -1,4 +1,4 @@
-import { browser, by, element, until } from 'protractor';
+import { browser, by, element, ExpectedConditions, until } from 'protractor';
 import { ButtonsForm } from './examples/buttons-form.po';
 import { Form } from './form.po';
 
@@ -42,6 +42,17 @@ export class AppPage {
                 return JSON.parse(log);
             });
         });
+    }
+
+    async getAlert(): Promise<string> {
+        const timeout = 1000;
+        await browser.wait(ExpectedConditions.alertIsPresent(), timeout);
+
+        const alertDialog = browser.switchTo().alert();
+        const alertText = alertDialog.getText();
+        await alertDialog.dismiss();
+
+        return alertText;
     }
 
     async getTitleText(): Promise<string> {

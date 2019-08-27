@@ -33,8 +33,10 @@ describe('buttons example', () => {
         };
     };
 
-    const verifyButtonClick = async (buttonLayout) => {
-        await form.clickControl(buttonLayout.name);
+    const verifyButtonClick = async (buttonLayout, performClick = true) => {
+        if (performClick) {
+            await form.clickControl(buttonLayout.name);
+        }
         const logs: Array<any> = await page.getLogs();
         const logCount = 2;
 
@@ -122,11 +124,12 @@ describe('buttons example', () => {
     }));
 
     it('should have button btn with special click handler', verifyButton(btn8, async (buttonLayout) => {
+        await form.clickControl(buttonLayout.name);
         await Promise.all([
+            expect(await page.getAlert()).toBeDefined(),
+            verifyButtonClick(buttonLayout, false),
             expect(await form.getControlValue(buttonLayout.name)).toEqual(buttonLayout.title),
-            expect(await form.getControlText(buttonLayout.name)).toEqual(''),
-            // no click test - bug with clicking children / must handle alert
-            verifyButtonClick(buttonLayout)
+            expect(await form.getControlText(buttonLayout.name)).toEqual('')
         ]);
     }));
 });

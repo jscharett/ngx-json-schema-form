@@ -100,5 +100,22 @@ describe('DataEventPluginService', () => {
                 target: element
             }));
         });
+
+        it('should fire listener when target is child of node in storage', () => {
+            const service: DataEventPluginService = TestBed.get(DataEventPluginService);
+            const edsService: ElementDataStorageService = TestBed.get(ElementDataStorageService);
+            const layout: LayoutItem = {title: 'hey'};
+            const removeHandler = service.addEventListener(element, eventName, handler);
+            const element2 = document.createElement('span');
+            element.appendChild(element2);
+            (<jasmine.Spy>edsService.has).and.returnValue(true);
+            (<jasmine.Spy>edsService.get).and.returnValue(layout);
+            element2.click();
+            removeHandler();
+            expect(handler).toHaveBeenCalledWith(jasmine.objectContaining({
+                data: layout,
+                target: element2
+            }));
+        });
     });
 });
