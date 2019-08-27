@@ -3,4 +3,4 @@
     "rules": {
         "no-implicit-dependencies": [true, "dev", ["@demo-e2e", "@demo"]]
     }
-  }
+}
