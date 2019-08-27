@@ -20,11 +20,15 @@ before_install:
 before_script:
   - npm install -g @angular/cli
   - npm install -g copyfiles
+  - npm run prot-hack
+  - node node_modules/protractor/bin/webdriver-manager update
 
 script:
+  - set -e
   - npm run lint
   - npm run test-ci
   - npm run package
+  - npm run e2e
   - npm run compodoc -- --disableCoverage
 after_success:
   - codecov

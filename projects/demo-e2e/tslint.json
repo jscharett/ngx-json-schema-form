@@ -1,6 +1,6 @@
 {
     "extends": "../../tslint.json",
     "rules": {
-        "no-implicit-dependencies": [true, "dev"]
+        "no-implicit-dependencies": [true, "dev", ["@demo-e2e", "@demo"]]
     }
   }
