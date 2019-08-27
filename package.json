@@ -23,7 +23,8 @@
     "version": "npm run build && git add -A dist",
     "postversion": "git push && git push --tags && rm -rf build/temp",
     "semantic-release": "semantic-release",
-    "publish:demo": "npx angular-cli-ghpages --dir=./dist/demo"
+    "publish:demo": "npx angular-cli-ghpages --dir=./dist/demo",
+    "prot-hack": "copyfiles -f selenium/*.* node_modules/protractor/node_modules/webdriver-manager/downloads"
   },
   "private": false,
   "dependencies": {
@@ -77,9 +78,9 @@
     "karma-mocha-reporter": "^2.2.5",
     "ng-packagr": "^4.2.0",
     "protractor": "~5.4.2",
-    "protractor-console-plugin": "^0.1.1",
     "semantic-release": "^15.13.12",
     "ts-node": "~8.3.0",
+    "tsconfig-paths": "^3.8.0",
     "tsickle": ">=0.34.0",
     "tslib": "^1.9.0",
     "tslint": "~5.18.0",

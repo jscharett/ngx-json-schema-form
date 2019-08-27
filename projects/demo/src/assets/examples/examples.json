@@ -15,6 +15,10 @@
             {
                 "name": "Buttons",
                 "file": "buttons"
+            },
+            {
+                "name": "Hidden",
+                "file": "hidden"
             }
         ]
     }
