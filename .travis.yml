@@ -20,6 +20,7 @@ before_install:
 before_script:
   - npm install -g @angular/cli
   - npm install -g copyfiles
+  - npm run prot-hack
   - node node_modules/protractor/bin/webdriver-manager update
 
 script:
