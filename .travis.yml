@@ -26,8 +26,9 @@ before_script:
 script:
   - set -e
   - npm run lint
-  - npm run test-ci
+  - npm run test:lib-ci
   - npm run package
+  - npm run test:demo-ci
   - npm run e2e
   - npm run compodoc -- --disableCoverage
 after_success:
