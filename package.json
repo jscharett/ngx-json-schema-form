@@ -1,6 +1,24 @@
 {
   "name": "ngx-json-schema-form",
   "version": "0.1.0-development",
+  "author": {
+    "name": "James Scharett",
+    "email": "ngx-json-schema-form@outlook.com"
+  },
+  "description": "An Angular JSON Schema forms builder",
+  "keywords": [
+    "Angular",
+    "Angular7",
+    "ng",
+    "forms",
+    "forms builder",
+    "json schema"
+  ],
+  "homepage": "https://jscharett.github.io/ngx-json-schema-form/documentation/",
+  "bugs": {
+    "url": "https://github.com/jscharett/ngx-json-schema-form/issues"
+  },
+  "license": "MIT",
   "scripts": {
     "ng": "ng",
     "start": "ng serve --prod",
