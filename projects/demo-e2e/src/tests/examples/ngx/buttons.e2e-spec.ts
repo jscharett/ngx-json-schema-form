@@ -33,8 +33,10 @@ describe('buttons example', () => {
         };
     };
 
-    const verifyButtonClick = async (buttonLayout) => {
-        await form.clickControl(buttonLayout.name);
+    const verifyButtonClick = async (buttonLayout, performClick = true) => {
+        if (performClick) {
+            await form.clickControl(buttonLayout.name);
+        }
         const logs: Array<any> = await page.getLogs();
         const logCount = 2;
 
@@ -86,8 +88,11 @@ describe('buttons example', () => {
     it('should have image input', verifyButton(btn4, async (buttonLayout) => {
         await Promise.all([
             expect(await form.getControlValue(buttonLayout.name)).toEqual(buttonLayout.title),
-            expect(await form.getControlText(buttonLayout.name)).toEqual('')
-            // verify icon
+            expect(await form.getControlText(buttonLayout.name)).toEqual(''),
+            expect(await form.getControlAttribute(buttonLayout.name, 'src')).toContain(buttonLayout.icon.src),
+            expect(await form.getControlAttribute(buttonLayout.name, 'alt')).toEqual(buttonLayout.icon.alt),
+            expect(await form.getControlAttribute(buttonLayout.name, 'width')).toEqual(buttonLayout.icon.width.toString()),
+            expect(await form.getControlAttribute(buttonLayout.name, 'height')).toEqual(buttonLayout.icon.height.toString())
             // no click test - submit reloads page
             // await verifyButtonClick(buttonLayout);
         ]);
@@ -105,27 +110,26 @@ describe('buttons example', () => {
     it('should have reset btn', verifyButton(btn6, async (buttonLayout) => {
         await Promise.all([
             expect(await form.getControlValue(buttonLayout.name)).toEqual(''),
-            expect(await form.getControlText(buttonLayout.name)).toEqual(buttonLayout.title)
-            // no click test - bug with clicking children
-            // await verifyButtonClick(buttonLayout);
+            expect(await form.getControlText(buttonLayout.name)).toEqual(buttonLayout.title),
+            verifyButtonClick(buttonLayout)
         ]);
     }));
 
     it('should have button btn', verifyButton(btn7, async (buttonLayout) => {
         await Promise.all([
             expect(await form.getControlValue(buttonLayout.name)).toEqual(''),
-            expect(await form.getControlText(buttonLayout.name)).toEqual(buttonLayout.title)
-            // no click test - bug with clicking children
-            // await verifyButtonClick(buttonLayout);
+            expect(await form.getControlText(buttonLayout.name)).toEqual(buttonLayout.title),
+            verifyButtonClick(buttonLayout)
         ]);
     }));
 
     it('should have button btn with special click handler', verifyButton(btn8, async (buttonLayout) => {
+        await form.clickControl(buttonLayout.name);
         await Promise.all([
+            expect(await page.getAlert()).toBeDefined(),
+            verifyButtonClick(buttonLayout, false),
             expect(await form.getControlValue(buttonLayout.name)).toEqual(buttonLayout.title),
             expect(await form.getControlText(buttonLayout.name)).toEqual('')
-            // no click test - bug with clicking children / must handle alert
-            // await verifyButtonClick(buttonLayout);
         ]);
     }));
 });

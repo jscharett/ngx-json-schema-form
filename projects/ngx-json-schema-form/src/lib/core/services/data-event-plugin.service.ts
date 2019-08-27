@@ -32,8 +32,13 @@ export class DataEventPluginService {
         const zone: NgZone = this.manager.getZone();
         const [type, , dataName] = eventName.split('.');
         const eventHandler = (event: DataEvent<Event>): void => {
-            if (this.elementDataStorage.has(event.target as HTMLElement, dataName)) {
-                const data = this.elementDataStorage.get(event.target as HTMLElement, dataName);
+            let target: HTMLElement = event.target as HTMLElement;
+            while (target && !this.elementDataStorage.has(target, dataName)) {
+                target = target.parentElement;
+            }
+
+            if (target) {
+                const data = this.elementDataStorage.get(target, dataName);
                 event.data = data;
 
                 zone.runGuarded(() => {
