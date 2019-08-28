@@ -11,8 +11,7 @@ import { JSONSchema7 } from 'json-schema';
 
 import { LayoutItem } from '../core/interfaces/layout-item.data';
 
-import { JsonSchemaFormService } from '../json-schema-form.service';
-
+import { JsonSchemaFormService } from './services/json-schema-form.service';
 import { LayoutService } from './services/layout.service';
 import { SchemaService } from './services/schema.service';
 

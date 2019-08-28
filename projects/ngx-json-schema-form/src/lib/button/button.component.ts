@@ -3,7 +3,8 @@ import { Component } from '@angular/core';
 import { Widget } from '../core/decorators/widget.decorator';
 import { ElementDataStorageService } from '../core/services/element-data-storage.service';
 import { AbstractWidget } from '../core/widget/widget';
-import { JsonSchemaFormService } from '../json-schema-form.service';
+
+import { JsonSchemaFormService } from '../form/services/json-schema-form.service';
 
 /**
  * Displays a <button> control

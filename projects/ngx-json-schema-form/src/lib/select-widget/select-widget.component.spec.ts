@@ -5,8 +5,7 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { LayoutNode } from '../core/models/layout-node';
 import { WidgetLibraryService } from '../core/services/widget-library.service';
 
-import { JsonSchemaFormService } from '../json-schema-form.service';
-
+import { JsonSchemaFormService } from '../form/services/json-schema-form.service';
 
 import { SelectWidgetComponent } from './select-widget.component';
 

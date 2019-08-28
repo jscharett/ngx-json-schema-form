@@ -7,8 +7,7 @@ import { ElementDataStorageService } from '../core/services/element-data-storage
 import { WidgetLibraryService } from '../core/services/widget-library.service';
 import { AbstractWidget } from '../core/widget/widget';
 
-import { JsonSchemaFormService } from '../json-schema-form.service';
-
+import { JsonSchemaFormService } from '../form/services/json-schema-form.service';
 
 /**
  * Dynamically creates a widget component based on a layout node.
