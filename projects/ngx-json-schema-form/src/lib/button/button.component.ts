@@ -1,9 +1,8 @@
 import { Component } from '@angular/core';
 
-import { ElementDataStorageService } from '../../../core/services/element-data-storage.service';
-import { Widget } from '../../../core/widget/widget';
-import { JsonSchemaFormService } from '../../../json-schema-form.service';
-
+import { ElementDataStorageService } from '../core/services/element-data-storage.service';
+import { Widget } from '../core/widget/widget';
+import { JsonSchemaFormService } from '../json-schema-form.service';
 
 /**
  * Displays a <button> control
