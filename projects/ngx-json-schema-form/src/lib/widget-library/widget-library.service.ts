@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
 
+import { HiddenComponent } from '../hidden/hidden.component';
+
 import { ButtonComponent } from './input/button/button.component';
-import { HiddenComponent } from './input/hidden/hidden.component';
 import { Widget } from './widget';
 
 /**

@@ -1,8 +1,8 @@
 import { NO_ERRORS_SCHEMA } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { JsonSchemaFormService } from '../../..';
-import { LayoutNode } from '../../../core/models/layout-node';
+import { LayoutNode } from '../core/models/layout-node';
+import { JsonSchemaFormService } from '../json-schema-form.service';
 
 import { HiddenComponent } from './hidden.component';
 

@@ -1,9 +1,10 @@
 import { TestBed } from '@angular/core/testing';
 
+import { HiddenComponent } from '../hidden/hidden.component';
+
 import { WidgetLibraryService } from './widget-library.service';
 
 import { ButtonComponent } from './input/button/button.component';
-import { HiddenComponent } from './input/hidden/hidden.component';
 
 describe('WidgetLibraryService', () => {
     beforeEach(() => {
