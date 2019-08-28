@@ -1,14 +1,14 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 
-import { WidgetLibraryModule } from '../widget-library/widget-library.module';
+import { SelectWidgetModule } from '../select-widget/select-widget.module';
 import { JsonSchemaFormComponent } from './json-schema-form.component';
 
 @NgModule({
     declarations: [ JsonSchemaFormComponent ],
     exports: [ JsonSchemaFormComponent ],
     imports: [
-        CommonModule, WidgetLibraryModule
+        CommonModule, SelectWidgetModule
     ]
 })
 export class FormModule { }

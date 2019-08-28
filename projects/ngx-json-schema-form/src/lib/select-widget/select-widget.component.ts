@@ -3,11 +3,11 @@ import {
     OnChanges, OnInit, ViewChild, ViewContainerRef
 } from '@angular/core';
 
-import { ElementDataStorageService } from '../../../core/services/element-data-storage.service';
-import { Widget } from '../../../core/widget/widget';
-import { JsonSchemaFormService } from '../../../json-schema-form.service';
+import { ElementDataStorageService } from '../core/services/element-data-storage.service';
+import { Widget } from '../core/widget/widget';
+import { JsonSchemaFormService } from '../json-schema-form.service';
 
-import { WidgetLibraryService } from '../../widget-library.service';
+import { WidgetLibraryService } from '../widget-library/widget-library.service';
 
 /**
  * Dynamically creates a widget component based on a layout node.
