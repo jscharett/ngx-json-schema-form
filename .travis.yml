@@ -30,7 +30,7 @@ script:
   - npm run package
   - npm run test:demo-ci
   - npm run e2e
-  - npm run compodoc -- --disableCoverage
+  - npm run doc -- --disableCoverage
 after_success:
   - codecov
 deploy:
