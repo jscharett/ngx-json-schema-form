@@ -1,11 +1,12 @@
 import { Component, NO_ERRORS_SCHEMA, SimpleChange } from '@angular/core';
 import { ComponentFixture, inject, TestBed } from '@angular/core/testing';
 
-import { JsonSchemaFormService } from '..';
-import { LayoutNode } from '../core/models/layout-node';
-import { ElementDataStorageService } from '../core/services/element-data-storage.service';
+import { JsonSchemaFormService } from '../../json-schema-form.service';
 
-import { Widget } from '.';
+import { LayoutNode } from '../models/layout-node';
+import { ElementDataStorageService } from '../services/element-data-storage.service';
+
+import { Widget } from './widget';
 
 @Component({
     selector: 'jsf-test-component',

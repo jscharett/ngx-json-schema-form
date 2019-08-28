@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
 
+import { Widget } from '../core/widget/widget';
 import { HiddenComponent } from '../hidden/hidden.component';
 
 import { ButtonComponent } from './input/button/button.component';
-import { Widget } from './widget';
 
 /**
  * Provides services for mapping a widget component to a layoutNode type
