@@ -4,7 +4,7 @@ import {
 } from '@angular/core';
 
 import { ElementDataStorageService } from '../core/services/element-data-storage.service';
-import { Widget } from '../core/widget/widget';
+import { AbstractWidget } from '../core/widget/widget';
 import { JsonSchemaFormService } from '../json-schema-form.service';
 
 import { WidgetLibraryService } from '../widget-library/widget-library.service';
@@ -18,7 +18,7 @@ import { WidgetLibraryService } from '../widget-library/widget-library.service';
     styleUrls: ['./select-widget.component.css'],
     templateUrl: './select-widget.component.html'
 })
-export class SelectWidgetComponent extends Widget implements OnInit, OnChanges {
+export class SelectWidgetComponent extends AbstractWidget implements OnInit, OnChanges {
     private newComponent: ComponentRef<any>;
 
     /** Placeholder for injecting widget */

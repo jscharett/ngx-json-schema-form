@@ -7,7 +7,7 @@ import { Injectable } from '@angular/core';
 
 import Handlebars from 'handlebars/dist/cjs/handlebars';
 
-import { Widget } from './core/widget/widget';
+import { AbstractWidget } from './core/widget/widget';
 
 /* tslint:disable: max-classes-per-file */
 /** Helper service */
@@ -43,8 +43,8 @@ export class JsonSchemaFormService {
 
     // constructor(private readonly compiler: Compiler,private readonly injector: Injector, private readonly moduleRef: NgModuleRef<any>) {}
 
-    /** Sets a widgets properties upon Widget creation */
-    initializeControl(control: Widget, bind = true): void {
+    /** Sets a widgets properties upon widget creation */
+    initializeControl(control: AbstractWidget, bind = true): void {
         // Do we even need to do this?  seems silly
         control.controlName = control.layoutNode.name;
     }

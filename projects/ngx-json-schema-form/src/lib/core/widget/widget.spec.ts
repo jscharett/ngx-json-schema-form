@@ -6,13 +6,13 @@ import { JsonSchemaFormService } from '../../json-schema-form.service';
 import { LayoutNode } from '../models/layout-node';
 import { ElementDataStorageService } from '../services/element-data-storage.service';
 
-import { Widget } from './widget';
+import { AbstractWidget } from './widget';
 
 @Component({
     selector: 'jsf-test-component',
     template: '<div #control>Hello World</div>'
 })
-class TestComponent extends Widget {
+class TestComponent extends AbstractWidget {
     constructor(jsf: JsonSchemaFormService, eds: ElementDataStorageService) {
         super(jsf, eds);
     }

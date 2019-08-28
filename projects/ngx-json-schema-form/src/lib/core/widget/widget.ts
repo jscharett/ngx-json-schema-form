@@ -6,8 +6,8 @@ import { JsonSchemaFormService } from '../../json-schema-form.service';
 import { LayoutNode } from '../models/layout-node';
 import { ElementDataStorageService } from '../services/element-data-storage.service';
 
-/** Widget */
-export abstract class Widget implements OnChanges, OnInit, AfterViewInit {
+/** AbstractWidget */
+export abstract class AbstractWidget implements OnChanges, OnInit, AfterViewInit {
     /** Flag to disable the control */
     controlDisabled = false;
     /** Name for the control */

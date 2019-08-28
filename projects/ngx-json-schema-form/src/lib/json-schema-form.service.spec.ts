@@ -1,12 +1,12 @@
 import { TestBed } from '@angular/core/testing';
 
 import { ElementDataStorageService } from './core/services/element-data-storage.service';
-import { Widget } from './core/widget/widget';
+import { AbstractWidget } from './core/widget/widget';
 
 import { JsonSchemaFormService } from './json-schema-form.service';
 
 describe('JsonSchemaFormService', () => {
-    class TestWidget extends Widget {}
+    class TestWidget extends AbstractWidget {}
 
     beforeEach(() => {
         TestBed.configureTestingModule({
