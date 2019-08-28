@@ -1,6 +1,5 @@
-import { register } from '../../widget-library/widget-library.service';
-
 import { WidgetDecorator } from '../interfaces/widget-decorator.data';
+import { register } from '../services/widget-library.service';
 
 /**
  * Widget Decorator

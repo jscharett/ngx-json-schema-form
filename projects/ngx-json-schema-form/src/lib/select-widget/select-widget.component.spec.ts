@@ -3,9 +3,10 @@ import { Component, ComponentRef, NgModule } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { LayoutNode } from '../core/models/layout-node';
+import { WidgetLibraryService } from '../core/services/widget-library.service';
+
 import { JsonSchemaFormService } from '../json-schema-form.service';
 
-import { WidgetLibraryService } from '../widget-library/widget-library.service';
 
 import { SelectWidgetComponent } from './select-widget.component';
 

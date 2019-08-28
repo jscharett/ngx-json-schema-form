@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 
-import { AbstractWidget } from '../core/widget/widget';
+import { AbstractWidget } from '../widget/widget';
 
 /** Map of the default registered widgets */
 const widgets: Map<string, typeof AbstractWidget> = new Map<string, typeof AbstractWidget>();
