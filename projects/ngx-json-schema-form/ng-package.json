@@ -5,10 +5,17 @@
         "entryFile": "src/public-api.ts",
         "umdModuleIds": {
             "ajv": "Ajv",
+            "handlebars/dist/cjs/handlebars": "Handlebars",
             "json-schema-traverse": "traverse",
-            "lodash": "_",
             "lodash-decorators": "lodashDecorators",
-            "handlebars/dist/cjs/handlebars": "Handlebars"
+            "lodash": "_"
         }
-    }
+    },
+    "whitelistedNonPeerDependencies": [
+        "ajv",
+        "handlebars",
+        "json-schema-traverse",
+        "lodash-decorators",
+        "tslib"
+    ]
 }
