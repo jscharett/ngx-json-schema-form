@@ -1,26 +1,26 @@
 import { CommonModule } from '@angular/common';
 import { ModuleWithProviders, NgModule } from '@angular/core';
-import { EVENT_MANAGER_PLUGINS } from '@angular/platform-browser';
 
-import { WidgetLibraryModule } from './widget-library/widget-library.module';
-
-import { DataEventPluginService } from './data-event-plugin.service';
-import { JsonSchemaFormComponent } from './json-schema-form.component';
+import { ButtonModule } from './button/button.module';
+import { CoreModule } from './core/core.module';
+import { FormModule } from './form/form.module';
+import { HiddenModule } from './hidden/hidden.module';
+import { SelectWidgetModule } from './select-widget/select-widget.module';
 
 @NgModule({
-    declarations: [ JsonSchemaFormComponent ],
-    exports: [ JsonSchemaFormComponent, WidgetLibraryModule ],
-    imports: [ CommonModule, WidgetLibraryModule ]
+    exports: [ ButtonModule, CoreModule, FormModule, HiddenModule, SelectWidgetModule ],
+    imports: [
+        CommonModule,
+        ButtonModule, CoreModule, FormModule, HiddenModule, SelectWidgetModule
+    ]
 })
 export class JsonSchemaFormModule {
     static forRoot(): ModuleWithProviders {
         return {
             ngModule: JsonSchemaFormModule,
-            providers: [{
-                multi: true,
-                provide: EVENT_MANAGER_PLUGINS,
-                useClass: DataEventPluginService
-            }]
+            providers: [
+                ...CoreModule.forRoot().providers
+            ]
         };
     }
 }

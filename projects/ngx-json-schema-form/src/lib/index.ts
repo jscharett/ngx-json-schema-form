@@ -1,4 +1,6 @@
-export { JsonSchemaFormService } from './json-schema-form.service';
-export { SchemaService } from './schema.service';
-export { LayoutService } from './layout.service';
-export { DataEvent } from './data-event-plugin.service';
+export * from './button/';
+export * from './core/';
+export * from './hidden/';
+export * from './form/';
+export * from './select-widget';
+export { JsonSchemaFormModule } from './json-schema-form.module';

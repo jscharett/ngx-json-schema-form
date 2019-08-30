@@ -1,0 +1,1 @@
+export { AbstractWidget } from './widget';

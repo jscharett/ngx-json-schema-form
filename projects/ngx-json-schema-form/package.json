@@ -1,10 +1,10 @@
 {
-  "name": "ngx-json-schema-form",
-  "version": "0.1.0-development",
-  "author": {
-    "name": "James Scharett",
-    "email": "ngx-json-schema-form@outlook.com"
-  },
+    "name": "ngx-json-schema-form",
+    "version": "0.1.0-development",
+    "author": {
+        "name": "James Scharett",
+        "email": "ngx-json-schema-form@outlook.com"
+    },
     "description": "An Angular JSON Schema Form builder",
     "keywords": [
         "Angular",
@@ -19,21 +19,23 @@
         "url": "https://github.com/jscharett/ngx-json-schema-form/issues"
     },
     "license": "MIT",
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/jscharett/ngx-json-schema-form"
-  },
-  "devDependencies": {
-    "@angular/platform-browser-dynamic": "~7.2.0",
-    "core-js": "^2.5.4",
-    "zone.js": "~0.9.1"
-  },
-  "peerDependencies": {
-    "@angular/common": "^7.2.0",
-    "@angular/core": "^7.2.0",
-    "@angular/forms": "^7.2.0",
-    "ajv": "^6.10.0",
-    "lodash": "^4.17.11",
-    "rxjs": "~6.5.2"
-  }
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/jscharett/ngx-json-schema-form"
+    },
+    "dependencies": {
+        "ajv": "^6.10.0",
+        "handlebars": "^4.1.2",
+        "json-schema-traverse": "^0.4.1",
+        "lodash-decorators": "^6.0.1"
+    },
+    "peerDependencies": {
+        "@angular/common": "^7.2.0",
+        "@angular/core": "^7.2.0",
+        "@angular/forms": "^7.2.0",
+        "core-js": "^2.5.4",
+        "lodash": "^4.17.11",
+        "rxjs": "^6.0.0",
+        "zone.js": "~0.8.29"
+    }
 }
