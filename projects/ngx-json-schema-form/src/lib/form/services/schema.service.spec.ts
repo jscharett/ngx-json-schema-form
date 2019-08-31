@@ -1,18 +1,24 @@
 import { TestBed } from '@angular/core/testing';
 
-import { JSONSchema7, JSONSchema7Definition } from 'json-schema';
+import { JSONSchema4, JSONSchema6, JSONSchema7, JSONSchema7Definition } from 'json-schema';
 
 import { cloneDeep } from 'lodash';
 
 import basicJSONSchema from '../../../assests/example-schemas/jsf-schema-basic.json';
+import schemaVersion4 from '../../../assests/example-schemas/json-schema-draft04.json';
+import schemaVersion6 from '../../../assests/example-schemas/json-schema-draft06.json';
 
 import { SchemaService } from './schema.service';
 
 describe('SchemaService', () => {
     let schema: JSONSchema7;
+    let schemaV6: JSONSchema6;
+    let schemaV4: JSONSchema4;
 
     beforeEach(() => {
         schema = cloneDeep(basicJSONSchema as JSONSchema7);
+        schemaV6 = cloneDeep(schemaVersion6 as JSONSchema6);
+        schemaV4 = cloneDeep(schemaVersion4 as JSONSchema4);
         TestBed.configureTestingModule({
             providers: [
                 SchemaService
@@ -30,6 +36,27 @@ describe('SchemaService', () => {
         expect(service.schema).toEqual({});
         service.schema = schema;
         expect(service.schema).toBe(schema);
+    });
+
+    describe('migrate', () => {
+        it('should preserve v7 schemas', () => {
+            const service: SchemaService = TestBed.get(SchemaService);
+            expect(service.migrate(schema)).toEqual(schema);
+        });
+
+        it('should migrate v6 schemas', () => {
+            const service: SchemaService = TestBed.get(SchemaService);
+            const newSchema: any = service.migrate(schemaV6);
+            expect(newSchema).not.toEqual(schemaV6);
+            expect(newSchema.$schema).toBe('http://json-schema.org/draft-07/schema#');
+        });
+
+        it('should migrate v4 schemas', () => {
+            const service: SchemaService = TestBed.get(SchemaService);
+            const newSchema: any = service.migrate(schemaV4);
+            expect(newSchema).not.toEqual(schemaV4);
+            expect(newSchema.$schema).toBe('http://json-schema.org/draft-07/schema#');
+        });
     });
 
     describe('dataPointerMap', () => {

@@ -65,6 +65,7 @@
         "brace": "^0.11.0",
         "core-js": "^2.5.4",
         "handlebars": "^4.1.2",
+        "json-schema-migrate": "^0.2.0",
         "json-schema-traverse": "^0.4.1",
         "lodash": "^4.17.14",
         "lodash-decorators": "^6.0.1",

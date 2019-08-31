@@ -19,7 +19,9 @@ describe('JsonSchemaFormComponent', () => {
             initializeControl: undefined
         });
         const layoutService: LayoutService = <any>{setLayout: jasmine.createSpy('setLayout')};
-        const schemaService: SchemaService = <any>{};
+        const schemaService: SchemaService = jasmine.createSpyObj('SchemaService', {
+            migrate: basicJSONSchema
+        });
 
         return TestBed.configureTestingModule({
             declarations: [ JsonSchemaFormComponent ],
@@ -38,12 +40,13 @@ describe('JsonSchemaFormComponent', () => {
 
     beforeEach(() => {
         fixture = TestBed.createComponent(JsonSchemaFormComponent);
+        component = fixture.componentInstance;
         const schemaService: SchemaService = fixture.debugElement.injector.get(SchemaService);
         schemaSpy = jasmine.createSpy('schemaSpy');
         Object.defineProperty(schemaService, 'schema', {
+            enumerable: true,
             set: schemaSpy
         });
-        component = fixture.componentInstance;
         fixture.detectChanges();
     });
 

@@ -6,6 +6,7 @@
         "umdModuleIds": {
             "ajv": "Ajv",
             "handlebars/dist/cjs/handlebars": "Handlebars",
+            "json-schema-migrate": "migrate",
             "json-schema-traverse": "traverse",
             "lodash-decorators": "lodashDecorators",
             "lodash": "_"
@@ -14,6 +15,7 @@
     "whitelistedNonPeerDependencies": [
         "ajv",
         "handlebars",
+        "json-schema-migrate",
         "json-schema-traverse",
         "lodash-decorators",
         "tslib"
