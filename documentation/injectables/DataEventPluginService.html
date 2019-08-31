@@ -57,7 +57,7 @@
             <h3>File</h3>
         </p>
         <p class="comment">
-            <code>projects/ngx-json-schema-form/src/lib/data-event-plugin.service.ts</code>
+            <code>projects/ngx-json-schema-form/src/lib/core/services/data-event-plugin.service.ts</code>
         </p>
 
             <p class="comment">
@@ -128,7 +128,7 @@ present, then the event handler will not be fired.</p>
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="22" class="link-to-prism">projects/ngx-json-schema-form/src/lib/data-event-plugin.service.ts:22</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="21" class="link-to-prism">projects/ngx-json-schema-form/src/lib/core/services/data-event-plugin.service.ts:21</a></div>
                             </td>
                         </tr>
 
@@ -193,8 +193,8 @@ present, then the event handler will not be fired.</p>
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="32"
-                            class="link-to-prism">projects/ngx-json-schema-form/src/lib/data-event-plugin.service.ts:32</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="31"
+                            class="link-to-prism">projects/ngx-json-schema-form/src/lib/core/services/data-event-plugin.service.ts:31</a></div>
                 </td>
             </tr>
 
@@ -289,8 +289,8 @@ present, then the event handler will not be fired.</p>
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="27"
-                            class="link-to-prism">projects/ngx-json-schema-form/src/lib/data-event-plugin.service.ts:27</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="26"
+                            class="link-to-prism">projects/ngx-json-schema-form/src/lib/core/services/data-event-plugin.service.ts:26</a></div>
                 </td>
             </tr>
 
@@ -365,7 +365,7 @@ present, then the event handler will not be fired.</p>
                     </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="22" class="link-to-prism">projects/ngx-json-schema-form/src/lib/data-event-plugin.service.ts:22</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="21" class="link-to-prism">projects/ngx-json-schema-form/src/lib/core/services/data-event-plugin.service.ts:21</a></div>
                             </td>
                         </tr>
 
@@ -390,6 +390,7 @@ import { EventManager } from &#x27;@angular/platform-browser&#x27;;
 import { ElementDataStorageService } from &#x27;./element-data-storage.service&#x27;;
 
 export interface Data {
+    /** Data associated with an HTML Element */
     data: any;
 }
 /** Event wrapper for piggybacking data on an event */
@@ -400,9 +401,7 @@ export type DataEvent&lt;T&gt; &#x3D; Data &amp; T;
  * &quot;associated&quot; with an element by means of the ElementDataStorageService.  If no data is
  * present, then the event handler will not be fired.
  */
-@Injectable({
-    providedIn: &#x27;root&#x27;
-})
+@Injectable()
 export class DataEventPluginService {
     /** Event manager used to get the ngZone */
     manager: EventManager;
@@ -419,8 +418,13 @@ export class DataEventPluginService {
         const zone: NgZone &#x3D; this.manager.getZone();
         const [type, , dataName] &#x3D; eventName.split(&#x27;.&#x27;);
         const eventHandler &#x3D; (event: DataEvent&lt;Event&gt;): void &#x3D;&gt; {
-            if (this.elementDataStorage.has(event.target as HTMLElement, dataName)) {
-                const data &#x3D; this.elementDataStorage.get(event.target as HTMLElement, dataName);
+            let target: HTMLElement &#x3D; event.target as HTMLElement;
+            while (target &amp;&amp; !this.elementDataStorage.has(target, dataName)) {
+                target &#x3D; target.parentElement;
+            }
+
+            if (target) {
+                const data &#x3D; this.elementDataStorage.get(target, dataName);
                 event.data &#x3D; data;
 
                 zone.runGuarded(() &#x3D;&gt; {

@@ -57,7 +57,7 @@
             <h3>File</h3>
         </p>
         <p class="comment">
-            <code>projects/ngx-json-schema-form/src/lib/widget-library/widget-library.service.ts</code>
+            <code>projects/ngx-json-schema-form/src/lib/core/services/widget-library.service.ts</code>
         </p>
 
             <p class="comment">
@@ -126,8 +126,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="28"
-                            class="link-to-prism">projects/ngx-json-schema-form/src/lib/widget-library/widget-library.service.ts:28</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="32"
+                            class="link-to-prism">projects/ngx-json-schema-form/src/lib/core/services/widget-library.service.ts:32</a></div>
                 </td>
             </tr>
 
@@ -184,9 +184,21 @@
     <div class="tab-pane fade  tab-source-code" id="c-source">
         <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Injectable } from &#x27;@angular/core&#x27;;
 
-import { ButtonComponent } from &#x27;./input/button/button.component&#x27;;
-import { HiddenComponent } from &#x27;./input/hidden/hidden.component&#x27;;
-import { Widget } from &#x27;./widget&#x27;;
+import { AbstractWidget } from &#x27;../widget/widget&#x27;;
+
+/** Map of the default registered widgets */
+const widgets: Map&lt;string, typeof AbstractWidget&gt; &#x3D; new Map&lt;string, typeof AbstractWidget&gt;();
+
+/** Internal method for registering a widget with the widget library */
+export const register &#x3D; (component: typeof AbstractWidget, types: Array&lt;string&gt;): void &#x3D;&gt; {
+    types.forEach((type: string) &#x3D;&gt; {
+        if (widgets.has(type)) {
+            console.error(&#x60;Widget type &quot;${type}&quot; already exists.  Ignoring.&#x60;, component);
+        } else {
+            widgets.set(type, component);
+        }
+    });
+};
 
 /**
  * Provides services for mapping a widget component to a layoutNode type
@@ -197,26 +209,14 @@ import { Widget } from &#x27;./widget&#x27;;
 export class WidgetLibraryService {
     private readonly defaultWidget &#x3D; &#x27;hidden&#x27;;
 
-    private readonly widgets &#x3D; {
-        button: ButtonComponent,
-        hidden: HiddenComponent,
-        image: ButtonComponent,
-        reset: ButtonComponent,
-        submit: ButtonComponent
-    };
-
     /**
      * Gets a widget class from the type
      * @param type - type of component
      */
-    getWidget(type: string): typeof Widget {
-        return this.hasWidget(type)
-            ? this.widgets[type]
-            : this.widgets[this.defaultWidget];
-    }
-
-    private hasWidget(type: string): boolean {
-        return !!this.widgets[type];
+    getWidget(type: string): typeof AbstractWidget {
+        return widgets.has(type)
+            ? widgets.get(type)
+            : widgets.get(this.defaultWidget);
     }
 }
 </code></pre>

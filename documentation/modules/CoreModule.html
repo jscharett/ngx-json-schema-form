@@ -28,12 +28,121 @@
                    <compodoc-menu mode="normal"></compodoc-menu>
                </div>
                <!-- START CONTENT -->
-               <div class="content miscellaneous-typealiases">
+               <div class="content module">
                    <div class="content-data">
 
 
 
+<ol class="breadcrumb">
+    <li>Modules</li>
+    <li>CoreModule</li>
+</ol>
 
+
+<ul class="nav nav-tabs" role="tablist">
+    <li  class="active" >
+        <a href="#info" role="tab" id="info-tab" data-toggle="tab" data-link="info">Info</a>
+    </li>
+    <li >
+        <a href="#source" role="tab" id="source-tab" data-toggle="tab" data-link="source">Source</a>
+    </li>
+</ul>
+
+<div class="tab-content">
+    <div class="tab-pane fade active in" id="c-info">
+
+        <p class="comment">
+            <h3>File</h3>
+        </p>
+        <p class="comment">
+            <code>projects/ngx-json-schema-form/src/lib/core/core.module.ts</code>
+        </p>
+
+
+
+
+        <div class="container-fluid module">
+            <div class="row">
+            </div>
+        </div>
+
+        <section>
+    
+    <h3 id="methods">
+        Methods
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="forRoot"></a>
+                    <span class="name">
+                        <b>
+                            <span class="modifier">Static</span>
+                            forRoot
+                        </b>
+                        <a href="#forRoot"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>forRoot()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="13"
+                            class="link-to-prism">projects/ngx-json-schema-form/src/lib/core/core.module.ts:13</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://angular.io/api/core/ModuleWithProviders" target="_blank" >ModuleWithProviders</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>
+    </div>
+
+
+    <div class="tab-pane fade  tab-source-code" id="c-source">
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { CommonModule } from &#x27;@angular/common&#x27;;
+import { ModuleWithProviders, NgModule } from &#x27;@angular/core&#x27;;
+import { EVENT_MANAGER_PLUGINS } from &#x27;@angular/platform-browser&#x27;;
+
+import { DataEventPluginService } from &#x27;./services/data-event-plugin.service&#x27;;
+
+@NgModule({
+    imports: [
+        CommonModule
+    ]
+})
+export class CoreModule {
+    static forRoot(): ModuleWithProviders {
+        return {
+            ngModule: CoreModule,
+            providers: [{
+                multi: true,
+                provide: EVENT_MANAGER_PLUGINS,
+                useClass: DataEventPluginService
+            }]
+        };
+    }
+}
+</code></pre>
+    </div>
+</div>
 
 
 
@@ -46,53 +155,7 @@
 
                    
 
-<ol class="breadcrumb">
-  <li>Miscellaneous</li>
-  <li>Type aliases</li>
-</ol>
 
-<section>
-    <h3 id="index">Index</h3>
-    <table class="table table-sm table-bordered index-table">
-        <tbody>
-            <tr>
-                <td class="col-md-4">
-                    <ul class="index-list">
-                        <li>
-                            <a href="#DataEvent" title="projects/ngx-json-schema-form/src/lib/core/services/data-event-plugin.service.ts"><b>DataEvent</b>&nbsp;&nbsp;&nbsp;(projects/.../data-event-plugin.service.ts)</a>
-                        </li>
-                    </ul>
-                </td>
-            </tr>
-        </tbody>
-    </table>
-</section>
-
-    <h3>projects/ngx-json-schema-form/src/lib/core/services/data-event-plugin.service.ts</h3>
-    <section>
-    <table class="table table-sm table-bordered">
-        <tbody>
-            <tr>
-                <td class="col-md-4">
-                    <a name="DataEvent"></a>
-                    <span class="name"><b>DataEvent</b><a href="#DataEvent"><span class="icon ion-ios-link"></span></a></span>
-                </td>
-            </tr>
-            <tr>
-                <td class="col-md-4">
-                    <div class="io-description"><p>Event wrapper for piggybacking data on an event </p>
-</div>
-                </td>
-            </tr>
-            <tr>
-                <td class="col-md-4">
-                    <code>    <code></code>
-</code>
-                </td>
-            </tr>
-        </tbody>
-    </table>
-</section>
 
 
                    </div><div class="search-results">
@@ -111,8 +174,8 @@
 
        <script>
             var COMPODOC_CURRENT_PAGE_DEPTH = 1;
-            var COMPODOC_CURRENT_PAGE_CONTEXT = 'miscellaneous-typealiases';
-            var COMPODOC_CURRENT_PAGE_URL = 'typealiases.html';
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'module';
+            var COMPODOC_CURRENT_PAGE_URL = 'CoreModule.html';
        </script>
 
        <script src="../js/libs/custom-elements.min.js"></script>

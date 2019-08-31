@@ -1,0 +1,17 @@
+{
+    "schema": {
+        "type": "object",
+        "properties": {
+            "apikey": {
+                "title": "API key",
+                "type": "string",
+                "default": "supercalifragilisticexpialidocious",
+                "readOnly": true
+            }
+        }
+    },
+    "layout": [{
+        "key": "apikey",
+        "type": "hidden"
+    }]
+}
