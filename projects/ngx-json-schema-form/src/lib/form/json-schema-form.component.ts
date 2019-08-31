@@ -7,7 +7,7 @@ import { Subject } from 'rxjs';
 
 import { cloneDeep, isPlainObject } from 'lodash';
 
-import { JSONSchema7 } from 'json-schema';
+import { JSONSchema4, JSONSchema6, JSONSchema7 } from 'json-schema';
 
 import { LayoutItem } from '../core/interfaces/layout-item.data';
 
@@ -61,7 +61,7 @@ import { SchemaService } from './services/schema.service';
 })
 export class JsonSchemaFormComponent implements OnChanges, OnDestroy, OnInit {
     /** JSON Schema used to validate form data */
-    @Input() schema: JSONSchema7;
+    @Input() schema: JSONSchema7 | JSONSchema6 | JSONSchema4;
     /** Layout used to define how the form is rendered */
     @Input() layout: Array<LayoutItem>;
     /**
@@ -146,7 +146,7 @@ export class JsonSchemaFormComponent implements OnChanges, OnDestroy, OnInit {
 
     private initializeSchema(): void {
         if (isPlainObject(this.schema)) {
-            this.schemaService.schema = cloneDeep(this.schema);
+            this.schemaService.schema = this.schemaService.migrate(this.schema);
         }
     }
 }
