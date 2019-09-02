@@ -6,7 +6,7 @@ import { AbstractWidget } from '../widget/widget';
 const widgets: Map<string, typeof AbstractWidget> = new Map<string, typeof AbstractWidget>();
 
 /** Internal method for registering a widget with the widget library */
-export const register = (component: typeof AbstractWidget, types: Array<string>): void => {
+export function register(component: typeof AbstractWidget, types: Array<string>): void {
     types.forEach((type: string) => {
         if (widgets.has(type)) {
             console.error(`Widget type "${type}" already exists.  Ignoring.`, component);
@@ -14,7 +14,7 @@ export const register = (component: typeof AbstractWidget, types: Array<string>)
             widgets.set(type, component);
         }
     });
-};
+}
 
 /**
  * Provides services for mapping a widget component to a layoutNode type

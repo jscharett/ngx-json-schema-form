@@ -7,8 +7,6 @@ import { JsonSchemaFormComponent } from './json-schema-form.component';
 @NgModule({
     declarations: [ JsonSchemaFormComponent ],
     exports: [ JsonSchemaFormComponent ],
-    imports: [
-        CommonModule, SelectWidgetModule
-    ]
+    imports: [ CommonModule, SelectWidgetModule ]
 })
 export class FormModule { }
