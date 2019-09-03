@@ -190,7 +190,7 @@ import { AbstractWidget } from &#x27;../widget/widget&#x27;;
 const widgets: Map&lt;string, typeof AbstractWidget&gt; &#x3D; new Map&lt;string, typeof AbstractWidget&gt;();
 
 /** Internal method for registering a widget with the widget library */
-export const register &#x3D; (component: typeof AbstractWidget, types: Array&lt;string&gt;): void &#x3D;&gt; {
+export function register(component: typeof AbstractWidget, types: Array&lt;string&gt;): void {
     types.forEach((type: string) &#x3D;&gt; {
         if (widgets.has(type)) {
             console.error(&#x60;Widget type &quot;${type}&quot; already exists.  Ignoring.&#x60;, component);
@@ -198,7 +198,7 @@ export const register &#x3D; (component: typeof AbstractWidget, types: Array&lt;
             widgets.set(type, component);
         }
     });
-};
+}
 
 /**
  * Provides services for mapping a widget component to a layoutNode type

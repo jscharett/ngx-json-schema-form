@@ -104,13 +104,13 @@ customElements.define('compodoc-menu', class extends HTMLElement {
                                 <a href="modules/FormModule.html" data-type="entity-link">FormModule</a>
                                     <li class="chapter inner">
                                         <div class="simple menu-toggler" data-toggle="collapse" ${ isNormalMode ?
-                                            'data-target="#components-links-module-FormModule-ba6e35cfed4cc7a8947a44e44d890cb5"' : 'data-target="#xs-components-links-module-FormModule-ba6e35cfed4cc7a8947a44e44d890cb5"' }>
+                                            'data-target="#components-links-module-FormModule-1c703465d5036ceed88e4e79905dcf75"' : 'data-target="#xs-components-links-module-FormModule-1c703465d5036ceed88e4e79905dcf75"' }>
                                             <span class="icon ion-md-cog"></span>
                                             <span>Components</span>
                                             <span class="icon ion-ios-arrow-down"></span>
                                         </div>
-                                        <ul class="links collapse" ${ isNormalMode ? 'id="components-links-module-FormModule-ba6e35cfed4cc7a8947a44e44d890cb5"' :
-                                            'id="xs-components-links-module-FormModule-ba6e35cfed4cc7a8947a44e44d890cb5"' }>
+                                        <ul class="links collapse" ${ isNormalMode ? 'id="components-links-module-FormModule-1c703465d5036ceed88e4e79905dcf75"' :
+                                            'id="xs-components-links-module-FormModule-1c703465d5036ceed88e4e79905dcf75"' }>
                                             <li class="link">
                                                 <a href="components/JsonSchemaFormComponent.html"
                                                     data-type="entity-link" data-context="sub-entity" data-context-id="modules">JsonSchemaFormComponent</a>
