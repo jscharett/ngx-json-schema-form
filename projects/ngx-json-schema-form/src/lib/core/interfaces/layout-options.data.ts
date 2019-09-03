@@ -1,3 +1,4 @@
+/** Options for a particular Layout */
 export interface LayoutOptions {
     /* Global HTML attributes */
     /** See {@link https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/accesskey} */
@@ -30,6 +31,9 @@ export interface LayoutOptions {
         /** See {@link https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/image#width} */
         width?: number;
     };
+
+    /** Whether or not a container widget is expandable */
+    expandable?: boolean;
 
     [others: string]: any;
 }

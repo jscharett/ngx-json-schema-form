@@ -13,7 +13,8 @@ export class AppPage {
 
     private readonly forms: Map<string, typeof Form> = new Map<string, typeof Form>([
         ['Hidden', Form],
-        ['Buttons', ButtonsForm]
+        ['Buttons', ButtonsForm],
+        ['Containers', Form]
     ]);
 
     private static async insertConsoleTracing(): Promise<void> {

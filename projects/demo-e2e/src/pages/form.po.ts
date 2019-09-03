@@ -2,7 +2,7 @@ import { by, element, ElementFinder } from 'protractor';
 
 export class Form {
     private readonly formSelector = by.css('jsf-json-schema-form');
-    private readonly widgetSelector = by.css('jsf-select-widget:first-child');
+    private readonly widgetSelector = by.css('jsf-select-widget > *:first-child');
     private readonly controlSelector = by.css('input, button, textarea, select');
 
     async getWidgetCount(): Promise<number> {
@@ -35,6 +35,14 @@ export class Form {
 
     async getControlText(controlName: string): Promise<string> {
         return this.getControl(controlName).getText();
+    }
+
+    async getContainerAttribute(containerType: string, attribute: string): Promise<string> {
+        return this.getContainer(containerType).getAttribute(attribute);
+    }
+
+    getContainer(containerType: string): ElementFinder {
+        return element(this.formSelector).element(by.css(`jsf-container > ${ containerType }`));
     }
 
     private getControl(controlName: string): ElementFinder {

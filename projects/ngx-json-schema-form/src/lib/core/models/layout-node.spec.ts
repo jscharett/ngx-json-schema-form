@@ -20,14 +20,14 @@ describe('LayoutNode', () => {
 
         it('should create an instance', () => {
             expect(new LayoutNode({type: 'section'})).toBeTruthy();
-            expect(LayoutNode.create({type: 'section'}, service)).toBeTruthy();
-            expect(LayoutNode.create('a', service)).toBeTruthy();
+            expect(LayoutNode.create({type: 'section'}, service, undefined)).toBeTruthy();
+            expect(LayoutNode.create('a', service, [])).toBeTruthy();
         });
 
         it('should throw error', () => {
             expect(() => new LayoutNode({key: 'a'})).toThrowError();
-            expect(() => LayoutNode.create({key: 'b'}, service)).toThrowError();
-            expect(() => LayoutNode.create('b', service)).toThrowError();
+            expect(() => LayoutNode.create({key: 'b'}, service, undefined)).toThrowError();
+            expect(() => LayoutNode.create('b', service, [])).toThrowError();
         });
 
         it('should have an uniquie id', () => {
@@ -85,11 +85,11 @@ describe('LayoutNode', () => {
         });
 
         it('should be undefined if not a string', () => {
-            expect((new LayoutNode({type: 'section', content: true})).content).toBeUndefined();
-            expect((new LayoutNode({type: 'section', content: 1})).content).toBeUndefined();
-            expect((new LayoutNode({type: 'section', content: ['hi']})).content).toBeUndefined();
-            expect((new LayoutNode({type: 'section', content: {}})).content).toBeUndefined();
-            expect((new LayoutNode({type: 'section', content: undefined})).content).toBeUndefined();
+            expect((new LayoutNode(<any>{type: 'section', content: true})).content).toBeUndefined();
+            expect((new LayoutNode(<any>{type: 'section', content: 1})).content).toBeUndefined();
+            expect((new LayoutNode(<any>{type: 'section', content: ['hi']})).content).toBeUndefined();
+            expect((new LayoutNode(<any>{type: 'section', content: {}})).content).toBeUndefined();
+            expect((new LayoutNode(<any>{type: 'section', content: undefined})).content).toBeUndefined();
         });
     });
 
@@ -115,8 +115,8 @@ describe('LayoutNode', () => {
         });
 
         it('should not move known props to options', () => {
-            // 'key, type', 'name', 'options'
-            expect((new LayoutNode({type: 'a', name: 'b', key: 'c', options: {}})).options).toEqual({});
+            // 'key, type', 'name', 'options', 'content', 'items'
+            expect((new LayoutNode({type: 'a', name: 'b', key: 'c', options: {}, content: '', items: []})).options).toEqual({});
         });
 
         it('should preserve existing options', () => {
@@ -156,6 +156,17 @@ describe('LayoutNode', () => {
                 readonly: false,
                 title: 'hi'
             });
+        });
+    });
+
+    describe('items', () => {
+        it('should return children', () => {
+            const childNode: LayoutNode = new LayoutNode({type: 'hidden'});
+            expect((new LayoutNode({type: 'container'}, undefined, [childNode])).items).toEqual([childNode]);
+        });
+
+        it('should return undefined', () => {
+            expect((new LayoutNode({type: 'hidden'})).items).toBeUndefined();
         });
     });
 

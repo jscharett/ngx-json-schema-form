@@ -174,7 +174,9 @@ There are numerous attributes that can be set on a widget which are set via the 
     "htmlClass": "input-sm",
     "name": "name",
     "readonly": true,
-    "style": "color: #333;",
+    "style": {
+        "color": "#333"
+    },
     "tabindex": 2,
     "title": "Name"
 }]

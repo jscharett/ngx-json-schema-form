@@ -17,6 +17,8 @@ export class LayoutNode {
     private readonly layoutItem: LayoutItem;
     /** Reference to the schema that pertains the layout */
     private readonly schema: JSONSchema7;
+    /** LayoutNodes that are rendered as children on this node */
+    private readonly childNodes: Array<LayoutNode>;
 
     /** Unique Identifier for the item */
     public readonly id: string = uniqueId('control');
@@ -24,26 +26,28 @@ export class LayoutNode {
     /**
      * @throws Will throw an error if there is no layout.type or schema.type
      */
-    constructor(layoutItem: LayoutItem, schema?: JSONSchema7) {
+    constructor(layoutItem: LayoutItem, schema?: JSONSchema7, childNodes?: Array<LayoutNode>) {
         if (!layoutItem.type && !(schema && schema.type)) {
             throw new Error('Missing "type"....');
         }
         this.layoutItem = layoutItem;
         this.schema = schema;
+        this.childNodes = childNodes;
     }
 
     /**
      * Creates a LayoutNode
      * @param layoutItem - A LayoutItem presented by the user.  If a string is given, it is converted into a LayoutItem
      * @param schemaService - Service for looking up related Schema definition
+     * @param childNodes - Layout children
      */
-    public static create(layoutItem: LayoutItem | string, schemaAnalyzer: SchemaAnalyzer): LayoutNode {
+    public static create(layoutItem: LayoutItem | string, schemaAnalyzer: SchemaAnalyzer, childNodes: Array<LayoutNode>): LayoutNode {
         const item: LayoutItem = isString(layoutItem)
             ? {key: layoutItem}
             : layoutItem;
         const schema: JSONSchema7 = <JSONSchema7>schemaAnalyzer.dataPointerMap.get(LayoutNode.getPointer(item.key));
 
-        return new LayoutNode(item, schema);
+        return new LayoutNode(item, schema, childNodes);
     }
 
     /** Normalizes a key(object.path or json/path) to json path */
@@ -82,16 +86,19 @@ export class LayoutNode {
         return {
             ...pick(this.schema, ['title', 'description']),
             ...mapKeys(pick(this.schema, ['readOnly']), () => 'readonly'),
-            ...omit(this.layoutItem, ['key', 'type', 'name', 'content', 'options']),
+            ...omit(this.layoutItem, ['key', 'type', 'name', 'content', 'items', 'options']),
             ...defaultTo(this.layoutItem.options, {})
         };
+    }
+
+    @Memoize() get items(): Array<LayoutNode> {
+        return this.childNodes;
     }
 
     // $ref?: any;
     // arrayItem?;
     // arrayItemType?;
     // dataType?;
-    // items?: Array<any>;
     // recursiveReference?;
 
 }

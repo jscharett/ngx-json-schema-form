@@ -34,12 +34,16 @@ export class LayoutService {
         const mappedLayout: Array<LayoutNode> =
             layout.reduce((currentLayout: Array<LayoutNode>, layoutItem: LayoutItem | string, i: number): Array<LayoutNode> => {
             let newLayout: Array<LayoutNode> = currentLayout;
+            let childNodes: Array<LayoutNode>;
 
             if (<string>layoutItem === '*') {
                 starIndex = i;
             } else {
+                if ((<LayoutItem>layoutItem).items) {
+                    childNodes = this.buildLayout((<LayoutItem>layoutItem).items);
+                }
                 try {
-                    const layoutNode: LayoutNode = LayoutNode.create(layoutItem, this.schemaService);
+                    const layoutNode: LayoutNode = LayoutNode.create(layoutItem, this.schemaService, childNodes);
                     mappedPointers.add(layoutNode.dataPointer);
                     newLayout = newLayout.concat(layoutNode);
                 } catch (err) {

@@ -7,6 +7,9 @@ import { LayoutNode } from '../../core/models/layout-node';
 import { LayoutService } from './layout.service';
 import { SchemaService } from './schema.service';
 
+/**
+ * @todo Mock out Layout.create
+ */
 describe('LayoutService', () => {
     const getExpectedLayout = (props: Array<string>): Array<LayoutNode> => {
         return props.reduce((layout: Array<LayoutNode>, prop: string) => {
@@ -167,6 +170,40 @@ describe('LayoutService', () => {
             service.setLayout([{name: 'remove'}, {key: 'b', type: 'checkbox'}]);
             expect(<any>service.layout).toEqual([jasmine.objectContaining({
                 type: 'checkbox'
+            })]);
+        }));
+    });
+
+    describe('layout.items', () => {
+        it('should not have any items', inject([LayoutService], (service: LayoutService) => {
+            service.setLayout([{key: 'b', type: 'checkbox'}]);
+            expect(<any>service.layout).toEqual([jasmine.objectContaining({
+                items: undefined
+            })]);
+        }));
+
+        it('should have items', inject([LayoutService], (service: LayoutService) => {
+            service.setLayout([{
+                items: [{
+                    expandable: true,
+                    items: [{
+                        items: [{key: 'b', type: 'checkbox'}],
+                        title: 'Fields',
+                        type: 'container'
+                    }],
+                    title: 'Title',
+                    type: 'container'
+                }],
+                type: 'container'
+            }]);
+            expect(<any>service.layout).toEqual([jasmine.objectContaining({
+                items: [jasmine.objectContaining({
+                    items: [jasmine.objectContaining({
+                        items: [jasmine.objectContaining({
+                            items: undefined
+                        })]
+                    })]
+                })]
             })]);
         }));
     });
