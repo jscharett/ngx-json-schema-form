@@ -25,10 +25,10 @@ describe('container example', () => {
             expect(form.getContainerAttribute('div', 'id')).toBeDefined(),
             verifyElementAttributes(form.getContainer('div'), {
                 accesskey: 'd',
-                description: 'This is a div container',
-                htmlClass: 'div',
+                class: ['div'],
                 style: 'color: red;',
-                tabindex: 3
+                tabindex: 3,
+                title: 'This is a div container'
             })
         ]);
     });
@@ -40,14 +40,14 @@ describe('container example', () => {
         const form: Form = await page.selectExample('Containers');
         await Promise.all([
             expect(form.getContainerAttribute('fieldset', 'id')).toBeDefined(),
-            expect(form.getContainerAttribute('fieldset', 'name')).toBe('fields'),
             expect(form.getContainer('fieldset').element(by.tagName('legend')).getText()).toBe('Fields'),
             verifyElementAttributes(form.getContainer('fieldset'), {
                 accesskey: 'f',
-                description: 'This is a fieldset container',
-                htmlClass: 'fieldset',
+                class: ['fieldset'],
+                name: 'fields',
                 style: 'color: green;',
-                tabindex: 2
+                tabindex: 2,
+                title: 'This is a fieldset container'
             })
         ]);
     });
@@ -60,10 +60,10 @@ describe('container example', () => {
             expect(form.getContainer('details').element(by.tagName('summary')).getText()).toBe('Details'),
             verifyElementAttributes(form.getContainer('details'), {
                 accesskey: 's',
-                description: 'This is a details container',
-                htmlClass: 'details',
+                class: ['details'],
                 style: 'color: blue;',
-                tabindex: 1
+                tabindex: 1,
+                title: 'This is a details container'
             })
         ]);
     });
