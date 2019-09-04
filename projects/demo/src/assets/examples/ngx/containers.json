@@ -37,7 +37,7 @@
     }, {
         "type": "details",
         "title": "Details",
-        "expandable": true,
+        "open": true,
         "items": [],
         "accesskey": "s",
         "style": {

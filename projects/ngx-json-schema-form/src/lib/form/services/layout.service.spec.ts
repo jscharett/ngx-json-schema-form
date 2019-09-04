@@ -185,12 +185,12 @@ describe('LayoutService', () => {
         it('should have items', inject([LayoutService], (service: LayoutService) => {
             service.setLayout([{
                 items: [{
-                    expandable: true,
                     items: [{
                         items: [{key: 'b', type: 'checkbox'}],
                         title: 'Fields',
                         type: 'container'
                     }],
+                    open: true,
                     title: 'Title',
                     type: 'container'
                 }],

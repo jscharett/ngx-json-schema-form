@@ -32,8 +32,8 @@ export interface LayoutOptions {
         width?: number;
     };
 
-    /** Whether or not a container widget is expandable */
-    expandable?: boolean;
+    /** Whether or not a details container widget is open */
+    open?: boolean;
 
     [others: string]: any;
 }
