@@ -116,6 +116,30 @@ describe('LayoutService', () => {
             ]);
             expect(service.layout).toEqual(getExpectedLayout(['d', 'b', 'e', ['a', ['c']]]));
         }));
+
+        it('should account for layouts with multple "*", defering to last', inject([LayoutService], (service: LayoutService) => {
+            service.setLayout(['*', 'a', '*', 'e', '*', 'c', '*']);
+            expect(service.layout).toEqual(getExpectedLayout(['a', 'e', 'c', 'b', 'd']));
+
+            service.setLayout([
+                'd',
+                '*',
+                {
+                    items: [
+                        'a',
+                        {
+                            items: [ '*' ],
+                            type: 'div'
+                        },
+                        '*'
+                    ],
+                    type: 'div'
+                },
+                'e'
+            ]);
+            // console.log(JSON.stringify(service.layout, null, 4));
+            expect(service.layout).toEqual(getExpectedLayout(['d', ['a', [], 'b', 'c'], 'e']));
+        }));
     });
 
     describe('layout.dataPointer', () => {

@@ -51,7 +51,7 @@ export class LayoutNode {
     }
 
     /** Normalizes a key(object.path or json/path) to json path */
-    private static getPointer(key: string): string {
+    public static getPointer(key: string): string {
         const pointer = defaultTo(key, '');
 
         return pointer.charAt(0) === '/'
