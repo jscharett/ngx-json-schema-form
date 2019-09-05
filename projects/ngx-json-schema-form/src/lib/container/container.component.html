@@ -7,6 +7,7 @@
             [attr.title]="options.description"
             [ngStyle]="options.style"
         >
+            <h3 [hidden]="!options.title">{{ options.title }}</h3>
             <ng-container *ngTemplateOutlet="widgets"></ng-container>
         </div>
     </ng-container>
@@ -19,7 +20,7 @@
             [ngStyle]="options.style"
             [name]="layoutNode.name"
         >
-            <legend>{{ layoutNode.options.title }}</legend>
+            <legend>{{ options.title }}</legend>
             <ng-container *ngTemplateOutlet="widgets"></ng-container>
         </fieldset>
     </ng-container>
@@ -32,7 +33,7 @@
             [attr.open]="options.open ? 'open' : null"
             [ngStyle]="options.style"
         >
-            <summary>{{ layoutNode.options.title }}</summary>
+            <summary>{{ options.title }}</summary>
             <ng-container *ngTemplateOutlet="widgets"></ng-container>
         </details>
     </ng-container>
