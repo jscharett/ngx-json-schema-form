@@ -3,7 +3,7 @@ import { LayoutOptions } from './layout-options.data';
 /** Properties used to specify how to layout a piece of data in the form */
 export interface LayoutItem {
     /** Layout items to render for a container widget */
-    items?: Array<LayoutItem>;
+    items?: Array<LayoutItem | string>;
     /** HTML template for rendering custom buttons */
     content?: string;
     /** Object path to map this item to a data value */

@@ -7,18 +7,27 @@ import { LayoutNode } from '../../core/models/layout-node';
 import { LayoutService } from './layout.service';
 import { SchemaService } from './schema.service';
 
+type Prop = string | NestedProp;
+interface NestedProp extends Array<Prop> {}
+
 /**
  * @todo Mock out Layout.create
  */
 describe('LayoutService', () => {
-    const getExpectedLayout = (props: Array<string>): Array<LayoutNode> => {
-        return props.reduce((layout: Array<LayoutNode>, prop: string) => {
-            return layout.concat(<any>jasmine.objectContaining({
-                dataPointer: `/${prop}`,
+    const getExpectedLayout = (props: Array<Prop>): Array<LayoutNode> => {
+        return props.reduce((layout: Array<LayoutNode>, prop: Prop) => {
+            const layoutNode: any = {
                 id: <any>jasmine.any(String),
                 options: <any>jasmine.any(Object),
                 type: <any>jasmine.any(String)
-            }));
+            };
+            if (Array.isArray(prop)) {
+                layoutNode.items = getExpectedLayout(prop);
+            } else {
+                layoutNode.dataPointer = `/${prop}`;
+            }
+
+            return layout.concat(<any>jasmine.objectContaining(layoutNode));
         }, []);
     };
 
@@ -88,6 +97,24 @@ describe('LayoutService', () => {
         it('should allow pointers to surround *', inject([LayoutService], (service: LayoutService) => {
             service.setLayout(['d', '*', 'b']);
             expect(service.layout).toEqual(getExpectedLayout(['d', 'a', 'c', 'e', 'b']));
+        }));
+
+        it('should account for nested layouts', inject([LayoutService], (service: LayoutService) => {
+            service.setLayout([
+                'd',
+                '*',
+                {
+                    items: [
+                        'a',
+                        {
+                            items: [ 'c' ],
+                            type: 'div'
+                        }
+                    ],
+                    type: 'div'
+                }
+            ]);
+            expect(service.layout).toEqual(getExpectedLayout(['d', 'b', 'e', ['a', ['c']]]));
         }));
     });
 
