@@ -24,6 +24,7 @@ describe('buttons example', () => {
 
             await Promise.all([
                 expectationPromise,
+                expect(await form.getControlAttribute(buttonLayout.name, 'style')).toEqual('color: dimgray;'),
                 expect(await form.getControlAttribute(buttonLayout.name, 'type')).toEqual(buttonLayout.type),
                 expect(await form.getControlAttribute(buttonLayout.name, 'title')).toEqual(buttonLayout.description),
                 expect(await form.getControlAttribute(buttonLayout.name, 'accesskey')).toEqual(buttonLayout.accesskey),

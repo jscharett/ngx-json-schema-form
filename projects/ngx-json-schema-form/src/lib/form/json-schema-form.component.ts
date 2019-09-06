@@ -5,7 +5,7 @@ import {
 
 import { Subject } from 'rxjs';
 
-import { cloneDeep, isPlainObject } from 'lodash';
+import { isPlainObject } from 'lodash';
 
 import { JSONSchema4, JSONSchema6, JSONSchema7 } from 'json-schema';
 
@@ -141,7 +141,7 @@ export class JsonSchemaFormComponent implements OnChanges, OnDestroy, OnInit {
     }
 
     private initializeLayout(): void {
-        this.layoutService.setLayout(cloneDeep(this.layout || ['*']));
+        this.layoutService.setLayout(this.layout || ['*']);
     }
 
     private initializeSchema(): void {

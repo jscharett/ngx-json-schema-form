@@ -1,0 +1,50 @@
+{
+    "schema": {
+        "type": "object",
+        "properties": {
+            "items": {
+                "type": "array",
+                "items": {
+                    "type": "string",
+                    "title": "Item",
+                    "default": "New Item"
+                }
+            }
+        }
+    },
+    "layout": [{
+        "type": "div",
+        "items": [],
+        "accesskey": "d",
+        "style": {
+            "color": "red"
+        },
+        "htmlClass": "div",
+        "description": "This is a div container",
+        "tabindex": 3
+    }, {
+        "type": "fieldset",
+        "title": "Fields",
+        "items": [],
+        "accesskey": "f",
+        "style": {
+            "color": "green"
+        },
+        "htmlClass": "fieldset",
+        "description": "This is a fieldset container",
+        "tabindex": 2,
+        "name": "fields"
+    }, {
+        "type": "details",
+        "title": "Details",
+        "open": true,
+        "items": [],
+        "accesskey": "s",
+        "style": {
+            "color": "blue"
+        },
+        "htmlClass": "details",
+        "description": "This is a details container",
+        "tabindex": 1
+    }]
+}

@@ -7,15 +7,27 @@ import { LayoutNode } from '../../core/models/layout-node';
 import { LayoutService } from './layout.service';
 import { SchemaService } from './schema.service';
 
+type Prop = string | NestedProp;
+interface NestedProp extends Array<Prop> {}
+
+/**
+ * @todo Mock out Layout.create
+ */
 describe('LayoutService', () => {
-    const getExpectedLayout = (props: Array<string>): Array<LayoutNode> => {
-        return props.reduce((layout: Array<LayoutNode>, prop: string) => {
-            return layout.concat(<any>jasmine.objectContaining({
-                dataPointer: `/${prop}`,
+    const getExpectedLayout = (props: Array<Prop>): Array<LayoutNode> => {
+        return props.reduce((layout: Array<LayoutNode>, prop: Prop) => {
+            const layoutNode: any = {
                 id: <any>jasmine.any(String),
                 options: <any>jasmine.any(Object),
                 type: <any>jasmine.any(String)
-            }));
+            };
+            if (Array.isArray(prop)) {
+                layoutNode.items = getExpectedLayout(prop);
+            } else {
+                layoutNode.dataPointer = `/${prop}`;
+            }
+
+            return layout.concat(<any>jasmine.objectContaining(layoutNode));
         }, []);
     };
 
@@ -85,6 +97,48 @@ describe('LayoutService', () => {
         it('should allow pointers to surround *', inject([LayoutService], (service: LayoutService) => {
             service.setLayout(['d', '*', 'b']);
             expect(service.layout).toEqual(getExpectedLayout(['d', 'a', 'c', 'e', 'b']));
+        }));
+
+        it('should account for nested layouts', inject([LayoutService], (service: LayoutService) => {
+            service.setLayout([
+                'd',
+                '*',
+                {
+                    items: [
+                        'a',
+                        {
+                            items: [ 'c' ],
+                            type: 'div'
+                        }
+                    ],
+                    type: 'div'
+                }
+            ]);
+            expect(service.layout).toEqual(getExpectedLayout(['d', 'b', 'e', ['a', ['c']]]));
+        }));
+
+        it('should account for layouts with multple "*", defering to last', inject([LayoutService], (service: LayoutService) => {
+            service.setLayout(['*', 'a', '*', 'e', '*', 'c', '*']);
+            expect(service.layout).toEqual(getExpectedLayout(['a', 'e', 'c', 'b', 'd']));
+
+            service.setLayout([
+                'd',
+                '*',
+                {
+                    items: [
+                        'a',
+                        {
+                            items: [ '*' ],
+                            type: 'div'
+                        },
+                        '*'
+                    ],
+                    type: 'div'
+                },
+                'e'
+            ]);
+            // console.log(JSON.stringify(service.layout, null, 4));
+            expect(service.layout).toEqual(getExpectedLayout(['d', ['a', [], 'b', 'c'], 'e']));
         }));
     });
 
@@ -167,6 +221,40 @@ describe('LayoutService', () => {
             service.setLayout([{name: 'remove'}, {key: 'b', type: 'checkbox'}]);
             expect(<any>service.layout).toEqual([jasmine.objectContaining({
                 type: 'checkbox'
+            })]);
+        }));
+    });
+
+    describe('layout.items', () => {
+        it('should not have any items', inject([LayoutService], (service: LayoutService) => {
+            service.setLayout([{key: 'b', type: 'checkbox'}]);
+            expect(<any>service.layout).toEqual([jasmine.objectContaining({
+                items: undefined
+            })]);
+        }));
+
+        it('should have items', inject([LayoutService], (service: LayoutService) => {
+            service.setLayout([{
+                items: [{
+                    items: [{
+                        items: [{key: 'b', type: 'checkbox'}],
+                        title: 'Fields',
+                        type: 'container'
+                    }],
+                    open: true,
+                    title: 'Title',
+                    type: 'container'
+                }],
+                type: 'container'
+            }]);
+            expect(<any>service.layout).toEqual([jasmine.objectContaining({
+                items: [jasmine.objectContaining({
+                    items: [jasmine.objectContaining({
+                        items: [jasmine.objectContaining({
+                            items: undefined
+                        })]
+                    })]
+                })]
             })]);
         }));
     });

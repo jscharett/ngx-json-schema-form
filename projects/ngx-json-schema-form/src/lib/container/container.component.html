@@ -1,0 +1,46 @@
+<ng-container [ngSwitch]="layoutNode.type">
+    <ng-container *ngSwitchCase="'div'">
+        <div
+            [attr.accesskey]="options.accesskey"
+            [attr.class]="options.htmlClass"
+            [attr.tabindex]="options.tabindex"
+            [attr.title]="options.description"
+            [ngStyle]="options.style"
+        >
+            <h3 [hidden]="!options.title">{{ options.title }}</h3>
+            <ng-container *ngTemplateOutlet="widgets"></ng-container>
+        </div>
+    </ng-container>
+    <ng-container *ngSwitchCase="'fieldset'">
+        <fieldset
+            [attr.accesskey]="options.accesskey"
+            [attr.class]="options.htmlClass"
+            [attr.tabindex]="options.tabindex"
+            [attr.title]="options.description"
+            [ngStyle]="options.style"
+            [name]="layoutNode.name"
+        >
+            <legend>{{ options.title }}</legend>
+            <ng-container *ngTemplateOutlet="widgets"></ng-container>
+        </fieldset>
+    </ng-container>
+    <ng-container *ngSwitchCase="'details'">
+        <details
+            [attr.accesskey]="options.accesskey"
+            [attr.class]="options.htmlClass"
+            [attr.tabindex]="options.tabindex"
+            [attr.title]="options.description"
+            [attr.open]="options.open ? 'open' : null"
+            [ngStyle]="options.style"
+        >
+            <summary>{{ options.title }}</summary>
+            <ng-container *ngTemplateOutlet="widgets"></ng-container>
+        </details>
+    </ng-container>
+</ng-container>
+<ng-template #widgets>
+    <jsf-select-widget
+        *ngFor="let _layoutNode of layoutNode.items; trackBy: trackByFn;"
+        [layoutNode]="_layoutNode"
+    ></jsf-select-widget>
+</ng-template>
