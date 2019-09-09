@@ -65,8 +65,8 @@ export class SelectWidgetComponent extends AbstractWidget implements OnInit, OnC
     }
 
     private generateNgContent(): Array<Array<any>> {
-        if (this.layoutNode.content) {
-            return [ [ this.jsf.compileTemplate(this.layoutNode.content, this.layoutNode.options) ] ];
+        if (this.layoutNode.template) {
+            return [ [ this.jsf.compileTemplate(this.layoutNode.template, this.layoutNode.options) ] ];
         }
     }
 }

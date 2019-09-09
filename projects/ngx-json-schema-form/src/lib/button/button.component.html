@@ -1,4 +1,4 @@
-<input #control *ngIf="!layoutNode.content"
+<input #control *ngIf="!layoutNode.template"
     [attr.readonly]="options.readonly ? 'readonly' : null"
     [attr.accesskey]="options.accesskey"
     [attr.class]="options.htmlClass"
@@ -14,7 +14,7 @@
     [name]="layoutNode.name"
     [type]="layoutNode.type"
     [value]="options.title">
-<button #control *ngIf="layoutNode.content"
+<button #control *ngIf="layoutNode.template"
     [attr.readonly]="options.readonly ? 'readonly' : null"
     [attr.accesskey]="options.accesskey"
     [attr.class]="options.htmlClass"

@@ -92,14 +92,14 @@ describe('SelectWidgetComponent', () => {
     });
 
 
-    it('should set content', () => {
+    it('should set template', () => {
         const span = document.createElement('span');
         span.innerText = 'hi';
         documentFragment.appendChild(span);
         component.layoutNode = {
-            content: '<span>{{ options.title }}</span>',
             id: '0',
             options: {title: 'hi'},
+            template: '<span>{{ options.title }}</span>',
             type: 'button'
         } as any as LayoutNode;
         fixture.detectChanges();

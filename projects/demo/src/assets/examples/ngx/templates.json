@@ -1,0 +1,19 @@
+{
+    "schema": {
+        "type": "object",
+        "properties": {
+            "items": {
+                "type": "array",
+                "items": {
+                    "type": "string",
+                    "title": "Item",
+                    "default": "New Item"
+                }
+            }
+        }
+    },
+    "layout": [{
+        "type": "template",
+        "template": "<div>Hello world</div>"
+    }]
+}

@@ -14,7 +14,8 @@ export class AppPage {
     private readonly forms: Map<string, typeof Form> = new Map<string, typeof Form>([
         ['Hidden', Form],
         ['Buttons', ButtonsForm],
-        ['Containers', Form]
+        ['Containers', Form],
+        ['Templates', Form]
     ]);
 
     private static async insertConsoleTracing(): Promise<void> {

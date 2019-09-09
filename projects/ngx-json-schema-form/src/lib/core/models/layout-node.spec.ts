@@ -75,21 +75,21 @@ describe('LayoutNode', () => {
         });
     });
 
-    describe('content', () => {
+    describe('template', () => {
         it('should be undefined when not set', () => {
-            expect((new LayoutNode({type: 'section'})).content).toBeUndefined();
+            expect((new LayoutNode({type: 'section'})).template).toBeUndefined();
         });
 
         it('should be defined when set', () => {
-            expect((new LayoutNode({type: 'section', content: '<span>hi</span>'})).content).toBe('<span>hi</span>');
+            expect((new LayoutNode({type: 'section', template: '<span>hi</span>'})).template).toBe('<span>hi</span>');
         });
 
         it('should be undefined if not a string', () => {
-            expect((new LayoutNode(<any>{type: 'section', content: true})).content).toBeUndefined();
-            expect((new LayoutNode(<any>{type: 'section', content: 1})).content).toBeUndefined();
-            expect((new LayoutNode(<any>{type: 'section', content: ['hi']})).content).toBeUndefined();
-            expect((new LayoutNode(<any>{type: 'section', content: {}})).content).toBeUndefined();
-            expect((new LayoutNode(<any>{type: 'section', content: undefined})).content).toBeUndefined();
+            expect((new LayoutNode(<any>{type: 'section', template: true})).template).toBeUndefined();
+            expect((new LayoutNode(<any>{type: 'section', template: 1})).template).toBeUndefined();
+            expect((new LayoutNode(<any>{type: 'section', template: ['hi']})).template).toBeUndefined();
+            expect((new LayoutNode(<any>{type: 'section', template: {}})).template).toBeUndefined();
+            expect((new LayoutNode(<any>{type: 'section', template: undefined})).template).toBeUndefined();
         });
     });
 
@@ -115,8 +115,8 @@ describe('LayoutNode', () => {
         });
 
         it('should not move known props to options', () => {
-            // 'key, type', 'name', 'options', 'content', 'items'
-            expect((new LayoutNode({type: 'a', name: 'b', key: 'c', options: {}, content: '', items: []})).options).toEqual({});
+            // 'key, type', 'name', 'options', 'template', 'items'
+            expect((new LayoutNode({type: 'a', name: 'b', key: 'c', options: {}, template: '', items: []})).options).toEqual({});
         });
 
         it('should preserve existing options', () => {

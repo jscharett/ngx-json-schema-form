@@ -4,6 +4,7 @@ export class Form {
     private readonly formSelector = by.css('jsf-json-schema-form');
     private readonly widgetSelector = by.css('jsf-select-widget > *:first-child');
     private readonly controlSelector = by.css('input, button, textarea, select');
+    private readonly templateSelector = by.css('jsf-template');
 
     async getWidgetCount(): Promise<number> {
         return element(this.formSelector).all(this.widgetSelector).count();
@@ -39,6 +40,10 @@ export class Form {
 
     async getContainerAttribute(containerType: string, attribute: string): Promise<string> {
         return this.getContainer(containerType).getAttribute(attribute);
+    }
+
+    async getTemplateText(selector: any): Promise<string> {
+        return element(this.formSelector).element(this.templateSelector).element(selector).getText();
     }
 
     getContainer(containerType: string): ElementFinder {

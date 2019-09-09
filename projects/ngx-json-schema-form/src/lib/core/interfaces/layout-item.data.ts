@@ -4,8 +4,8 @@ import { LayoutOptions } from './layout-options.data';
 export interface LayoutItem {
     /** Layout items to render for a container widget */
     items?: Array<LayoutItem | string>;
-    /** HTML template for rendering custom buttons */
-    content?: string;
+    /** HTML template for rendering custom buttons and templates */
+    template?: string;
     /** Object path to map this item to a data value */
     key?: string;
     /** Name for the item.  Will be used as the input[name] */

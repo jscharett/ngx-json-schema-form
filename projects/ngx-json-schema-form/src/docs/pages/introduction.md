@@ -186,7 +186,7 @@ There are numerous attributes that can be set on a widget which are set via the 
 
 ### Button
 
-There are 4 types of buttons that jsf supports, `button`, `image`, `reset` and `submit`.  By default, these will all use the `<input>` tag for display.  However, with the exception of `image`, you can specify custom html via the `content` option.  This will result in the `<button>` being used for display and the content being inserted.  Content can contain simple bindings so that you can bind to various properties of the layout.  For example:
+There are 4 types of buttons that jsf supports, `button`, `image`, `reset` and `submit`.  By default, these will all use the `<input>` tag for display.  However, with the exception of `image`, you can specify custom html via the `template` option.  This will result in the `<button>` being used for display and the `template` being inserted.  Content can contain simple bindings so that you can bind to various properties of the layout.  For example:
 
 <div class="panel panel-primary docs">
 <div class="panel-heading panel-title">button-layout.json</div>
@@ -195,7 +195,7 @@ There are 4 types of buttons that jsf supports, `button`, `image`, `reset` and `
 [{
     "type": "submit",
     "title": "Submit",
-    "content": "<img src='{{ options.icon.src }}' width='{{ options.icon.width }}' height='{{ options.icon.height }}' alt='{{ options.icon.alt }}'/><span class='small'>{{ options.title }}</span>",
+    "template": "<img src='{{ options.icon.src }}' width='{{ options.icon.width }}' height='{{ options.icon.height }}' alt='{{ options.icon.alt }}'/><span class='small'>{{ options.title }}</span>",
     "icon": {
         "src": "/assets/submit.png",
         "width": 30,
@@ -221,10 +221,10 @@ will result in
 
 </div>
 
-Here you can see we are specifying that the button should contain an image via the `content` options.  The template binds to the properties of the `icon` option which results in an image tag being rendered.  The `icon` option is also used when redering a simple button of type `image`.
+Here you can see we are specifying that the button should contain an image via the `template` options.  The template binds to the properties of the `icon` option which results in an image tag being rendered.  The `icon` option is also used when redering a simple button of type `image`.
 
 <div class="alert alert-warning">
-Note: due to current limitation of Angular AOT compilation, use of the angular compile to transpile content strings into HTML DOM is not possible.  Recent Angular changes have restricted the inclusion of the compiler in favor of reducing the file size and load time when in AOT mode.  Therefore, Handlebars is currently being imported to handle the compilation of content string to HTML DOM.
+Note: due to current limitation of Angular AOT compilation, use of the angular compile to transpile `template` strings into HTML DOM is not possible.  Recent Angular changes have restricted the inclusion of the compiler in favor of reducing the file size and load time when in AOT mode.  Therefore, Handlebars is currently being imported to handle the compilation of `template` string to HTML DOM.
 </div>
 
 We can also respond to events such as a `click`.  To do this, we must first bind an event handler to the jsf component
