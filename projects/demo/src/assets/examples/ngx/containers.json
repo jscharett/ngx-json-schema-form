@@ -46,5 +46,49 @@
         "htmlClass": "details",
         "description": "This is a details container",
         "tabindex": 1
+    }, {
+        "type": "tabs",
+        "accesskey": "t",
+        "style": {
+            "background-color": "pink"
+        },
+        "htmlClass": "tabs",
+        "description": "This is a tabs container",
+        "tabindex": 4,
+        "selectedIndex": 1,
+        "items": [{
+            "items": [],
+            "type": "tab",
+            "title": "Tab 1",
+            "accesskey": "z",
+            "style": {
+                "color": "yellow"
+            },
+            "htmlClass": "tab",
+            "description": "This is a tab container",
+            "tabindex": 6
+        }, {
+            "items": [],
+            "type": "tab",
+            "title": "Tab 2",
+            "accesskey": "x",
+            "style": {
+                "color": "orange"
+            },
+            "htmlClass": "tab",
+            "description": "This is a tab container",
+            "tabindex": 7
+        }, {
+            "items": [],
+            "type": "tab",
+            "title": "Tab 3",
+            "accesskey": "c",
+            "style": {
+                "color": "brown"
+            },
+            "htmlClass": "tab",
+            "description": "This is a tab container",
+            "tabindex": 5
+        }]
     }]
 }

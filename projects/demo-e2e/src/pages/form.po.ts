@@ -3,7 +3,8 @@ import { by, element, ElementFinder } from 'protractor';
 export class Form {
     private readonly formSelector = by.css('jsf-json-schema-form');
     private readonly widgetSelector = by.css('jsf-select-widget > *:first-child');
-    private readonly controlSelector = by.css('input, button, textarea, select');
+    /** @todo target the formControl attribute if possible once implemented */
+    private readonly controlSelector = by.css('input, button[name], textarea, select');
     private readonly templateSelector = by.css('jsf-template');
 
     async getWidgetCount(): Promise<number> {
