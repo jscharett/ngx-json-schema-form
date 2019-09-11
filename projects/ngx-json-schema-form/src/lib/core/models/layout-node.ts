@@ -77,16 +77,16 @@ export class LayoutNode {
     @Memoize() get type(): string {
         return this.layoutItem.type || <string>defaultTo(this.schema, <any>{}).type;
     }
-    /** HTML content to be rendered inside the widget */
-    @Memoize() get content(): string {
-        return isString(this.layoutItem.content) ? this.layoutItem.content : undefined;
+    /** HTML template to be rendered inside the widget */
+    @Memoize() get template(): string {
+        return isString(this.layoutItem.template) ? this.layoutItem.template : undefined;
     }
     /** Options for the widget */
     @Memoize() get options(): LayoutOptions {
         return {
             ...pick(this.schema, ['title', 'description']),
             ...mapKeys(pick(this.schema, ['readOnly']), () => 'readonly'),
-            ...omit(this.layoutItem, ['key', 'type', 'name', 'content', 'items', 'options']),
+            ...omit(this.layoutItem, ['key', 'type', 'name', 'template', 'items', 'options']),
             ...defaultTo(this.layoutItem.options, {})
         };
     }
