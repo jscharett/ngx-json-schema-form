@@ -280,7 +280,7 @@
         "prefer-output-readonly": true,
         "relative-url-prefix": true,
         "template-conditional-complexity": true,
-        "template-cyclomatic-complexity": true,
+        "template-cyclomatic-complexity": [true, 7],
         "template-i18n": [false, "check-id", "check-text"],
         "template-no-call-expression": true,
         "template-use-track-by-function": true,

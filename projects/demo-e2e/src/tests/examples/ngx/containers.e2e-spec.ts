@@ -14,7 +14,7 @@ describe('container example', () => {
 
     it('should have 3 widgets and 0 controls', async () => {
         const form: Form = await page.selectExample('Containers');
-        const numWidgets = 3;
+        const numWidgets = 7; // 1 div, 1 fieldset, 1 details, 1 tabs, 3 tab
         await expect(form.getWidgetCount()).toEqual(numWidgets);
         await expect(form.getControlCount()).toEqual(0);
     });
@@ -64,6 +64,43 @@ describe('container example', () => {
                 style: 'color: blue;',
                 tabindex: 1,
                 title: 'This is a details container'
+            })
+        ]);
+    });
+
+    it('should have tabs', async () => {
+        const form: Form = await page.selectExample('Containers');
+        const numTabs = 3;
+        await Promise.all([
+            expect(form.getContainerAttribute('[role="tablist"]', 'id')).toBeDefined(),
+            expect(form.getContainer('[role="tablist"]').all(by.tagName('[role="tab"]')).count()).toBe(numTabs),
+            verifyElementAttributes(form.getContainer('[role="tablist"]'), {
+                accesskey: 't',
+                class: ['tabs'],
+                style: 'background-color: pink;',
+                tabindex: 4,
+                title: 'This is a tabs container'
+            }),
+            verifyElementAttributes(form.getContainer('[role="tablist"]').element(by.css('[role="tab"]:nth-child(1)')), {
+                accesskey: 'z',
+                class: ['tab'],
+                style: 'color: yellow;',
+                tabindex: 6,
+                title: 'This is a tab container'
+            }),
+            verifyElementAttributes(form.getContainer('[role="tablist"]').element(by.css('[role="tab"]:nth-child(2)')), {
+                accesskey: 'x',
+                class: ['tab'],
+                style: 'color: orange;',
+                tabindex: 7,
+                title: 'This is a tab container'
+            }),
+            verifyElementAttributes(form.getContainer('[role="tablist"]').element(by.css('[role="tab"]:nth-child(3)')), {
+                accesskey: 'c',
+                class: ['tab'],
+                style: 'color: brown;',
+                tabindex: 5,
+                title: 'This is a tab container'
             })
         ]);
     });
