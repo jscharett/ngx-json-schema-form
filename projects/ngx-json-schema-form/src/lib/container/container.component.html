@@ -37,10 +37,39 @@
             <ng-container *ngTemplateOutlet="widgets"></ng-container>
         </details>
     </ng-container>
+    <ng-container *ngSwitchCase="'tabs'">
+        <nav
+            role="tablist"
+            [attr.accesskey]="options.accesskey"
+            [attr.class]="options.htmlClass"
+            [attr.tabindex]="options.tabindex"
+            [attr.title]="options.description"
+            [ngStyle]="options.style"
+        >
+            <button
+                *ngFor="let _layoutNode of layoutNode.items; trackBy: trackByFn;"
+                role="tab"
+                type="button"
+                [attr.accesskey]="_layoutNode.options.accesskey"
+                [attr.class]="_layoutNode.options.htmlClass"
+                [attr.tabindex]="_layoutNode.options.tabindex"
+                [attr.title]="_layoutNode.options.description"
+                [class.active]="selectedLayout === _layoutNode"
+                [ngStyle]="_layoutNode.options.style"
+                (click)="onTabClick(_layoutNode)"
+                >{{ _layoutNode.options.title }}
+            </button>
+        </nav>
+        <ng-container *ngTemplateOutlet="widgets"></ng-container>
+    </ng-container>
+    <ng-container *ngSwitchCase="'tab'">
+        <ng-container *ngTemplateOutlet="widgets"></ng-container>
+    </ng-container>
 </ng-container>
 <ng-template #widgets>
     <jsf-select-widget
         *ngFor="let _layoutNode of layoutNode.items; trackBy: trackByFn;"
         [layoutNode]="_layoutNode"
+        [hidden]="selectedLayout && selectedLayout !== _layoutNode"
     ></jsf-select-widget>
 </ng-template>
