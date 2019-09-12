@@ -6,6 +6,7 @@
             [attr.tabindex]="options.tabindex"
             [attr.title]="options.description"
             [ngStyle]="options.style"
+            [id]="layoutNode.id"
         >
             <h3 [hidden]="!options.title">{{ options.title }}</h3>
             <ng-container *ngTemplateOutlet="widgets"></ng-container>
@@ -18,7 +19,8 @@
             [attr.tabindex]="options.tabindex"
             [attr.title]="options.description"
             [ngStyle]="options.style"
-            [name]="layoutNode.name"
+            [id]="layoutNode.id"
+            [name]="controlName"
         >
             <legend>{{ options.title }}</legend>
             <ng-container *ngTemplateOutlet="widgets"></ng-container>
@@ -32,6 +34,7 @@
             [attr.title]="options.description"
             [attr.open]="options.open ? 'open' : null"
             [ngStyle]="options.style"
+            [id]="layoutNode.id"
         >
             <summary>{{ options.title }}</summary>
             <ng-container *ngTemplateOutlet="widgets"></ng-container>
@@ -45,6 +48,7 @@
             [attr.tabindex]="options.tabindex"
             [attr.title]="options.description"
             [ngStyle]="options.style"
+            [id]="layoutNode.id"
         >
             <button
                 *ngFor="let _layoutNode of layoutNode.items; trackBy: trackByFn;"

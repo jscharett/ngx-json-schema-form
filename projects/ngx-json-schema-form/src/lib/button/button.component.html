@@ -2,7 +2,7 @@
     [attr.readonly]="options.readonly ? 'readonly' : null"
     [attr.accesskey]="options.accesskey"
     [attr.class]="options.htmlClass"
-    [attr.dirname]="options.dirname ? layoutNode.name + '.dir' : null"
+    [attr.dirname]="options.dirname ? controlName + '.dir' : null"
     [attr.tabindex]="options.tabindex"
     [attr.title]="options.description"
     [attr.alt]="options.icon?.alt"
@@ -11,19 +11,19 @@
     [attr.width]="options.icon?.width"
     [ngStyle]="options.style"
     [id]="layoutNode.id"
-    [name]="layoutNode.name"
+    [name]="controlName"
     [type]="layoutNode.type"
     [value]="options.title">
 <button #control *ngIf="layoutNode.template"
     [attr.readonly]="options.readonly ? 'readonly' : null"
     [attr.accesskey]="options.accesskey"
     [attr.class]="options.htmlClass"
-    [attr.dirname]="options.dirname ? layoutNode.name + '.dir' : null"
+    [attr.dirname]="options.dirname ? controlName + '.dir' : null"
     [attr.tabindex]="options.tabindex"
     [attr.title]="options.description"
     [ngStyle]="options.style"
     [id]="layoutNode.id"
-    [name]="layoutNode.name"
+    [name]="controlName"
     [type]="layoutNode.type">
     <ng-content></ng-content>
 </button>
