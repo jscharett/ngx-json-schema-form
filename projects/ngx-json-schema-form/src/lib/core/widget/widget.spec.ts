@@ -1,4 +1,4 @@
-import { Component, NO_ERRORS_SCHEMA, SimpleChange } from '@angular/core';
+import { Component, NO_ERRORS_SCHEMA } from '@angular/core';
 import { ComponentFixture, inject, TestBed } from '@angular/core/testing';
 
 import { JsonSchemaFormService } from '../../form/services/json-schema-form.service';
@@ -93,9 +93,7 @@ describe('widgets', () => {
             options: {},
             type: ''
         } as any as LayoutNode;
-        const change = new SimpleChange(component.layoutNode, newLayoutNode, true);
         component.layoutNode = newLayoutNode;
-        component[`ngOnChanges`]({layoutNode: change});
         expect(edsService.set).toHaveBeenCalledWith(jasmine.any(HTMLElement), 'layout', newLayoutNode.layoutDefinition);
     });
 
@@ -104,14 +102,8 @@ describe('widgets', () => {
         (<jasmine.Spy>edsService.set).calls.reset();
         const newLayoutIndex = [1];
         const newDataIndex = [1];
-        const change1 = new SimpleChange(component.layoutIndex, newLayoutIndex, true);
-        const change2 = new SimpleChange(component.dataIndex, newDataIndex, true);
         component.layoutIndex = newLayoutIndex;
         component.dataIndex = newDataIndex;
-        component[`ngOnChanges`]({
-            dataIndex: change2,
-            layoutIndex: change1
-        });
         expect(edsService.set).not.toHaveBeenCalled();
     });
 

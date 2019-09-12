@@ -105,7 +105,7 @@ export class JsonSchemaFormComponent implements OnChanges, OnDestroy, OnInit {
     }
 
     ngOnChanges(changes: SimpleChanges) {
-        if (changes.hasOwnProperty('schema')) {
+        if (changes.hasOwnProperty('schema') || changes.hasOwnProperty('layout')) {
             this.formInitialized = false;
         }
         this.updateForm();

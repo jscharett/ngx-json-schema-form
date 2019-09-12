@@ -1,4 +1,4 @@
-import { AfterViewInit, ElementRef, Input, OnChanges, OnInit, SimpleChanges, ViewChild } from '@angular/core';
+import { AfterViewInit, ElementRef, Input, OnInit, ViewChild } from '@angular/core';
 import { AbstractControl } from '@angular/forms';
 
 import { JsonSchemaFormService } from '../../form/services/json-schema-form.service';
@@ -7,7 +7,7 @@ import { LayoutNode } from '../models/layout-node';
 import { ElementDataStorageService } from '../services/element-data-storage.service';
 
 /** AbstractWidget */
-export abstract class AbstractWidget implements OnChanges, OnInit, AfterViewInit {
+export abstract class AbstractWidget implements OnInit, AfterViewInit {
     /** Flag to disable the control */
     controlDisabled = false;
     /** Name for the control */
@@ -20,7 +20,15 @@ export abstract class AbstractWidget implements OnChanges, OnInit, AfterViewInit
     options: any;
 
     /** Layout Node describing the control */
-    @Input() layoutNode: LayoutNode;
+    private _layoutNode: LayoutNode;
+    @Input() set layoutNode(value: LayoutNode) {
+        this._layoutNode = value;
+        this.options = this._layoutNode.options;
+        this.updateData();
+    }
+    get layoutNode(): LayoutNode {
+        return this._layoutNode;
+    }
     /** Index of the layout in the Layout array */
     @Input() layoutIndex: Array<number>;
     /** Index of the data in data array */
@@ -32,18 +40,11 @@ export abstract class AbstractWidget implements OnChanges, OnInit, AfterViewInit
     /** constructor */
     constructor(protected jsf: JsonSchemaFormService, protected elementDataStorage: ElementDataStorageService) {}
 
-    /** Propagate layoutNode changes to the ElementDataStorage */
-    ngOnChanges(changes: SimpleChanges) {
-        if (changes.layoutNode) {
-            this.updateData();
-        }
-    }
     /**
      * Initialize the control and populate the options
      */
     ngOnInit() {
         this.jsf.initializeControl(this);
-        this.options = this.layoutNode.options;
     }
 
     /** Set the initial layout in the ElementDataStorage */

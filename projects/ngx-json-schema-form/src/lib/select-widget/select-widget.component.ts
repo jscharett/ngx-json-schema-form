@@ -18,7 +18,7 @@ import { JsonSchemaFormService } from '../form/services/json-schema-form.service
     styleUrls: ['./select-widget.component.css'],
     templateUrl: './select-widget.component.html'
 })
-export class SelectWidgetComponent extends AbstractWidget implements OnInit, OnChanges {
+export class SelectWidgetComponent extends AbstractWidget implements OnChanges, OnInit {
     private newComponent: ComponentRef<any>;
 
     /** Placeholder for injecting widget */
@@ -31,11 +31,11 @@ export class SelectWidgetComponent extends AbstractWidget implements OnInit, OnC
             super(jsf, elementDataStorage);
     }
 
-    ngOnInit() {
+    ngOnChanges() {
         this.updateComponent();
     }
 
-    ngOnChanges() {
+    ngOnInit() {
         this.updateComponent();
     }
 
