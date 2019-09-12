@@ -25,6 +25,7 @@
         ],
         "no-any": false,
         "no-empty-interface": true,
+        "no-for-in": true,
         "no-import-side-effect": [true, {"ignore-module": "(\\.html|\\.css)$|^(zone.js|core.js|brace)"}],
         "no-inferrable-types": true,
         "no-internal-module": true,
@@ -93,6 +94,7 @@
         "no-null-keyword": true,
         "no-null-undefined-union": true,
         "no-object-literal-type-assertion": true,
+        "no-promise-as-boolean": true,
         "no-restricted-globals": true,
         "no-return-await": true,
         "no-shadowed-variable": true,
@@ -119,6 +121,7 @@
         "static-this": true,
         "strict-boolean-expressions": false,
         "strict-comparisons": false,
+        "strict-string-expressions": true,
         "strict-type-predicates": false,
         "switch-default": false,
         "triple-equals": [
@@ -138,6 +141,7 @@
             "spaces",
             4
         ],
+        "invalid-void": true,
         "linebreak-style": [false, "LF"],
         "max-classes-per-file": [true, 1],
         "max-file-line-count": [true, 400],
