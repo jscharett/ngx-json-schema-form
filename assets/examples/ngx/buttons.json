@@ -19,7 +19,10 @@
         "description": "This is an input[type='button']",
         "tabindex": 1,
         "accesskey": "b",
-        "htmlClass": "btn"
+        "htmlClass": "btn",
+        "style": {
+            "color": "dimgray"
+        }
     }, {
         "type": "reset",
         "name": "Reset",
@@ -27,7 +30,10 @@
         "description": "This is an input[type='reset']",
         "tabindex": 0,
         "accesskey": "r",
-        "htmlClass": "btn"
+        "htmlClass": "btn",
+        "style": {
+            "color": "dimgray"
+        }
     }, {
         "type": "submit",
         "name": "Submit",
@@ -35,7 +41,10 @@
         "description": "This is an input[type='submit']",
         "tabindex": 3,
         "accesskey": "s",
-        "htmlClass": "btn"
+        "htmlClass": "btn",
+        "style": {
+            "color": "dimgray"
+        }
     }, {
         "type": "image",
         "name": "Image",
@@ -49,31 +58,43 @@
             "width": 100,
             "height": 30
         },
-        "htmlClass": "btn"
+        "htmlClass": "btn",
+        "style": {
+            "color": "dimgray"
+        }
     }, {
         "type": "submit",
         "name": "Submit2",
         "title": "Submit",
-        "content": "<span class='icon'>{{ options.title }}</span>",
+        "template": "<span class='icon'>{{ options.title }}</span>",
         "description": "This is an button[type='submit']",
         "accesskey": "x",
-        "htmlClass": "btn"
+        "htmlClass": "btn",
+        "style": {
+            "color": "dimgray"
+        }
     }, {
         "type": "reset",
         "name": "Reset2",
         "title": "Reset",
-        "content": "<span class='icon'>{{ options.title }}</span>",
+        "template": "<span class='icon'>{{ options.title }}</span>",
         "description": "This is an button[type='reset']",
         "accesskey": "y",
-        "htmlClass": "btn"
+        "htmlClass": "btn",
+        "style": {
+            "color": "dimgray"
+        }
     }, {
         "type": "button",
         "name": "Button2",
         "title": "Button",
-        "content": "<span class='icon'>{{ options.title }}</span>",
+        "template": "<span class='icon'>{{ options.title }}</span>",
         "description": "This is an button[type='button']",
         "accesskey": "z",
-        "htmlClass": "btn"
+        "htmlClass": "btn",
+        "style": {
+            "color": "dimgray"
+        }
     }, {
         "type": "button",
         "name": "Button3",
@@ -81,6 +102,9 @@
         "description": "This is an button[type='button'] with click handling",
         "accesskey": "w",
         "htmlClass": "btn",
+        "style": {
+            "color": "dimgray"
+        },
         "onClick": "alert(`clicked button with layout: \n\r${JSON.stringify(layout, null, 4)}`);"
     }]
 }

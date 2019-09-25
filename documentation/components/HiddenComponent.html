@@ -44,6 +44,9 @@
             <a href="#info" role="tab" id="info-tab" data-toggle="tab" data-link="info">Info</a>
         </li>
         <li >
+            <a href="#readme" role="tab" id="readme-tab" data-toggle="tab" data-link="readme">README</a>
+        </li>
+        <li >
             <a href="#source" role="tab" id="source-tab" data-toggle="tab" data-link="source">Source</a>
         </li>
         <li >
@@ -277,7 +280,7 @@
             </tr>
             <tr>
                 <td class="col-md-4">
-                        <div class="io-line">Defined in         <code><a href="../classes/AbstractWidget.html#source" target="_self" >AbstractWidget:65</a></code>
+                        <div class="io-line">Defined in         <code><a href="../classes/AbstractWidget.html#source" target="_self" >AbstractWidget:66</a></code>
 </div>
                 </td>
             </tr>
@@ -543,6 +546,21 @@
 
 </div>
 
+    <div class="tab-pane fade " id="c-readme">
+        <p><div class="row">
+<div class="col-md-10">
+
+<h2 id="hidden">Hidden</h2>
+<p>Hidden widgets are what you would expect, they render an <code>&lt;input type=&quot;hidden&quot;&gt;</code>.  This is the default for any layout item that can&#39;t be properly matched.  For the most part, hidden widgets won&#39;t be needed as you simply don&#39;t need to render them, their data never changes.  However, in the event that you need to do an actual form submittal, hidden inputs may be necessary and are therfore included.</p>
+</div>
+<div class="col-md-2">
+<div class="links">
+
+</div>
+</div>
+</div>
+</p>
+    </div>
 
     <div class="tab-pane fade  tab-source-code" id="c-source">
         <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Component } from &#x27;@angular/core&#x27;;
@@ -613,7 +631,7 @@ export class HiddenComponent extends AbstractWidget {
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
         var COMPONENT_TEMPLATE = '<div><input    [id]="layoutNode.id"    [name]="controlName"    type="hidden"></div>'
-    var COMPONENTS = [{'name': 'ButtonComponent', 'selector': 'jsf-button'},{'name': 'HiddenComponent', 'selector': 'jsf-hidden'},{'name': 'JsonSchemaFormComponent', 'selector': 'jsf-json-schema-form'},{'name': 'SelectWidgetComponent', 'selector': 'jsf-select-widget'}];
+    var COMPONENTS = [{'name': 'ButtonComponent', 'selector': 'jsf-button'},{'name': 'ContainerComponent', 'selector': 'jsf-container'},{'name': 'HiddenComponent', 'selector': 'jsf-hidden'},{'name': 'JsonSchemaFormComponent', 'selector': 'jsf-json-schema-form'},{'name': 'SelectWidgetComponent', 'selector': 'jsf-select-widget'},{'name': 'TemplateComponent', 'selector': 'jsf-template'}];
     var DIRECTIVES = [];
     var ACTUAL_COMPONENT = {'name': 'HiddenComponent'};
 </script>

@@ -17,8 +17,16 @@
                 "file": "buttons"
             },
             {
+                "name": "Containers",
+                "file": "containers"
+            },
+            {
                 "name": "Hidden",
                 "file": "hidden"
+            },
+            {
+                "name": "Templates",
+                "file": "templates"
             }
         ]
     }

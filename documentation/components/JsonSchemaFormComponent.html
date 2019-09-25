@@ -593,7 +593,7 @@ See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/form#Attr
 
 import { Subject } from &#x27;rxjs&#x27;;
 
-import { cloneDeep, isPlainObject } from &#x27;lodash&#x27;;
+import { isPlainObject } from &#x27;lodash&#x27;;
 
 import { JSONSchema4, JSONSchema6, JSONSchema7 } from &#x27;json-schema&#x27;;
 
@@ -693,7 +693,7 @@ export class JsonSchemaFormComponent implements OnChanges, OnDestroy, OnInit {
     }
 
     ngOnChanges(changes: SimpleChanges) {
-        if (changes.hasOwnProperty(&#x27;schema&#x27;)) {
+        if (changes.hasOwnProperty(&#x27;schema&#x27;) || changes.hasOwnProperty(&#x27;layout&#x27;)) {
             this.formInitialized &#x3D; false;
         }
         this.updateForm();
@@ -729,7 +729,7 @@ export class JsonSchemaFormComponent implements OnChanges, OnDestroy, OnInit {
     }
 
     private initializeLayout(): void {
-        this.layoutService.setLayout(cloneDeep(this.layout || [&#x27;*&#x27;]));
+        this.layoutService.setLayout(this.layout || [&#x27;*&#x27;]);
     }
 
     private initializeSchema(): void {
@@ -783,7 +783,7 @@ export class JsonSchemaFormComponent implements OnChanges, OnDestroy, OnInit {
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
         var COMPONENT_TEMPLATE = '<div><form    [attr.action]="action"    [attr.autocomplete]="autocomplete"    [attr.enctype]="enctype"    [attr.method]="method"    [attr.target]="target"    (ngSubmit)="submitForm()">    <jsf-select-widget        *ngFor="let layoutNode of layoutService.layout; trackBy: trackByFn;"        [layoutNode]="layoutNode"></jsf-select-widget></form></div>'
-    var COMPONENTS = [{'name': 'ButtonComponent', 'selector': 'jsf-button'},{'name': 'HiddenComponent', 'selector': 'jsf-hidden'},{'name': 'JsonSchemaFormComponent', 'selector': 'jsf-json-schema-form'},{'name': 'SelectWidgetComponent', 'selector': 'jsf-select-widget'}];
+    var COMPONENTS = [{'name': 'ButtonComponent', 'selector': 'jsf-button'},{'name': 'ContainerComponent', 'selector': 'jsf-container'},{'name': 'HiddenComponent', 'selector': 'jsf-hidden'},{'name': 'JsonSchemaFormComponent', 'selector': 'jsf-json-schema-form'},{'name': 'SelectWidgetComponent', 'selector': 'jsf-select-widget'},{'name': 'TemplateComponent', 'selector': 'jsf-template'}];
     var DIRECTIVES = [];
     var ACTUAL_COMPONENT = {'name': 'JsonSchemaFormComponent'};
 </script>

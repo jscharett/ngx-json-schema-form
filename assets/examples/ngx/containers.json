@@ -1,0 +1,94 @@
+{
+    "schema": {
+        "type": "object",
+        "properties": {
+            "items": {
+                "type": "array",
+                "items": {
+                    "type": "string",
+                    "title": "Item",
+                    "default": "New Item"
+                }
+            }
+        }
+    },
+    "layout": [{
+        "type": "div",
+        "items": [],
+        "accesskey": "d",
+        "style": {
+            "color": "red"
+        },
+        "htmlClass": "div",
+        "description": "This is a div container",
+        "tabindex": 3
+    }, {
+        "type": "fieldset",
+        "title": "Fields",
+        "items": [],
+        "accesskey": "f",
+        "style": {
+            "color": "green"
+        },
+        "htmlClass": "fieldset",
+        "description": "This is a fieldset container",
+        "tabindex": 2,
+        "name": "fields"
+    }, {
+        "type": "details",
+        "title": "Details",
+        "open": true,
+        "items": [],
+        "accesskey": "s",
+        "style": {
+            "color": "blue"
+        },
+        "htmlClass": "details",
+        "description": "This is a details container",
+        "tabindex": 1
+    }, {
+        "type": "tabs",
+        "accesskey": "t",
+        "style": {
+            "background-color": "pink"
+        },
+        "htmlClass": "tabs",
+        "description": "This is a tabs container",
+        "tabindex": 4,
+        "selectedIndex": 1,
+        "items": [{
+            "items": [],
+            "type": "tab",
+            "title": "Tab 1",
+            "accesskey": "z",
+            "style": {
+                "color": "yellow"
+            },
+            "htmlClass": "tab",
+            "description": "This is a tab container",
+            "tabindex": 6
+        }, {
+            "items": [],
+            "type": "tab",
+            "title": "Tab 2",
+            "accesskey": "x",
+            "style": {
+                "color": "orange"
+            },
+            "htmlClass": "tab",
+            "description": "This is a tab container",
+            "tabindex": 7
+        }, {
+            "items": [],
+            "type": "tab",
+            "title": "Tab 3",
+            "accesskey": "c",
+            "style": {
+                "color": "brown"
+            },
+            "htmlClass": "tab",
+            "description": "This is a tab container",
+            "tabindex": 5
+        }]
+    }]
+}

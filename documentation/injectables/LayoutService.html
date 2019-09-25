@@ -124,7 +124,7 @@
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="21" class="link-to-prism">projects/ngx-json-schema-form/src/lib/form/services/layout.service.ts:21</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="22" class="link-to-prism">projects/ngx-json-schema-form/src/lib/form/services/layout.service.ts:22</a></div>
                             </td>
                         </tr>
 
@@ -191,8 +191,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="25"
-                            class="link-to-prism">projects/ngx-json-schema-form/src/lib/form/services/layout.service.ts:25</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="26"
+                            class="link-to-prism">projects/ngx-json-schema-form/src/lib/form/services/layout.service.ts:26</a></div>
                 </td>
             </tr>
 
@@ -261,7 +261,7 @@
                 </tr>
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="19" class="link-to-prism">projects/ngx-json-schema-form/src/lib/form/services/layout.service.ts:19</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="20" class="link-to-prism">projects/ngx-json-schema-form/src/lib/form/services/layout.service.ts:20</a></div>
                                 </td>
                             </tr>
                     <tr>
@@ -314,7 +314,7 @@
     <div class="tab-pane fade  tab-source-code" id="c-source">
         <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Injectable } from &#x27;@angular/core&#x27;;
 
-import { difference } from &#x27;lodash&#x27;;
+import { cloneDeep, difference, isString } from &#x27;lodash&#x27;;
 
 import { JSONSchema7Definition } from &#x27;json-schema&#x27;;
 
@@ -326,6 +326,7 @@ import { SchemaService } from &#x27;./schema.service&#x27;;
 /** Provides services for handling layouts */
 @Injectable()
 export class LayoutService {
+    private readonly mappedPointers: Set&lt;string&gt; &#x3D; new Set&lt;string&gt;();
     private _layout: Array&lt;LayoutNode&gt; &#x3D; [];
     /**
      * @param value - List of Layout Nodes to be displayed in the UI
@@ -337,24 +338,50 @@ export class LayoutService {
     constructor(private readonly schemaService: SchemaService) {}
 
     public setLayout(value: Array&lt;LayoutItem | string&gt;): void {
-        this._layout &#x3D; this.buildLayout(value);
+        this.mappedPointers.clear();
+        this._layout &#x3D; this.buildLayout(this.deDupe(cloneDeep(value)));
+    }
+
+    /**
+     * Remove duplicate references from the layout and get a listing of
+     * referened dataPointers.  Datapointers will be used to replace the
+     * instance of &#x27;*&#x27; if it exists.
+     */
+    private deDupe(layout: Array&lt;LayoutItem | string&gt;): Array&lt;LayoutItem | string&gt; {
+        return layout.reduceRight((currentLayout: Array&lt;LayoutItem | string&gt;, layoutItem: LayoutItem | string) &#x3D;&gt; {
+            let key: string &#x3D; isString(layoutItem) ? layoutItem : layoutItem.key;
+            if (key) {
+                key &#x3D; LayoutNode.getPointer(key);
+                if (!this.mappedPointers.has(key)) {
+                    this.mappedPointers.add(key);
+                    currentLayout.unshift(layoutItem);
+                }
+            } else if ((&lt;LayoutItem&gt;layoutItem).items) {
+                (&lt;LayoutItem&gt;layoutItem).items &#x3D; this.deDupe((&lt;LayoutItem&gt;layoutItem).items);
+                currentLayout.unshift(layoutItem);
+            } else {
+                currentLayout.unshift(layoutItem);
+            }
+
+            return currentLayout;
+        }, []);
     }
 
     private buildLayout(layout: Array&lt;LayoutItem | string&gt;): Array&lt;LayoutNode&gt; {
-        const schemaPointers: Map&lt;string, JSONSchema7Definition&gt; &#x3D; this.schemaService.dataPointerMap;
-        const mappedPointers: Set&lt;string&gt; &#x3D; new Set&lt;string&gt;();
-        let starIndex &#x3D; -1;
-
-        const mappedLayout: Array&lt;LayoutNode&gt; &#x3D;
-            layout.reduce((currentLayout: Array&lt;LayoutNode&gt;, layoutItem: LayoutItem | string, i: number): Array&lt;LayoutNode&gt; &#x3D;&gt; {
+        return layout.reduce((currentLayout: Array&lt;LayoutNode&gt;, layoutItem: LayoutItem | string, i: number): Array&lt;LayoutNode&gt; &#x3D;&gt; {
             let newLayout: Array&lt;LayoutNode&gt; &#x3D; currentLayout;
+            let childNodes: Array&lt;LayoutNode&gt;;
 
             if (&lt;string&gt;layoutItem &#x3D;&#x3D;&#x3D; &#x27;*&#x27;) {
-                starIndex &#x3D; i;
+                const schemaPointers: Map&lt;string, JSONSchema7Definition&gt; &#x3D; this.schemaService.dataPointerMap;
+                const availablePointers: Array&lt;string&gt; &#x3D; Array.from(schemaPointers.keys());
+                newLayout &#x3D; newLayout.concat(...this.buildLayout(difference(availablePointers, Array.from(this.mappedPointers))));
             } else {
+                if ((&lt;LayoutItem&gt;layoutItem).items) {
+                    childNodes &#x3D; this.buildLayout((&lt;LayoutItem&gt;layoutItem).items);
+                }
                 try {
-                    const layoutNode: LayoutNode &#x3D; LayoutNode.create(layoutItem, this.schemaService);
-                    mappedPointers.add(layoutNode.dataPointer);
+                    const layoutNode: LayoutNode &#x3D; LayoutNode.create(layoutItem, this.schemaService, childNodes);
                     newLayout &#x3D; newLayout.concat(layoutNode);
                 } catch (err) {
                     console.error(&#x27;buildLayout error: Form layout element not recognized:&#x27;);
@@ -364,13 +391,6 @@ export class LayoutService {
 
             return newLayout;
         }, []);
-
-        if (starIndex !&#x3D;&#x3D; -1) {
-            const availablePointers: Array&lt;string&gt; &#x3D; Array.from(schemaPointers.keys());
-            mappedLayout.splice(starIndex, 0, ...this.buildLayout(difference(availablePointers, Array.from(mappedPointers))));
-        }
-
-        return mappedLayout;
     }
 }
 </code></pre>

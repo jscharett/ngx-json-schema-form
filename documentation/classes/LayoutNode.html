@@ -111,6 +111,10 @@ user to pass in variable data, so a degree.</p>
                                     <span class="modifier">Static</span>
                                 <a href="#create">create</a>
                             </li>
+                            <li>
+                                    <span class="modifier">Static</span>
+                                <a href="#getPointer">getPointer</a>
+                            </li>
                         </ul>
                     </td>
                 </tr>
@@ -140,10 +144,13 @@ user to pass in variable data, so a degree.</p>
                                     <a href="#type">type</a>
                                 </li>
                                 <li>
-                                    <a href="#content">content</a>
+                                    <a href="#template">template</a>
                                 </li>
                                 <li>
                                     <a href="#options">options</a>
+                                </li>
+                                <li>
+                                    <a href="#items">items</a>
                                 </li>
                             </ul>
                         </td>
@@ -158,12 +165,12 @@ user to pass in variable data, so a degree.</p>
             <tbody>
                 <tr>
                     <td class="col-md-4">
-<code>constructor(layoutItem: <a href="../interfaces/LayoutItem.html">LayoutItem</a>, schema?: JSONSchema7)</code>
+<code>constructor(layoutItem: <a href="../interfaces/LayoutItem.html">LayoutItem</a>, schema?: JSONSchema7, childNodes?: <a href="../classes/LayoutNode.html">Array<LayoutNode></a>)</code>
                     </td>
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="22" class="link-to-prism">projects/ngx-json-schema-form/src/lib/core/models/layout-node.ts:22</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="24" class="link-to-prism">projects/ngx-json-schema-form/src/lib/core/models/layout-node.ts:24</a></div>
                             </td>
                         </tr>
 
@@ -197,6 +204,18 @@ user to pass in variable data, so a degree.</p>
                                                   
                                                         <td>
                                                                     <code>JSONSchema7</code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            Yes
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>childNodes</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../classes/LayoutNode.html" target="_self" >Array&lt;LayoutNode&gt;</a></code>
                                                         </td>
                                                   
                                                     <td>
@@ -245,7 +264,7 @@ user to pass in variable data, so a degree.</p>
                     </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="22" class="link-to-prism">projects/ngx-json-schema-form/src/lib/core/models/layout-node.ts:22</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="24" class="link-to-prism">projects/ngx-json-schema-form/src/lib/core/models/layout-node.ts:24</a></div>
                             </td>
                         </tr>
 
@@ -282,15 +301,15 @@ user to pass in variable data, so a degree.</p>
             <tr>
                 <td class="col-md-4">
                     <span class="modifier-icon icon ion-ios-reset"></span>
-                    <code>create(layoutItem: <a href="../interfaces/LayoutItem.html">LayoutItem | string</a>, schemaAnalyzer: <a href="../interfaces/SchemaAnalyzer.html">SchemaAnalyzer</a>)</code>
+                    <code>create(layoutItem: <a href="../interfaces/LayoutItem.html">LayoutItem | string</a>, schemaAnalyzer: <a href="../interfaces/SchemaAnalyzer.html">SchemaAnalyzer</a>, childNodes: <a href="../classes/LayoutNode.html">Array<LayoutNode></a>)</code>
                 </td>
             </tr>
 
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="40"
-                            class="link-to-prism">projects/ngx-json-schema-form/src/lib/core/models/layout-node.ts:40</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="44"
+                            class="link-to-prism">projects/ngx-json-schema-form/src/lib/core/models/layout-node.ts:44</a></div>
                 </td>
             </tr>
 
@@ -344,6 +363,24 @@ user to pass in variable data, so a degree.</p>
                                     <td>
                                     </td>
                                 </tr>
+                                <tr>
+                                    <td>childNodes</td>
+                                    <td>
+                                                <code><a href="../classes/LayoutNode.html" target="_self" >Array&lt;LayoutNode&gt;</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                    <td>
+                                        <ul>
+<li>Layout children</li>
+</ul>
+
+                                    </td>
+                                </tr>
                             </tbody>
                         </table>
                     </div>
@@ -351,6 +388,80 @@ user to pass in variable data, so a degree.</p>
                     </div>
                     <div class="io-description">
                         <b>Returns : </b>        <code><a href="../classes/LayoutNode.html" target="_self" >LayoutNode</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="getPointer"></a>
+                    <span class="name">
+                        <b>
+                            <span class="modifier">Static</span>
+                            getPointer
+                        </b>
+                        <a href="#getPointer"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>getPointer(key: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="54"
+                            class="link-to-prism">projects/ngx-json-schema-form/src/lib/core/models/layout-node.ts:54</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Normalizes a key(object.path or json/path) to json path </p>
+</div>
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>key</td>
+                                    <td>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
 
                     </div>
                     <div class="io-description">
@@ -386,7 +497,7 @@ user to pass in variable data, so a degree.</p>
                 </tr>
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="58" class="link-to-prism">projects/ngx-json-schema-form/src/lib/core/models/layout-node.ts:58</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="62" class="link-to-prism">projects/ngx-json-schema-form/src/lib/core/models/layout-node.ts:62</a></div>
                                 </td>
                             </tr>
                     <tr>
@@ -419,7 +530,7 @@ user to pass in variable data, so a degree.</p>
                 </tr>
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="62" class="link-to-prism">projects/ngx-json-schema-form/src/lib/core/models/layout-node.ts:62</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="66" class="link-to-prism">projects/ngx-json-schema-form/src/lib/core/models/layout-node.ts:66</a></div>
                                 </td>
                             </tr>
                     <tr>
@@ -452,7 +563,7 @@ user to pass in variable data, so a degree.</p>
                 </tr>
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="66" class="link-to-prism">projects/ngx-json-schema-form/src/lib/core/models/layout-node.ts:66</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="70" class="link-to-prism">projects/ngx-json-schema-form/src/lib/core/models/layout-node.ts:70</a></div>
                                 </td>
                             </tr>
                     <tr>
@@ -485,7 +596,7 @@ user to pass in variable data, so a degree.</p>
                 </tr>
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="73" class="link-to-prism">projects/ngx-json-schema-form/src/lib/core/models/layout-node.ts:73</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="77" class="link-to-prism">projects/ngx-json-schema-form/src/lib/core/models/layout-node.ts:77</a></div>
                                 </td>
                             </tr>
                     <tr>
@@ -506,24 +617,24 @@ user to pass in variable data, so a degree.</p>
             <tbody>
                 <tr>
                     <td class="col-md-4">
-                        <a name="content"></a>
-                        <span class="name"><b>content</b><a href="#content"><span class="icon ion-ios-link"></span></a></span>
+                        <a name="template"></a>
+                        <span class="name"><b>template</b><a href="#template"><span class="icon ion-ios-link"></span></a></span>
                     </td>
                 </tr>
 
                 <tr>
                     <td class="col-md-4">
-                        <span class="accessor"><b>get</b><code>content()</code></span>
+                        <span class="accessor"><b>get</b><code>template()</code></span>
                     </td>
                 </tr>
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="77" class="link-to-prism">projects/ngx-json-schema-form/src/lib/core/models/layout-node.ts:77</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="81" class="link-to-prism">projects/ngx-json-schema-form/src/lib/core/models/layout-node.ts:81</a></div>
                                 </td>
                             </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-description"><p>HTML content to be rendered inside the widget </p>
+                                <div class="io-description"><p>HTML template to be rendered inside the widget </p>
 </div>
 
                                 <div class="io-description">
@@ -551,7 +662,7 @@ user to pass in variable data, so a degree.</p>
                 </tr>
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="81" class="link-to-prism">projects/ngx-json-schema-form/src/lib/core/models/layout-node.ts:81</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="85" class="link-to-prism">projects/ngx-json-schema-form/src/lib/core/models/layout-node.ts:85</a></div>
                                 </td>
                             </tr>
                     <tr>
@@ -565,6 +676,28 @@ user to pass in variable data, so a degree.</p>
                                 </div>
                         </td>
                     </tr>
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="items"></a>
+                        <span class="name"><b>items</b><a href="#items"><span class="icon ion-ios-link"></span></a></span>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <span class="accessor"><b>get</b><code>items()</code></span>
+                    </td>
+                </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="94" class="link-to-prism">projects/ngx-json-schema-form/src/lib/core/models/layout-node.ts:94</a></div>
+                                </td>
+                            </tr>
 
             </tbody>
         </table>
@@ -592,6 +725,8 @@ export class LayoutNode {
     private readonly layoutItem: LayoutItem;
     /** Reference to the schema that pertains the layout */
     private readonly schema: JSONSchema7;
+    /** LayoutNodes that are rendered as children on this node */
+    private readonly childNodes: Array&lt;LayoutNode&gt;;
 
     /** Unique Identifier for the item */
     public readonly id: string &#x3D; uniqueId(&#x27;control&#x27;);
@@ -599,30 +734,32 @@ export class LayoutNode {
     /**
      * @throws Will throw an error if there is no layout.type or schema.type
      */
-    constructor(layoutItem: LayoutItem, schema?: JSONSchema7) {
+    constructor(layoutItem: LayoutItem, schema?: JSONSchema7, childNodes?: Array&lt;LayoutNode&gt;) {
         if (!layoutItem.type &amp;&amp; !(schema &amp;&amp; schema.type)) {
             throw new Error(&#x27;Missing &quot;type&quot;....&#x27;);
         }
         this.layoutItem &#x3D; layoutItem;
         this.schema &#x3D; schema;
+        this.childNodes &#x3D; childNodes;
     }
 
     /**
      * Creates a LayoutNode
      * @param layoutItem - A LayoutItem presented by the user.  If a string is given, it is converted into a LayoutItem
      * @param schemaService - Service for looking up related Schema definition
+     * @param childNodes - Layout children
      */
-    public static create(layoutItem: LayoutItem | string, schemaAnalyzer: SchemaAnalyzer): LayoutNode {
+    public static create(layoutItem: LayoutItem | string, schemaAnalyzer: SchemaAnalyzer, childNodes: Array&lt;LayoutNode&gt;): LayoutNode {
         const item: LayoutItem &#x3D; isString(layoutItem)
             ? {key: layoutItem}
             : layoutItem;
         const schema: JSONSchema7 &#x3D; &lt;JSONSchema7&gt;schemaAnalyzer.dataPointerMap.get(LayoutNode.getPointer(item.key));
 
-        return new LayoutNode(item, schema);
+        return new LayoutNode(item, schema, childNodes);
     }
 
     /** Normalizes a key(object.path or json/path) to json path */
-    private static getPointer(key: string): string {
+    public static getPointer(key: string): string {
         const pointer &#x3D; defaultTo(key, &#x27;&#x27;);
 
         return pointer.charAt(0) &#x3D;&#x3D;&#x3D; &#x27;/&#x27;
@@ -648,25 +785,28 @@ export class LayoutNode {
     @Memoize() get type(): string {
         return this.layoutItem.type || &lt;string&gt;defaultTo(this.schema, &lt;any&gt;{}).type;
     }
-    /** HTML content to be rendered inside the widget */
-    @Memoize() get content(): string {
-        return isString(this.layoutItem.content) ? this.layoutItem.content : undefined;
+    /** HTML template to be rendered inside the widget */
+    @Memoize() get template(): string {
+        return isString(this.layoutItem.template) ? this.layoutItem.template : undefined;
     }
     /** Options for the widget */
     @Memoize() get options(): LayoutOptions {
         return {
             ...pick(this.schema, [&#x27;title&#x27;, &#x27;description&#x27;]),
             ...mapKeys(pick(this.schema, [&#x27;readOnly&#x27;]), () &#x3D;&gt; &#x27;readonly&#x27;),
-            ...omit(this.layoutItem, [&#x27;key&#x27;, &#x27;type&#x27;, &#x27;name&#x27;, &#x27;content&#x27;, &#x27;options&#x27;]),
+            ...omit(this.layoutItem, [&#x27;key&#x27;, &#x27;type&#x27;, &#x27;name&#x27;, &#x27;template&#x27;, &#x27;items&#x27;, &#x27;options&#x27;]),
             ...defaultTo(this.layoutItem.options, {})
         };
+    }
+
+    @Memoize() get items(): Array&lt;LayoutNode&gt; {
+        return this.childNodes;
     }
 
     // $ref?: any;
     // arrayItem?;
     // arrayItemType?;
     // dataType?;
-    // items?: Array&lt;any&gt;;
     // recursiveReference?;
 
 }

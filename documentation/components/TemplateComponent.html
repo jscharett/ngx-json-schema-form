@@ -36,12 +36,15 @@
 
 <ol class="breadcrumb">
   <li>Components</li>
-  <li>SelectWidgetComponent</li>
+  <li>TemplateComponent</li>
 </ol>
 
 <ul class="nav nav-tabs" role="tablist">
         <li class="active">
             <a href="#info" role="tab" id="info-tab" data-toggle="tab" data-link="info">Info</a>
+        </li>
+        <li >
+            <a href="#readme" role="tab" id="readme-tab" data-toggle="tab" data-link="readme">README</a>
         </li>
         <li >
             <a href="#source" role="tab" id="source-tab" data-toggle="tab" data-link="source">Source</a>
@@ -62,15 +65,14 @@
     <h3>File</h3>
 </p>
 <p class="comment">
-    <code>projects/ngx-json-schema-form/src/lib/select-widget/select-widget.component.ts</code>
+    <code>projects/ngx-json-schema-form/src/lib/template/template.component.ts</code>
 </p>
 
     <p class="comment">
         <h3>Description</h3>
     </p>
     <p class="comment">
-        <p>Dynamically creates a widget component based on a layout node.
-Changes in @Input attributes will be passed onto the created widget.</p>
+        <p>Component for rendering dynamic component templates</p>
 
     </p>
 
@@ -81,14 +83,12 @@ Changes in @Input attributes will be passed onto the created widget.</p>
                 <code><a href="../classes/AbstractWidget.html" target="_self" >AbstractWidget</a></code>
     </p>
 
-    <p class="comment">
-        <h3>Implements</h3>
-    </p>
-    <p class="comment">
-                    <code><a href="https://angular.io/api/core/OnChanges" target="_blank" >OnChanges</a></code>
-                    <code><a href="https://angular.io/api/core/OnInit" target="_blank" >OnInit</a></code>
-    </p>
 
+    <p class="comment">
+        <h3>Example</h3>
+    </p>
+    <div class="io-description">
+    </div>
 
 <section>
     <h3>Metadata</h3>
@@ -107,19 +107,19 @@ Changes in @Input attributes will be passed onto the created widget.</p>
 
             <tr>
                 <td class="col-md-3">selector</td>
-                <td class="col-md-9"><code>jsf-select-widget</code></td>
+                <td class="col-md-9"><code>jsf-template</code></td>
             </tr>
 
             <tr>
                 <td class="col-md-3">styleUrls</td>
-                <td class="col-md-9"><code>./select-widget.component.css</code></td>
+                <td class="col-md-9"><code>./template.component.scss</code></td>
             </tr>
 
 
 
             <tr>
                 <td class="col-md-3">templateUrl</td>
-                <td class="col-md-9"><code>./select-widget.component.html</code></td>
+                <td class="col-md-9"><code>./template.component.html</code></td>
             </tr>
 
 
@@ -145,9 +145,6 @@ Changes in @Input attributes will be passed onto the created widget.</p>
                 <tr>
                     <td class="col-md-4">
                         <ul class="index-list">
-                            <li>
-                                <a href="#widgetContainer">widgetContainer</a>
-                            </li>
                             <li>
                                 <a href="#controlDisabled">controlDisabled</a>
                             </li>
@@ -182,26 +179,6 @@ Changes in @Input attributes will be passed onto the created widget.</p>
                     </td>
                 </tr>
 
-                <tr>
-                    <td class="col-md-4">
-                        <h6><b>Inputs</b></h6>
-                    </td>
-                </tr>
-                <tr>
-                    <td class="col-md-4">
-                        <ul class="index-list">
-                            <li>
-                                <a href="#dataIndex">dataIndex</a>
-                            </li>
-                            <li>
-                                <a href="#layoutIndex">layoutIndex</a>
-                            </li>
-                            <li>
-                                <a href="#layoutNode">layoutNode</a>
-                            </li>
-                        </ul>
-                    </td>
-                </tr>
 
 
 
@@ -216,12 +193,12 @@ Changes in @Input attributes will be passed onto the created widget.</p>
             <tbody>
                 <tr>
                     <td class="col-md-4">
-<code>constructor(componentFactory: <a href="https://angular.io/api/core/ComponentFactoryResolver" target="_blank">ComponentFactoryResolver</a>, widgetLibraryService: <a href="../injectables/WidgetLibraryService.html">WidgetLibraryService</a>, jsf: <a href="../injectables/JsonSchemaFormService.html">JsonSchemaFormService</a>, elementDataStorage: <a href="../injectables/ElementDataStorageService.html">ElementDataStorageService</a>)</code>
+<code>constructor(jsf: <a href="../injectables/JsonSchemaFormService.html">JsonSchemaFormService</a>, elementDataStorage: <a href="../injectables/ElementDataStorageService.html">ElementDataStorageService</a>)</code>
                     </td>
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="25" class="link-to-prism">projects/ngx-json-schema-form/src/lib/select-widget/select-widget.component.ts:25</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="27" class="link-to-prism">projects/ngx-json-schema-form/src/lib/template/template.component.ts:27</a></div>
                             </td>
                         </tr>
 
@@ -238,30 +215,6 @@ Changes in @Input attributes will be passed onto the created widget.</p>
                                             </tr>
                                         </thead>
                                         <tbody>
-                                                <tr>
-                                                        <td>componentFactory</td>
-                                                  
-                                                        <td>
-                                                                        <code><a href="https://angular.io/api/core/ComponentFactoryResolver" target="_blank" >ComponentFactoryResolver</a></code>
-                                                        </td>
-                                                  
-                                                    <td>
-                                                            No
-                                                    </td>
-                                                    
-                                                </tr>
-                                                <tr>
-                                                        <td>widgetLibraryService</td>
-                                                  
-                                                        <td>
-                                                                        <code><a href="../injectables/WidgetLibraryService.html" target="_self" >WidgetLibraryService</a></code>
-                                                        </td>
-                                                  
-                                                    <td>
-                                                            No
-                                                    </td>
-                                                    
-                                                </tr>
                                                 <tr>
                                                         <td>jsf</td>
                                                   
@@ -295,99 +248,7 @@ Changes in @Input attributes will be passed onto the created widget.</p>
         </table>
 </section>
 
-    <section>
-    <h3 id="inputs">Inputs</h3>
-        <table class="table table-sm table-bordered">
-            <tbody>
-                <tr>
-                    <td class="col-md-4">
-                        <a name="dataIndex"></a>
-                        <b>dataIndex</b>
-                    </td>
-                </tr>
-                <tr>
-                    <td class="col-md-4">
-                        <i>Type : </i>    <code>Array&lt;number&gt;</code>
 
-                    </td>
-                </tr>
-                            <tr>
-                                <td class="col-md-4" colspan="2">
-                                    <div class="io-line">Inherited from         <code><a href="../classes/AbstractWidget.html" target="_self" >AbstractWidget</a></code>
-</div>
-                                </td>
-                            </tr>
-                        <tr>
-                            <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in         <code><a href="../classes/AbstractWidget.html#source" target="_self" >AbstractWidget:35</a></code>
-</div>
-                            </td>
-                        </tr>
-                <tr>
-                    <td class="col-md-4">
-                        <div class="io-description"><p>Index of the data in data array </p>
-</div>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
-        <table class="table table-sm table-bordered">
-            <tbody>
-                <tr>
-                    <td class="col-md-4">
-                        <a name="layoutIndex"></a>
-                        <b>layoutIndex</b>
-                    </td>
-                </tr>
-                <tr>
-                    <td class="col-md-4">
-                        <i>Type : </i>    <code>Array&lt;number&gt;</code>
-
-                    </td>
-                </tr>
-                            <tr>
-                                <td class="col-md-4" colspan="2">
-                                    <div class="io-line">Inherited from         <code><a href="../classes/AbstractWidget.html" target="_self" >AbstractWidget</a></code>
-</div>
-                                </td>
-                            </tr>
-                        <tr>
-                            <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in         <code><a href="../classes/AbstractWidget.html#source" target="_self" >AbstractWidget:33</a></code>
-</div>
-                            </td>
-                        </tr>
-                <tr>
-                    <td class="col-md-4">
-                        <div class="io-description"><p>Index of the layout in the Layout array </p>
-</div>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
-        <table class="table table-sm table-bordered">
-            <tbody>
-                <tr>
-                    <td class="col-md-4">
-                        <a name="layoutNode"></a>
-                        <b>layoutNode</b>
-                    </td>
-                </tr>
-                            <tr>
-                                <td class="col-md-4" colspan="2">
-                                    <div class="io-line">Inherited from         <code><a href="../classes/AbstractWidget.html" target="_self" >AbstractWidget</a></code>
-</div>
-                                </td>
-                            </tr>
-                        <tr>
-                            <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in         <code><a href="../classes/AbstractWidget.html#source" target="_self" >AbstractWidget:24</a></code>
-</div>
-                            </td>
-                        </tr>
-            </tbody>
-        </table>
-</section>
 
 
 
@@ -487,48 +348,6 @@ Changes in @Input attributes will be passed onto the created widget.</p>
         <h3 id="inputs">
             Properties
         </h3>
-        <table class="table table-sm table-bordered">
-            <tbody>
-                <tr>
-                    <td class="col-md-4">
-                        <a name="widgetContainer"></a>
-                        <span class="name">
-                            <b>
-                            widgetContainer</b>
-                            <a href="#widgetContainer"><span class="icon ion-ios-link"></span></a>
-                        </span>
-                    </td>
-                </tr>
-                    <tr>
-                        <td class="col-md-4">
-                            <i>Type : </i>        <code><a href="https://angular.io/api/core/ViewContainerRef" target="_blank" >ViewContainerRef</a></code>
-
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="col-md-4">
-                            <b>Decorators : </b>
-                            <br />
-                            <code>
-                                @ViewChild(&#x27;widgetContainer&#x27;, {read: ViewContainerRef})<br />
-                            </code>
-                        </td>
-                    </tr>
-                        <tr>
-                            <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="25" class="link-to-prism">projects/ngx-json-schema-form/src/lib/select-widget/select-widget.component.ts:25</a></div>
-                            </td>
-                        </tr>
-
-                <tr>
-                    <td class="col-md-4">
-                        <div class="io-description"><p>Placeholder for injecting widget </p>
-</div>
-                    </td>
-                </tr>
-
-            </tbody>
-        </table>
         <table class="table table-sm table-bordered">
             <tbody>
                 <tr>
@@ -732,91 +551,113 @@ Changes in @Input attributes will be passed onto the created widget.</p>
 
 </div>
 
+    <div class="tab-pane fade " id="c-readme">
+        <p><div class="row">
+<div class="col-md-10">
+
+<h2 id="templates">Templates</h2>
+<p>The template widget is used to render custom html inside your form.  For example, you may need to render a table of data</p>
+<div class="panel panel-primary docs">
+<div class="panel-heading panel-title">layout.json</div>
+
+<div><pre class="line-numbers"><code class="language-json">[{
+    &quot;type&quot;: &quot;template&quot;,
+    &quot;content&quot;: &quot;&lt;table&gt;
+        &lt;thead&gt;&lt;tr&gt;...&lt;/tr&gt;&lt;/thead&gt;
+        &lt;tbody&gt;
+        ...
+        &lt;/tbody&gt;
+        &lt;/table&gt;&quot;
+}]</code></pre></div></div>
+
+<p>Note: As of Angular 5, dynamic angular components cannot be used in AOT mode.  Due to this limitation, the
+template widget does not support angular components.  Hopefully the Angular team will resolve this limitation.  In the meantime, Handlebars is used to allow some mimial templating.</p>
+</div>
+<div class="col-md-2">
+<div class="links">
+
+</div>
+</div>
+</div>
+</p>
+    </div>
 
     <div class="tab-pane fade  tab-source-code" id="c-source">
         <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import {
-    Component, ComponentFactoryResolver, ComponentRef,
-    OnChanges, OnInit, ViewChild, ViewContainerRef
+    Component /*, ComponentFactoryResolver, ComponentRef,*/
+    // OnChanges, OnInit, ViewChild, ViewContainerRef
 } from &#x27;@angular/core&#x27;;
 
+import { Widget } from &#x27;../core/decorators/widget.decorator&#x27;;
 import { ElementDataStorageService } from &#x27;../core/services/element-data-storage.service&#x27;;
-import { WidgetLibraryService } from &#x27;../core/services/widget-library.service&#x27;;
 import { AbstractWidget } from &#x27;../core/widget/widget&#x27;;
 
 import { JsonSchemaFormService } from &#x27;../form/services/json-schema-form.service&#x27;;
 
 /**
- * Dynamically creates a widget component based on a layout node.
- * Changes in @Input attributes will be passed onto the created widget.
+ * Component for rendering dynamic component templates
+ * @todo As of Angular 5, it appears that dynamic components are not possible when
+ * using AOT compilation.  There appears to eb some hope with the new IVY rendering
+ * engine that dynamic component will again be possible with AOT enable.  Need to revist
+ * this component in the future @see{https://github.com/angular/angular/issues/20875}
  */
-@Component({
-    selector: &#x27;jsf-select-widget&#x27;,
-    styleUrls: [&#x27;./select-widget.component.css&#x27;],
-    templateUrl: &#x27;./select-widget.component.html&#x27;
+@Widget({
+    types: [&#x27;template&#x27;]
 })
-export class SelectWidgetComponent extends AbstractWidget implements OnChanges, OnInit {
-    private newComponent: ComponentRef&lt;any&gt;;
+@Component({
+    selector: &#x27;jsf-template&#x27;,
+    styleUrls: [&#x27;./template.component.scss&#x27;],
+    templateUrl: &#x27;./template.component.html&#x27;
+})
+export class TemplateComponent extends AbstractWidget /*implements OnInit, OnChanges*/ {
+    // private newComponent: ComponentRef&lt;any&gt;;
 
-    /** Placeholder for injecting widget */
-    @ViewChild(&#x27;widgetContainer&#x27;, { read: ViewContainerRef }) widgetContainer: ViewContainerRef;
+    // /** Placeholder for injecting widget */
+    // @ViewChild(&#x27;templateContainer&#x27;, { read: ViewContainerRef }) templateContainer: ViewContainerRef;
 
-    constructor(private readonly componentFactory: ComponentFactoryResolver,
-        private readonly widgetLibraryService: WidgetLibraryService,
-        jsf: JsonSchemaFormService,
-        elementDataStorage: ElementDataStorageService) {
-            super(jsf, elementDataStorage);
+    constructor(
+        // private readonly componentFactory: ComponentFactoryResolver,
+        jsf: JsonSchemaFormService, elementDataStorage: ElementDataStorageService) {
+        super(jsf, elementDataStorage);
     }
 
-    ngOnChanges() {
-        this.updateComponent();
-    }
+    // ngOnInit() {
+    //     this.updateComponent();
+    // }
 
-    ngOnInit() {
-        this.updateComponent();
-    }
+    // ngOnChanges() {
+    //     this.updateComponent();
+    // }
 
-    private updateComponent(): void {
-        this.createComponent();
-        if (this.newComponent) {
-            for (const input of [&#x27;layoutNode&#x27;, &#x27;layoutIndex&#x27;, &#x27;dataIndex&#x27;]) {
-                this.newComponent.instance[input] &#x3D; this[input];
-            }
-        }
-    }
+    // private updateComponent() {
+    //     this.createComponent();
+    //     if (this.newComponent) {
+    //         for (const input of [&#x27;layoutNode&#x27;, &#x27;layoutIndex&#x27;, &#x27;dataIndex&#x27;]) {
+    //             this.newComponent.instance[input] &#x3D; this[input];
+    //         }
+    //     }
+    // }
 
-    /**
-     * @todo Handle case of layoutNode change
-     */
-    private createComponent(): void {
-        if (!this.newComponent &amp;&amp; this.layoutNode &amp;&amp; this.layoutNode.type) {
-            this.newComponent &#x3D; this.widgetContainer.createComponent(
-                this.componentFactory.resolveComponentFactory(
-                    this.widgetLibraryService.getWidget(this.layoutNode.type) as any
-                ),
-                undefined,
-                undefined,
-                this.generateNgContent()
-            );
-        }
-    }
+    // private createComponent(): void {
+    //     if (!this.newComponent &amp;&amp; this.options.template) {
+    //         this.newComponent &#x3D; this.templateContainer.createComponent(
+    //             this.componentFactory.resolveComponentFactory(this.options.template)
+    //         );
+    //     }
+    // }
 
-    private generateNgContent(): Array&lt;Array&lt;any&gt;&gt; {
-        if (this.layoutNode.template) {
-            return [ [ this.jsf.compileTemplate(this.layoutNode.template, this.layoutNode.options) ] ];
-        }
-    }
 }
 </code></pre>
     </div>
 
     <div class="tab-pane fade " id="c-templateData">
-        <pre class="line-numbers"><code class="language-html">&lt;ng-template #widgetContainer&gt;&lt;/ng-template&gt;
+        <pre class="line-numbers"><code class="language-html">&lt;ng-content&gt;&lt;/ng-content&gt;
 </code></pre>
     </div>
 
     <div class="tab-pane fade " id="c-styleData">
                 <p class="comment">
-                    <code>./select-widget.component.css</code>
+                    <code>./template.component.scss</code>
                 </p>
                 <pre class="line-numbers"><code class="language-scss"></code></pre>
     </div>
@@ -846,10 +687,10 @@ export class SelectWidgetComponent extends AbstractWidget implements OnChanges, 
 <script src="../js/libs/htmlparser.js"></script>
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
-        var COMPONENT_TEMPLATE = '<div><ng-template #widgetContainer></ng-template></div>'
+        var COMPONENT_TEMPLATE = '<div><ng-content></ng-content></div>'
     var COMPONENTS = [{'name': 'ButtonComponent', 'selector': 'jsf-button'},{'name': 'ContainerComponent', 'selector': 'jsf-container'},{'name': 'HiddenComponent', 'selector': 'jsf-hidden'},{'name': 'JsonSchemaFormComponent', 'selector': 'jsf-json-schema-form'},{'name': 'SelectWidgetComponent', 'selector': 'jsf-select-widget'},{'name': 'TemplateComponent', 'selector': 'jsf-template'}];
     var DIRECTIVES = [];
-    var ACTUAL_COMPONENT = {'name': 'SelectWidgetComponent'};
+    var ACTUAL_COMPONENT = {'name': 'TemplateComponent'};
 </script>
 <script src="../js/tree.js"></script>
 
@@ -884,7 +725,7 @@ export class SelectWidgetComponent extends AbstractWidget implements OnChanges, 
        <script>
             var COMPODOC_CURRENT_PAGE_DEPTH = 1;
             var COMPODOC_CURRENT_PAGE_CONTEXT = 'component';
-            var COMPODOC_CURRENT_PAGE_URL = 'SelectWidgetComponent.html';
+            var COMPODOC_CURRENT_PAGE_URL = 'TemplateComponent.html';
        </script>
 
        <script src="../js/libs/custom-elements.min.js"></script>

@@ -189,97 +189,12 @@ export class LayoutComponent {
     &quot;htmlClass&quot;: &quot;input-sm&quot;,
     &quot;name&quot;: &quot;name&quot;,
     &quot;readonly&quot;: true,
-    &quot;style&quot;: &quot;color: #333;&quot;,
+    &quot;style&quot;: {
+        &quot;color&quot;: &quot;#333&quot;
+    },
     &quot;tabindex&quot;: 2,
     &quot;title&quot;: &quot;Name&quot;
 }]</code></pre></div></div>
-
-<h3 id="button">Button</h3>
-<p>There are 4 types of buttons that jsf supports, <code>button</code>, <code>image</code>, <code>reset</code> and <code>submit</code>.  By default, these will all use the <code>&lt;input&gt;</code> tag for display.  However, with the exception of <code>image</code>, you can specify custom html via the <code>content</code> option.  This will result in the <code>&lt;button&gt;</code> being used for display and the content being inserted.  Content can contain simple bindings so that you can bind to various properties of the layout.  For example:</p>
-<div class="panel panel-primary docs">
-<div class="panel-heading panel-title">button-layout.json</div>
-
-<div><pre class="line-numbers"><code class="language-json">[{
-    &quot;type&quot;: &quot;submit&quot;,
-    &quot;title&quot;: &quot;Submit&quot;,
-    &quot;content&quot;: &quot;&lt;img src=&#39;{{ options.icon.src }}&#39; width=&#39;{{ options.icon.width }}&#39; height=&#39;{{ options.icon.height }}&#39; alt=&#39;{{ options.icon.alt }}&#39;/&gt;&lt;span class=&#39;small&#39;&gt;{{ options.title }}&lt;/span&gt;&quot;,
-    &quot;icon&quot;: {
-        &quot;src&quot;: &quot;/assets/submit.png&quot;,
-        &quot;width&quot;: 30,
-        &quot;height&quot;: 30,
-        &quot;alt&quot;: &quot;Checkmark&quot;
-    }
-}]</code></pre></div></div>
-
-<p>will result in</p>
-<div class="panel panel-primary docs">
-<div class="panel-heading panel-title">button.html</div>
-
-<div><pre class="line-numbers"><code class="language-html">&lt;button type=&quot;submit&quot;&gt;
-    &lt;img src=&quot;/assets/submit.png&quot; width=&quot;30&quot; height=&quot;30&quot; alt=&quot;Checkmark&quot;/&gt;
-    &lt;span class=&quot;small&quot;&gt;Submit&lt;/span&gt;
-&lt;/button&gt;</code></pre></div></div>
-
-<p>Here you can see we are specifying that the button should contain an image via the <code>content</code> options.  The template binds to the properties of the <code>icon</code> option which results in an image tag being rendered.  The <code>icon</code> option is also used when redering a simple button of type <code>image</code>.</p>
-<div class="alert alert-warning">
-Note: due to current limitation of Angular AOT compilation, use of the angular compile to transpile content strings into HTML DOM is not possible.  Recent Angular changes have restricted the inclusion of the compiler in favor of reducing the file size and load time when in AOT mode.  Therefore, Handlebars is currently being imported to handle the compilation of content string to HTML DOM.
-</div>
-
-<p>We can also respond to events such as a <code>click</code>.  To do this, we must first bind an event handler to the jsf component</p>
-<div class="panel panel-primary docs">
-<div class="panel-heading panel-title">form.component.html</div>
-
-<div><pre class="line-numbers"><code class="language-html">&lt;jsf-json-schema-form
-    [layout]=&quot;layout&quot;
-    (click.data.layout)=&quot;onClick($event)&quot;
-    ...
-&gt;&lt;/jsf-json-schema-form&gt;</code></pre></div></div>
-
-<p>Then we add a layout with a couple of buttons.  The first button will run an internal command where as the second will run a command specified by layout.onClick.</p>
-<div class="panel panel-primary docs">
-<div class="panel-heading panel-title">buttons-layout.json</div>
-
-<div><pre class="line-numbers"><code class="language-json">[{
-    &quot;type&quot;: &quot;button&quot;,
-    &quot;id&quot;: &quot;button1&quot;,
-    &quot;title&quot;: &quot;Open dialog&quot;
-}, {
-    &quot;type&quot;: &quot;button&quot;,
-    &quot;id&quot;: &quot;button2&quot;,
-    &quot;title&quot;: &quot;Open Google&quot;,
-    &quot;onClick&quot;: &quot;window.open(&#39;http://www.google.com/&#39;);&quot;
-}]</code></pre></div></div>
-
-<p>Lastly, we specify our onClick handler in our component.</p>
-<div class="panel panel-primary docs">
-<div class="panel-heading panel-title">form.component.ts</div>
-
-<div><pre class="line-numbers"><code class="language-typescript">import layout from &#39;./buttons-layout.json&#39;;
-import { DataEvent } from &#39;ngx-json-schema-form&#39;;
-
-&#64;Component({
-    templateUrl: &#39;./form.component.html&#39;,
-    ...
-})
-export class LayoutComponent {
-    layout: Array&lt;any&gt; = layout;
-
-    onClick(event: DataEvent&lt;MouseEvent&gt;): void {
-        if (event.data.id === &#39;button1&#39;) {
-            openDialog(event);
-        } else if (event.data.id === &#39;button2&#39;) {
-            // Run some external code
-            const fn = new Function(&#39;event&#39;, event.data.onClick);
-            fn(event);
-        }
-    }
-    ...
-}</code></pre></div></div>
-
-<p>When a button is clicked, the event will bubble up to the jsf form component to which we bound our onClick handler.  Using event metadata (<code>click.data.layout</code>), we can specify that only events in which a target that has an associated data property of <code>layout</code> will trigger the event.  This association is handled internally when a widget is created and acts similarly to jQuery&#39;s $.data.  When the event handler is triggered, the layout is passed down with the event via <code>event.data</code> , allowing us to inspect which layout item triggered the event and act accordingly.  In the case of &quot;button1&quot;, we run and internal method <code>openDialog</code> in order to open an angular dialog component.  With &quot;button2&quot; however, we run the external javascript passed in via the <code>onClick</code> property in the layout in order to open a popup dialog to Google.</p>
-<p>Note: running external javascript is usually not a good choice, therefore the jsf library does not internally run the onClick handler.  You will need to handle the conversion from text to javascript yourself and run the code.</p>
-<h3 id="hidden">Hidden</h3>
-<p>Hidden widgets are as you expect, then render an <code>&lt;input type=&quot;hidden&quot;&gt;</code>.  This is the default for any layout item that can&#39;t be propley matched.  For the most part, hidden widgets wont be needed as you simply don&#39;t need to render them, their data never changes.  However, in the event that you need to do an actual form submittal, hidden inputs may be necessary and are therfore included.</p>
 </div>
 <div class="col-md-2">
 <div class="links">
@@ -290,8 +205,6 @@ export class LayoutComponent {
 <li><a href="#form-options" title="Form Options">Form Options</a></li>
 <li><a href="#widgets" title="Widgets">Widgets</a><ul>
 <li><a href="#options">Options</a></li>
-<li><a href="#button">Button</a></li>
-<li><a href="#hidden">Hidden</a></li>
 </ul>
 </li>
 </ul>
