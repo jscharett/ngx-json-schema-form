@@ -32,10 +32,20 @@ export interface LayoutOptions {
         width?: number;
     };
 
-    /** Whether or not a details container widget is open */
+    /** See {@link https://developer.mozilla.org/en-US/docs/Web/HTML/Element/details#Attributes} */
     open?: boolean;
     /** Index of the tab to selected by default */
     selectedIndex?: number;
+
+    /** See {@link https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input#Labels_and_placeholders} */
+    placeholder?: string;
+
+    /** See {@link https://developer.mozilla.org/en-US/docs/Web/HTML/Element/textarea#Attributes} */
+    cols?: number;
+    /** See {@link https://developer.mozilla.org/en-US/docs/Web/HTML/Element/textarea#Attributes} */
+    rows?: number;
+    /** See {@link https://developer.mozilla.org/en-US/docs/Web/HTML/Element/textarea#Attributes} */
+    wrap?: 'hard' | 'soft' | 'off';
 
     [others: string]: any;
 }

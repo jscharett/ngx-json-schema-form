@@ -8,10 +8,11 @@ import { FormModule } from './form/form.module';
 import { HiddenModule } from './hidden/hidden.module';
 import { SelectWidgetModule } from './select-widget/select-widget.module';
 import { TemplateModule } from './template/template.module';
+import { TextareaModule } from './textarea/textarea.module';
 
 const MODULES = [
     ButtonModule, ContainerModule, CoreModule, FormModule,
-    HiddenModule, SelectWidgetModule, TemplateModule
+    HiddenModule, SelectWidgetModule, TemplateModule, TextareaModule
 ];
 
 @NgModule({

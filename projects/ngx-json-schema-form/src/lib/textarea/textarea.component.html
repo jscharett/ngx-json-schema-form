@@ -1,0 +1,17 @@
+<textarea
+    [attr.readonly]="options.readonly ? 'readonly' : null"
+    [attr.accesskey]="options.accesskey"
+    [attr.class]="options.htmlClass"
+    [attr.dirname]="options.dirname ? controlName + '.dir' : null"
+    [attr.tabindex]="options.tabindex"
+    [attr.title]="options.description"
+    [attr.maxlength]="options.maxlength"
+    [attr.minlength]="options.minlength"
+    [attr.placeholder]="options.placeholder"
+    [attr.cols]="options.cols"
+    [attr.rows]="options.rows"
+    [attr.wrap]="options.wrap"
+    [ngStyle]="options.style"
+    [id]="layoutNode.id"
+    [name]="controlName"
+>{{ controlValue }}</textarea>
