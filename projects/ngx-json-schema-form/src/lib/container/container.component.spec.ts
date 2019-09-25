@@ -1,9 +1,6 @@
-import { NO_ERRORS_SCHEMA } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { LayoutNode } from '../core/models/layout-node';
-
-import { JsonSchemaFormService } from '../form/services/json-schema-form.service';
+import { extendLayoutNode, extendModuleDef } from '../core/testing';
 
 import { ContainerComponent } from './container.component';
 
@@ -12,28 +9,16 @@ describe('ContainerComponent', () => {
     let fixture: ComponentFixture<ContainerComponent>;
 
     beforeEach(async () => {
-        const mockFormService: JsonSchemaFormService = jasmine.createSpyObj('JsonSchemaFormService', {
-            initializeControl: true
-        });
-        (<jasmine.Spy>mockFormService.initializeControl).and.callFake((comp) => {
-            comp.options = comp.layoutNode.options;
-        });
-
-        await TestBed.configureTestingModule({
-            declarations: [ ContainerComponent ],
-            providers: [{
-                provide: JsonSchemaFormService,
-                useValue: mockFormService
-            }],
-            schemas: [ NO_ERRORS_SCHEMA ]
-        })
+        await TestBed.configureTestingModule(extendModuleDef({
+            declarations: [ ContainerComponent ]
+        }))
         .compileComponents();
     });
 
     beforeEach(() => {
         fixture = TestBed.createComponent(ContainerComponent);
         component = fixture.componentInstance;
-        component.layoutNode = {id: '0', items: [], options: {}, type: 'div'} as any as LayoutNode;
+        component.layoutNode = extendLayoutNode({items: [], type: 'div'});
     });
 
     it('should create', () => {
@@ -74,9 +59,9 @@ describe('ContainerComponent', () => {
         describe('tabs', () => {
             beforeEach(() => {
                 (<any>component.layoutNode).type = 'tabs';
-                component.layoutNode.items.push({id: '1', items: [], options: {}, type: 'tab'} as any as LayoutNode);
-                component.layoutNode.items.push({id: '2', items: [], options: {}, type: 'tab'} as any as LayoutNode);
-                component.layoutNode.items.push({id: '3', items: [], options: {}, type: 'tab'} as any as LayoutNode);
+                component.layoutNode.items.push(extendLayoutNode({id: '1', items: [], type: 'tab'}));
+                component.layoutNode.items.push(extendLayoutNode({id: '2', items: [], type: 'tab'}));
+                component.layoutNode.items.push(extendLayoutNode({id: '3', items: [], type: 'tab'}));
             });
 
             it('should default to the first layout for tabs', () => {
