@@ -2,5 +2,17 @@
     {
         "title": "Introduction",
         "file": "introduction.md"
+    }, {
+        "title": "Buttons",
+        "file": "../../lib/button/button.component.md"
+    }, {
+        "title": "Containers",
+        "file": "../../lib/container/container.component.md"
+    }, {
+        "title": "Hidden Inputs",
+        "file": "../../lib/hidden/hidden.component.md"
+    }, {
+        "title": "Templates",
+        "file": "../../lib/template/template.component.md"
     }
 ]
