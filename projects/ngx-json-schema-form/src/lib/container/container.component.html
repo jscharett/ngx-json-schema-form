@@ -60,6 +60,7 @@
                 [attr.title]="_layoutNode.options.description"
                 [class.active]="selectedLayout === _layoutNode"
                 [ngStyle]="_layoutNode.options.style"
+                [id]="_layoutNode.id"
                 (click)="onTabClick(_layoutNode)"
                 >{{ _layoutNode.options.title }}
             </button>

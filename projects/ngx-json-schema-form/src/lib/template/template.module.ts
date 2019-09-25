@@ -6,6 +6,7 @@ import { TemplateComponent } from './template.component';
 @NgModule({
     declarations: [ TemplateComponent ],
     entryComponents: [ TemplateComponent ],
+    exports: [ TemplateComponent ],
     imports: [ CommonModule ]
 })
 export class TemplateModule { }
