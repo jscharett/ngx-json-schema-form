@@ -82,9 +82,12 @@ describe('DemoComponent', () => {
         const router: Router = TestBed.get(Router);
         const location: Location = TestBed.get(Location);
         router.initialNavigation();
-        component.loadSelectedExample('ngx', 'b', 'c', 'd');
+        component.loadSelectedExample('ngx', 'b', 'buttons', 'Buttons');
         tick();
-        expect(location.path()).toBe('/?set=ngx&example=c');
+        expect(location.path()).toBe('/?set=ngx&example=buttons');
+        expect(component.selectedSet).toBe('ngx');
+        expect(component.selectedExample).toBe('buttons');
+        expect(component.selectedExampleName).toBe('Buttons');
     }));
 
     it('should run onClick function', () => {
