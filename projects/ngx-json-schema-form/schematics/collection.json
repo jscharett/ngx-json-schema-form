@@ -4,6 +4,11 @@
         "ng-add": {
             "description": "Add my library to the project.",
             "factory": "./ng-add/index#ngAdd"
+        },
+        "widget": {
+            "description": "Generate a widget in the project.",
+            "factory": "./ng-generate/widget/index#widget",
+            "schema": "./ng-generate/widget/schema.json"
         }
     }
 }

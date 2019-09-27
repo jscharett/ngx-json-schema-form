@@ -24,10 +24,10 @@
         "url": "git+https://github.com/jscharett/ngx-json-schema-form"
     },
     "scripts": {
-        "build": "../../node_modules/.bin/tsc -p tsconfig.schematics.json",
-        "copy:schemas": "cp --parents schematics/*/schema.json ../../dist/ngx-json-schema-form/",
-        "copy:files": "cp --parents -p schematics/*/files/** ../../dist/ngx-json-schema-form/",
-        "copy:collection": "cp schematics/collection.json ../../dist/ngx-json-schema-form/schematics/collection.json",
+        "build": "..\\..\\node_modules\\.bin\\tsc -p tsconfig.schematics.json",
+        "copy:schemas": "copyfiles schematics/*/schema.json ../../dist/ngx-json-schema-form/",
+        "copy:files": "copyfiles schematics/*/files/** ../../dist/ngx-json-schema-form/",
+        "copy:collection": "copyfiles schematics/collection.json ../../dist/ngx-json-schema-form/schematics/collection.json",
         "postbuild": "npm run copy:schemas && npm run copy:files && npm run copy:collection"
     },
     "dependencies": {
