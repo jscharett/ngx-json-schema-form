@@ -1,6 +1,6 @@
 import { JSONSchema7 } from 'json-schema';
 import { cloneDeep, defaultTo, isString, mapKeys, omit, pick, uniqueId } from 'lodash';
-import { Memoize } from 'lodash-decorators';
+import { Once } from 'lodash-decorators';
 
 import { LayoutItem } from '../interfaces/layout-item.data';
 import { LayoutOptions } from '../interfaces/layout-options.data';
@@ -59,40 +59,44 @@ export class LayoutNode {
             : `/${pointer.replace(/\./g, '/')}`;
     }
     /** Copy of the original layoutItem */
-    @Memoize() get layoutDefinition(): LayoutItem {
+    get layoutDefinition(): LayoutItem {
         return cloneDeep(this.layoutItem);
     }
     /** Name for the item.  Will be used as the input[name] */
-    @Memoize() get name(): string {
+    get name(): string {
         return this.layoutItem.name || this.dataPointer.split('/').pop();
     }
     /** JSON path for accessing data for this layout item */
-    @Memoize() get dataPointer(): string {
+    get dataPointer(): string {
         return LayoutNode.getPointer(this.layoutItem.key);
     }
     /**
      * @todo Handle array of types from schema
      * Type of widget is used to represent the data
      */
-    @Memoize() get type(): string {
+    get type(): string {
         return this.layoutItem.type || <string>defaultTo(this.schema, <any>{}).type;
     }
     /** HTML template to be rendered inside the widget */
-    @Memoize() get template(): string {
+    get template(): string {
         return isString(this.layoutItem.template) ? this.layoutItem.template : undefined;
     }
     /** Options for the widget */
-    @Memoize() get options(): LayoutOptions {
+    get options(): LayoutOptions {
+        return this.createOptions();
+    }
+
+    get items(): Array<LayoutNode> {
+        return this.childNodes;
+    }
+
+    @Once() private createOptions(): LayoutOptions {
         return {
             ...pick(this.schema, ['title', 'description']),
             ...mapKeys(pick(this.schema, ['readOnly']), () => 'readonly'),
             ...omit(this.layoutItem, ['key', 'type', 'name', 'template', 'items', 'options']),
             ...defaultTo(this.layoutItem.options, {})
         };
-    }
-
-    @Memoize() get items(): Array<LayoutNode> {
-        return this.childNodes;
     }
 
     // $ref?: any;
