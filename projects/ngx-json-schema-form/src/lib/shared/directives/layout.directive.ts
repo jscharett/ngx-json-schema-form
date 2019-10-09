@@ -1,6 +1,6 @@
 import {
     ComponentFactoryResolver, ComponentRef, Directive, Input,
-    OnChanges, OnInit, SimpleChanges, ViewContainerRef
+    OnChanges, OnInit, ViewContainerRef
 } from '@angular/core';
 
 import { LayoutNode } from '../../core/models/layout-node';
@@ -19,10 +19,8 @@ export class LayoutDirective implements OnChanges, OnInit {
         private readonly widgetLibraryService: WidgetLibraryService,
         private readonly jsf: JsonSchemaFormService) {}
 
-    ngOnChanges(changes: SimpleChanges) {
-        if (changes.hasOwnProperty('layout')) {
-            this.refreshWidgets();
-        }
+    ngOnChanges() {
+        this.refreshWidgets();
     }
 
     ngOnInit() {
@@ -41,16 +39,14 @@ export class LayoutDirective implements OnChanges, OnInit {
     }
 
     private createComponent(layoutNode: LayoutNode): ComponentRef<any> {
-        if (layoutNode.type) {
-            return this.widgetContainer.createComponent(
-                this.componentFactory.resolveComponentFactory(
-                    this.widgetLibraryService.getWidget(layoutNode.type) as any
-                ),
-                undefined,
-                undefined,
-                this.generateNgContent(layoutNode)
-            );
-        }
+        return this.widgetContainer.createComponent(
+            this.componentFactory.resolveComponentFactory(
+                this.widgetLibraryService.getWidget(layoutNode.type) as any
+            ),
+            undefined,
+            undefined,
+            this.generateNgContent(layoutNode)
+        );
     }
 
     private generateNgContent(layoutNode: LayoutNode): Array<Array<any>> {
