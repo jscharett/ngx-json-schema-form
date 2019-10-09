@@ -21,7 +21,9 @@
     "license": "MIT",
     "scripts": {
         "ng": "ng",
-        "start": "ng serve --prod",
+        "start": "npm run start:dev",
+        "start:dev": "ng serve",
+        "start:prod": "ng serve --prod",
         "build": "npm run build:lib && npm run build:demo",
         "build:lib": "ng build ngx-json-schema-form",
         "build:demo": "ng build demo --prod --base-href=https://jscharett.github.io/ngx-json-schema-form/",
