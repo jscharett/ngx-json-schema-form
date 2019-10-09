@@ -27,16 +27,18 @@ export class ContainerComponent extends AbstractWidget implements OnInit, DoChec
 
     ngOnInit() {
         super.ngOnInit();
-        if (this.layoutNode.type === 'tabs') {
-            const activeLayout: LayoutNode = this.layoutNode.items.find((layoutNode: LayoutNode) => {
-                return !!layoutNode.options.active;
-            }) || this.layoutNode.items[0];
-            this.layoutNode.items.forEach((layoutNode: LayoutNode) => {
-                layoutNode.options.active = layoutNode === activeLayout;
-            });
-        } else if (this.layoutNode.type === 'tab') {
-            this.isHidden = !this.layoutNode.options.active;
-            this.hiddenDiffer = this.differs.find(this.layoutNode.options).create();
+        switch (this.layoutNode.type) {
+            case 'tabs':
+                const activeLayout: LayoutNode = this.layoutNode.items.find((layoutNode: LayoutNode) => {
+                    return !!layoutNode.options.active;
+                }) || this.layoutNode.items[0];
+                this.layoutNode.items.forEach((layoutNode: LayoutNode) => {
+                    layoutNode.options.active = layoutNode === activeLayout;
+                });
+                break;
+            case 'tab':
+                this.isHidden = !this.layoutNode.options.active;
+                this.hiddenDiffer = this.differs.find(this.layoutNode.options).create();
         }
     }
 
@@ -44,11 +46,8 @@ export class ContainerComponent extends AbstractWidget implements OnInit, DoChec
         if (this.layoutNode.type === 'tab') {
             const changes = this.hiddenDiffer.diff(this.layoutNode.options);
             if (changes) {
-                changes.forEachChangedItem((item: KeyValueChangeRecord<string, any>) => {
-                    if (item.key === 'active') {
-                        this.isHidden = !this.layoutNode.options.active;
-                    }
-                });
+                changes.forEachAddedItem(this.onKeyValueChanged.bind(this));
+                changes.forEachChangedItem(this.onKeyValueChanged.bind(this));
             }
         }
     }
@@ -62,5 +61,11 @@ export class ContainerComponent extends AbstractWidget implements OnInit, DoChec
             layoutNode.options.active = false;
         });
         layout.options.active = true;
+    }
+
+    private onKeyValueChanged(item: KeyValueChangeRecord<string, any>): void {
+        if (item.key === 'active') {
+            this.isHidden = !this.layoutNode.options.active;
+        }
     }
 }
