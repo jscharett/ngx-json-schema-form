@@ -1,2 +1,2 @@
 export { SharedModule } from './shared.module';
-export { LayoutDirective } from './directives/layout.directive';
+export { SelectWidgetsDirective } from './directives/select-widgets.directive';

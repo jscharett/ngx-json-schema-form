@@ -7,7 +7,7 @@ import { WidgetLibraryService } from '../../core/services/widget-library.service
 
 import { JsonSchemaFormService } from '../../form/services/json-schema-form.service';
 
-import { LayoutDirective } from './layout.directive';
+import { SelectWidgetsDirective } from './select-widgets.directive';
 
 @Component({
     selector: 'jsf-widget-component',
@@ -32,7 +32,7 @@ class TestComponent {
     @ViewChild('widgetContainer', { read: ViewContainerRef }) widgetContainer: ViewContainerRef;
 }// tslint:disable-line
 
-describe('LayoutDirective', () => {
+describe('SelectWidgetsDirective', () => {
     let component: TestComponent;
     let fixture: ComponentFixture<TestComponent>;
     let newComponent: ComponentRef<any>;
@@ -50,7 +50,7 @@ describe('LayoutDirective', () => {
         });
 
         return TestBed.configureTestingModule({
-            declarations: [ TestComponent, LayoutDirective ],
+            declarations: [ TestComponent, SelectWidgetsDirective ],
             imports: [ CommonModule, TestModule ],
             providers: [{
                 provide: JsonSchemaFormService,

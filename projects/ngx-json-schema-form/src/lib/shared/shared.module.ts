@@ -1,11 +1,11 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 
-import { LayoutDirective } from './directives/layout.directive';
+import { SelectWidgetsDirective } from './directives/select-widgets.directive';
 
 @NgModule({
-    declarations: [ LayoutDirective ],
-    exports: [ LayoutDirective ],
+    declarations: [ SelectWidgetsDirective ],
+    exports: [ SelectWidgetsDirective ],
     imports: [ CommonModule ]
 })
 export class SharedModule { }

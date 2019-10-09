@@ -11,7 +11,7 @@ import { JsonSchemaFormService } from '../../form/services/json-schema-form.serv
 @Directive({
     selector: '[jsfLayout]'
 })
-export class LayoutDirective implements OnChanges, OnInit {
+export class SelectWidgetsDirective implements OnChanges, OnInit {
     @Input('jsfLayout') layout: Array<LayoutNode> = [];
 
     constructor(private readonly componentFactory: ComponentFactoryResolver,
