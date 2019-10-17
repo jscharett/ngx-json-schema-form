@@ -1,9 +1,6 @@
-import { NO_ERRORS_SCHEMA } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { LayoutNode } from '../core/models/layout-node';
-
-import { JsonSchemaFormService } from '../form/services/json-schema-form.service';
+import { extendLayoutNode, extendModuleDef } from '../core/testing';
 
 import { TemplateComponent } from './template.component';
 
@@ -12,28 +9,16 @@ describe('TemplateComponent', () => {
     let fixture: ComponentFixture<TemplateComponent>;
 
     beforeEach(async () => {
-        const mockFormService: JsonSchemaFormService = jasmine.createSpyObj('JsonSchemaFormService', {
-            initializeControl: true
-        });
-        (<jasmine.Spy>mockFormService.initializeControl).and.callFake((comp) => {
-            comp.options = comp.layoutNode.options;
-        });
-
-        await TestBed.configureTestingModule({
-            declarations: [ TemplateComponent ],
-            providers: [{
-                provide: JsonSchemaFormService,
-                useValue: mockFormService
-            }],
-            schemas: [ NO_ERRORS_SCHEMA ]
-        })
+        await TestBed.configureTestingModule(extendModuleDef({
+            declarations: [ TemplateComponent ]
+        }))
         .compileComponents();
     });
 
     beforeEach(() => {
         fixture = TestBed.createComponent(TemplateComponent);
         component = fixture.componentInstance;
-        component.layoutNode = {id: '0', options: {}, type: 'template', items: []} as any as LayoutNode;
+        component.layoutNode = extendLayoutNode({type: 'template', items: []});
         fixture.detectChanges();
     });
 
