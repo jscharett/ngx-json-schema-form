@@ -2,6 +2,8 @@ import { CommonModule } from '@angular/common';
 import { Component, ComponentRef, NgModule, ViewChild, ViewContainerRef } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
+import { extendLayoutNode, extendModuleDef } from '../../core/testing';
+
 import { LayoutNode } from '../../core/models/layout-node';
 import { WidgetLibraryService } from '../../core/services/widget-library.service';
 
@@ -49,7 +51,7 @@ describe('SelectWidgetsDirective', () => {
             getWidget: TestWidgetComponent
         });
 
-        return TestBed.configureTestingModule({
+        return TestBed.configureTestingModule(extendModuleDef({
             declarations: [ TestComponent, SelectWidgetsDirective ],
             imports: [ CommonModule, TestModule ],
             providers: [{
@@ -59,7 +61,7 @@ describe('SelectWidgetsDirective', () => {
                 provide: WidgetLibraryService,
                 useValue: mockWidgetService
             }]
-        })
+        }))
         .compileComponents();
     });
 
@@ -72,9 +74,9 @@ describe('SelectWidgetsDirective', () => {
 
             return newComponent;
         });
-        component.layoutNode = {id: '0', items: [
-            {id: '0', options: {}, type: 'hidden'} as any as LayoutNode
-        ], options: {}, type: 'div'} as any as LayoutNode;
+        component.layoutNode = extendLayoutNode({items: [
+            extendLayoutNode({id: '1', type: 'hidden'})
+        ], type: 'div'});
         fixture.detectChanges();
     });
 
@@ -92,9 +94,9 @@ describe('SelectWidgetsDirective', () => {
 
     it('should update component when input changes', () => {
         const currentComponent = newComponent.instance;
-        component.layoutNode = {id: '1', items: [
-            {id: '0', options: {}, type: 'hidden'} as any as LayoutNode
-        ], options: {}, type: 'div'} as any as LayoutNode;
+        component.layoutNode = extendLayoutNode({id: '1', items: [
+            extendLayoutNode({type: 'hidden'})
+        ], type: 'div'});
         fixture.detectChanges();
         expect(newComponent.instance).not.toBe(currentComponent);
         expect(newComponent.instance.layoutNode).toEqual(component.layoutNode.items[0]);
@@ -104,12 +106,14 @@ describe('SelectWidgetsDirective', () => {
         const span = document.createElement('span');
         span.innerText = 'hi';
         documentFragment.appendChild(span);
-        component.layoutNode = {id: '1', items: [{
-            id: '2',
-            options: {title: 'hi'},
-            template: '<span>{{ options.title }}</span>',
-            type: 'button'
-        } as any as LayoutNode], options: {}, type: 'div'} as any as LayoutNode;
+        component.layoutNode = extendLayoutNode({id: '1', items: [
+            extendLayoutNode({
+                id: '2',
+                options: {title: 'hi'},
+                template: '<span>{{ options.title }}</span>',
+                type: 'button'
+            })
+        ], type: 'div'});
         fixture.detectChanges();
 
         expect(newComponent.location.nativeElement.innerHTML).toBe('<div><span>hi</span></div>');
