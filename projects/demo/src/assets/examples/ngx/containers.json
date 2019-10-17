@@ -56,7 +56,6 @@
         "htmlClass": "tabs",
         "description": "This is a tabs container",
         "tabindex": 4,
-        "selectedIndex": 1,
         "items": [{
             "items": [],
             "type": "tab",
@@ -78,7 +77,8 @@
             },
             "htmlClass": "tab",
             "description": "This is a tab container",
-            "tabindex": 7
+            "tabindex": 7,
+            "active": true
         }, {
             "items": [],
             "type": "tab",

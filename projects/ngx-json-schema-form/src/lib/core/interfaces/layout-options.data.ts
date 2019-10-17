@@ -34,8 +34,8 @@ export interface LayoutOptions {
 
     /** Whether or not a details container widget is open */
     open?: boolean;
-    /** Index of the tab to selected by default */
-    selectedIndex?: number;
+    /** Weather or not the tab is active */
+    active?: boolean;
 
     [others: string]: any;
 }

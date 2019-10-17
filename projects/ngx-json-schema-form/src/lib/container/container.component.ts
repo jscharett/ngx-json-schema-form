@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, DoCheck, HostBinding, KeyValueChangeRecord, KeyValueDiffer, KeyValueDiffers, OnInit } from '@angular/core';
 
 import { Widget } from '../core/decorators/widget.decorator';
 import { LayoutNode } from '../core/models/layout-node';
@@ -16,18 +16,40 @@ import { JsonSchemaFormService } from '../form/services/json-schema-form.service
     styleUrls: ['./container.component.scss'],
     templateUrl: './container.component.html'
 })
-export class ContainerComponent extends AbstractWidget implements OnInit {
-    public selectedLayout: LayoutNode;
+export class ContainerComponent extends AbstractWidget implements OnInit, DoCheck {
+    @HostBinding('hidden') isHidden = false;
+    private hiddenDiffer: KeyValueDiffer<string, any>;
 
-    constructor(jsf: JsonSchemaFormService, elementDataStorage: ElementDataStorageService) {
+    constructor(jsf: JsonSchemaFormService, elementDataStorage: ElementDataStorageService,
+        private readonly differs: KeyValueDiffers) {
         super(jsf, elementDataStorage);
     }
 
     ngOnInit() {
         super.ngOnInit();
-        this.selectedLayout = this.layoutNode.type === 'tabs'
-            ? this.layoutNode.items[this.getSelectedIndex()]
-            : undefined;
+        switch (this.layoutNode.type) {
+            case 'tabs':
+                const activeLayout: LayoutNode = this.layoutNode.items.find((layoutNode: LayoutNode) => {
+                    return !!layoutNode.options.active;
+                }) || this.layoutNode.items[0];
+                this.layoutNode.items.forEach((layoutNode: LayoutNode) => {
+                    layoutNode.options.active = layoutNode === activeLayout;
+                });
+                break;
+            case 'tab':
+                this.isHidden = !this.layoutNode.options.active;
+                this.hiddenDiffer = this.differs.find(this.layoutNode.options).create();
+        }
+    }
+
+    ngDoCheck(): void {
+        if (this.layoutNode.type === 'tab') {
+            const changes = this.hiddenDiffer.diff(this.layoutNode.options);
+            if (changes) {
+                changes.forEachAddedItem(this.onKeyValueChanged.bind(this));
+                changes.forEachChangedItem(this.onKeyValueChanged.bind(this));
+            }
+        }
     }
 
     trackByFn(index) {
@@ -35,15 +57,15 @@ export class ContainerComponent extends AbstractWidget implements OnInit {
     }
 
     onTabClick(layout: LayoutNode): void {
-        this.selectedLayout = layout;
+        this.layoutNode.items.forEach((layoutNode: LayoutNode) => {
+            layoutNode.options.active = false;
+        });
+        layout.options.active = true;
     }
 
-    private getSelectedIndex(): number {
-        const index = Number.isInteger(this.layoutNode.options.selectedIndex)
-            ? this.layoutNode.options.selectedIndex
-            : 0;
-
-        return Math.min(Math.max(index, 0), this.layoutNode.items.length - 1);
+    private onKeyValueChanged(item: KeyValueChangeRecord<string, any>): void {
+        if (item.key === 'active') {
+            this.isHidden = !this.layoutNode.options.active;
+        }
     }
-
 }
