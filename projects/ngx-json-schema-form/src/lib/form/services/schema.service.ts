@@ -53,7 +53,7 @@ export class SchemaService implements SchemaAnalyzer {
     migrate(schema: JSONSchema4 | JSONSchema6 | JSONSchema7): JSONSchema7 {
         const migratedSchema = cloneDeep(schema);
         if (!migratedSchema.$schema || !migratedSchema.$schema.includes('draft-07')) {
-            if (!migratedSchema.$schema.includes('draft-06')) {
+            if (migratedSchema.$schema && migratedSchema.$schema.includes('draft-04')) {
                 migrate.draft6(migratedSchema);
             }
             // Per https://github.com/epoberezkin/json-schema-migrate/issues/1, draft 7 is
