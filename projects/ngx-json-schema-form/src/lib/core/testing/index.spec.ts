@@ -27,6 +27,10 @@ describe('testing', () => {
 
     describe('extendModuleDef', () => {
         it('should add no errors schema if missing', () => {
+            expect(extendModuleDef()).toEqual(jasmine.objectContaining({
+                schemas: [NO_ERRORS_SCHEMA]
+            }));
+
             expect(extendModuleDef({})).toEqual(jasmine.objectContaining({
                 schemas: [NO_ERRORS_SCHEMA]
             }));
@@ -41,6 +45,14 @@ describe('testing', () => {
         });
 
         it('should add JSONSchemaFormService if missing', () => {
+            expect(extendModuleDef()).toEqual(jasmine.objectContaining({
+                providers: jasmine.arrayContaining([
+                    jasmine.objectContaining({
+                        provide: JsonSchemaFormService
+                    })
+                ])
+            }));
+
             expect(extendModuleDef({})).toEqual(jasmine.objectContaining({
                 providers: jasmine.arrayContaining([
                     jasmine.objectContaining({
