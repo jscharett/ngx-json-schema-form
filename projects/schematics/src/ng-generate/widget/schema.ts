@@ -10,4 +10,7 @@ export interface Schema {
 
     // The name of the project.
     project?: string;
+
+    // The declaring NgModule.
+    module?: string;
 }
