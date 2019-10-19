@@ -30,7 +30,7 @@ export function widget(options: WidgetSchema): Rule {
         // TODO: need to update json-schema-form-module.ts and index.ts to import/export new widget
 
         return chain([
-            // schematic('widget-module', options),
+            schematic('widget-module', options),
             schematic('widget-component', options)// ,
             // schematic('widget-e2e', options),
             // schematic('widget-demo', options)

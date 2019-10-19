@@ -1,2 +1,0 @@
-export { <%= classify(name) %>Module } from './<%= dasherize(name) %>.module';
-export { <%= classify(name) %>Component } from './<%= dasherize(name) %>.component';

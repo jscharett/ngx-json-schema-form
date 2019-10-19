@@ -24,8 +24,8 @@ export function create(options: WidgetComponentSchema): Rule {
         if (options.path === undefined) {
             options.path = buildDefaultPath(project);
         }
-        console.log(options.path);
 
+        // TODO - throws error
         // options.module = findModuleFromOptions(tree, options);
 
         const parsedPath = parseName(options.path as string, options.name);

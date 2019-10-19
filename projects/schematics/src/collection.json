@@ -14,6 +14,11 @@
             "description": "Generate a component for a widget",
             "factory": "./ng-generate/widget/component/index#create",
             "schema": "./ng-generate/widget/component/schema.json"
+        },
+        "widget-module": {
+            "description": "Generate a module for a widget",
+            "factory": "./ng-generate/widget/module/index#create",
+            "schema": "./ng-generate/widget/module/schema.json"
         }
     }
 }
