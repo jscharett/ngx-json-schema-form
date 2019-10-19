@@ -9,6 +9,11 @@
             "description": "Generate a widget in the project.",
             "factory": "./ng-generate/widget/index#widget",
             "schema": "./ng-generate/widget/schema.json"
+        },
+        "widget-component": {
+            "description": "Generate a component for a widget",
+            "factory": "./ng-generate/widget/component/index#create",
+            "schema": "./ng-generate/widget/component/schema.json"
         }
     }
 }
