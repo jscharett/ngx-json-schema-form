@@ -24,7 +24,7 @@ export function widget(options: WidgetSchema): Rule {
             options.project = workspace.defaultProject;
         }
 
-        const projectName = options.project as string;
+        const projectName = options.project;
         const project = workspace.projects[projectName];
         const projectType = project.projectType === 'application' ? 'app' : 'lib';
 

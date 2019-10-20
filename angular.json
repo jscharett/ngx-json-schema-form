@@ -170,6 +170,25 @@
                     }
                 }
             }
+        },
+        "schematics": {
+            "root": "projects/schematics",
+            "sourceRoot": "projects/schematics/src",
+            "projectType": "library",
+            "prefix": "",
+            "architect": {
+                "lint": {
+                    "builder": "@angular-devkit/build-angular:tslint",
+                    "options": {
+                        "format": "verbose",
+                        "typeCheck": true,
+                        "tsConfig": "projects/schematics/tsconfig.json",
+                        "exclude": [
+                            "**/node_modules/**"
+                        ]
+                    }
+                }
+            }
         }
     },
     "defaultProject": "ngx-json-schema-form",

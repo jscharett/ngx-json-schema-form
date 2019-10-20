@@ -37,7 +37,7 @@ export function setWidgetOptions(tree: Tree, options: WidgetOptions) {
         options.module = findModuleFromOptions(tree, options);
     }
 
-    const parsedPath = parseName(options.path as string, options.name);
+    const parsedPath = parseName(options.path, options.name);
     options.name = parsedPath.name;
     options.path = parsedPath.path;
 }
