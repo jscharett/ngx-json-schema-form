@@ -15,11 +15,9 @@ import * as ts from '@schematics/angular/third_party/github.com/Microsoft/TypeSc
 
 import { addImportToModule } from '@schematics/angular/utility/ast-utils';
 import { InsertChange } from '@schematics/angular/utility/change';
-import { getWorkspace } from '@schematics/angular/utility/config';
-import { buildRelativePath /*, findModuleFromOptions*/ } from '@schematics/angular/utility/find-module';
-import { parseName } from '@schematics/angular/utility/parse-name';
-import { buildDefaultPath } from '@schematics/angular/utility/project';
-import { WorkspaceProject } from '@schematics/angular/utility/workspace-models';
+import { buildRelativePath } from '@schematics/angular/utility/find-module';
+
+import { setWidgetOptions } from '../utils';
 
 import { Schema as ModuleOptions } from './schema';
 
@@ -63,25 +61,7 @@ function addDeclarationToNgModule(options: ModuleOptions): Rule {
 
 export function create(options: ModuleOptions): Rule {
     return (tree: Tree) => {
-        const workspace = getWorkspace(tree);
-
-        if (!options.project) {
-            options.project = workspace.defaultProject;
-        }
-
-        const project = <WorkspaceProject>workspace.projects[options.project as string];
-        if (options.path === undefined) {
-            options.path = buildDefaultPath(project);
-        }
-
-        // TODO - throws error
-        // if (options.module) {
-        //     options.module = findModuleFromOptions(tree, options);
-        // }
-
-        const parsedPath = parseName(options.path, options.name);
-        options.name = parsedPath.name;
-        options.path = parsedPath.path;
+        setWidgetOptions(tree, options);
 
         const templateSource = apply(url('./files'), [
             applyTemplates({
@@ -89,7 +69,7 @@ export function create(options: ModuleOptions): Rule {
                 'if-flat': (s: string) => options.flat ? '' : s,
                 ...options
             }),
-            move(parsedPath.path)
+            move(options.path as string)
         ]);
 
         return chain([
