@@ -1,0 +1,46 @@
+{
+    "$schema": "http://json-schema.org/schema",
+    "id": "SchematicsWidget",
+    "title": "Widget Schema",
+    "type": "object",
+    "properties": {
+        "name": {
+            "description": "The name of the widget.",
+            "type": "string"
+        },
+        "types": {
+            "description": "The layout types associated with the widget.",
+            "type": "array",
+            "items": {
+                "type": "string"
+            }
+        },
+        "path": {
+            "type": "string",
+            "format": "path",
+            "description": "The path to create the widget.",
+            "visible": false
+        },
+        "project": {
+            "type": "string",
+            "description": "The name of the project.",
+            "$default": {
+                "$source": "projectName"
+            }
+        },
+        "module":  {
+            "type": "string",
+            "description": "The declaring NgModule.",
+            "alias": "m"
+        },
+        "flat": {
+            "type": "boolean",
+            "description": "When true, creates the new files at the top level of the current project.",
+            "default": false
+        }
+    },
+    "required": [
+        "name",
+        "types"
+    ]
+}

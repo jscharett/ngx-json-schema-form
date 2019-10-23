@@ -1,0 +1,36 @@
+{
+    "$schema": "http://json-schema.org/schema",
+    "id": "SchematicsWidget",
+    "title": "Widget Schema",
+    "type": "object",
+    "properties": {
+        "name": {
+            "description": "The name of the widget.",
+            "type": "string"
+        },
+        "types": {
+            "description": "The layout types associated with the widget.",
+            "type": "array",
+            "items": {
+                "type": "string"
+            }
+        },
+        "path": {
+            "type": "string",
+            "format": "path",
+            "description": "The path to create the widget.",
+            "visible": false
+        },
+        "project": {
+            "type": "string",
+            "description": "The name of the project.",
+            "$default": {
+                "$source": "projectName"
+            }
+        }
+    },
+    "required": [
+        "name",
+        "types"
+    ]
+}

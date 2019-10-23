@@ -1,0 +1,11 @@
+<input
+    [attr.readonly]="options.readonly ? 'readonly' : null"
+    [attr.accesskey]="options.accesskey"
+    [attr.class]="options.htmlClass"
+    [attr.dirname]="options.dirname ? controlName + '.dir' : null"
+    [attr.tabindex]="options.tabindex"
+    [attr.title]="options.description"
+    [ngStyle]="options.style"
+    [id]="layoutNode.id"
+    [name]="controlName"
+    [type]="layoutNode.type">

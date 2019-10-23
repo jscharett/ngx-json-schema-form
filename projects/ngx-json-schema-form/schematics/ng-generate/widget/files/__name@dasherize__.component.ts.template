@@ -1,0 +1,24 @@
+import { Component } from '@angular/core';
+
+import { Widget } from '../core/decorators/widget.decorator';
+import { ElementDataStorageService } from '../core/services/element-data-storage.service';
+import { AbstractWidget } from '../core/widget/widget';
+
+import { JsonSchemaFormService } from '../form/services/json-schema-form.service';
+
+/**
+ * Displays an ...
+ */
+@Widget({
+    types: ['<%= types %>']
+})
+@Component({
+    selector: 'jsf-<%= dasherize(name) %>',
+    styleUrls: ['./<%= dasherize(name) %>.component.scss'],
+    templateUrl: './<%= dasherize(name) %>.component.html'
+})
+export class <%= classify(name) %>Component extends AbstractWidget {
+    constructor(jsf: JsonSchemaFormService, elementDataStorage: ElementDataStorageService) {
+        super(jsf, elementDataStorage);
+    }
+}

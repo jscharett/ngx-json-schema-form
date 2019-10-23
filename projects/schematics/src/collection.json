@@ -1,0 +1,24 @@
+{
+    "$schema": "../../../node_modules/@angular-devkit/schematics/collection-schema.json",
+    "schematics": {
+        "ng-add": {
+            "description": "Add my library to the project.",
+            "factory": "./ng-add/index#ngAdd"
+        },
+        "widget": {
+            "description": "Generate a widget in the project.",
+            "factory": "./ng-generate/widget/index#widget",
+            "schema": "./ng-generate/widget/schema.json"
+        },
+        "widget-component": {
+            "description": "Generate a component for a widget",
+            "factory": "./ng-generate/widget/component/index#create",
+            "schema": "./ng-generate/widget/component/schema.json"
+        },
+        "widget-module": {
+            "description": "Generate a module for a widget",
+            "factory": "./ng-generate/widget/module/index#create",
+            "schema": "./ng-generate/widget/module/schema.json"
+        }
+    }
+}
