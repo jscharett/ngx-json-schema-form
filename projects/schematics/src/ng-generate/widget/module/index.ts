@@ -17,7 +17,7 @@ import { addImportToModule } from '@schematics/angular/utility/ast-utils';
 import { InsertChange } from '@schematics/angular/utility/change';
 import { buildRelativePath } from '@schematics/angular/utility/find-module';
 
-import { setWidgetOptions } from '../utils';
+import { addExportToIndex, getWidgetOptions } from '../utils';
 
 import { Schema as ModuleOptions } from './schema';
 
@@ -61,20 +61,20 @@ function addDeclarationToNgModule(options: ModuleOptions): Rule {
 
 export function create(options: ModuleOptions): Rule {
     return (tree: Tree) => {
-        setWidgetOptions(tree, options);
+        const opts = getWidgetOptions(tree, options) as ModuleOptions;
 
         const templateSource = apply(url('./files'), [
             applyTemplates({
                 ...strings,
-                'if-flat': (s: string) => options.flat ? '' : s,
-                ...options
+                'if-flat': (s: string) => opts.flat ? '' : s,
+                ...opts
             }),
-            move(options.path as string)
+            move(opts.path as string)
         ]);
 
         return chain([
-            addDeclarationToNgModule(options),
-            // TODO - addExportToIndex(options),
+            addDeclarationToNgModule(opts),
+            addExportToIndex(opts), // export * from './${name}';
             mergeWith(templateSource)
         ]);
     };
