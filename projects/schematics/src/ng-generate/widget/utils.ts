@@ -1,4 +1,4 @@
-import { join, normalize, Path, strings } from '@angular-devkit/core';
+import { join, normalize, Path , strings } from '@angular-devkit/core';
 import { DirEntry, Rule, SchematicsException, Tree } from '@angular-devkit/schematics';
 
 import * as ts from '@schematics/angular/third_party/github.com/Microsoft/TypeScript/lib/typescript';
@@ -36,8 +36,8 @@ function findIndex(tree: Tree, generateDir: string): Path {
 }
 
 function buildRelativeIndexPath(options: any, indexPath: string): string {
-    const dasherizedName = strings.dasherize('index');
-    const importIndexPath = normalize(`/${options.path}/${(options.flat ? '' : `${dasherizedName}/`)}${dasherizedName}.module`);
+    const dasherizedName = strings.dasherize(options.name);
+    const importIndexPath = normalize(`/${options.path}/${(options.flat ? '' : `${dasherizedName}/`)}index`);
 
     return buildRelativePath(indexPath, importIndexPath);
 }
@@ -169,14 +169,8 @@ export function addExportToIndex(options: WidgetOptions): Rule {
         const sourceText = text.toString();
         const source = ts.createSourceFile(indexPath, sourceText, ts.ScriptTarget.Latest, true);
 
-        const relativePath = buildRelativeIndexPath(options, indexPath);
-        // const changes = addExportToIndexFile(source, indexPath, '*', relativePath);
+        const relativePath = buildRelativeIndexPath(options, indexPath).replace(/\/index$/, '');
         const changes = [insertExport(source, indexPath, '*', relativePath, true)];
-        // const changes = addImportToModule(
-        //     source,
-        //     indexPath,
-        //     strings.classify(`${options.name}Module`),
-        //     relativePath);
 
         const recorder = tree.beginUpdate(indexPath);
         for (const change of changes) {
