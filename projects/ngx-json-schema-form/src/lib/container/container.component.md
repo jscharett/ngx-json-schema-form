@@ -67,7 +67,7 @@ A `details` container uses a `<details>` element allowing you to expand/collapse
 
 ### Tabs
 
-With a `tabs` container, you supply a list of LayoutItems of type `tab`.  Each tab should have a `title` which is used to display the tab text.  By default, the first tab will be selected.  You can optional specify which tab to select by adding `selectedIndex` to the `tabs` options.
+With a `tabs` container, you supply a list of LayoutItems of type `tab`.  Each tab should have a `title` which is used to display the tab text.  By default, the first tab will be selected.  You can optional specify which tab to select by adding `active` to the `tab` options.
 
 <div class="panel panel-primary docs">
 <div class="panel-heading panel-title">layout.json</div>
@@ -75,7 +75,6 @@ With a `tabs` container, you supply a list of LayoutItems of type `tab`.  Each t
 ```json
 [{
     "type": "tabs",
-    "selectedIndex": 1,
     "items": [{
         "type": "tab",
         "title": "Tab 1",
@@ -83,6 +82,7 @@ With a `tabs` container, you supply a list of LayoutItems of type `tab`.  Each t
     }, {
         "type": "tab",
         "title": "Tab 2",
+        "active": true,
         "items": [...]
     }, {
         "type": "tab",

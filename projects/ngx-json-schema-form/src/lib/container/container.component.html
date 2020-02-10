@@ -58,7 +58,7 @@
                 [attr.class]="_layoutNode.options.htmlClass"
                 [attr.tabindex]="_layoutNode.options.tabindex"
                 [attr.title]="_layoutNode.options.description"
-                [class.active]="selectedLayout === _layoutNode"
+                [class.active]="_layoutNode.options.active"
                 [ngStyle]="_layoutNode.options.style"
                 [id]="_layoutNode.id"
                 (click)="onTabClick(_layoutNode)"
@@ -72,9 +72,5 @@
     </ng-container>
 </ng-container>
 <ng-template #widgets>
-    <jsf-select-widget
-        *ngFor="let _layoutNode of layoutNode.items; trackBy: trackByFn;"
-        [layoutNode]="_layoutNode"
-        [hidden]="selectedLayout && selectedLayout !== _layoutNode"
-    ></jsf-select-widget>
+    <ng-container [jsfLayout]="layoutNode.items"></ng-container>
 </ng-template>

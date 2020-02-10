@@ -124,10 +124,6 @@ export class JsonSchemaFormComponent implements OnChanges, OnDestroy, OnInit {
         console.warn(this);
     }
 
-    trackByFn(index) {
-        return index;
-    }
-
     private updateForm(): void {
         if (!this.formInitialized) {
             this.initializeForm();

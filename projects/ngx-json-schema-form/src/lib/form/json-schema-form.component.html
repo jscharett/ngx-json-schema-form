@@ -5,7 +5,5 @@
     [attr.method]="method"
     [attr.target]="target"
     (ngSubmit)="submitForm()">
-    <jsf-select-widget
-        *ngFor="let layoutNode of layoutService.layout; trackBy: trackByFn;"
-        [layoutNode]="layoutNode"></jsf-select-widget>
+    <ng-container [jsfLayout]="layoutService.layout"></ng-container>
 </form>

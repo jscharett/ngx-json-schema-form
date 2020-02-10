@@ -34,8 +34,8 @@ export interface LayoutOptions {
 
     /** See {@link https://developer.mozilla.org/en-US/docs/Web/HTML/Element/details#Attributes} */
     open?: boolean;
-    /** Index of the tab to selected by default */
-    selectedIndex?: number;
+    /** Weather or not the tab is active */
+    active?: boolean;
 
     /** See {@link https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input#Labels_and_placeholders} */
     placeholder?: string;
