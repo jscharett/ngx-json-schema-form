@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 
 import { Widget } from '../core/decorators/widget.decorator';
 import { ElementDataStorageService } from '../core/services/element-data-storage.service';
