@@ -61,7 +61,7 @@
         "@types/ace": "0.0.36",
         "@types/json-schema": "^7.0.3",
         "@types/lodash": "^4.14.136",
-        "ajv": "^6.10.0",
+        "ajv": "^6.12.3",
         "brace": "^0.11.0",
         "core-js": "^2.5.4",
         "handlebars": "^4.1.2",
